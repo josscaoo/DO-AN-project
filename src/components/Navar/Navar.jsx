@@ -1,15 +1,21 @@
 import React from 'react'
-import { Container, Row, Col } from "reactstrap";
-import './navar.css'
+import { useNavigate } from 'react-router-dom';
+import { Row, Col } from "reactstrap";
+import './navar.css';
+
 
 const Navar = () => {
+  const navigate = useNavigate();
+  const navigateToShop = () => {
+    navigate("/shop");
+  };
   return (
     <div className="header__menu">
       <Row>
         <Col md="8">
           <div className="menu__container">
             <ul className="ul__header__menu">
-              <li>
+              <li onClick={navigateToShop}>
                 <i class="ri-smartphone-line"></i>
                 Điện thoại
               </li>
@@ -31,12 +37,12 @@ const Navar = () => {
           </div>
         </Col>
         <Col m="5">
-          <div className='menu__phone'>
-            <ul className='ul__menu__phone'>
-                <li className='aaaa'>iPhone</li>
-                <li>SamSung</li>
-                <li>Xiaomi</li>
-                <li>OPPO</li>
+          <div className="menu__phone">
+            <ul className="ul__menu__phone">
+              <li className="aaaa">iPhone</li>
+              <li>SamSung</li>
+              <li>Xiaomi</li>
+              <li>OPPO</li>
             </ul>
           </div>
         </Col>

@@ -47,12 +47,177 @@ import productImg39 from "../images/sale-table-10.webp";
 import productImg40 from "../images/sale-table-11.webp";
 import productImg41 from "../images/sale-table-12.webp";
 
+import productImg50 from "../images/tainghe-01.jpg";
+import productImg51 from "../images/tainghe-02.jpg";
+import productImg52 from "../images/tainghe-03.jpg";
+import productImg53 from "../images/tainghe-04.jpg";
+import productImg54 from "../images/tainghe-05.jpg";
+import productImg55 from "../images/tainghe-06.jpg";
+import productImg56 from "../images/tainghe-07.jpg";
+import productImg57 from "../images/tainghe-01.jpg";
+
+import productImg58 from "../images/laptop-02.jpg";
+import productImg59 from "../images/laptop-03.jpg";
+import productImg60 from "../images/laptop-04.jpg";
+import productImg61 from "../images/laptop-05.jpg";
+import productImg62 from "../images/laptop-06.jpg";
+import productImg63 from "../images/laptop-07.png";
+import productImg64 from "../images/laptop-01.jpg";
+import productImg65 from "../images/laptop-02.jpg";
+import productImg66 from "../images/laptop-03.jpg";
+import productImg67 from "../images/laptop-04.jpg";
+
 
 const products = [
   {
-    id: "0101",
+    id: "0121",
     productName: "iPhone 14 Pro Max 128GB Vàng ",
-    imgUrl: productImg01,
+    imgUrl: productImg50,
+    category: "head",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình head 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "head 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về head 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  {
+    id: "0131",
+    productName: "head 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg53,
+    category: "head",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình head 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "head 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về head 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  {
+    id: "0141",
+    productName: "head 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg52,
+    category: "head",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình head 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "head 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về head 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  {
+    id: "0151",
+    productName: "head 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg53,
+    category: "head",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình head 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "head 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về head 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  {
+    id: "0161",
+    productName: "head 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg54,
+    category: "head",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình head 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "head 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về head 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  {
+    id: "0171",
+    productName: "head 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg55,
+    category: "head",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình head 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "head 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về head 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  {
+    id: "0181",
+    productName: "head 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg56,
+    category: "head",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình head 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "head 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về head 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  {
+    id: "0191",
+    productName: "head 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg57,
+    category: "head",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình head 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "head 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  
+  {
+    id: "0108",
+    productName: "iPhone 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg05,
     category: "iphone",
     price: 2990000,
     shortDesc:
@@ -68,9 +233,9 @@ const products = [
     avgRating: 4.5,
   },
   {
-    id: "0102",
+    id: "0109",
     productName: "iPhone 14 Pro Max 128GB Vàng ",
-    imgUrl: productImg01,
+    imgUrl: productImg15,
     category: "iphone",
     price: 2990000,
     shortDesc:
@@ -88,7 +253,7 @@ const products = [
   {
     id: "0103",
     productName: "iPhone 14 Pro Max 128GB Vàng ",
-    imgUrl: productImg01,
+    imgUrl: productImg04,
     category: "iphone",
     price: 2990000,
     shortDesc:
@@ -106,7 +271,7 @@ const products = [
   {
     id: "0104",
     productName: "iPhone 14 Pro Max 128GB Vàng ",
-    imgUrl: productImg01,
+    imgUrl: productImg20,
     category: "iphone",
     price: 2990000,
     shortDesc:
@@ -665,6 +830,189 @@ const products = [
   },
 ];
 
+const computers = [
+  {
+    id: "1101",
+    productName: "iPhone 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg58,
+    category: "iphone",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "iPhone 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  {
+    id: "2101",
+    productName: "iPhone 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg59,
+    category: "iphone",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "iPhone 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  {
+    id: "3101",
+    productName: "iPhone 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg60,
+    category: "iphone",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "iPhone 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  {
+    id: "4101",
+    productName: "iPhone 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg61,
+    category: "iphone",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "iPhone 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  {
+    id: "5101",
+    productName: "iPhone 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg62,
+    category: "iphone",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "iPhone 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  {
+    id: "6101",
+    productName: "iPhone 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg63,
+    category: "iphone",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "iPhone 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  {
+    id: "7101",
+    productName: "iPhone 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg64,
+    category: "iphone",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "iPhone 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  {
+    id: "8101",
+    productName: "iPhone 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg65,
+    category: "iphone",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "iPhone 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  {
+    id: "9101",
+    productName: "iPhone 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg66,
+    category: "iphone",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "iPhone 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  {
+    id: "0107",
+    productName: "iPhone 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg67,
+    category: "iphone",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "iPhone 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+];
+
 export const salesItem = [
   {
     id: "01",
@@ -892,22 +1240,22 @@ export const sliderItems = [
   {
     id: 1,
     img: productImg29,
-    title: "THỜI TRANG",
-    desc: "PHONG CÁCH CỦA BẠN ! NHẬN ƯU ĐÃI GIẢM GIÁ 30% CHO CÁC HÀNG MỚI VỀ..",
+    title: "",
+    desc: " ",
     bg: "f5fafd",
   },
   {
     id: 2,
     img: productImg27,
-    title: "THANH LỊCH",
-    desc: "PHONG CÁCH CỦA BẠN ! NHẬN ƯU ĐÃI GIẢM GIÁ 30% CHO CÁC HÀNG MỚI VỀ.",
+    title: "",
+    desc: " .",
     bg: "fcf1ed",
   },
   {
     id: 3,
     img: productImg28,
-    title: "PHONG CÁCH",
-    desc: "PHONG CÁCH CỦA BẠN ! NHẬN ƯU ĐÃI GIẢM GIÁ 30% CHO CÁC HÀNG MỚI VỀ.",
+    title: "",
+    desc: " .",
     bg: "fbf0f4",
   },
 ];
@@ -916,100 +1264,100 @@ export const sliderSale = [
   {
     id: 1,
     img: productImg45,
-    title: "THỜI TRANG",
-    desc: "PHONG CÁCH CỦA BẠN ! NHẬN ƯU ĐÃI GIẢM GIÁ 30% CHO CÁC HÀNG MỚI VỀ..",
+    title: "",
+    desc: " ",
     bg: "f5fafd",
   },
   {
     id: 2,
     img: productImg31,
-    title: "THANH LỊCH",
-    desc: "PHONG CÁCH CỦA BẠN ! NHẬN ƯU ĐÃI GIẢM GIÁ 30% CHO CÁC HÀNG MỚI VỀ.",
+    title: "",
+    desc: " .",
     bg: "fcf1ed",
   },
   {
     id: 3,
     img: productImg32,
-    title: "PHONG CÁCH",
-    desc: "PHONG CÁCH CỦA BẠN ! NHẬN ƯU ĐÃI GIẢM GIÁ 30% CHO CÁC HÀNG MỚI VỀ.",
+    title: "",
+    desc: " .",
     bg: "fbf0f4",
   },
   {
     id: 4,
     img: productImg33,
-    title: "THỜI TRANG",
-    desc: "PHONG CÁCH CỦA BẠN ! NHẬN ƯU ĐÃI GIẢM GIÁ 30% CHO CÁC HÀNG MỚI VỀ..",
+    title: "",
+    desc: " ",
     bg: "f5fafd",
   },
   {
     id: 5,
     img: productImg34,
-    title: "THANH LỊCH",
-    desc: "PHONG CÁCH CỦA BẠN ! NHẬN ƯU ĐÃI GIẢM GIÁ 30% CHO CÁC HÀNG MỚI VỀ.",
+    title: "",
+    desc: " .",
     bg: "fcf1ed",
   },
   {
     id: 6,
     img: productImg35,
-    title: "PHONG CÁCH",
-    desc: "PHONG CÁCH CỦA BẠN ! NHẬN ƯU ĐÃI GIẢM GIÁ 30% CHO CÁC HÀNG MỚI VỀ.",
+    title: "",
+    desc: " .",
     bg: "fbf0f4",
   },
   {
     id: 7,
     img: productImg36,
-    title: "THỜI TRANG",
-    desc: "PHONG CÁCH CỦA BẠN ! NHẬN ƯU ĐÃI GIẢM GIÁ 30% CHO CÁC HÀNG MỚI VỀ..",
+    title: "",
+    desc: " ",
     bg: "f5fafd",
   },
   {
     id: 8,
     img: productImg37,
-    title: "THANH LỊCH",
-    desc: "PHONG CÁCH CỦA BẠN ! NHẬN ƯU ĐÃI GIẢM GIÁ 30% CHO CÁC HÀNG MỚI VỀ.",
+    title: "",
+    desc: " .",
     bg: "fcf1ed",
   },
   {
     id: 9,
     img: productImg38,
-    title: "PHONG CÁCH",
-    desc: "PHONG CÁCH CỦA BẠN ! NHẬN ƯU ĐÃI GIẢM GIÁ 30% CHO CÁC HÀNG MỚI VỀ.",
+    title: "",
+    desc: " .",
     bg: "fbf0f4",
   },
   {
     id: 10,
     img: productImg39,
-    title: "THỜI TRANG",
-    desc: "PHONG CÁCH CỦA BẠN ! NHẬN ƯU ĐÃI GIẢM GIÁ 30% CHO CÁC HÀNG MỚI VỀ..",
+    title: "",
+    desc: " ",
     bg: "f5fafd",
   },
   {
     id: 11,
     img: productImg41,
-    title: "THỜI TRANG",
-    desc: "PHONG CÁCH CỦA BẠN ! NHẬN ƯU ĐÃI GIẢM GIÁ 30% CHO CÁC HÀNG MỚI VỀ..",
+    title: "",
+    desc: " ",
     bg: "f5fafd",
   },
 
   {
     id: 12,
     img: productImg40,
-    title: "THANH LỊCH",
-    desc: "PHONG CÁCH CỦA BẠN ! NHẬN ƯU ĐÃI GIẢM GIÁ 30% CHO CÁC HÀNG MỚI VỀ.",
+    title: "",
+    desc: " .",
     bg: "fcf1ed",
   },
   {
     id: 13,
     img: productImg32,
-    title: "THANH LỊCH",
-    desc: "PHONG CÁCH CỦA BẠN ! NHẬN ƯU ĐÃI GIẢM GIÁ 30% CHO CÁC HÀNG MỚI VỀ.",
+    title: "",
+    desc: " .",
     bg: "fcf1ed",
   },
   {
     id: 14,
     img: productImg38,
-    title: "THANH LỊCH",
-    desc: "PHONG CÁCH CỦA BẠN ! NHẬN ƯU ĐÃI GIẢM GIÁ 30% CHO CÁC HÀNG MỚI VỀ.",
+    title: "",
+    desc: " .",
     bg: "fcf1ed",
   },
 ];

@@ -164,15 +164,7 @@ const ProductDetails = () => {
                   ) : (
                     <div className="product__review mt-5">
                       <div className="review__wapper">
-                        <ul>
-                          {reviews?.map((item, index) => (
-                            <li key={index} className="mb-4">
-                              <h6>Jhon Doe</h6>
-                              <span>{item.rating}(rating)</span>
-                              <p>{item.text}</p>
-                            </li>
-                          ))}
-                        </ul>
+                        
 
                         <div className="review__form">
                           <h4>Để lại ý kiến của bạn</h4>

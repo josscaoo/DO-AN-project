@@ -18,7 +18,7 @@ const Cart = () => {
     <Helmet title="Cart">
       <CommonSection title="" />
       <div className="cart__main">
-        <div className='cart__body'>
+        <div className="cart__body">
           <section>
             <Container>
               <Row>
@@ -57,9 +57,11 @@ const Cart = () => {
                   <p className="fs-6 mt-2">
                     thuế và phí vận chuyển sẽ được tính khi thanh toán
                   </p>
-                  <div className='cart__button'>
+                  <div className="cart__button">
                     <button className="buy__btn w-100 ">
-                      <Link to="/checkout">Thanh Toán</Link>
+                      <Link to="/information">
+                        Thanh Toán
+                      </Link>
                     </button>
                     <button className="buy__btn w-100 mt-3">
                       <Link to="/shop">Tiếp Tục Mua Hàng</Link>

@@ -2,25 +2,15 @@
     display: flex;
     background-color: rgba(245, 231, 231, 0.5);
 }
-.billing__form{
-    margin-left: 10rem;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-    background-color: #fff;
-    margin-right: 5rem;
-    width: 40rem;
-}
-
-.form__group {
-    
-}
 
 .check__cart {
     padding: 20px;
-    background: rgb(55, 53, 53);
+    background: rgb(110, 7, 7);
     color: #fff9f9;
     border-radius: 5px;
     margin-top: 125px;
+    margin-left: 25rem;
+    margin-right: 25rem;
     height: 18rem;
 }
 
@@ -38,4 +28,28 @@
 .check__cart h4 {
     border-top: 1px solid rgba(221, 221, 221, 0.253);
     padding-top: 20px;
+}
+.button__cart{
+    margin-left: 270px;
+    display: flex;
+}
+.button__left{
+    margin-left: 15px;
+}
+button__left button{
+    background-color: #fff9f9;
+}
+.button__right{
+    margin-left: 170px;
+    margin-top: 50px;
+    font-size: 15px;
+}
+.aaaaa:hover{
+    color: white;
+    font-weight: 700;
+
+}
+.aaaaa{
+    font-weight: 500;
+    font-size: 20px;
 }

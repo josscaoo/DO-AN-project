@@ -1,0 +1,30 @@
+.body__checkout{
+    background-color: rgba(245, 231, 231, 0.5);
+}
+
+.billing__form{
+    margin-top: 20px;
+    margin-left: 35rem;
+
+}
+.text__information{
+    padding-bottom: 20px;
+}
+.text__information h4{
+    font-weight: 700;
+}
+.billing__form button{
+    border-radius: 10px;
+    font-size: 15px;
+    width: 100px;
+    
+}
+.form__button{
+    padding-left: 115px;
+}
+.form__button button:hover{
+    background-color:rgb(9, 9, 108);
+    color: white;
+    border: solid 0.5px rgb(9, 9, 108);
+}
+

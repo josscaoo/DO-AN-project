@@ -13,6 +13,7 @@ import AddProducts from '../admin/AddProducts';
 import AllProducts from '../admin/AllProducts';
 import Dashboard from '../admin/Dashboard';
 import Users from '../admin/Users';
+import Information from '../pages/Information';
 
 const Routers = () => {
     return (
@@ -31,15 +32,10 @@ const Routers = () => {
           <Route path="dashboard/add-product" element={<AddProducts />} />
           <Route path="dashboard/users" element={<Users />} />
         </Route>
-        <Route>
-          
-        </Route>
 
-        
-        
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
-
+        <Route path="information" element={<Information />} />
       </Routes>
     ); 
 };
