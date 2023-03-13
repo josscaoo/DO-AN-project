@@ -14,6 +14,7 @@ import AllProducts from '../admin/AllProducts';
 import Dashboard from '../admin/Dashboard';
 import Users from '../admin/Users';
 import Information from '../pages/Information';
+import ShopHead from '../pages/ShopHead';
 
 const Routers = () => {
     return (
@@ -36,6 +37,7 @@ const Routers = () => {
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
         <Route path="information" element={<Information />} />
+        <Route pash="shophead" element={<ShopHead/>}/>
       </Routes>
     ); 
 };
