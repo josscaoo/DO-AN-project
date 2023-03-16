@@ -1,17 +1,16 @@
 import React from "react";
 
-import { motion } from 'framer-motion';
-import '../../styles/product-card.css';
-import { Col } from 'reactstrap';
+import { motion } from "framer-motion";
+import "../../../styles/product-card.css";
+import { Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { useDispatch } from "react-redux";
-import { cartActions } from "../../redux/slices/cartSlice";
+import { cartActions } from "../../../redux/slices/cartSlice";
 
 const ProductCard = ({ item }) => {
-  
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const addToCart = () => {
     dispatch(
@@ -19,15 +18,14 @@ const ProductCard = ({ item }) => {
         id: item.id,
         productName: item.productName,
         price: item.price,
-        imgUrl: item.imgUrl
+        imgUrl: item.imgUrl,
       })
     );
 
-      toast.success("Đã thêm sản phẩm")
+    toast.success("Đã thêm sản phẩm");
   };
 
   return (
-    
     <Col lg="3" md="4" className=" mb-2">
       <div className="product__item">
         <div className="product__img">
@@ -40,7 +38,7 @@ const ProductCard = ({ item }) => {
           <span>{item.category}</span>
         </div>
         <div className="product__card-bottom d-flex align-items-center justify-content-between p-2">
-          <span className="price">{item.price}VND</span>
+          <span className="price">{item.price.toLocaleString("vi-VN")}VND</span>
           <motion.span whileTap={{ scale: 1.2 }} onClick={addToCart}>
             <i class="ri-add-line"></i>
           </motion.span>
@@ -48,6 +46,6 @@ const ProductCard = ({ item }) => {
       </div>
     </Col>
   );
-}
+};
 
-export default ProductCard
+export default ProductCard;

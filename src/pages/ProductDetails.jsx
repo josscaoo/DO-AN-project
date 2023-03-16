@@ -3,9 +3,9 @@ import { Container, Row, Col } from "reactstrap";
 import { useParams } from "react-router-dom";
 import products from "../assets/data/products";
 import Helmet from "../components/Helmet/Helmet";
-import CommonSection from "../components/Ul/CommonSection";
+import CommonSection from "../components/UI/CommonSection";
 import { motion } from "framer-motion";
-import ProductsList from "../components/Ul/ProductsList";
+import ProductsList from "../components/UI/Shop/ProductsList";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../redux/slices/cartSlice";
 import { toast } from "react-toastify";
@@ -101,7 +101,9 @@ const ProductDetails = () => {
                 </div>
 
                 <div d-flex align-items-center gap-5>
-                  <span className="product__price">{price}VND</span>
+                  <span className="product__price">
+                    {price.toLocaleString("vi-VN")}VND
+                  </span>
                   <br />
                   <span>Mặt hàng:{category}</span>
                 </div>

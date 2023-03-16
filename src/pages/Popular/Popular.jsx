@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import ListPhone from "../../components/Ul/ListPhone";
+import ListPhone from "../../components/UI/Phone/ListPhone";
 import products from "../../assets/data/products";
 
 const Container = styled.div`

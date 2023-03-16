@@ -1,19 +1,18 @@
-import React from 'react';
-import '../styles/cart.css';
-import Helmet from '../components/Helmet/Helmet';
-import CommonSection from '../components/Ul/CommonSection';
-import { Container, Row, Col } from 'reactstrap';
+import React from "react";
+import "../styles/cart.css";
+import Helmet from "../components/Helmet/Helmet";
+import CommonSection from "../components/UI/CommonSection";
+import { Container, Row, Col } from "reactstrap";
 
-import { motion } from 'framer-motion';
-import { cartActions } from '../redux/slices/cartSlice';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
+import { cartActions } from "../redux/slices/cartSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
 
-  const cartItems = useSelector(state => state.cart.cartItems);
-  const totalAmount = useSelector(state=> state.cart.totalAmount)
-  
   return (
     <Helmet title="Cart">
       <CommonSection title="" />
@@ -52,7 +51,9 @@ const Cart = () => {
                   <div>
                     <h6 className="d-flex align-items-center justify-content-between ">
                       Tổng tiền:
-                      <span className="fs-4 fw-bold">{totalAmount}VND</span>
+                      <span className="fs-4 fw-bold">
+                        {totalAmount.toLocaleString("vi-VN")}VND
+                      </span>
                     </h6>
                   </div>
                   <p className="fs-6 mt-2">
@@ -60,9 +61,7 @@ const Cart = () => {
                   </p>
                   <div className="cart__button">
                     <button className="buy__btn w-100 ">
-                      <Link to="/information">
-                        Thanh Toán
-                      </Link>
+                      <Link to="/information">Thanh Toán</Link>
                     </button>
                     <button className="buy__btn w-100 mt-3">
                       <Link to="/shop">Tiếp Tục Mua Hàng</Link>
@@ -78,24 +77,17 @@ const Cart = () => {
   );
 };
 
-
 const Tr = ({ item }) => {
-  const dispatch = useDispatch()
-  
-  const {
-    imgUrl,
-    productName,
-    price,
-  } = item;
+  const dispatch = useDispatch();
 
-
+  const { imgUrl, productName, price } = item;
 
   const deleteProduct = () => {
-    dispatch(cartActions.deleteItem(item.id))
-  }
+    dispatch(cartActions.deleteItem(item.id));
+  };
   const addProduct = () => {
-    dispatch(cartActions.incrementItem(item.id))
-  }
+    dispatch(cartActions.incrementItem(item.id));
+  };
 
   return (
     <tr>
@@ -103,7 +95,7 @@ const Tr = ({ item }) => {
         <img src={imgUrl} alt="" />
       </td>
       <td>{productName}</td>
-      <td>{price}VND</td>
+      <td>{price.toLocaleString("vi-VN")}VND</td>
       <td>{item.quantity} sản phẩm</td>
       <td>
         <motion.i
@@ -119,5 +111,4 @@ const Tr = ({ item }) => {
   );
 };
 
-
-export default Cart
+export default Cart;

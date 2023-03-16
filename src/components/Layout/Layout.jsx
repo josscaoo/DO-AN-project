@@ -11,7 +11,7 @@ const Layout = () => {
 
   return (
     <>
-      {location.pathname.startsWith("/signup") ||
+      {location.pathname.startsWith("/register") ||
       location.pathname.startsWith("/login") ? (
         ""
       ) : (
@@ -21,7 +21,7 @@ const Layout = () => {
       <div>
         <Routers />
       </div>
-      {location.pathname.startsWith("/signup") ||
+      {location.pathname.startsWith("/register") ||
       location.pathname.startsWith("/login") ? (
         ""
       ) : (

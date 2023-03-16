@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import products from "../../assets/data/products";
-import ListSale from "../../components/Ul/ListSale";
+import ListSale from "../../components/UI/Sale/ListSale";
 
 const Container = styled.div`
   width: 100%;
@@ -53,7 +53,6 @@ const Images = styled.div`
 
   @media (max-width: 768px) {
     margin-top: -13px;
-    
   }
 `;
 
@@ -88,7 +87,6 @@ const Slide = styled.div`
   display: flex;
   align-items: center;
 `;
-
 
 const SaleDays = () => {
   const [bestSalesProducts, setBestSalesProducts] = useState([]);
@@ -150,8 +148,3 @@ const SaleDays = () => {
 };
 
 export default SaleDays;
-
-
-
-
-

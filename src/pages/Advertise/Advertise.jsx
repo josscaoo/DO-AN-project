@@ -80,7 +80,7 @@ const Arrow = styled.div`
 const Wrapper = styled.div`
   height: 150%;
   display: flex;
-  transition: all 0.5s ease;
+  transition: all 1.5s ease;
   transform: translateX(${(props) => props.slideIndex * -104.5}vw);
   padding: 2px;
 `;
@@ -123,7 +123,7 @@ const Advertise = () => {
     useEffect(() => {
       const id = setInterval(() => {
         handleAutoSlide();
-      }, 3000); // thay đổi thời gian slide tự chạy tại đây
+      }, 4000); // thay đổi thời gian slide tự chạy tại đây
       setIntervalId(id);
       return () => {
         clearInterval(intervalId);

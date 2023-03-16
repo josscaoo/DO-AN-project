@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import products from "../../assets/data/products";
 import "./sound.css";
-import TabletList from "../../components/Ul/TabletList";
+import TabletList from "../../components/UI/Table/TabletList";
 
 const Container = styled.div`
   width: 100%;

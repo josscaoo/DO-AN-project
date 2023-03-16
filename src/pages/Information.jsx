@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FormGroup } from "reactstrap";
 import Helmet from '../components/Helmet/Helmet';
-import CommonSection from '../components/Ul/CommonSection';
+import CommonSection from '../components/UI/CommonSection';
 
 import "../styles/information.css";
 import { useDispatch } from "react-redux";

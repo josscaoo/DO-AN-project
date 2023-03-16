@@ -1,12 +1,11 @@
 import React from "react";
-import Helmet from "../components/Helmet/Helmet";
+import Helmet from "../../components/Helmet/Helmet";
 
-import "../styles/checkout.css";
+import "../../styles/checkout.css";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Checkout = () => {
-
   const totalQty = useSelector((state) => state.cart.totalQuantity);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
 
@@ -32,7 +31,6 @@ const Checkout = () => {
               </button>
             </div>
             <div className="button__right">
-              
               <Link className="aaaaa" to="/information">
                 quay lại
               </Link>

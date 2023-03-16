@@ -1,13 +1,13 @@
 import React from "react";
 
 import { motion } from "framer-motion";
-import "../../styles/tablet-card.css";
+import "../../../styles/tablet-card.css";
 import { Col, Container } from "reactstrap";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { useDispatch } from "react-redux";
-import { cartActions } from "../../redux/slices/cartSlice";
+import { cartActions } from "../../../redux/slices/cartSlice";
 
 const TabletCard = ({ item }) => {
   const dispatch = useDispatch();
@@ -43,11 +43,9 @@ const TabletCard = ({ item }) => {
           </div>
 
           <div className="product__tablet__card-bottom  d-flex align-items-center justify-content-between p-2">
-            <span className="price">{item.price}VND</span>
-
-            <motion.span whileTap={{ scale: 0.5 }} onClick={addToCart}>
-              <i class="ri-add-line"></i>
-            </motion.span>
+            <span className="price">
+              {item.price.toLocaleString("vi-VN")}VND
+            </span>
           </div>
         </div>
       </Col>

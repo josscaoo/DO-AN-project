@@ -1,25 +1,24 @@
-import React,{ useState } from 'react';
+import React, { useState } from "react";
 
-import CommonSection from '../components/Ul/CommonSection';
-import Helmet from '../components/Helmet/Helmet';
-import { Container, Row, Col } from 'reactstrap';
+import CommonSection from "../components/UI/CommonSection";
+import Helmet from "../components/Helmet/Helmet";
+import { Container, Row, Col } from "reactstrap";
 
-import '../styles/shop.css';
+import "../styles/shop.css";
 
-import products from '../assets/data/products';
-import ProductLists from '../components/Ul/ProductsList'
+import products from "../assets/data/products";
+import ProductLists from "../components/UI/Shop/ProductsList";
 
 const Shop = () => {
+  const [productsData, setProductsData] = useState(products);
 
-  const [productsData, setProductsData] = useState(products)
-  
   const handleFilter = (e) => {
-    const filterValue = e.target.value
+    const filterValue = e.target.value;
     if (filterValue === "iphone") {
       const filteredProducts = products.filter(
         (item) => item.category === "iphone"
       );
-      setProductsData(filteredProducts)
+      setProductsData(filteredProducts);
     }
 
     if (filterValue === "oppo") {
@@ -49,23 +48,24 @@ const Shop = () => {
       );
       setProductsData(filteredProducts);
     }
-
   };
 
   const handleSearch = (e) => {
-    const searchTerm = e.target.value
+    const searchTerm = e.target.value;
 
-    const searchedProducts = products.filter(item => item.productName.toLowerCase().includes(searchTerm.toLowerCase()))
-    
-    setProductsData(searchedProducts)
-  }
+    const searchedProducts = products.filter((item) =>
+      item.productName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    setProductsData(searchedProducts);
+  };
 
   return (
     <Helmet title="Shop">
       <CommonSection title={""} />
 
       <div className="main__shop">
-        <div className='body__shop'> 
+        <div className="body__shop">
           <Container>
             <Row>
               <Col lg="3" md="6">
@@ -123,4 +123,4 @@ const Shop = () => {
   );
 };
 
-export default Shop
+export default Shop;

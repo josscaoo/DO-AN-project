@@ -310,7 +310,7 @@ const products = [
     productName: "iPhone 11 64GB Xanh Ngọc ",
     imgUrl: productImg02,
     category: "iphone",
-    price: 253,
+    price: 1995000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -333,7 +333,7 @@ const products = [
     productName: "iPhone X 64GB Trắng",
     imgUrl: productImg03,
     category: "iphone",
-    price: 173,
+    price: 17999000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -355,7 +355,7 @@ const products = [
     productName: "iPhone 14 Pro Max 128GB Tím",
     imgUrl: productImg04,
     category: "iphone",
-    price: 253,
+    price: 1995000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -377,7 +377,7 @@ const products = [
     productName: "iPhone 13 128GB Chính Hãng (VN/A)",
     imgUrl: productImg05,
     category: "iphone",
-    price: 163,
+    price: 156990009000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -400,7 +400,7 @@ const products = [
     productName: "iPhone 14 Pro Max 64GB Tím",
     imgUrl: productImg06,
     category: "iphone",
-    price: 163,
+    price: 15699000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -423,7 +423,7 @@ const products = [
     productName: "iPhone 14 Pro Max 128GB Vàng",
     imgUrl: productImg07,
     category: "iphone",
-    price: 163,
+    price: 15699000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -445,7 +445,7 @@ const products = [
     productName: "iPhone 14 Pro Max 128GB Đen",
     imgUrl: productImg007,
     category: "iphone",
-    price: 99,
+    price: 18000000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -559,7 +559,7 @@ const products = [
     productName: "Oppo Reno6 5G (8+128GB)",
     imgUrl: productImg13,
     category: "oppo",
-    price: 99,
+    price: 8999000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -581,7 +581,7 @@ const products = [
     productName: "OPPO A15 3GB 32GB - HÀNG CHÍNH HÃNG",
     imgUrl: productImg14,
     category: "oppo",
-    price: 799,
+    price: 7999000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -604,7 +604,7 @@ const products = [
     productName: "OPPO A17 64GB Chính Hãng",
     imgUrl: productImg15,
     category: "oppo",
-    price: 599,
+    price: 5999000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -627,7 +627,7 @@ const products = [
     productName: "OPPO Reno7 5G",
     imgUrl: productImg16,
     category: "oppo",
-    price: 799,
+    price: 7999000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -650,7 +650,7 @@ const products = [
     productName: "ĐIỆN THOẠI OPPO A16K 4GB 64GB",
     imgUrl: productImg17,
     category: "oppo",
-    price: 899,
+    price: 8999000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -673,7 +673,7 @@ const products = [
     productName: "OPPO A17K 3GB 64GB",
     imgUrl: productImg18,
     category: "oppo",
-    price: 699,
+    price: 6999000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -696,7 +696,7 @@ const products = [
     productName: "Vivo Y02 2GB-32GB ",
     imgUrl: productImg19,
     category: "vivo",
-    price: 299,
+    price: 2999000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -719,7 +719,7 @@ const products = [
     productName: "Vivo T1x 4GB-64GB",
     imgUrl: productImg20,
     category: "vivo",
-    price: 299,
+    price: 2999000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -742,7 +742,7 @@ const products = [
     productName: "Vivo Y16 4GB-128GB",
     imgUrl: productImg21,
     category: "vivo",
-    price: 299,
+    price: 2996000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -765,7 +765,7 @@ const products = [
     productName: "Realme C33 3GB-32GB ",
     imgUrl: productImg22,
     category: "realme",
-    price: 399,
+    price: 3999000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -788,7 +788,7 @@ const products = [
     productName: "Realme C33 3GB-32GB ",
     imgUrl: productImg23,
     category: "realme",
-    price: 199,
+    price: 19990000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -811,7 +811,7 @@ const products = [
     productName: "Realme C33 3GB-32GB ",
     imgUrl: productImg25,
     category: "realme",
-    price: 199,
+    price: 19990000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -830,7 +830,7 @@ const products = [
   },
 ];
 
-const computers = [
+export const computers = [
   {
     id: "1101",
     productName: "iPhone 14 Pro Max 128GB Vàng ",
@@ -1019,7 +1019,7 @@ export const salesItem = [
     productName: "iPhone 14 Pro Max 128GB Vàng",
     imgUrl: productImg07,
     category: "iphone",
-    price: 163,
+    price: 15699000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -1041,7 +1041,7 @@ export const salesItem = [
     productName: "iPhone 14 Pro Max 128GB Vàng",
     imgUrl: productImg07,
     category: "iphone",
-    price: 163,
+    price: 15699000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -1063,7 +1063,7 @@ export const salesItem = [
     productName: "iPhone 14 Pro Max 128GB Vàng",
     imgUrl: productImg07,
     category: "iphone",
-    price: 163,
+    price: 15699000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -1085,7 +1085,7 @@ export const salesItem = [
     productName: "iPhone 14 Pro Max 128GB Vàng",
     imgUrl: productImg07,
     category: "iphone",
-    price: 163,
+    price: 15699000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -1107,7 +1107,7 @@ export const salesItem = [
     productName: "iPhone 14 Pro Max 128GB Vàng",
     imgUrl: productImg07,
     category: "iphone",
-    price: 163,
+    price: 15699000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -1129,7 +1129,7 @@ export const salesItem = [
     productName: "iPhone 14 Pro Max 128GB Vàng",
     imgUrl: productImg07,
     category: "iphone",
-    price: 163,
+    price: 15699000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -1151,7 +1151,7 @@ export const salesItem = [
     productName: "iPhone 14 Pro Max 128GB Vàng",
     imgUrl: productImg07,
     category: "iphone",
-    price: 163,
+    price: 15699000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -1173,7 +1173,7 @@ export const salesItem = [
     productName: "iPhone 14 Pro Max 128GB Vàng",
     imgUrl: productImg07,
     category: "iphone",
-    price: 163,
+    price: 15699000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -1195,7 +1195,7 @@ export const salesItem = [
     productName: "iPhone 14 Pro Max 128GB Vàng",
     imgUrl: productImg07,
     category: "iphone",
-    price: 163,
+    price: 15699000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
@@ -1217,7 +1217,7 @@ export const salesItem = [
     productName: "iPhone 14 Pro Max 128GB Vàng",
     imgUrl: productImg07,
     category: "iphone",
-    price: 163,
+    price: 15699000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:

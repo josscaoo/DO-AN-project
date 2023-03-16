@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import products from "../../assets/data/products";
-import './main-product.css';
-import TabletList from "../../components/Ul/TabletList";
+import "./main-product.css";
+import TabletList from "../../components/UI/Table/TabletList";
 
 const Container = styled.div`
   width: 100%;
@@ -30,9 +30,7 @@ const Main = styled.div`
     margin-top: 0;
   }
 `;
-const Title = styled.h1`
-  
-`;
+const Title = styled.h1``;
 
 const Images = styled.div`
   width: 100%;
@@ -66,7 +64,6 @@ const Wrapper = styled.div`
   display: flex;
   transition: all 0.5s ease;
   transform: translateX(${(props) => props.slideIndex * -11.7}vw);
-  
 `;
 const Slide = styled.div`
   width: 125vw;
@@ -101,11 +98,10 @@ const MainProduct = () => {
   const handleAutoSlide = () => {
     setSlideIndex(slideIndex < 4 ? slideIndex + 1 : 0);
   };
-  ;
   useEffect(() => {
     const id = setInterval(() => {
       handleAutoSlide();
-    }, 3000); 
+    }, 3000);
     setIntervalId(id);
     return () => {
       clearInterval(intervalId);

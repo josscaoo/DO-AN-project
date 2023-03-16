@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import Helmet from "../components/Helmet/Helmet";
+import Helmet from "../../components/Helmet/Helmet";
 import { Container, Row, Col, Form, FormGroup } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { setDoc, doc } from "firebase/firestore";
-import { auth } from '../firebase.config';
-import { storage } from '../firebase.config';
-import { db } from "../firebase.config";
+import { auth } from "../../firebase.config";
+import { storage } from "../../firebase.config";
+import { db } from "../../firebase.config";
 
 import { toast } from "react-toastify";
 
-import "../styles/login.css";
+import "../../styles/login.css";
 
-const Signup = () => {
+const Register = () => {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,15 +22,15 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  const signup = async (e) => {
-    e.preventDefault()
-    setLoading(true)
+  const register = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
-        password,
+        password
       );
 
       const user = userCredential.user;
@@ -40,34 +40,33 @@ const Signup = () => {
 
       uploadTask.on(
         (error) => {
-        toast.error(error.message);
+          toast.error(error.message);
         },
         () => {
-        getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
-          await updateProfile(user, {
-            displayName: username,
-            photoURL: downloadURL,
-          });
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+            await updateProfile(user, {
+              displayName: username,
+              photoURL: downloadURL,
+            });
 
-          await setDoc(doc(db, "users", user.uid), {
-            uid: user.uid,
-            displayName: username,
-            email,
-            photoURL: downloadURL,
-          })
-        });
-      }
+            await setDoc(doc(db, "users", user.uid), {
+              uid: user.uid,
+              displayName: username,
+              email,
+              photoURL: downloadURL,
+            });
+          });
+        }
       );
 
-      setLoading(false) 
+      setLoading(false);
       toast.success("Tài khoản đã được tạo");
-      navigate('/login')
+      navigate("/login");
     } catch (error) {
-      setLoading(false)
+      setLoading(false);
       toast.error("Lỗi! Vui lòng kiểm tra lại ");
     }
-
-  }
+  };
 
   return (
     <Helmet title="Signup">
@@ -84,7 +83,7 @@ const Signup = () => {
                   <div className="header__login__signup">
                     <h3>Đăng Kí</h3>
                   </div>
-                  <Form className="auth__form" onSubmit={signup}>
+                  <Form className="auth__form" onSubmit={register}>
                     <FormGroup className="form__group">
                       <input
                         type="text"
@@ -129,4 +128,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Register;
