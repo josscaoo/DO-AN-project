@@ -21,6 +21,7 @@ root.render(
           autoClose={3000}
           closeOnClick
           pauseOnHover={false}
+          
         />
         <App />
       </Provider>

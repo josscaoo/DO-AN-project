@@ -36,6 +36,7 @@ const Cart = () => {
                           <th>Giá</th>
                           <th>Số lượng</th>
                           <th>Xóa</th>
+                          <th>thêm</th>
                         </tr>
                       </thead>
 
@@ -77,30 +78,46 @@ const Cart = () => {
   );
 };
 
+
 const Tr = ({ item }) => {
   const dispatch = useDispatch()
+  
+  const {
+    imgUrl,
+    productName,
+    price,
+  } = item;
+
+
 
   const deleteProduct = () => {
     dispatch(cartActions.deleteItem(item.id))
   }
+  const addProduct = () => {
+    dispatch(cartActions.incrementItem(item.id))
+  }
+
   return (
-    <tr >
+    <tr>
       <td>
-        <img src={item.imgUrl} alt="" />
+        <img src={imgUrl} alt="" />
       </td>
-      <td>{item.productName}</td>
-      <td>{item.price}VND</td>
+      <td>{productName}</td>
+      <td>{price}VND</td>
       <td>{item.quantity} sản phẩm</td>
       <td>
         <motion.i
           whileTap={{ scale: 1.2 }}
           onClick={deleteProduct}
-          class="ri-delete-bin-line"
+          className="ri-subtract-line"
         ></motion.i>
+      </td>
+      <td>
+        <motion.i onClick={addProduct} class="ri-add-line"></motion.i>
       </td>
     </tr>
   );
-
 };
+
 
 export default Cart

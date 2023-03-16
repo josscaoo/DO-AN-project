@@ -18,7 +18,6 @@ const Signup = () => {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -37,7 +36,7 @@ const Signup = () => {
       const user = userCredential.user;
 
       const storageRef = ref(storage, `images/${Date.now() + username}`);
-      const uploadTask = uploadBytesResumable(storageRef, file);
+      const uploadTask = uploadBytesResumable(storageRef);
 
       uploadTask.on(
         (error) => {
@@ -45,13 +44,11 @@ const Signup = () => {
         },
         () => {
         getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
-         //update user profile
           await updateProfile(user, {
             displayName: username,
             photoURL: downloadURL,
           });
 
-          //store user data in firestore database
           await setDoc(doc(db, "users", user.uid), {
             uid: user.uid,
             displayName: username,
@@ -114,13 +111,6 @@ const Signup = () => {
                         onChange={(e) => setPassword(e.target.value)}
                       />
                     </FormGroup>
-
-                    {/* <FormGroup className="form__group">
-                      <input
-                        type="file"
-                        onChange={(e) => setFile(e.target.files[0])}
-                      />
-                    </FormGroup> */}
 
                     <button type="submit" className="buy__btn auth__btn">
                       Tạo tài khoản

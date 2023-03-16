@@ -40,16 +40,13 @@
 }
 
 .search{
-    /* font-size: 0.5rem; */
     position: relative;
     width: 120%;
     height: 56px;
     background-color: var(--white-color);
-    /* box-shadow: 0 4px 24px hsla(222, 68%, 12%, .1); */
     border-radius: 4rem;
     padding-top: 10px;
     padding-bottom: 5px;
-    /* overflow: hidden; */
     padding-left: 15rem;
 
 }
@@ -103,13 +100,6 @@
     padding-left: 15px;
 }
 
-/* .menu {
-    display: flex;
-    align-items: center;
-    column-gap: 2.7rem;
-    margin-bottom: 0 ;
-    padding-left: 9rem;
-} */
 
 .nav__item a {
     color: #fff;

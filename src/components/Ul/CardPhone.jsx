@@ -28,7 +28,6 @@ const CardSale = ({ item }) => {
   return (
     <Container className="product__container__phone">
       <Col md="6" lg="12" className="mb-2">
-        {/* lg="3" md="4" className="mb-2" */}
         <div className="product__item_phone">
           <div className="product__img_phone">
             <motion.img whileHover={{ scale: 0.9 }} src={item.imgUrl} alt="" />

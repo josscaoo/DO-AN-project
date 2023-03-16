@@ -66,7 +66,7 @@ const Wrapper = styled.div`
   display: flex;
   transition: all 0.5s ease;
   transform: translateX(${(props) => props.slideIndex * -11.7}vw);
-  /* padding: 2px; */
+  
 `;
 const Slide = styled.div`
   width: 125vw;
@@ -105,7 +105,7 @@ const MainProduct = () => {
   useEffect(() => {
     const id = setInterval(() => {
       handleAutoSlide();
-    }, 3000); // thay đổi thời gian slide tự chạy tại đây
+    }, 3000); 
     setIntervalId(id);
     return () => {
       clearInterval(intervalId);

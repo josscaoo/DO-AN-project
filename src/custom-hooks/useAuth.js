@@ -1,7 +1,6 @@
 import {useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase.config';
-// import { current } from '@reduxjs/toolkit';
 
 const useAuth = () => {
     const [currentUser, setCurrentUser] = useState({});

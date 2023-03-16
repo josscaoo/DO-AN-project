@@ -27,7 +27,6 @@ const ProductDetails = () => {
     price,
     avgRating,
     reviews,
-    // description,
     shortDesc,
     category,
   } = product;
@@ -46,7 +45,6 @@ const ProductDetails = () => {
     };
     console.log(reviewObj);
     toast.success("Đã đánh giá");
-    // console.log(reviewUserName, reviewUserMsg, rating);
   };
   const addToCart = () => {
     dispatch(

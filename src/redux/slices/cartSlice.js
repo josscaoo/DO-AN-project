@@ -1,11 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    cartItems: [],
-    totalAmount: 0,
+  cartItems: [],
+  totalAmount: 0,
   totalQuantity: 0,
-    
-}
+};
 
 const cartSlice = createSlice({
   name: "cart",
@@ -40,20 +39,48 @@ const cartSlice = createSlice({
       );
     },
 
-    
     deleteItem: (state, action) => {
       const id = action.payload;
       const existingItem = state.cartItems.find((item) => item.id === id);
 
       if (existingItem) {
-        state.cartItems = state.cartItems.filter((item) => item.id !== id);
-        state.totalQuantity = state.totalQuantity - existingItem.quantity;
+        if (existingItem.quantity === 1) {
+          state.cartItems = state.cartItems.filter((item) => item.id !== id);
+        } else {
+          existingItem.quantity--;
+          existingItem.totalPrice =
+            Number(existingItem.totalPrice) - Number(existingItem.price);
+        }
+        state.totalQuantity--;
+        state.totalAmount = state.cartItems.reduce(
+          (total, item) => total + Number(item.price) * Number(item.quantity),
+          0
+        );
       }
-      state.totalAmount = state.cartItems.reduce(
-        (total, item) => total + Number(item.price) * Number(item.quantity),
-        0
-      );
     },
+
+    
+    incrementItem: (state, action) => {
+  const id = action.payload;
+  const existingItem = state.cartItems.find((item) => item.id === id);
+
+  if (existingItem) {
+    existingItem.quantity++;
+    existingItem.totalPrice =
+      Number(existingItem.totalPrice) + Number(existingItem.price);
+    state.totalQuantity++;
+    state.totalAmount = state.cartItems.reduce(
+      (total, item) => total + Number(item.price) * Number(item.quantity),
+      0
+    );
+  }
+},
+
+
+
+
+
+
   },
 });
 
