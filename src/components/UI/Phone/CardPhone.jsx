@@ -45,6 +45,7 @@ const CardSale = ({ item }) => {
             <span className="price">
               {item.price.toLocaleString("vi-VN")}VND
             </span>
+            
           </div>
         </div>
       </Col>

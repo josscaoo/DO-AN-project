@@ -29,6 +29,10 @@ const Main = styled.div`
     margin-right: 2px;
     margin-top: -22px;
   }
+  @media (max-width: 1024px) {
+    margin: 5px;
+    
+  }
 `;
 const Title = styled.h1`
   padding-top: 25px;

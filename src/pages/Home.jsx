@@ -19,18 +19,20 @@ const Home = () => {
 
   return (
     <Helmet title={"Home"}>
-      <Navar/>
-      <PromotionTop />
-      <SaleDays />
-      <div className="img__sale">
-        <img src={sale} alt="img" />
-      </div>
+      <div className='home__pages'>
+        <Navar />
+        <PromotionTop />
+        <SaleDays />
+        <div className="img__sale">
+          <img src={sale} alt="img" />
+        </div>
 
-      <Service />
-      <Popular />
-      <Advertise />
-      <MainProduct />
-      <SoundProduct/>
+        <Service />
+        <Popular />
+        <Advertise />
+        <MainProduct />
+        <SoundProduct />
+      </div>
     </Helmet>
   );
 }

@@ -25,6 +25,9 @@ const Main = styled.div`
     margin-left: 20px;
     margin-right: 2px;
   }
+  @media (max-width: 1024px) {
+    margin: 5px;
+  }
 `;
 const Title = styled.h1`
   /* padding-top: 25px;
@@ -116,16 +119,6 @@ const SoundProduct = () => {
         <Title>
           <div className="main_sound">
             <div className="left__sound">Tai nghe</div>
-
-            <div className="right__sound">
-              <ul className="ul__menu__sound">
-                <li>Sony WF-1000XM3</li>
-                <li>Rapoo S120</li>
-                <li>Samsung IA500</li>
-                <li>Remax RM-589</li>
-              </ul>
-              <div className="add__sound">Xem tất cả...</div>
-            </div>
           </div>
         </Title>
 

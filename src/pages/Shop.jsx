@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import CommonSection from "../components/UI/CommonSection";
 import Helmet from "../components/Helmet/Helmet";
 import { Container, Row, Col } from "reactstrap";
 
@@ -62,7 +61,6 @@ const Shop = () => {
 
   return (
     <Helmet title="Shop">
-      <CommonSection title={""} />
 
       <div className="main__shop">
         <div className="body__shop">
@@ -96,9 +94,6 @@ const Shop = () => {
                     placeholder="Search....."
                     onChange={handleSearch}
                   />
-                  <span>
-                    <i class="ri-search-line"></i>
-                  </span>
                 </div>
               </Col>
             </Row>

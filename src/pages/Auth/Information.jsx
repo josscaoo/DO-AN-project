@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { FormGroup } from "reactstrap";
-import Helmet from '../components/Helmet/Helmet';
-import CommonSection from '../components/UI/CommonSection';
+import Helmet from '../../components/Helmet/Helmet';
 
-import "../styles/information.css";
+import "../../styles/information.css";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/slices/checkoutSlice";
+import { addToCart } from "../../redux/slices/checkoutSlice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 
@@ -45,7 +44,6 @@ const Information = () => {
 
   return (
     <Helmet title="Checkout">
-      <CommonSection title="" />
 
       <div className="body__checkout">
         <form className="billing__form" onSubmit={handleSubmit}>

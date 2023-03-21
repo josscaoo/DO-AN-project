@@ -1,3 +1,6 @@
+.home__pages{
+    overflow-x: hidden;
+}
 .img__sale{
     background-color: #fff;
     padding: 0;
@@ -75,6 +78,9 @@
 
 .store__btn a:hover {
     color: var(--primary-color);
+}
+@media only screen and (max-width: 1024px){
+   
 }
 
 @media only screen and (max-width: 992px){

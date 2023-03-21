@@ -1,24 +1,32 @@
 import React from 'react';
 import "./service.css";
 import { Col, Row } from 'reactstrap'
+import { useNavigate } from 'react-router';
 
 const Service = () => {
+    const navigate = useNavigate();
+
+  const navigateToShop = () => {
+    navigate("/shop");
+  };
   return (
     <div className="main_service">
       <Row>
-        <Col md="4">
-          <div className="left__service">Điện thoại hot nhất</div>
+        <Col md="6">
+          <div className="left__service">Tai nghe mới nhất</div>
         </Col>
-        <Col md="8">
+        <Col md="6">
           <div className="right__service">
             <ul className="ul__menu__service">
-              <li>iPhone 14Pro Max</li>
-              <li>SamSung S23 Ultra</li>
-              <li>Xiaomi 13Pro</li>
-              <li>OPPO A77s</li>
-              <li>Redmi K50</li>
+              <li>Apple</li>
+              <li>SamSung</li>
+              <li>Xiaomi</li>
+              <li>LG</li>
+              <li>Redmi</li>
             </ul>
-            <div className="add__service">Xem tất cả...</div>
+            <div className="add__service" onClick={navigateToShop}>
+              Xem tất cả...
+            </div>
           </div>
         </Col>
       </Row>

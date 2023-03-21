@@ -29,6 +29,9 @@ const Main = styled.div`
     margin-right: 2px;
     margin-top: 0;
   }
+  @media (max-width: 1024px) {
+    margin: 5px;
+  }
 `;
 const Title = styled.h1``;
 
@@ -113,16 +116,6 @@ const MainProduct = () => {
         <Title>
           <div className="main_product">
             <div className="left__product">Máy tính bảng</div>
-
-            <div className="right__product">
-              <ul className="ul__menu__product">
-                <li>Alcatel 3T8</li>
-                <li>Samsung Galaxy Tab A7 Lite</li>
-                <li>Huawei MatePad 128GB.</li>
-                <li>iPad Pro M1</li>
-              </ul>
-              <div className="add__product">Xem tất cả...</div>
-            </div>
           </div>
         </Title>
 

@@ -1,13 +1,13 @@
 .footer__sale{
     background-color: rgba(245, 231, 231, 0.5);
+    display: flex;
 }
 .footer {
     padding-top: 60px;
     padding-bottom: 30px;
     background-color: #ffffff;
-    padding-left: 1rem;
-    margin-left: 9rem;
-    margin-right: 6.5rem;
+    padding-left: 9rem;
+    overflow-x: hidden;
 
 }
 

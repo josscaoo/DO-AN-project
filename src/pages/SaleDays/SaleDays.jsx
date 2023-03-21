@@ -7,7 +7,7 @@ import ListSale from "../../components/UI/Sale/ListSale";
 
 const Container = styled.div`
   width: 100%;
-  height: 20rem;
+  height: 25rem;
   display: flex;
   overflow: hidden;
   padding-top: 10px;
@@ -18,6 +18,7 @@ const Container = styled.div`
     margin-top: -8px;
     margin-bottom: -10px;
   }
+  
 `;
 const Main = styled.div`
   margin-left: 145px;
@@ -25,12 +26,15 @@ const Main = styled.div`
   border-radius: 5px;
   background-color: #bd0a0a;
   overflow: hidden;
-  height: 19rem;
+  height: 24rem;
   @media (max-width: 768px) {
     margin-left: 20px;
     margin-right: 10px;
     margin-top: -10px;
     margin-bottom: -10px;
+  }
+  @media (max-width: 1024px) {
+    margin: 5px;
   }
 `;
 const Title = styled.h1`

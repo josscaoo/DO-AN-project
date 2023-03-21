@@ -85,7 +85,17 @@
     color: #be1e2d;
     cursor: pointer;
 }
+@media only screen and (max-width: 1024px){
+   .promotion__top__menu{
+    padding: 0;
+    padding-top: 5px;
+   } 
+   .promotion__sale{
+    padding: 0;
+    padding-right: 5px;
+   }
 
+}
 @media only screen and (max-width: 992px){
     .hero__content h2{
         font-size: 2rem;

@@ -30,6 +30,9 @@ const Main = styled.div`
     margin-left: 20px;
     margin-right: 2px;
   }
+  @media (max-width: 1024px) {
+    margin: 5px;
+  }
 `;
 const Title = styled.h1`
   padding-top: 10px;

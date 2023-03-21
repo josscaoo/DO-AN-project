@@ -56,6 +56,9 @@ const Header = () => {
   const navigateToCart = () => {
     navigate('/cart');
   };
+  const navigateToHome = () => {
+    navigate("/");
+  };
 
   const toggleProfileActions = () =>
     profileActionRef.current.classList.toggle("show__profileActions");
@@ -67,10 +70,11 @@ const Header = () => {
       </div>
 
       <div className="nav__wrapper">
-        <div className="logo">
+        <div className="logo" onClick={navigateToHome}>
           <img src={logo} alt="logo" />
           <div>
             <h1 className="logo__text">HienMobi</h1>
+            
           </div>
         </div>
 
@@ -81,17 +85,11 @@ const Header = () => {
               placeholder="Bạn muốn tìm gì..."
               className="search__input"
             />
-            <div className="search__button">
-              <i class="ri-search-2-line"></i>
-            </div>
           </form>
 
           <ul className="ul_top_hyper">
             {nav__links.map((item, index) => (
-              <li
-                className="nav__item"
-                key={index}
-              >
+              <li className="nav__item" key={index}>
                 <NavLink
                   to={item.path}
                   className={(navClass) =>
@@ -102,7 +100,9 @@ const Header = () => {
                 </NavLink>
               </li>
             ))}
+            
           </ul>
+          
         </div>
 
         <div className="nav__icons">
@@ -128,7 +128,7 @@ const Header = () => {
               ) : (
                 <div className="d-flex  ">
                   <div className="icon_sig">
-                    <Link to="/signup" className="sig">
+                    <Link to="/register" className="sig">
                       Đăng kí
                     </Link>
                   </div>

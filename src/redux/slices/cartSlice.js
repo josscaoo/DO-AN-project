@@ -4,6 +4,7 @@ const initialState = {
   cartItems: [],
   totalAmount: 0,
   totalQuantity: 0,
+  reviews: [],
 };
 
 const cartSlice = createSlice({
@@ -59,28 +60,24 @@ const cartSlice = createSlice({
       }
     },
 
-    
     incrementItem: (state, action) => {
-  const id = action.payload;
-  const existingItem = state.cartItems.find((item) => item.id === id);
+      const id = action.payload;
+      const existingItem = state.cartItems.find((item) => item.id === id);
 
-  if (existingItem) {
-    existingItem.quantity++;
-    existingItem.totalPrice =
-      Number(existingItem.totalPrice) + Number(existingItem.price);
-    state.totalQuantity++;
-    state.totalAmount = state.cartItems.reduce(
-      (total, item) => total + Number(item.price) * Number(item.quantity),
-      0
-    );
-  }
-},
-
-
-
-
-
-
+      if (existingItem) {
+        existingItem.quantity++;
+        existingItem.totalPrice =
+          Number(existingItem.totalPrice) + Number(existingItem.price);
+        state.totalQuantity++;
+        state.totalAmount = state.cartItems.reduce(
+          (total, item) => total + Number(item.price) * Number(item.quantity),
+          0
+        );
+      }
+    },
+    addReview: (state, action) => {
+      state.reviews.push(action.payload);
+    },
   },
 });
 

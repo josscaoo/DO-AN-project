@@ -35,17 +35,8 @@
 
 @media only screen and (max-width: 768px) {
     .header__menu{
-        margin-top: 40px;
-        margin-left: 0px;
-        font-size: 12px;
-        /* object-fit: cover; */
-        /* padding-right: -10px; */
-    }
-    .ul__header__menu li:hover{
-        color: red;
-    }
-    .menu__phone{
         display: none;
     }
+   
 
 }

@@ -377,7 +377,7 @@ const products = [
     productName: "iPhone 13 128GB Chính Hãng (VN/A)",
     imgUrl: productImg05,
     category: "iphone",
-    price: 156990009000,
+    price: 15699000,
     shortDesc:
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:

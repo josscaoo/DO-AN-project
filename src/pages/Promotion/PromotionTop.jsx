@@ -5,9 +5,24 @@ import './promotion.css';
 import salePhone from '../../assets/images/anhsale-06.webp';
 import saleMac from "../../assets/images/anhsale-07.webp";
 import saleLogo from '../../assets/images/hotsale-01.webp'
+import { useNavigate } from 'react-router';
 
 
 const PromotionTop = () => {
+    const navigate = useNavigate();
+
+   const navigateToSamSung = () => {
+     navigate("/shop/27");
+  };
+  const navigateToIphone14 = () => {
+    navigate("/shop/0103");
+  };
+  const navigateToIphone13 = () => {
+    navigate("/shop/04");
+  };
+  const navigateToShop = () => {
+    navigate("/shop");
+  };
   return (
     <div className="columns">
       <Row mt="16">
@@ -16,15 +31,19 @@ const PromotionTop = () => {
             <div className="trend__title">Xu hướng mua sắm</div>
             <div className="trend__menu">
               <div className="trend__menu__a">
-                #1 <strong>Galaxy S23 Ultra</strong> <br />
+                #1 <strong onClick={navigateToSamSung}>Galaxy S23 Ultra</strong>{" "}
+                <br />
                 <p>Mở bán . Ưu đãi tốt</p>
               </div>
               <div className="trend__menu__a">
-                #2 <strong> iPhone 14 Pro Max</strong> <br />
+                #2{" "}
+                <strong onClick={navigateToIphone14}> iPhone 14 Pro Max</strong>{" "}
+                <br />
                 <p>Thiết kế đẹp. Giá sốc</p>
               </div>
               <div className="trend__menu__a">
-                #3 <strong>iPhone 13</strong> <br />
+                #3 <strong onClick={navigateToIphone13}>iPhone 13</strong>{" "}
+                <br />
                 <p>Thiết kế đẹp. Siêu tiết kiệm</p>
               </div>
               <div className="trend__menu__a">
@@ -52,7 +71,7 @@ const PromotionTop = () => {
             <div className="title__sale">
               <img src={saleLogo} alt="logo" />
               <div className="sale__logo__text">
-                <h6>Siêu khuyến mãi</h6>
+                <h6 onClick={navigateToShop}>Siêu khuyến mãi</h6>
               </div>
             </div>
 

@@ -17,6 +17,9 @@ const Container = styled.div`
     /* font-size: 10px; */
     padding: 4px 12px;
   }
+  @media (max-width: 1024px) {
+    margin: 5px;
+  }
 `;
 
 const Arrow = styled.div`

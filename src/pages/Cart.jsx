@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/cart.css";
 import Helmet from "../components/Helmet/Helmet";
-import CommonSection from "../components/UI/CommonSection";
 import { Container, Row, Col } from "reactstrap";
 
 import { motion } from "framer-motion";
@@ -15,7 +14,6 @@ const Cart = () => {
 
   return (
     <Helmet title="Cart">
-      <CommonSection title="" />
       <div className="cart__main">
         <div className="cart__body">
           <section>
