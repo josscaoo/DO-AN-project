@@ -3,9 +3,7 @@
     padding-right: 0;
     
 }
-.promotion__top__slice img{
-    
-}
+
 .trend__menu strong:hover{
     color: rgb(168, 0, 0);
 }
@@ -32,24 +30,17 @@
     padding-bottom: 10px;
     cursor: pointer;
 }
-.trend__menu__b{
-    font-size: 13px;
-    padding-bottom: 10px;
-    cursor: pointer;
-}
 .trend__menu__a p{
     font-size: 10px;
 }
-.trend__menu__b p{
-    font-size: 10px;
-}
+
+
+
 .columns__col__center{
     padding-left: 0;
 }
 .columns__col__right{
     padding-left: 0;
-}
-.promotion__sale{
 }
 .title__sale{
     padding: 5px;
@@ -119,9 +110,6 @@
     }
     .columns__col__right{
         display: none;
-    }
-    .columns__col__center{
-        /* display: flex; */
     }
     .hero__content h2{
         font-size: 1.6rem;

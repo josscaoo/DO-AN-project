@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import "./main-product.css";
 import TabletList from "../../../components/UI/Table/TabletList";
 import axios from "axios";
 
@@ -30,7 +29,21 @@ const Main = styled.div`
     margin: 5px;
   }
 `;
-const Title = styled.h1``;
+const Title = styled.h1`
+  width: 100%;
+  height: 2.8rem;
+  line-height: 30px;
+  display: flex;
+  .left__product {
+    padding-left: 1rem;
+    font-weight: 700;
+    font-size: 19px;
+    color: white;
+    @media (max-width: 768px) {
+      font-size: 15px;
+    }
+  }
+`;
 
 const Images = styled.div`
   width: 100%;
@@ -118,9 +131,8 @@ const MainProduct = () => {
     <Container>
       <Main>
         <Title>
-          <div className="main_product">
             <div className="left__product">Điện thoại tốt</div>
-          </div>
+          
         </Title>
 
         <Images>

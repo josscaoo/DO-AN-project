@@ -1,7 +1,8 @@
 import React from 'react';
-import "./service.css";
+// import "./service.css";
 import { Col, Row } from 'reactstrap'
 import { useNavigate } from 'react-router';
+import { Add, Body, Container, List, Main } from "./Style";
 
 const Service = () => {
     const navigate = useNavigate();
@@ -10,26 +11,21 @@ const Service = () => {
     navigate("/shop");
   };
   return (
-    <div className="main_service">
-      <Row>
-        <Col md="6">
-          <div className="left__service">Phụ kiện giá rẻ</div>
-        </Col>
-        <Col md="6">
-          <div className="right__service">
-            <ul className="ul__menu__service">
-              <li>Tai nghe</li>
-              <li>Sạc nhanh</li>
-              <li>Ốp lưng</li>
-              <li>Cường lực</li>
-            </ul>
-            <div className="add__service" onClick={navigateToShop}>
-              Xem tất cả...
-            </div>
-          </div>
-        </Col>
-      </Row>
-    </div>
+    <Container>
+      <Main>
+        Phụ kiện giá rẻ
+      </Main>
+
+      <Body>
+        <List>
+          <li>Tai nghe</li>
+          <li>Sạc nhanh</li>
+          <li>Ốp lưng</li>
+          <li>Cường lực</li>
+        </List>
+        <Add onClick={navigateToShop}>Xem tất cả...</Add>
+      </Body>
+    </Container>
   );
 }
 

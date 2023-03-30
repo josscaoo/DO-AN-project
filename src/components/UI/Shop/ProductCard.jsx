@@ -11,6 +11,7 @@ import { cartActions } from "../../../redux/slices/cartSlice";
 
 const ProductCard = ({ item }) => {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const addToCart = () => {
     dispatch(
@@ -28,7 +29,6 @@ const ProductCard = ({ item }) => {
       toast.error("Bạn Cần Đăng Nhập Để Mua Hàng");
     };
 
-    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
 
   return (

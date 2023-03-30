@@ -5,6 +5,24 @@
       "name": "John Doe",
       "email": "johndoe@gmail.com",
       "password": "123456"
+    },
+    {
+      "email": "baba@gmail.com",
+      "password": "123456",
+      "name": "baba",
+      "id": 2
+    },
+    {
+      "email": "kieuvl@gmail.com",
+      "password": "123654",
+      "name": "kieu",
+      "id": 3
+    },
+    {
+      "email": "kieuvl@gmail.com",
+      "password": "aaa",
+      "name": "kieu",
+      "id": 4
     }
   ],
   "products": [
@@ -116,7 +134,6 @@
       "shortDesc": "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iphone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
       "description": "iphone 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iphone 14 Pro Max"
     },
-
     {
       "id": 11,
       "productName": "Samsung Galaxy S22 Ultra 5G 256GB ĐEN",
@@ -126,7 +143,6 @@
       "shortDesc": "Thương hiệu: SAMSUNG | samsung, Samsung Galaxy, Samsung Galaxy S22 Ultra 5G, ",
       "description": "Cấu hình Điện thoại Samsung Galaxy S22 Ultra 5G 256GB. Màn hình: Dynamic AMOLED 2X 6.8' Quad HD+ (2K+). Hệ điều hành: Android 12 Camera sau: Chính 108 MP & Phụ 12 MP, 10 MP, 10 MP Camera trước: 40 MP. Chip: Snapdragon 8 Gen 1 RAM: 12 GB. Dung lượng lưu trữ: 256 GB SIM: 2 Nano SIM hoặc 1 Nano SIM + 1 eSIMHỗ trợ 5G Pin, Sạc: 5000 mAh 25 W"
     },
-
     {
       "id": 12,
       "productName": "Samsung Galaxy S22 Ultra 5G 256GB TRẮNG",
@@ -136,7 +152,6 @@
       "shortDesc": "Thương hiệu: SAMSUNG | samsung, Samsung Galaxy, Samsung Galaxy S22 Ultra 5G, ",
       "description": "Cấu hình Điện thoại Samsung Galaxy S22 Ultra 5G 256GB. Màn hình: Dynamic AMOLED 2X 6.8' Quad HD+ (2K+). Hệ điều hành: Android 12 Camera sau: Chính 108 MP & Phụ 12 MP, 10 MP, 10 MP Camera trước: 40 MP. Chip: Snapdragon 8 Gen 1 RAM: 12 GB. Dung lượng lưu trữ: 256 GB SIM: 2 Nano SIM hoặc 1 Nano SIM + 1 eSIMHỗ trợ 5G Pin, Sạc: 5000 mAh 25 W"
     },
-
     {
       "id": 13,
       "productName": " Samsung Galaxy Note 20 ",
@@ -146,7 +161,6 @@
       "shortDesc": "Thương hiệu: SAMSUNG | samsung, Samsung Galaxy, Samsung Galaxy S22 Ultra 5G, ",
       "description": "Cấu hình Điện thoại Samsung Galaxy S22 Ultra 5G 256GB. Màn hình: Dynamic AMOLED 2X 6.8' Quad HD+ (2K+). Hệ điều hành: Android 12 Camera sau: Chính 108 MP & Phụ 12 MP, 10 MP, 10 MP Camera trước: 40 MP. Chip: Snapdragon 8 Gen 1 RAM: 12 GB. Dung lượng lưu trữ: 256 GB SIM: 2 Nano SIM hoặc 1 Nano SIM + 1 eSIMHỗ trợ 5G Pin, Sạc: 5000 mAh 25 W"
     },
-
     {
       "id": 14,
       "productName": " Samsung Galaxy A52 4G 8GB/128GB",
@@ -156,7 +170,6 @@
       "shortDesc": "Thương hiệu: SAMSUNG | samsung, Samsung Galaxy, Samsung Galaxy S22 Ultra 5G, ",
       "description": "Cấu hình Điện thoại Samsung Galaxy S22 Ultra 5G 256GB. Màn hình: Dynamic AMOLED 2X 6.8' Quad HD+ (2K+). Hệ điều hành: Android 12 Camera sau: Chính 108 MP & Phụ 12 MP, 10 MP, 10 MP Camera trước: 40 MP. Chip: Snapdragon 8 Gen 1 RAM: 12 GB. Dung lượng lưu trữ: 256 GB SIM: 2 Nano SIM hoặc 1 Nano SIM + 1 eSIMHỗ trợ 5G Pin, Sạc: 5000 mAh 25 W"
     },
-
     {
       "id": 15,
       "productName": "Oppo Reno6 5G (8+128GB)",
@@ -175,7 +188,6 @@
       "shortDesc": "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
       "description": "OPPO A15 3GB 32GB X là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max"
     },
-
     {
       "id": 17,
       "productName": "OPPO A17 64GB Chính Hãng",
@@ -185,7 +197,6 @@
       "shortDesc": "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
       "description": "OPPO A17 64GB Chính Hãng X là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max"
     },
-
     {
       "id": 18,
       "productName": "OPPO Reno7 5G",
@@ -195,7 +206,6 @@
       "shortDesc": "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
       "description": "OPPO Reno7 5G X là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max"
     },
-
     {
       "id": 19,
       "productName": "ĐIỆN THOẠI OPPO A16K 4GB 64GB",
@@ -205,7 +215,6 @@
       "shortDesc": "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
       "description": "ĐIỆN THOẠI OPPO A16K 4GB 64GB X là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max"
     },
-
     {
       "id": 20,
       "productName": "OPPO A17K 3GB 64GB",
@@ -215,7 +224,6 @@
       "shortDesc": "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
       "description": "OPPO A17K 3GB 64GB X là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max"
     },
-
     {
       "id": 21,
       "productName": "Vivo Y02 2GB-32GB ",
@@ -225,7 +233,6 @@
       "shortDesc": "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
       "description": "Vivo Y02 2GB-32GB X là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max"
     },
-
     {
       "id": 22,
       "productName": "Vivo T1x 4GB-64GB",
@@ -235,7 +242,6 @@
       "shortDesc": "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
       "description": "Vivo T1x 4GB-64GB X là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max"
     },
-
     {
       "id": 23,
       "productName": "Vivo Y16 4GB-128GB",
@@ -254,7 +260,6 @@
       "shortDesc": "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
       "description": "Vivo Y16 4GB-128GB X là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max"
     },
-
     {
       "id": 25,
       "productName": "Realme C33 3GB-32GB ",
@@ -264,7 +269,6 @@
       "shortDesc": "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
       "description": "Realme C33 3GB-32GB X là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max"
     },
-
     {
       "id": 26,
       "productName": "Realme C33 3GB-32GB ",
@@ -274,7 +278,6 @@
       "shortDesc": "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
       "description": "Realme C33 3GB-32GB X là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max"
     },
-
     {
       "id": 27,
       "productName": "Realme C33 3GB-32GB ",
@@ -284,7 +287,6 @@
       "shortDesc": "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
       "description": "Realme C33 3GB-32GB X là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max"
     },
-
     {
       "id": 30,
       "productName": "Tai nghe Apple AirPods",
@@ -294,7 +296,6 @@
       "shortDesc": "Tai nghe Apple AirPods Pro 2 2022 là phiên bản dành cho thị trường Việt Nam,máy nguyên seal mới 100%. Sản phẩm nhận bảo hành theo chính sách của Apple Việt Nam đồng thời hưởng nhiều ưu đãi đặc biệt hấp dẫn tại Di Động Việt.",
       "description": "Bộ sản phẩm gồm: Tai nghe, Hộp sạc không dây, Cáp USB-C to Lightning, Nút cao su (3 kích cỡ), Sách HDSD"
     },
-
     {
       "id": 31,
       "productName": "Bút cảm ứng Apple Pencil 1 ",
@@ -304,7 +305,6 @@
       "shortDesc": "Bút cảm ứng Apple Pencil 1 chính hãng hiện đang được phân phối tại Di Động Việt. Chúng tôi cam kết bán hàng chất lượng và uy tín. Sản phẩm sẽ được bảo hành 12 tháng tại Di Động Việt và bạn sẽ nhận được những ưu đãi hấp dẫn từ hệ thống.",
       "description": "Bút cảm ứng Apple Pencil 1 chính hãng được bán ra tại Di Động Việt là bút mới 100%, chính hãng Apple, fullbox. Với thiết kế nhỏ gọn, nhiều tính năng không độ chậm trễ, dễ phác họa với trang bị cảm ứng cực nhạy. Sạc pin nhanh chóng, dễ dàng với cổng sạc Lightning ở phần đuôi."
     },
-
     {
       "id": 32,
       "productName": "Bàn phím Apple Smart Keyboard",
@@ -314,7 +314,6 @@
       "shortDesc": "Bàn phím Apple Smart Keyboard Folio iPad Pro 11inch MXNK2ZA/A mua tại Di Động Việt được đảm bảo là hàng chính hãng 100%. Bảo hành 12 tháng. Đồng thời, khi quý khách mua hàng sẽ hưởng nhiều ưu đãi,khuyến mãi hấp dẫn khác.",
       "description": "Bàn phím Apple Smart Keyboard Folio iPad Pro 11inch MXNK2ZA/A được thiết kế trình phím hợp lý, tối ưu hoá trải nghiệm gõ thoải mái nhất. Bàn phím có khả năng kết nối linh động, ổn định. Ngoài ra còn giúp bảo vệ an toàn chiếc iPad của bạn, đảm bảo chống trầy xước thiết bị."
     },
-
     {
       "id": 33,
       "productName": "Tai nghe Apple Earpods Lightning",
@@ -333,7 +332,6 @@
       "shortDesc": "Tai nghe Apple AirPods 2 (No Wireless Charge) VN/A mẫu tai nghe tiện lợi cho người dùng. Tai nghe được trang bị nhiều tính năng mới, con chip H1 tăng khả năng kết nối, pin cho tới 5h nghe nhạc liên tục, 3h đàm thoại nhằm nâng cao sự đẳng cấp cho thiết bị.",
       "description": "Tai nghe Apple AirPods 2 (No Wireless Charge) VN/A mẫu tai nghe tiện lợi cho người dùng. Tai nghe được trang bị nhiều tính năng mới, con chip H1 tăng khả năng kết nối, pin cho tới 5h nghe nhạc liên tục, 3h đàm thoại nhằm nâng cao sự đẳng cấp cho thiết bị."
     },
-
     {
       "id": 35,
       "productName": "Củ sạc nhanh Apple USB 12W ",
@@ -343,7 +341,6 @@
       "shortDesc": "Củ sạc nhanh Apple USB 12W MGN03 chính hãng được bán ra tại Di Động Việt là bút mới 100%, chính hãng Apple, fullbox. Sản phẩm nhận bảo hành theo chính sách của Apple Việt Nam đồng thời hưởng nhiều ưu đãi đặc biệt hấp dẫn tại Di Động Việt.",
       "description": "Củ sạc nhanh Apple USB 12W MGN03 chính hãng được bán ra tại Di Động Việt là bút mới 100%, chính hãng Apple, fullbox. Sản phẩm nhận bảo hành theo chính sách của Apple Việt Nam đồng thời hưởng nhiều ưu đãi đặc biệt hấp dẫn tại Di Động Việt."
     },
-
     {
       "id": 36,
       "productName": "Apple AirTag Chính Hãng",
@@ -353,7 +350,6 @@
       "shortDesc": "AirTag là dòng thiết bị định vị thông minh mới nhất vừa được Apple ra mắt. Sở hữu ngoại hình nhỏ gọn, chip Apple U1 với công nghệ Ultra Wideband cho khả năng xác định chính xác khoảng cách giữa hai thiết bị được gắn U1 và tiết kiệm năng lượng khi hoạt động.",
       "description": "AirTag là dòng thiết bị định vị thông minh mới nhất vừa được Apple ra mắt. Sở hữu ngoại hình nhỏ gọn, chip Apple U1 với công nghệ Ultra Wideband cho khả năng xác định chính xác khoảng cách giữa hai thiết bị được gắn U1 và tiết kiệm năng lượng khi hoạt động."
     },
-
     {
       "id": 37,
       "productName": "Ốp lưng MagSafe iPhone 14 ",
@@ -372,7 +368,6 @@
       "shortDesc": "Củ sạc nhanh Apple USB 12W MGN03 chính hãng được bán ra tại Di Động Việt là bút mới 100%, chính hãng Apple, fullbox. Sản phẩm nhận bảo hành theo chính sách của Apple Việt Nam đồng thời hưởng nhiều ưu đãi đặc biệt hấp dẫn tại Di Động Việt.",
       "description": "Củ sạc nhanh Apple USB 12W MGN03 chính hãng được bán ra tại Di Động Việt là bút mới 100%, chính hãng Apple, fullbox. Sản phẩm nhận bảo hành theo chính sách của Apple Việt Nam đồng thời hưởng nhiều ưu đãi đặc biệt hấp dẫn tại Di Động Việt."
     },
-
     {
       "id": 39,
       "productName": "Ốp lưng MagSafe iPhone 14 ",
@@ -383,7 +378,7 @@
       "description": "Ốp lưng MagSafe iPhone 14 Silicone đang bán tại Di Động Việt là 100% hàng chính hãng, được bảo hành 12 tháng chính hãng. Đồng thời khi chọn mua phụ kiện, sản phẩm khác tại Di Động Việt, người dùng còn nhận được nhiều ưu đãi."
     }
   ],
-  "sliderSales":[
+  "sliderSales": [
     {
       "id": 1,
       "img": "https://cdn.didongviet.vn/pub/media/mageplaza/bannerslider/banner/image/z/-/z-series--765x150.jpg"
@@ -413,20 +408,19 @@
       "img": "https://cdn.didongviet.vn/pub/media/mageplaza/bannerslider/banner/image/7/6/768x150-80_85.jpg"
     },
     {
-      "id":8,
+      "id": 8,
       "img": "https://cdn.didongviet.vn/pub/media/mageplaza/bannerslider/banner/image/7/6/768x150_243.jpg"
     },
-        {
-      "id":9,
+    {
+      "id": 9,
       "img": "https://cdn.didongviet.vn/pub/media/mageplaza/bannerslider/banner/image/7/6/768x150-80_1__29.jpg"
     },
-        {
-      "id":10,
+    {
+      "id": 10,
       "img": "https://cdn.didongviet.vn/pub/media/mageplaza/bannerslider/banner/image/t/r/trade-in-didongviet_1.jpg"
     }
   ],
-
-  "sliderItems":[
+  "sliderItems": [
     {
       "id": 1,
       "img": "https://cdn.didongviet.vn/pub/media/mageplaza/bannerslider/banner/image/7/6/768x371-didongviet_2.jpg"
@@ -444,5 +438,4 @@
       "img": "https://cdn.didongviet.vn/pub/media/mageplaza/bannerslider/banner/image/z/4/z4211636090670_6bd1525e42527e852018c3ceeec9be10.jpg"
     }
   ]
-
 }

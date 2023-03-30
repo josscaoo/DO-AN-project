@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-// import products from "../../../assets/data/products";
-import "./sound.css";
+// import "./sound.css";
 import TabletList from "../../../components/UI/Table/TabletList";
 import axios from "axios";
 
@@ -33,6 +32,18 @@ const Title = styled.h1`
   color: yellow;
   font-size: 30px;
   text-align: center;
+  .main_sound {
+    width: 100%;
+    height: 2rem;
+    line-height: 10px;
+    display: flex;
+    h3 {
+      padding-left: 1rem;
+      font-weight: 700;
+      font-size: 19px;
+      color: white;
+    }
+  }
 
   @media (max-width: 768px) {
     font-size: 18px;
@@ -71,7 +82,6 @@ const Wrapper = styled.div`
   display: flex;
   transition: all 0.5s ease;
   transform: translateX(${(props) => props.slideIndex * -11.7}vw);
-  /* padding: 2px; */
 `;
 const Slide = styled.div`
   width: 125vw;
@@ -122,7 +132,7 @@ const SoundProduct = () => {
       <Main>
         <Title>
           <div className="main_sound">
-            <div className="left__sound">Điện thoại khác</div>
+            <h3>Điện thoại khác</h3>
           </div>
         </Title>
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import "./navar.css";
+import{Container, ListMenu, ListOther, ListPhone} from './Style'
 
 const Navar = () => {
     const [showIphone, setShowIphone] = useState(false);
@@ -88,48 +88,30 @@ const Navar = () => {
      };
 
     return (
-      <div className="main__navar">
-        <div
-          className="menu__navar"
-          onMouseEnter={toggleIphone}
-          onMouseLeave={toggleIphone}
-        >
-          <span className="menu__navar-label">Iphone</span>
+      <Container>
+        <ListPhone onMouseEnter={toggleIphone} onMouseLeave={toggleIphone}>
+          <span >Iphone</span>
           {showIphone && (
-            <ul className="menu__navar-list">
+            <ListMenu>
               <ul>
-                <li onClick={navigateToIphone14D}>
-                  iPhone 14 Pro Max 128GB Đen
-                </li>
-                <li onClick={navigateToIphone14MV}>
-                  iPhone 14 Pro Max 128GB Vàng
-                </li>
-                <li onClick={navigateToIphone14T}>
-                  iPhone 14 Pro Max 64GB Tím
-                </li>
+                <li onClick={navigateToIphone14D}>  iPhone 14 Pro Max 128GB Đen </li>
+                <li onClick={navigateToIphone14MV}> iPhone 14 Pro Max 128GB Vàng </li>
+                <li onClick={navigateToIphone14T}> iPhone 14 Pro Max 64GB Tím </li>
                 <li onClick={navigateToIphone13T}>iPhone X 64GB Trắng</li>
               </ul>
               <ul>
-                <li onClick={navigateToIphone13H}>
-                  iPhone 14 Pro Max 128GB Hồng
-                </li>
-                <li onClick={navigateToIphone14V}>
-                  iPhone 14 Pro Max 128GB Vàng
-                </li>
+                <li onClick={navigateToIphone13H}> iPhone 14 Pro Max 128GB Hồng </li>
+                <li onClick={navigateToIphone14V}> iPhone 14 Pro Max 128GB Vàng </li>
                 <li onClick={navigateToIphone11X}>iPhone 11 64GB Xanh Ngọc</li>
               </ul>
-            </ul>
+            </ListMenu>
           )}
-        </div>
+        </ListPhone>
 
-        <div
-          className="menu__navar"
-          onMouseEnter={toggleSamSung}
-          onMouseLeave={toggleSamSung}
-        >
-          <span className="menu__navar-label">SamSung</span>
+        <ListPhone  onMouseEnter={toggleSamSung}  onMouseLeave={toggleSamSung} >
+          <span >SamSung</span>
           {showSamSung && (
-            <ul className="menu__navar-list">
+            <ListMenu>
               <ul>
                 <li onClick={navigateToSamSung1}>Samsung Galaxy S22 Đen</li>
                 <li onClick={navigateToSamSung2}>Samsung Galaxy S22 Trắng</li>
@@ -139,18 +121,14 @@ const Navar = () => {
                 <li onClick={navigateToSamSung4}>Samsung Galaxy A92 </li>
                 <li onClick={navigateToSamSung3}>Samsung Galaxy Note 2</li>
               </ul>
-            </ul>
+            </ListMenu>
           )}
-        </div>
+        </ListPhone>
 
-        <div
-          className="menu__navar"
-          onMouseEnter={toggleXiaomi}
-          onMouseLeave={toggleXiaomi}
-        >
-          <span className="menu__navar-label">Oppo</span>
+        <ListPhone onMouseEnter={toggleXiaomi} onMouseLeave={toggleXiaomi} >
+          <span >Oppo</span>
           {showXiaomi && (
-            <ul className="menu__navar-list">
+            <ListMenu>
               <ul>
                 <li onClick={navigateToOppo1}>Oppo Reno6 5G (8+128GB)</li>
                 <li onClick={navigateToOppo2}>OPPO A15 3GB 32GB</li>
@@ -160,27 +138,24 @@ const Navar = () => {
               <ul>
                 <li onClick={navigateToOppo6}>OPPO A17K</li>
               </ul>
-            </ul>
+            </ListMenu>
           )}
-        </div>
-        <div
-          className="menu__navar"
-          onMouseEnter={toggleOppo}
-          onMouseLeave={toggleOppo}
-        >
-          <span className="menu__navar-label">Vivo</span>
+        </ListPhone>
+
+        <ListPhone onMouseEnter={toggleOppo} onMouseLeave={toggleOppo} >
+          <span >Vivo</span>
           {showOppo && (
-            <ul className="menu__navar__list">
+            <ListOther>
               <ul>
                 <li onClick={navigateToOther1}>Vivo Y2 </li>
                 <li onClick={navigateToOther2}>Vivo T1x</li>
                 <li onClick={navigateToOther4}>Realme C33 </li>
                 <li onClick={navigateToOther5}>Realme TX54</li>
               </ul>
-            </ul>
+            </ListOther>
           )}
-        </div>
-      </div>
+        </ListPhone>
+      </Container>
     );
 };
 

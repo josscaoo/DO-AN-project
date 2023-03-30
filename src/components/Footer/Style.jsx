@@ -1,16 +1,26 @@
 import styled from "styled-components";
 
-export const Footer = styled.div`
+export const FooterForm = styled.div`
   padding-top: 60px;
   padding-bottom: 30px;
   background-color: #ffffff;
   padding-left: 9rem;
   overflow-x: hidden;
   display: flex;
+  @media (max-width: 1024px) {
+    padding-left: 15px;
+  }
+  @media (max-width: 768px) {
+    padding-left: 50px;
+  }
 `;
 export const Main = styled.div``;
 export const Container = styled.div``;
 export const Logo = styled.div`
+h4{
+  font-weight: 700;
+  font-size: 30px;
+}
   p {
     line-height: 30px;
     color: black;
@@ -24,7 +34,7 @@ export const Category = styled.div`
     background: transparent !important;
   }
 `;
-export const Shortcuts = styled.div`
+export const Shortcuts = styled.p`
   margin-bottom: 30px;
   color: black;
   font-weight: 700;

@@ -1,23 +1,22 @@
-.main__navar{
-    display: flex;
-    margin: auto;
-    width: 50%;
-    height: 35px;
-}
-.menu__navar {
+import styled from "styled-components";
+
+export const Container = styled.div`
+  display: flex;
+  margin: auto;
+  width: 50%;
+  height: 35px;
+`;
+export const ListPhone = styled.div`
   position: relative;
   display: inline-block;
   cursor: pointer;
   width: 50%;
   text-align: center;
-}
-
-.menu__navar-label{
+  span{
     font-weight: 600;
-}
-
-
-.menu__navar-list {
+  }
+`;
+export const ListMenu = styled.div`
   position: absolute;
   top: 100%;
   left: 0;
@@ -31,21 +30,22 @@
   width: 400px;
   display: flex;
   padding-bottom: 10px;
-}
-
-.menu__navar-list li {
-  /* padding: 10px;
-  border-bottom: 1px solid #ccc; */
-  display: flex;
-  padding: 5px;
-  font-size: 13px;
-  font-weight: 500;
-}
-.menu__navar-list li:hover{
+  li {
+    display: flex;
+    padding: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    padding-bottom: 7px;
+  }
+  li:hover {
     color: red;
-}
-.menu__navar__list{
-    position: absolute;
+  }
+  li:last-child {
+    border-bottom: none;
+  }
+`;
+export const ListOther = styled.div`
+  position: absolute;
   top: 100%;
   left: 0;
   z-index: 1;
@@ -61,14 +61,10 @@
   font-weight: 500;
   font-size: 14px;
   text-align: center;
-}
-.menu__navar__list li{
-  padding-bottom: 7px;
-}
-.menu__navar__list li:hover{
+  li {
+    padding-bottom: 7px;
+  }
+  li:hover {
     color: red;
-}
-
-.menu__navar-list li:last-child {
-  border-bottom: none;
-}
+  }
+`;
