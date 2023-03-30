@@ -1,91 +1,112 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 import Helmet from "../../components/Helmet/Helmet";
-import { Container, Row, Col, Form, FormGroup } from "reactstrap";
-import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase.config";
-import { toast } from "react-toastify";
+import { authenticate } from "../../redux/auth/authSlice";
 
-import "../../styles/login.css";
 
-const Login = () => {
+const Container = styled.div`
+  margin: auto;
+  text-align: center;
+  margin-top: 150px;
+`;
+const Main = styled.div`
+  background-color: #c5c4c4b2;
+  padding: 40px;
+  border-radius: 5px;
+  margin-left: 200px;
+  margin-right: 200px;
+  button {
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: #103b64;
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+    :hover {
+      background-color: #b61515;
+      color: white;
+    }
+  }
+  h5 {
+    font-size: 15px;
+  }
+  p {
+    .link__login:hover {
+      color: #e11c1c;
+      font-weight: 600;
+    }
+  }
+  form{
+    .error{
+      font-weight: 600;
+      color: red;
+    }
+  }
+`;
+const Input = styled.div`
+  input {
+    width: 400px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 23px;
+  }
+`;
+
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
-  const signIn = async (e) => {
+  const dispatch = useDispatch();
+  const error = useSelector((state) => state.auth.error);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
-
-      console.log(user);
-      setLoading(false);
-      toast.success("Đăng nhập thành công");
-      navigate("/home");
-    } catch (error) {
-      setLoading(false);
-      toast.error("Lỗi! Vui lòng kiểm tra lại");
-    }
+    dispatch(authenticate(email, password))
+    
   };
+    
 
   return (
-    <Helmet title="login">
-      <div className="main__login__signup">
-        <section>
-          <Container>
-            <Row>
-              {loading ? (
-                <Col lg="12" className="text-center">
-                  <h5 className="fw-bold">Loading.....</h5>
-                </Col>
-              ) : (
-                <Col lg="6" className="m-auto text-center">
-                  <div className="header__login__signup">
-                    <h3>Đăng Nhập</h3>
-                  </div>
-
-                  <Form className="auth__form" onSubmit={signIn}>
-                    <FormGroup className="form__group">
-                      <input
-                        type="email"
-                        placeholder="Nhập địa chỉ email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </FormGroup>
-                    <FormGroup className="form__group">
-                      <input
-                        type="password"
-                        placeholder="Nhập mật khẩu"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                    </FormGroup>
-
-                    <button type="submit" className="buy__btn auth__btn">
-                      Đăng Nhập
-                    </button>
-                    <p>
-                      Tài khoảng không tồn tại?
-                      <Link to="/register">Tạo một tài khoảng</Link>
-                    </p>
-                  </Form>
-                </Col>
-              )}
-            </Row>
-          </Container>
-        </section>
-      </div>
+    <Helmet title="Login">
+      <Container>
+        <div>
+          <Main>
+            <form onSubmit={handleSubmit}>
+              {error && <div className="error">{error}</div>}
+              <h1>Login</h1>
+              <Input>
+                <input
+                  placeholder="Nhập địa chỉ email"
+                  type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </Input>
+              <Input>
+                <input
+                  placeholder="Nhập mật khẩu"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </Input>
+              <button type="submit" className="buy__btn auth__btn">
+                Login
+              </button>
+              <div><Link to="/">Home</Link></div>
+              <p>
+                Tài khoảng không tồn tại?
+                <Link to="/register">Tạo một tài khoảng</Link>
+              </p>
+            </form>
+          </Main>
+        </div>
+      </Container>
     </Helmet>
   );
-};
-
+}
 export default Login;
+

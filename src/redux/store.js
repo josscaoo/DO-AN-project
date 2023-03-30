@@ -1,12 +1,15 @@
-import { configureStore } from "@reduxjs/toolkit";
-import orderReducer from "./slices/checkoutSlice";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import authSlice from "./auth/authSlice";
 import cartSlice from "./slices/cartSlice";
+import thunk from "redux-thunk";
+
 
 const store = configureStore({
   reducer: {
     cart: cartSlice,
-    order: orderReducer,
+    auth: authSlice,
   },
+  middleware: [...getDefaultMiddleware(), thunk],
 });
 
 export default store;

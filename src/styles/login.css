@@ -1,11 +1,14 @@
 .main__login__signup{
-  /* background-color: #f5e9e9; */
-  height: 100%;
-  width: 100%;
+    padding-top: 50px;
+    margin: auto;
+    width: 50%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+}
+.form__group{
+    width: 150%;
 }
 .header__login__signup{
     /* background-color: #ffeded; */
@@ -29,7 +32,9 @@
 .auth__btn {
     background: #ffffff !important;
     color: rgb(79, 8, 8);
-    font-weight: 600;
+    font-weight: 500;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 .auth__btn:hover{
     background: #af0303 !important;

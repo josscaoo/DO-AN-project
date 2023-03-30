@@ -1,0 +1,149 @@
+.promotion__top__menu{
+    padding-top: 10px;
+    padding-right: 0;
+    
+}
+.promotion__top__slice img{
+    
+}
+.trend__menu strong:hover{
+    color: rgb(168, 0, 0);
+}
+
+.trend__title{
+    background-color: #be1e2d;
+    text-align: center;
+    border-radius:5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    color: white;
+    text-shadow: 2px 1px 2px yellow, 2px 2px 25px yellowgreen, 0 0 10px wheat;    
+}
+.trend__menu{
+    background-color: white;
+    border-radius: 3px;
+    padding-left: 25px;
+    padding-right: 20px;
+    padding-top: 10px;
+}
+.trend__menu__a{
+    border-bottom: rgb(187, 185, 185) solid 1.5px;
+    font-size: 13px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+.trend__menu__b{
+    font-size: 13px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+.trend__menu__a p{
+    font-size: 10px;
+}
+.trend__menu__b p{
+    font-size: 10px;
+}
+.columns__col__center{
+    padding-left: 0;
+}
+.columns__col__right{
+    padding-left: 0;
+}
+.promotion__sale{
+}
+.title__sale{
+    padding: 5px;
+}
+.img__salephone{
+    padding-bottom: 10px;
+}
+.img__salephone img{
+    border-radius: 5px  ;
+    cursor: pointer;
+
+}
+.img__salemac img{
+    border-radius: 5px ;
+    cursor: pointer;
+}
+.title__sale{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+
+}
+.title__sale img{
+    width: 90px;
+    height: 35px;
+}
+.title__sale h6:hover{
+    color: #be1e2d;
+    cursor: pointer;
+}
+@media only screen and (max-width: 1024px){
+   .promotion__top__menu{
+    padding: 0;
+    padding-top: 5px;
+   } 
+   .promotion__sale{
+    padding: 0;
+    padding-right: 5px;
+   }
+
+}
+@media only screen and (max-width: 992px){
+    .hero__content h2{
+        font-size: 2rem;
+     }
+     .section__title{
+        font-size: 1.7rem;
+     }
+     .counter__img{
+        display: none;
+     }
+     .clock__top-content{
+        text-align: center;
+     }
+     .clock__top-content h4{
+        font-size: 0.9rem !important;
+     }
+     .clock__top-content h3{
+     font-size: 1rem !important;
+     }
+     .count__down-col {
+        text-align: center;     }
+}
+@media only screen and (max-width: 768px){
+    .columns__col__left{
+        display: none;
+    }
+    .columns__col__right{
+        display: none;
+    }
+    .columns__col__center{
+        /* display: flex; */
+    }
+    .hero__content h2{
+        font-size: 1.6rem;
+     }
+
+    .hero__content p {
+        font-size: 0.9rem;
+    }
+
+    .buy__btn a {
+        font-size: 0.9rem;
+    }
+
+    .section__title{
+        font-size: 1.4rem;
+    }
+}
+@media only screen and (max-width: 576px){
+    .hero__content {
+        padding-top: 0;
+        margin-bottom: 40px;
+    }
+
+}
+

@@ -1,57 +1,26 @@
-import React, {useRef} from 'react';
+import { logout } from "../../redux/auth/authSlice";
+import React, { useState } from 'react';
 
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-import './header.css';
-
-import { motion } from 'framer-motion';
+import { Link, useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/images/logo-01.png';
-import userIcon from '../../assets/images/user-icon.png';
-import { useSelector } from 'react-redux';
-import useAuth from "../../custom-hooks/useAuth";
+import { useDispatch, useSelector } from 'react-redux';
+import Banner from '../Banner/Banner';
+import { Actions, Auth, Badge, Cart, Container, Hyper, Icons, Login, Logo, Main, Mobile, Navigation, Register } from './Style';
 
-import { signOut } from "firebase/auth";
-import { auth } from '../../firebase.config';
-import { toast } from 'react-toastify';
-import sale from '../../assets/images/sale-01.webp'
 
-const nav__links = [
-  {
-    path: "home",
-    display: "Trang Chủ",
-  },
-  {
-    path: "shop",
-    display: "Cửa Hàng",
-  },
-  {
-    path: "cart",
-    display: "Giỏ Hàng",
-  },
-];
+
+
 
 const Header = () => {
-  const headerRef = useRef(null);
+  const dispatch = useDispatch();
   const totalQuantity = useSelector(state => state.cart.totalQuantity);
-  const profileActionRef = useRef(null);
 
-  const menuRef = useRef(null);
   const navigate = useNavigate();
-  const { currentUser } = useAuth();
 
-
-  const logout = () => {
-    signOut(auth).then(() => {
-      toast.success('Đăng xuất thành công');
-      navigate('/home')
-    }).catch(err => {
-      toast.error(err.message)
-    })
-  }
-
-
-
-  const menuToggle = () => menuRef.current.classList.toggle('active__menu');
+    const navigateToShop = () => {
+      navigate("/shop");
+    };
 
   const navigateToCart = () => {
     navigate('/cart');
@@ -60,100 +29,76 @@ const Header = () => {
     navigate("/");
   };
 
-  const toggleProfileActions = () =>
-    profileActionRef.current.classList.toggle("show__profileActions");
+  function handleClick() {
+    dispatch(logout());
+  }
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+      setIsOpen(!isOpen);
+    };
+  
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     
   return (
-    <header className="header" ref={headerRef}>
-      <div className="img__sale__heard">
-        <img src={sale} alt="img" />
-      </div>
+    <Container>
+      <Banner />
 
-      <div className="nav__wrapper">
-        <div className="logo" onClick={navigateToHome}>
+      <Main>
+        <Logo onClick={navigateToHome}>
           <img src={logo} alt="logo" />
           <div>
             <h1 className="logo__text">HienMobi</h1>
-            
           </div>
-        </div>
+        </Logo>
 
-        <div className="navigation" ref={menuRef} onClick={menuToggle}>
-          <form action="" className="search">
-            <input
-              type="search"
-              placeholder="Bạn muốn tìm gì..."
-              className="search__input"
-            />
-          </form>
+        <Navigation>
+          <Hyper onClick={navigateToHome}>Trang Chủ</Hyper>
+          <Hyper onClick={navigateToShop}>Cửa Hàng</Hyper>
+          <Hyper onClick={navigateToCart}>Giỏ Hàng</Hyper>
+        </Navigation>
 
-          <ul className="ul_top_hyper">
-            {nav__links.map((item, index) => (
-              <li className="nav__item" key={index}>
-                <NavLink
-                  to={item.path}
-                  className={(navClass) =>
-                    navClass.isActive ? "nav__active" : ""
-                  }
-                >
-                  {item.display}
-                </NavLink>
-              </li>
-            ))}
-            
-          </ul>
-          
-        </div>
-
-        <div className="nav__icons">
-          <div className="profile">
-            <motion.img
-              whileTap={{ scale: 1.2 }}
-              src={currentUser ? currentUser.photoURL : userIcon}
-              alt=""
-              onClick={toggleProfileActions}
-            />
-          </div>
-          <span>
-            <div
-              className="profile__actions"
-              ref={profileActionRef}
-              onClick={toggleProfileActions}
-            >
-              {currentUser ? (
-                <span onClick={logout}>
-                  Đăng xuất
-                  {/* <i class="ri-shut-down-line"></i> */}
-                </span>
-              ) : (
-                <div className="d-flex  ">
-                  <div className="icon_sig">
-                    <Link to="/register" className="sig">
-                      Đăng kí
-                    </Link>
-                  </div>
-                  <div className="icon_log">
-                    <Link to="/login" className="log">
-                      Đăng nhập
-                    </Link>
-                  </div>
+        <Icons>
+          <Actions>
+            {isLoggedIn ? (
+              <div>
+                <div>
+                  <i class="ri-user-3-fill" onClick={toggleMenu}></i>
+                  {isOpen && (
+                    <ul className="menu__user-list">
+                      <li onClick={handleClick}>Đăng Xuất</li>
+                      <li>Trang cá nhân</li>
+                    </ul>
+                  )}
                 </div>
-              )}
-            </div>
-          </span>
+              </div>
+            ) : (
+              <Auth>
+                <Register>
+                  <Link to="/register" className="register">
+                    Đăng kí
+                  </Link>
+                </Register>
+                <Login>
+                  <Link to="/login" className="login">
+                    Đăng nhập
+                  </Link>
+                </Login>
+              </Auth>
+            )}
+          </Actions>
 
-          <span className="cart__icon" onClick={navigateToCart}>
+          <Cart onClick={navigateToCart}>
             <i class="ri-shopping-bag-line"></i>
-            <span className="badge">{totalQuantity}</span>
-          </span>
-          <div className="mobile__menu">
-            <span onClick={menuToggle}>
-              <i class="ri-menu-line"></i>
-            </span>
-          </div>
-        </div>
-      </div>
-    </header>
+            <Badge>{totalQuantity}</Badge>
+          </Cart>
+          <Mobile onClick={navigateToCart}>
+            <i class="ri-menu-line"></i>
+          </Mobile>
+        </Icons>
+      </Main>
+    </Container>
   );
 }
 

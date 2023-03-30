@@ -18,22 +18,24 @@ const Checkout = () => {
           </h6>
 
           <h6>
-            Tổng tiền đơn hàng: <span>{totalAmount} VND</span>
+            Tổng tiền đơn hàng:
+            <span>{totalAmount.toLocaleString("vi-VN")} VND</span>
           </h6>
 
           <h4>
-            Tổng thanh toán: <span>{totalAmount}VND</span>
+            Tổng thanh toán:
+            <span>{totalAmount.toLocaleString("vi-VN")}VND</span>
           </h4>
           <div className="button__cart">
             <div className="button__left">
-              <button type="submit" className="  buy__btn auth__btn">
-                Đặt hàng
-              </button>
+              <button type="summit" className="buy__btn w-100 ">Đặt hàng</button>
             </div>
             <div className="button__right">
-              <Link className="aaaaa" to="/information">
-                quay lại
-              </Link>
+              <button className="buy__btn w-100 ">
+                <Link to="/information">
+                  quay lại
+                </Link>
+              </button>
             </div>
           </div>
         </form>

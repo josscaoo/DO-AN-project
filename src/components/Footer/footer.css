@@ -1,13 +1,11 @@
-.footer__sale{
-    background-color: rgba(245, 231, 231, 0.5);
-    display: flex;
-}
-.footer {
+
+.footer__sale {
     padding-top: 60px;
     padding-bottom: 30px;
     background-color: #ffffff;
     padding-left: 9rem;
     overflow-x: hidden;
+    display: flex;
 
 }
 
@@ -34,19 +32,29 @@
 
 .footer__contact li span,
 .footer__contact li p {
-    color: rgba(75, 27, 27, 0.735);
+    /* color: rgba(75, 27, 27, 0.735); */
 }
 
 .footer__contact li span {
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
 }
 
 .footer__contact li p {
-    font-size: 0.9rem;
+    /* font-size: 0.9rem; */
 }
 
 .footer__copyright{
     color: rgba(170, 4, 4, 0.735);
     font-size: 0.9rem;
     margin-top: 50px;
+}
+@media only screen and (max-width: 1024px) {
+  .footer{
+    padding-left: 15px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .footer{
+    padding-left: 50px;
+  }
 }

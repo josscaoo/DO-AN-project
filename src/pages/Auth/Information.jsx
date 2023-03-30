@@ -4,9 +4,10 @@ import Helmet from '../../components/Helmet/Helmet';
 
 import "../../styles/information.css";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../redux/slices/checkoutSlice";
+// import { addToCart } from "../../redux/slices/checkoutSlice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+import { cartActions } from "../../redux/slices/cartSlice";
 
 const Information = () => {
   const navigate = useNavigate();
@@ -26,16 +27,9 @@ const Information = () => {
       toast.success("thành công");
       navigate("/checkout");
     }
-
-    dispatch(
-      addToCart({
-        name,
-        email,
-        address,
-        phone,
-      })
+    dispatch(cartActions.addCheckout(
+      { name, email, address, phone })
     );
-
     setName("");
     setEmail("");
     setAddress("");
@@ -43,8 +37,7 @@ const Information = () => {
   };
 
   return (
-    <Helmet title="Checkout">
-
+    <Helmet title="Information">
       <div className="body__checkout">
         <form className="billing__form" onSubmit={handleSubmit}>
           <div className="text__information">

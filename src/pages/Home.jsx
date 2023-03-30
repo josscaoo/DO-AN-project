@@ -4,15 +4,15 @@ import Helmet from '../components/Helmet/Helmet';
 import "../styles/home.css";
 
 
-import PromotionTop from './Promotion/PromotionTop';
-import SaleDays from './SaleDays/SaleDays';
+import PromotionTop from './HeaderHome/Promotion/PromotionTop';
+import SaleDays from './MainHome/SaleDays/SaleDays';
 import sale from "../assets/images/anhsale-08.webp";
-import Service from './Service/Service';
-import Popular from './Popular/Popular';
-import Advertise from './Advertise/Advertise';
-import MainProduct from './HeaderMenu/MainProduct';
-import SoundProduct from './Sound/SoundProduct';
-import Navar from '../components/Navar/Navar';
+import Service from "./MainHome/Service/Service";
+import Popular from "./MainHome/Popular/Popular";
+import Advertise from "./MainHome/Advertise/Advertise";
+import SoundProduct from "./MainHome/Sound/SoundProduct";
+import MainProduct from './MainHome/HeaderMenu/MainProduct';
+import Navar from './HeaderHome/Navar/Navar';
 
 const Home = () => {
 
@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <Helmet title={"Home"}>
       <div className='home__pages'>
-        <Navar />
+        <Navar/>
         <PromotionTop />
         <SaleDays />
         <div className="img__sale">

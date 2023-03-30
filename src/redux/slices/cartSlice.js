@@ -5,6 +5,8 @@ const initialState = {
   totalAmount: 0,
   totalQuantity: 0,
   reviews: [],
+  checkout: [],
+
 };
 
 const cartSlice = createSlice({
@@ -77,6 +79,20 @@ const cartSlice = createSlice({
     },
     addReview: (state, action) => {
       state.reviews.push(action.payload);
+    },
+    deleteReview: (state, action) => {
+      const reviewId = action.payload;
+      state.reviews = state.reviews.filter((review) => review.id !== reviewId);
+    },
+    editReview: (state, action) => {
+      const { id, content } = action.payload;
+      const existingReview = state.reviews.find((review) => review.id === id);
+      if (existingReview) {
+        existingReview.content = content;
+      }
+    },
+    addCheckout: (state, action) => {
+      state.checkout.push(action.payload);
     },
   },
 });

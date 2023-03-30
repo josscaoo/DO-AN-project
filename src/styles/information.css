@@ -1,11 +1,11 @@
 .body__checkout{
-    background-color: rgba(245, 231, 231, 0.5);
-    margin-top: 28px;
+    margin: auto;
+    width: 30%;
+    flex: 1;
 }
 
 .billing__form{
     margin-top: 20px;
-    margin-left: 35rem;
 
 }
 .text__information{
@@ -17,11 +17,12 @@
 .billing__form button{
     border-radius: 10px;
     font-size: 15px;
-    width: 100px;
+    width: 100%;
     
 }
 .form__button{
-    padding-left: 115px;
+    width: 50%;
+    margin: auto;
 }
 .form__button button:hover{
     background-color:rgb(9, 9, 108);

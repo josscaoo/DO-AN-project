@@ -3,6 +3,7 @@
     height: 160px;  
 }
 .product__img_phone img{
+    padding-top: 10px;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -16,8 +17,8 @@
      /* overflow: hidden; */
 }
 .product__item__phone {
-    cursor: pointer;
-    padding: 10px;
+    /* cursor: pointer; */
+    /* padding: 10px; */
 }
 .product__info__phone span{
     background-color: antiquewhite;

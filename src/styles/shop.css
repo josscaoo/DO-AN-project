@@ -1,6 +1,6 @@
 .main__shop{
     margin-top: 30px;
-    background-color: rgba(245, 231, 231, 0.5);
+    /* background-color: rgba(245, 231, 231, 0.5); */
     
 }
 .body__shop{
@@ -49,6 +49,16 @@
 }
 
 @media only  screen and (max-width: 768px) {
+   .filter__widget {
+    margin-bottom: 30px;
+   }
+
+   .filter__widget select{
+    padding: 7px 20px;
+    font-size: 0.9rem;
+   }
+}
+@media only  screen and (max-width: 1024px) {
    .filter__widget {
     margin-bottom: 30px;
    }

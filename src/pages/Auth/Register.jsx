@@ -1,131 +1,165 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import Helmet from "../../components/Helmet/Helmet";
-import { Container, Row, Col, Form, FormGroup } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
-
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { setDoc, doc } from "firebase/firestore";
-import { auth } from "../../firebase.config";
-import { storage } from "../../firebase.config";
-import { db } from "../../firebase.config";
-
 import { toast } from "react-toastify";
+import axios from "axios";
 
-import "../../styles/login.css";
-
-const Register = () => {
-  const [username, setUserName] = useState("");
+const Container = styled.div`
+  margin: auto;
+  text-align: center;
+  margin-top: 150px;
+`;
+const Main = styled.div`
+  background-color: #c5c4c4b2;
+  padding: 40px;
+  border-radius: 5px;
+  margin-left: 200px;
+  margin-right: 200px;
+  button {
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: #103b64;
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+    :hover {
+      background-color: #b61515;
+      color: white;
+    }
+  }
+  h5 {
+    font-size: 15px;
+  }
+  p {
+    .link__login:hover {
+      color: #e11c1c;
+      font-weight: 600;
+    }
+  }
+  form{
+    .error{
+      font-weight: 500;
+      color: red;
+    }
+  }
+`;
+const Input = styled.div`
+  input {
+    width: 400px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 23px;
+  }
+`;
+function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
-  const register = async (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+
+    // Kiểm tra các ô input không được để trống
+    if (!email || !password || !confirmPassword || !name) {
+      setError("Bạn phải nhập đầy đủ thông tin");
+      return;
+    }
+
+    // Kiểm tra mật khẩu và mật khẩu xác nhận có khớp nhau hay không
+    if (password !== confirmPassword) {
+      setError("Mật khẩu không khớp");
+      return;
+    }
+
     setLoading(true);
 
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-      const user = userCredential.user;
-
-      const storageRef = ref(storage, `images/${Date.now() + username}`);
-      const uploadTask = uploadBytesResumable(storageRef);
-
-      uploadTask.on(
-        (error) => {
-          toast.error(error.message);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-            await updateProfile(user, {
-              displayName: username,
-              photoURL: downloadURL,
-            });
-
-            await setDoc(doc(db, "users", user.uid), {
-              uid: user.uid,
-              displayName: username,
-              email,
-              photoURL: downloadURL,
-            });
+        try {
+          // Gọi request để đăng ký tài khoản
+          const response = await axios.post("http://localhost:3001/users", {
+            email,
+            password,
+            name,
           });
-        }
-      );
 
-      setLoading(false);
-      toast.success("Tài khoản đã được tạo");
-      navigate("/login");
-    } catch (error) {
-      setLoading(false);
-      toast.error("Lỗi! Vui lòng kiểm tra lại ");
-    }
+          if (response.status === 201) {
+            toast.success("Tài khoản đã được tạo");
+            navigate("/login");
+          }
+        } catch (err) {
+          console.error(err);
+          setError("Đăng ký không thành công. Vui lòng thử lại sau");
+        } finally {
+          setLoading(false);
+        }
   };
 
-  return (
-    <Helmet title="Signup">
-      <div className="main__login__signup">
-        <section>
-          <Container>
-            <Row>
-              {loading ? (
-                <Col lg="12" className="text-center">
-                  <h5 className="fw-bold">Loading.......</h5>
-                </Col>
-              ) : (
-                <Col lg="6" className="m-auto text-center">
-                  <div className="header__login__signup">
-                    <h3>Đăng Kí</h3>
-                  </div>
-                  <Form className="auth__form" onSubmit={register}>
-                    <FormGroup className="form__group">
-                      <input
-                        type="text"
-                        placeholder="Nhập tên"
-                        value={username}
-                        onChange={(e) => setUserName(e.target.value)}
-                      />
-                    </FormGroup>
+return (
+  <Helmet title="Register">
+    <Container>
+      <div>
+        {loading ? (
+          <div>
+            <h5 className="fw-bold">Loading.......</h5>
+          </div>
+        ) : (
+          <Main>
+            <form onSubmit={handleSubmit}>
+              {error && <div className="error">{error}</div>}
+              <h2>Register</h2>
+              <Input>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </Input>
+              <Input>
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </Input>
+              <Input>
+                <input
+                  type="password"
+                  placeholder="Confirm Password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+              </Input>
+              <Input>
+                <input
+                  type="text"
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </Input>
 
-                    <FormGroup className="form__group">
-                      <input
-                        type="email"
-                        placeholder="nhập địa chỉ email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </FormGroup>
-
-                    <FormGroup className="form__group">
-                      <input
-                        type="password"
-                        placeholder="nhập mật khẩu"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                    </FormGroup>
-
-                    <button type="submit" className="buy__btn auth__btn">
-                      Tạo tài khoản
-                    </button>
-                    <p>
-                      bạn đã có tài khoản? <Link to="/login">Đăng nhập</Link>
-                    </p>
-                  </Form>
-                </Col>
-              )}
-            </Row>
-          </Container>
-        </section>
+              <button type="submit" className="buy__btn auth__btn">
+                Register
+              </button>
+              <p>
+                bạn đã có tài khoản? <Link to="/login">Đăng nhập</Link>
+              </p>
+            </form>
+          </Main>
+        )}
       </div>
-    </Helmet>
-  );
-};
+    </Container>
+  </Helmet>
+);
+
+}
 
 export default Register;

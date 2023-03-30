@@ -1,0 +1,35 @@
+.main_product{
+    width: 100%;
+    height: 2.9rem;
+    line-height: 50px;
+    display: flex;
+}
+
+.left__product{
+    padding-left: 1rem;
+    font-weight: 700;
+    font-size: 19px;
+    color: white;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .main_product{
+
+    }
+    .left__product{
+        font-size: 15px;
+    }
+    .right__product{
+        /* display: flex; */
+        display: none;
+    }
+    .ul__header__menu li:hover{
+        color: red;
+    }
+    .menu__phone{
+        display: none;
+    }
+
+}
+

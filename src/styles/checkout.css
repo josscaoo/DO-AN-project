@@ -1,6 +1,5 @@
 .body__checkout{
     display: flex;
-    background-color: rgba(245, 231, 231, 0.5);
 }
 
 .check__cart {
@@ -8,10 +7,7 @@
     background: rgb(110, 7, 7);
     color: #fff9f9;
     border-radius: 5px;
-    margin-top: 125px;
-    margin-left: 25rem;
-    margin-right: 25rem;
-    height: 18rem;
+    margin: 0  200px ;
 }
 
     
@@ -30,26 +26,25 @@
     padding-top: 20px;
 }
 .button__cart{
-    margin-left: 270px;
-    display: flex;
+    margin: auto;
+    width: 50%;
+    text-align: center;
 }
-.button__left{
-    margin-left: 15px;
-}
-button__left button{
-    background-color: #fff9f9;
-}
-.button__right{
-    margin-left: 170px;
-    margin-top: 50px;
-    font-size: 15px;
-}
-.aaaaa:hover{
-    color: white;
-    font-weight: 700;
 
+.button__cart button {
+    background-color: rgb(245, 242, 238);
+    color: black;
+    font-weight: 600;
+    border-radius: 10px;
+    width: 100px;
 }
-.aaaaa{
-    font-weight: 500;
-    font-size: 20px;
+.button__left :hover{
+    background-color: rgb(12, 74, 207);
+    color: white;
+    
+}
+.button__right :hover{
+    background-color: rgb(207, 12, 12);
+    color: white;
+    
 }

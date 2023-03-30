@@ -9,7 +9,6 @@ const Footer = () => {
   const year = new Date().getFullYear()
   return (
     <div className="footer__sale">
-      <footer className="footer">
         <Row>
           <Col lg="4" className="mb-4" md="6">
             <div className="logo">
@@ -31,19 +30,19 @@ const Footer = () => {
               <h4 className="quick__links-title">Danh Mục Hàng Đầu</h4>
               <ListGroup>
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Điện thoại</Link>
+                  <Link to="#">Iphone</Link>
                 </ListGroupItem>
 
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Sofa Hiện đại</Link>
+                  <Link to="#">SamSung</Link>
                 </ListGroupItem>
 
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Ghế Bành</Link>
+                  <Link to="#">Oppo</Link>
                 </ListGroupItem>
 
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Đồng hồ thông minh</Link>
+                  <Link to="#">Xiaomi</Link>
                 </ListGroupItem>
               </ListGroup>
             </div>
@@ -107,7 +106,6 @@ const Footer = () => {
             </div>
           </Col>
         </Row>
-      </footer>
     </div>
   );
 }

@@ -14,8 +14,7 @@
     width: 100%;
     background-color: rgba(245, 231, 231, 0.5);
     cursor: pointer;
-    padding-left: 9rem;
-    padding-right: 6.8rem;
+    flex: 1;
     
     
 }

@@ -12,7 +12,6 @@ import productImg11 from "../images/Samsung-02.jpg";
 import productImg09 from "../images/Samsung-03.webp";
 import productImg10 from "../images/Samsung-04.webp";
 
-
 import productImg13 from "../images/oppo-01.jpg";
 import productImg14 from "../images/oppo-02.jpg";
 import productImg15 from "../images/oppo-03.jpg";
@@ -67,7 +66,6 @@ import productImg65 from "../images/laptop-02.jpg";
 import productImg66 from "../images/laptop-03.jpg";
 import productImg67 from "../images/laptop-04.jpg";
 
-
 const products = [
   {
     id: "0121",
@@ -79,13 +77,6 @@ const products = [
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình head 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
       "head 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về head 14 Pro Max",
-    reviews: [
-      {
-        rating: 4.7,
-        text: "",
-      },
-    ],
-    avgRating: 4.5,
   },
   {
     id: "0131",
@@ -213,7 +204,9 @@ const products = [
     ],
     avgRating: 4.5,
   },
-  
+
+
+
   {
     id: "0108",
     productName: "iPhone 14 Pro Max 128GB Vàng ",
@@ -463,6 +456,8 @@ const products = [
     avgRating: 4.7,
   },
 
+
+
   {
     id: "27",
     productName: "Samsung Galaxy S22 Ultra 5G 256GB ĐEN",
@@ -554,6 +549,9 @@ const products = [
     ],
     avgRating: 4.8,
   },
+
+
+
   {
     id: "25",
     productName: "Oppo Reno6 5G (8+128GB)",
@@ -816,6 +814,180 @@ const products = [
       "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
     description:
       "Realme C33 3GB-32GB X là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.8,
+        text: "",
+      },
+      {
+        rating: 4.9,
+        text: "",
+      },
+    ],
+    avgRating: 4.8,
+  },
+  
+
+  {
+    id: "sale01",
+    productName: "iPhone 14 Pro Max 128GB Vàng ",
+    imgUrl: productImg01,
+    category: "Sale",
+    price: 2990000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "iPhone 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.7,
+        text: "",
+      },
+    ],
+    avgRating: 4.5,
+  },
+  {
+    id: "sale02",
+    productName: "Samsung Galaxy S22 Ultra 5G 256GB ĐEN",
+    imgUrl: productImg08,
+    category: "Sale",
+    price: 28990000,
+    shortDesc:
+      "Thương hiệu: SAMSUNG | samsung, Samsung Galaxy, Samsung Galaxy S22 Ultra 5G, ",
+    description:
+      "Cấu hình Điện thoại Samsung Galaxy S22 Ultra 5G 256GB. Màn hình: Dynamic AMOLED 2X 6.8' Quad HD+ (2K+). Hệ điều hành: Android 12 Camera sau: Chính 108 MP & Phụ 12 MP, 10 MP, 10 MP Camera trước: 40 MP. Chip: Snapdragon 8 Gen 1 RAM: 12 GB. Dung lượng lưu trữ: 256 GB SIM: 2 Nano SIM hoặc 1 Nano SIM + 1 eSIMHỗ trợ 5G Pin, Sạc: 5000 mAh 25 W",
+    reviews: [
+      {
+        rating: 4.6,
+        text: "",
+      },
+      {
+        rating: 4.9,
+        text: "",
+      },
+    ],
+    avgRating: 4.7,
+  },
+  {
+    id: "sale03",
+    productName: "OPPO A17 64GB Chính Hãng",
+    imgUrl: productImg15,
+    category: "Sale",
+    price: 5999000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "OPPO A17 64GB Chính Hãng X là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.8,
+        text: "",
+      },
+      {
+        rating: 4.9,
+        text: "",
+      },
+    ],
+    avgRating: 4.8,
+  },
+  {
+    id: "sale04",
+    productName: "Samsung Galaxy S22 Ultra 5G 256GB TRẮNG",
+    imgUrl: productImg09,
+    category: "Sale",
+    price: 28990000,
+    shortDesc:
+      "Thương hiệu: SAMSUNG | samsung, Samsung Galaxy, Samsung Galaxy S22 Ultra 5G, ",
+    description:
+      "Cấu hình Điện thoại Samsung Galaxy S22 Ultra 5G 256GB. Màn hình: Dynamic AMOLED 2X 6.8' Quad HD+ (2K+). Hệ điều hành: Android 12 Camera sau: Chính 108 MP & Phụ 12 MP, 10 MP, 10 MP Camera trước: 40 MP. Chip: Snapdragon 8 Gen 1 RAM: 12 GB. Dung lượng lưu trữ: 256 GB SIM: 2 Nano SIM hoặc 1 Nano SIM + 1 eSIMHỗ trợ 5G Pin, Sạc: 5000 mAh 25 W",
+    reviews: [
+      {
+        rating: 4.6,
+        text: "",
+      },
+      {
+        rating: 4.9,
+        text: "",
+      },
+    ],
+    avgRating: 4.7,
+  },
+  {
+    id: "sale05",
+    productName: " Samsung Galaxy Note 20 ",
+    imgUrl: productImg10,
+    category: "Sale",
+    price: 28990000,
+    shortDesc:
+      "Thương hiệu: SAMSUNG | samsung, Samsung Galaxy, Samsung Galaxy S22 Ultra 5G, ",
+    description:
+      "Cấu hình Điện thoại Samsung Galaxy S22 Ultra 5G 256GB. Màn hình: Dynamic AMOLED 2X 6.8' Quad HD+ (2K+). Hệ điều hành: Android 12 Camera sau: Chính 108 MP & Phụ 12 MP, 10 MP, 10 MP Camera trước: 40 MP. Chip: Snapdragon 8 Gen 1 RAM: 12 GB. Dung lượng lưu trữ: 256 GB SIM: 2 Nano SIM hoặc 1 Nano SIM + 1 eSIMHỗ trợ 5G Pin, Sạc: 5000 mAh 25 W",
+    reviews: [
+      {
+        rating: 4.6,
+        text: "",
+      },
+      {
+        rating: 4.9,
+        text: "",
+      },
+    ],
+    avgRating: 4.7,
+  },
+  {
+    id: "sale06",
+    productName: "OPPO A15 3GB 32GB - HÀNG CHÍNH HÃNG",
+    imgUrl: productImg14,
+    category: "Sale",
+    price: 7999000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "OPPO A15 3GB 32GB X là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.8,
+        text: "",
+      },
+      {
+        rating: 4.9,
+        text: "",
+      },
+    ],
+    avgRating: 4.8,
+  },
+  {
+    id: "sale07",
+    productName: "iPhone X 64GB Trắng",
+    imgUrl: productImg03,
+    category: "Sale",
+    price: 17999000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "iPhone X là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max",
+    reviews: [
+      {
+        rating: 4.6,
+        text: "",
+      },
+      {
+        rating: 4.9,
+        text: "",
+      },
+    ],
+    avgRating: 4.7,
+  },
+  {
+    id: "sale08",
+    productName: "OPPO A17K 3GB 64GB",
+    imgUrl: productImg18,
+    category: "Sale",
+    price: 6999000,
+    shortDesc:
+      "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iPhone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
+    description:
+      "OPPO A17K 3GB 64GB X là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iPhone 14 Pro Max",
     reviews: [
       {
         rating: 4.8,
@@ -1234,6 +1406,7 @@ export const salesItem = [
     ],
     avgRating: 4.7,
   },
+  
 ];
 
 export const sliderItems = [

@@ -7,10 +7,15 @@ import { motion } from "framer-motion";
 import { cartActions } from "../redux/slices/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const addLogin = () => {
+    toast.error("Bạn Cần Đăng Nhập Để Mua Hàng");
+  };
 
   return (
     <Helmet title="Cart">
@@ -47,9 +52,9 @@ const Cart = () => {
                 </Col>
                 <Col lg="3">
                   <div>
-                    <h6 className="d-flex align-items-center justify-content-between ">
+                    <h6 className=" d-flex align-items-center justify-content-between ">
                       Tổng tiền:
-                      <span className="fs-4 fw-bold">
+                      <span className=" fs-4 fw-bold">
                         {totalAmount.toLocaleString("vi-VN")}VND
                       </span>
                     </h6>
@@ -58,9 +63,23 @@ const Cart = () => {
                     thuế và phí vận chuyển sẽ được tính khi thanh toán
                   </p>
                   <div className="cart__button">
-                    <button className="buy__btn w-100 ">
-                      <Link to="/information">Thanh Toán</Link>
-                    </button>
+                    {isLoggedIn ? (
+                      <div>
+                        <button className="buy__btn w-100 ">
+                          <Link to="/information">Thanh Toán</Link>
+                        </button>
+                      </div>
+                    ) : (
+                      <div>
+                        <button
+                          className="buy__btn w-100 "
+                          onClick={addLogin}
+                        >
+                          Thanh Toán
+                        </button>
+                      </div>
+                    )}
+
                     <button className="buy__btn w-100 mt-3">
                       <Link to="/shop">Tiếp Tục Mua Hàng</Link>
                     </button>
@@ -110,3 +129,101 @@ const Tr = ({ item }) => {
 };
 
 export default Cart;
+
+
+
+
+// import React, { useEffect, useState } from "react";
+// import { Container, Row, Col } from "reactstrap";
+// import axios from "axios";
+
+// import Helmet from "../components/Helmet/Helmet";
+// import ProductLists from "../components/UI/Shop/ProductsList";
+// import "../styles/shop.css";
+
+// const Shop = () => {
+//   const [allProducts, setAllProducts] = useState([]);
+//   const [filteredProducts, setFilteredProducts] = useState([]);
+
+//   useEffect(() => {
+//     async function fetchData() {
+//       const result = await axios.get("http://localhost:3001/products");
+//       setAllProducts(result.data);
+//       setFilteredProducts(result.data);
+//     }
+//     fetchData();
+//   }, []);
+
+//   const handleFilter = (e) => {
+//     const filterValue = e.target.value;
+//     if (filterValue === "all") {
+//       setFilteredProducts(allProducts);
+//     } else {
+//       const filteredProducts = allProducts.filter(
+//         (item) => item.category === filterValue
+//       );
+//       setFilteredProducts(filteredProducts);
+//     }
+//   };
+
+//   const handleSearch = (e) => {
+//     const searchTerm = e.target.value;
+//     const searchedProducts = allProducts.filter((item) =>
+//       item.productName.toLowerCase().includes(searchTerm.toLowerCase())
+//     );
+//     setFilteredProducts(searchedProducts);
+//   };
+
+//   return (
+//     <Helmet title="Shop">
+//       <div className="main__shop">
+//         <div className="body__shop">
+//           <Container>
+//             <Row>
+//               <Col lg="3" md="6">
+//                 <div className="filter__widget">
+//                   <select onChange={handleFilter}>
+//                     <option value="all">Tất cả sản phẩm</option>
+//                     <option value="iphone">Iphone</option>
+//                     <option value="oppo">Oppo</option>
+//                     <option value="samsung">Samsung</option>
+//                     <option value="vivo">Vivo</option>
+//                     <option value="realme">Realme</option>
+//                   </select>
+//                 </div>
+//               </Col>
+//               <Col lg="3" md="6" className="text-end">
+//                 <div className="filter__widget"></div>
+//               </Col>
+//               <Col lg="6" md="12">
+//                 <div className="search__box">
+//                   <input
+//                     type="text"
+//                     placeholder="Tìm kiếm sản phẩm"
+//                     onChange={handleSearch}
+//                   />
+//                 </div>
+//               </Col>
+//             </Row>
+//           </Container>
+//         </div>
+
+//         <div className="pt-0">
+//           <Container>
+//             <Row>
+//               {filteredProducts.length === 0 ? (
+//                 <h1 className="text-center fs-4">
+//                   Không có sản phẩm nào được tìm thấy!
+//                 </h1>
+//               ) : (
+//                 <ProductLists data={filteredProducts} />
+//               )}
+//             </Row>
+//           </Container>
+//         </div>
+//       </div>
+//     </Helmet>
+//   );
+// };
+
+// export default Shop;
