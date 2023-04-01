@@ -7,11 +7,9 @@ import axios from "axios";
 
 const Container = styled.div`
   width: 100%;
-  height: 15rem;
+  height: 13rem;
   display: flex;
   overflow: hidden;
-  padding-top: 10px;
-  line-height: 10px;
   @media (max-width: 768px) {
     margin-bottom: 0;
 
@@ -104,7 +102,8 @@ const Img = styled.img`
   }
 `;
 
-const Advertise = () => {
+
+const Trademark = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const handleClick = (direction) => {
     if (direction === "left") {
@@ -165,4 +164,4 @@ const Advertise = () => {
   );
 };
 
-export default Advertise;
+export default Trademark;

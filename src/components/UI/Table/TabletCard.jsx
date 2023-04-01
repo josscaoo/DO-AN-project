@@ -1,36 +1,87 @@
 import React from "react";
 
 import { motion } from "framer-motion";
-import "../../../styles/tablet-card.css";
-import { Col, Container } from "reactstrap";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
+import styled from "styled-components";
 
-import { useDispatch } from "react-redux";
-import { cartActions } from "../../../redux/slices/cartSlice";
+
+const Container = styled.div`
+  background-color: #fff;
+  height: 15rem;
+  width: 174px;
+  cursor: pointer;
+  padding: 10px;
+  @media (max-width: 768px) {
+    height: 260px;
+  }
+`;
+const Images = styled.div`
+  width: 140px;
+  height: 160px;
+  img {
+    padding-top: 10px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+const Info = styled.div`
+  padding-top: 15px;
+
+  span {
+    background-color: antiquewhite;
+    border-radius: 3px;
+    font-size: 10px;
+  }
+  h5 {
+    font-size: 12px;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-top: 1px;
+    a {
+      @media (max-width: 992px) {
+        font-size: 1.1rem;
+      }
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+  }
+  a:hover {
+    color: #bd0a0a;
+    background-color: white;
+  }
+`;
+const Bottom = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px;
+  span {
+    color: #bd0a0a;
+    font-size: 10px;
+    font-weight: 700;
+    
+    i {
+      font-size: 10px;
+      padding: 5px;
+      background: var(--primary-color);
+      color: #d6bbbb;
+      border-radius: 50px;
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+  }
+`;
 
 const TabletCard = ({ item }) => {
-  const dispatch = useDispatch();
 
-  const addToCart = () => {
-    dispatch(
-      cartActions.addItem({
-        id: item.id,
-        productName: item.productName,
-        price: item.price,
-        imgUrl: item.imgUrl,
-      })
-    );
 
-    toast.success("Đã thêm sản phẩm");
-  };
 
   return (
-    <Container className="product__container__tablet">
-      <Col md="6" lg="12" className="mb-2">
-        {/* lg="3" md="4" className="mb-2" */}
-        <div className="product__item_tablet">
-          <div className="product__img_tablet">
+    <Container>
+          <Images>
             <Link to={`/shop/${item.id}`}>
               <motion.img
                 whileHover={{ scale: 0.9 }}
@@ -38,23 +89,22 @@ const TabletCard = ({ item }) => {
                 alt=""
               />
             </Link>
-          </div>
+          </Images>
 
-          <div className=" product__info__tablet">
-            <h5 className="product__name_tablet">
+          <Info>
+            <h5>
               <Link to={`/shop/${item.id}`}>{item.productName}</Link>
             </h5>
 
             <span>{item.category}</span>
-          </div>
+          </Info>
 
-          <div className="product__tablet__card-bottom  d-flex align-items-center justify-content-between p-2">
-            <span className="price">
+          <Bottom>
+            <span>
               {item.price.toLocaleString("vi-VN")}VND
             </span>
-          </div>
-        </div>
-      </Col>
+      </Bottom>
+      
     </Container>
   );
 };

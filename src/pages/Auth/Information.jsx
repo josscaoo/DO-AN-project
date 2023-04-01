@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FormGroup } from "reactstrap";
-import Helmet from '../../components/Helmet/Helmet';
-
+import Helmet from "../../components/Helmet/Helmet";
+import axios from "axios";
 import "../../styles/information.css";
 import { useDispatch } from "react-redux";
-// import { addToCart } from "../../redux/slices/checkoutSlice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 import { cartActions } from "../../redux/slices/cartSlice";
@@ -18,7 +17,7 @@ const Information = () => {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !email || !phone || !address) {
       toast.error("vui lòng kiểm tra lại và nhập đủ thông tin");
@@ -27,9 +26,17 @@ const Information = () => {
       toast.success("thành công");
       navigate("/checkout");
     }
-    dispatch(cartActions.addCheckout(
-      { name, email, address, phone })
-    );
+
+    const data = { name, email, address, phone };
+
+    try {
+      const response = await axios.post("http://localhost:3001/orders", data);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+
+    dispatch(cartActions.addCheckout(data));
     setName("");
     setEmail("");
     setAddress("");
@@ -96,7 +103,3 @@ const Information = () => {
 };
 
 export default Information;
-
-
-
-

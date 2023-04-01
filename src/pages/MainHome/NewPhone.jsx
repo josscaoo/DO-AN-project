@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import ListPhone from "../../../components/UI/Phone/ListPhone";
-// import products from "../../../assets/data/products";
+import ListPhone from "../../components/UI/Phone/ListPhone";
 import axios from "axios";
 
 const Container = styled.div`
@@ -85,7 +84,7 @@ const Slide = styled.div`
 `;
 
 
-const Popular = () => {
+const NewPhone = () => {
   
   const [samsungProducts, setSamsungProducts] = useState([]);
   const [oppoProducts, setOppoProducts] = useState([]);
@@ -156,4 +155,4 @@ useEffect(() => {
   );
 };
 
-export default Popular;
+export default NewPhone;

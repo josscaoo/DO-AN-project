@@ -1,65 +1,68 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-// import "./sound.css";
-import TabletList from "../../../components/UI/Table/TabletList";
+import { useState } from "react";
+// import products from "../../../assets/data/products";
+import ListSale from "../../components/UI/Sale/ListSale";
 import axios from "axios";
 
 const Container = styled.div`
   width: 100%;
-  height: 23rem;
+  height: 25rem;
   display: flex;
   overflow: hidden;
   padding-top: 10px;
   line-height: 10px;
+
+  @media (max-width: 768px) {
+    margin-top: -8px;
+  }
+  
 `;
 const Main = styled.div`
+  border-radius: 5px;
   background-color: #bd0a0a;
   overflow: hidden;
-  height: 17rem;
-  width: 100%;
+  height: 24rem;
   @media (max-width: 768px) {
     margin-left: 20px;
-    margin-right: 2px;
+    margin-right: 10px;
+    margin-top: -10px;
+    margin-bottom: -10px;
   }
   @media (max-width: 1024px) {
     margin: 5px;
   }
 `;
 const Title = styled.h1`
-  padding-top: 25px;
+  padding-top: 20px;
+  padding-bottom: 10px;
   text-shadow: 2px 2px 5px red;
   color: yellow;
-  font-size: 30px;
+  font-size: 20px;
   text-align: center;
-  .main_sound {
-    width: 100%;
-    height: 2rem;
-    line-height: 10px;
-    display: flex;
-    h3 {
-      padding-left: 1rem;
-      font-weight: 700;
-      font-size: 19px;
-      color: white;
-    }
-  }
-
   @media (max-width: 768px) {
     font-size: 18px;
+    margin-bottom: 10px;
   }
 `;
 
 const Images = styled.div`
   width: 100%;
+  height: 16rem;
+  display: flex;
   position: relative;
-  overflow: hidden;
-  background-color: #ffffff;
+  /* overflow: hidden; */
+  padding-left: 5px;
+
+  @media (max-width: 768px) {
+    margin-top: -13px;
+  }
 `;
 
 const Arrow = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background-color: #cec9c9;
   border-radius: 50%;
   display: flex;
@@ -68,9 +71,8 @@ const Arrow = styled.div`
   position: absolute;
   top: 0;
   bottom: 0;
-  left: ${(props) => props.direction === "left" && "20px"};
-  right: ${(props) => props.direction === "right" && "20px"};
-
+  left: ${(props) => props.direction === "left" && "10px"};
+  right: ${(props) => props.direction === "right" && "10px"};
   margin: auto;
   cursor: pointer;
   opacity: 0.5;
@@ -78,46 +80,51 @@ const Arrow = styled.div`
 `;
 
 const Wrapper = styled.div`
-  height: 100%;
+  height: 20rem;
   display: flex;
-  transition: all 0.5s ease;
-  transform: translateX(${(props) => props.slideIndex * -11.7}vw);
+  transition: all 0.8s ease;
+  transform: translateX(${(props) => props.slideIndex * -14.9}vw);
+  padding: 2px;
 `;
 const Slide = styled.div`
-  width: 125vw;
+  width: 123vw;
   display: flex;
   align-items: center;
 `;
 
-const SoundProduct = () => {
-  const [accessoryProducts, setAccessoryProducts] = useState([]);
+const SaleDays = () => {
+  const [iphoneProducts, setIphoneProducts] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const { data: products } = await axios.get(
         "http://localhost:3001/products"
       );
-      const filteredAccessoryProducts = products.filter(
-        (item) => item.category === "accessory"
+      const filteredIphoneProducts = products.filter(
+        (item) => item.category === "iphone"
       );
-      setAccessoryProducts(filteredAccessoryProducts);
+      setIphoneProducts(filteredIphoneProducts);
     };
+
     fetchData();
   }, []);
+
 
   const [slideIndex, setSlideIndex] = useState(0);
   const handleClick = (direction) => {
     if (direction === "left") {
-      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 3);
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 5);
     } else {
-      setSlideIndex(slideIndex < 3 ? slideIndex + 1 : 0);
+      setSlideIndex(slideIndex < 4 ? slideIndex + 1 : 0);
     }
   };
 
   const [intervalId, setIntervalId] = useState(null);
+
   const handleAutoSlide = () => {
-    setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+    setSlideIndex(slideIndex < 4 ? slideIndex + 1 : 0);
   };
+
   useEffect(() => {
     const id = setInterval(() => {
       handleAutoSlide();
@@ -130,11 +137,7 @@ const SoundProduct = () => {
   return (
     <Container>
       <Main>
-        <Title>
-          <div className="main_sound">
-            <h3>Điện thoại khác</h3>
-          </div>
-        </Title>
+        <Title>SĂN SALE GIÁ SỐC MỖI NGÀY</Title>
 
         <Images>
           <Arrow direction="left" onClick={() => handleClick("left")}>
@@ -143,7 +146,7 @@ const SoundProduct = () => {
 
           <Wrapper slideIndex={slideIndex}>
             <Slide>
-              <TabletList data={accessoryProducts} />
+              <ListSale data={iphoneProducts} />
             </Slide>
           </Wrapper>
 
@@ -156,4 +159,4 @@ const SoundProduct = () => {
   );
 };
 
-export default SoundProduct;
+export default SaleDays;

@@ -5,14 +5,14 @@ import "../styles/home.css";
 
 
 import PromotionTop from './HeaderHome/Promotion/PromotionTop';
-import SaleDays from './MainHome/SaleDays/SaleDays';
 import sale from "../assets/images/anhsale-08.webp";
-import Service from "./MainHome/Service/Service";
-import Popular from "./MainHome/Popular/Popular";
-import Advertise from "./MainHome/Advertise/Advertise";
-import SoundProduct from "./MainHome/Sound/SoundProduct";
-import MainProduct from './MainHome/HeaderMenu/MainProduct';
 import Navar from './HeaderHome/Navar/Navar';
+import SaleDays from './MainHome/SaleDays';
+import OtherPhone from './MainHome/OtherPhone';
+import Trademark from './MainHome/Trademark';
+import NewPhone from './MainHome/NewPhone';
+import GoodPhone from './MainHome/GoodPhone';
+import Service from './MainHome/Service';
 
 const Home = () => {
 
@@ -22,16 +22,17 @@ const Home = () => {
       <div className='home__pages'>
         <Navar/>
         <PromotionTop />
-        <SaleDays />
+        <SaleDays/>
         <div className="img__sale">
           <img src={sale} alt="img" />
         </div>
+        <NewPhone />
+        <Trademark/>
+        <Service/>
+        <GoodPhone />
+        <OtherPhone />
 
-        <Service />
-        <Popular />
-        <Advertise />
-        <MainProduct />
-        <SoundProduct />
+
       </div>
     </Helmet>
   );

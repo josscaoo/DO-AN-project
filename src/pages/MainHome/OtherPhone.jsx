@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import TabletList from "../../../components/UI/Table/TabletList";
+
+import TabletList from "../../components/UI/Table/TabletList";
 import axios from "axios";
 
 const Container = styled.div`
+margin-top: -20px;
   width: 100%;
   height: 19rem;
   display: flex;
@@ -30,18 +32,23 @@ const Main = styled.div`
   }
 `;
 const Title = styled.h1`
-  width: 100%;
-  height: 2.8rem;
-  line-height: 30px;
-  display: flex;
-  .left__product {
-    padding-left: 1rem;
-    font-weight: 700;
-    font-size: 19px;
-    color: white;
-    @media (max-width: 768px) {
-      font-size: 15px;
+  padding-top: 15px;
+  font-size: 30px;
+  .main_sound {
+    width: 100%;
+    height: 2rem;
+    line-height: 10px;
+    display: flex;
+    h3 {
+      padding-left: 1rem;
+      font-weight: 700;
+      font-size: 19px;
+      color: white;
     }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 18px;
   }
 `;
 
@@ -84,23 +91,18 @@ const Slide = styled.div`
   align-items: center;
 `;
 
-const MainProduct = () => {
-  const [trendingProducts, setTrendingProducts] = useState([]);
-  const [mobileProducts, setMobileProducts] = useState([]);
+const OtherPhone = () => {
+  const [accessoryProducts, setAccessoryProducts] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const { data: products } = await axios.get(
         "http://localhost:3001/products"
       );
-      const filteredTrendingProducts = products.filter(
-        (item) => item.category === "samsung"
+      const filteredAccessoryProducts = products.filter(
+        (item) => item.category === "accessory"
       );
-      const filteredMobileProducts = products.filter(
-        (item) => item.category === "oppo"
-      );
-      setTrendingProducts(filteredTrendingProducts);
-      setMobileProducts(filteredMobileProducts);
+      setAccessoryProducts(filteredAccessoryProducts);
     };
     fetchData();
   }, []);
@@ -108,7 +110,7 @@ const MainProduct = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const handleClick = (direction) => {
     if (direction === "left") {
-      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 4);
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 3);
     } else {
       setSlideIndex(slideIndex < 3 ? slideIndex + 1 : 0);
     }
@@ -116,12 +118,12 @@ const MainProduct = () => {
 
   const [intervalId, setIntervalId] = useState(null);
   const handleAutoSlide = () => {
-    setSlideIndex(slideIndex < 4 ? slideIndex + 1 : 0);
+    setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
   };
   useEffect(() => {
     const id = setInterval(() => {
       handleAutoSlide();
-    }, 3000);
+    }, 3000); // thay đổi thời gian slide tự chạy tại đây
     setIntervalId(id);
     return () => {
       clearInterval(intervalId);
@@ -131,8 +133,9 @@ const MainProduct = () => {
     <Container>
       <Main>
         <Title>
-            <div className="left__product">Điện thoại tốt</div>
-          
+          <div className="main_sound">
+            <h3>Điện thoại khác</h3>
+          </div>
         </Title>
 
         <Images>
@@ -142,8 +145,7 @@ const MainProduct = () => {
 
           <Wrapper slideIndex={slideIndex}>
             <Slide>
-              <TabletList data={trendingProducts} />
-              <TabletList data={mobileProducts} />
+              <TabletList data={accessoryProducts} />
             </Slide>
           </Wrapper>
 
@@ -156,4 +158,4 @@ const MainProduct = () => {
   );
 };
 
-export default MainProduct;
+export default OtherPhone;

@@ -1,7 +1,7 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "./auth/authSlice";
 import cartSlice from "./slices/cartSlice";
-import thunk from "redux-thunk";
+// import thunk from "redux-thunk";
 
 
 const store = configureStore({
@@ -9,7 +9,7 @@ const store = configureStore({
     cart: cartSlice,
     auth: authSlice,
   },
-  middleware: [...getDefaultMiddleware(), thunk],
+  // middleware: [...getDefaultMiddleware(), thunk],
 });
 
 export default store;

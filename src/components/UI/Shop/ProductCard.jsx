@@ -1,35 +1,47 @@
 import React from "react";
-
 import { motion } from "framer-motion";
 import "../../../styles/product-card.css";
 import { Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../redux/slices/cartSlice";
+import axios from "axios";
 
 const ProductCard = ({ item }) => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
+  // Gửi một HTTP POST request đến JSON server khi người dùng thêm sản phẩm vào giỏ hàng
   const addToCart = () => {
-    dispatch(
-      cartActions.addItem({
-        id: item.id,
-        productName: item.productName,
-        price: item.price,
-        imgUrl: item.imgUrl,
-      })
-    );
-
-    toast.success("Đã thêm sản phẩm");
-  };
-    const addLogin = () => {
-      toast.error("Bạn Cần Đăng Nhập Để Mua Hàng");
+    // Lấy thông tin sản phẩm
+    const newItem = {
+      id: item.id,
+      productName: item.productName,
+      price: item.price,
+      imgUrl: item.imgUrl,
     };
 
+    // Thêm sản phẩm vào giỏ hàng trên Redux store
+    dispatch(cartActions.addItem(newItem));
 
+    // Gửi thông tin sản phẩm lên server
+    axios
+      .post("http://localhost:3001/cartItems", newItem)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    // Hiển thị thông báo
+    toast.success("Đã thêm sản phẩm");
+  };
+
+  const addLogin = () => {
+    toast.error("Bạn Cần Đăng Nhập Để Mua Hàng");
+  };
 
   return (
     <Col lg="3" md="4" className=" mb-2">
