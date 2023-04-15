@@ -1,46 +1,76 @@
 import { logout } from "../../redux/auth/authSlice";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 
-import logo from '../../assets/images/logo-01.png';
-import { useDispatch, useSelector } from 'react-redux';
-import Banner from '../Banner/Banner';
-import { Actions, Auth, Badge, Cart, Container, Hyper, Icons, Login, Logo, Main, Mobile, Navigation, Register } from './Style';
+import logo from "../../assets/images/logo-01.png";
+import { useDispatch, useSelector } from "react-redux";
+import Banner from "../Banner/Banner";
+import axios from "axios";
 
-
-
-
+import {
+  Actions,
+  Auth,
+  Badge,
+  Cart,
+  Container,
+  Hyper,
+  Icons,
+  Login,
+  Logo,
+  Main,
+  Mobile,
+  Name,
+  Navigation,
+  Register,
+} from "./Style";
+import { cartActions } from "../../redux/slices/cartSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const totalQuantity = useSelector(state => state.cart.totalQuantity);
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  useEffect(() => {
+    axios
+      .get(
+        "http://localhost:3001/cartItems?user_id=" +
+          localStorage.getItem("user_id")
+      )
+      .then((res) => {
+        dispatch(cartActions.setItem(res.data));
+      });
+  }, []);
+
 
   const navigate = useNavigate();
 
-    const navigateToShop = () => {
-      navigate("/shop");
-    };
+  const navigateToShop = () => {
+    navigate("/shop");
+  };
 
   const navigateToCart = () => {
-    navigate('/cart');
+    navigate("/cart");
   };
   const navigateToHome = () => {
     navigate("/");
   };
+    const navigateToUser = () => {
+      navigate("/user");
+    };
 
   function handleClick() {
     dispatch(logout());
   }
 
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-    const toggleMenu = () => {
-      setIsOpen(!isOpen);
-    };
-  
-    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-    
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+    const name = useSelector((state) => state.auth.name);
+
+
   return (
     <Container>
       <Banner />
@@ -63,15 +93,17 @@ const Header = () => {
           <Actions>
             {isLoggedIn ? (
               <div>
-                <div>
+                <Name className="d-flex">
+                  <h4 onClick={navigateToUser}>{name}</h4>
                   <i class="ri-user-3-fill" onClick={toggleMenu}></i>
-                  {isOpen && (
-                    <ul className="menu__user-list">
-                      <li onClick={handleClick}>Đăng Xuất</li>
-                      <li>Trang cá nhân</li>
-                    </ul>
-                  )}
-                </div>
+                </Name>
+
+                {isOpen && (
+                  <ul className="menu__user-list">
+                    <li onClick={handleClick}>Đăng Xuất</li>
+                    <li onClick={navigateToUser}>Trang cá nhân</li>
+                  </ul>
+                )}
               </div>
             ) : (
               <Auth>
@@ -100,6 +132,6 @@ const Header = () => {
       </Main>
     </Container>
   );
-}
+};
 
-export default Header
+export default Header;

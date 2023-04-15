@@ -1,0 +1,46 @@
+.ant-btn-primary {
+  background-color: #da0206;
+  
+}
+.ant-modal-footer {
+  width: 250px;
+  height: 40px;
+  margin-top: 20px;
+  
+}
+.ant-modal-content {
+  height: 150px;
+  width: 400px;
+
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+  padding-top: 10px;
+
+}
+.ant-modal-close{
+  flex: none;
+
+}
+.ant-modal-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 10px;
+  margin-bottom: 40px;
+}
+.ant-btn-default {
+  background-color: red;
+  border-color: red;
+  color: white;
+    margin: auto;
+    
+    
+}
+
+.ant-btn-default:hover, .ant-btn-default:focus {
+  background-color: white;
+  color: black;
+
+}

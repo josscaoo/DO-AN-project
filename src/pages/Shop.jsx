@@ -4,7 +4,66 @@ import axios from "axios";
 
 import Helmet from "../components/Helmet/Helmet";
 import ProductLists from "../components/UI/Shop/ProductsList";
-import "../styles/shop.css";
+import styled from "styled-components";
+
+const Main = styled.div`
+    margin-top: 30px;
+`;
+const Body = styled.div`
+    padding: 5rem;
+    display: flex;
+`;
+const Filter = styled.div`
+ @media (max-width: 768px) {
+    margin-bottom: 30px;
+  }
+   @media (max-width: 1024px) {
+        margin-bottom: 30px;
+
+  }
+select{
+    padding: 10px 20px;
+    border: 1px solid rgba(156, 156, 35, 0.875);
+    cursor: pointer;
+    border-radius: 5px ;
+    background: rgb(185, 7, 7);
+    color: #fff;
+     @media (max-width: 768px) {
+    padding: 7px 20px;
+    font-size: 0.9rem;
+  }
+   @media (max-width: 1024px) {
+        padding: 7px 20px;
+    font-size: 0.9rem;
+  }
+}
+select:focus {
+    outline: none !important;
+}
+select option {
+    font-size: 0.9rem;
+    color: white;
+}
+`;
+const Search = styled.div`
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 8px 10px;
+    }
+    span {
+    color: white;
+}
+`;
+
 
 const Shop = () => {
   const [allProducts, setAllProducts] = useState([]);
@@ -44,12 +103,12 @@ const Shop = () => {
 
   return (
     <Helmet title="Shop">
-      <div className="main__shop">
-        <div className="body__shop">
+      <Main>
+        <Body>
           <Container>
             <Row>
-              <Col lg="3" md="6">
-                <div className="filter__widget">
+              <Col lg="6" md="6">
+                <Filter>
                   <select onChange={handleFilter}>
                     <option value="all">Tất cả sản phẩm</option>
                     <option value="iphone">Iphone</option>
@@ -58,23 +117,20 @@ const Shop = () => {
                     <option value="vivo">Vivo</option>
                     <option value="realme">Realme</option>
                   </select>
-                </div>
-              </Col>
-              <Col lg="3" md="6" className="text-end">
-                <div className="filter__widget"></div>
+                </Filter>
               </Col>
               <Col lg="6" md="12">
-                <div className="search__box">
+                <Search>
                   <input
                     type="text"
                     placeholder="Tìm kiếm sản phẩm"
                     onChange={handleSearch}
                   />
-                </div>
+                </Search>
               </Col>
             </Row>
           </Container>
-        </div>
+        </Body>
         <div className="pt-0">
           <Container>
             <Row>
@@ -88,7 +144,7 @@ const Shop = () => {
             </Row>
           </Container>
         </div>
-      </div>
+      </Main>
     </Helmet>
   );
 };

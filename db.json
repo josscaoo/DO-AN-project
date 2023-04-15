@@ -1,46 +1,44 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "John Doe",
-      "email": "johndoe@gmail.com",
-      "password": "123456"
-    },
-    {
-      "email": "baba@gmail.com",
-      "password": "123456",
-      "name": "baba",
-      "id": 2
-    },
-    {
-      "email": "kieuvl@gmail.com",
-      "password": "123654",
-      "name": "kieu",
-      "id": 3
-    },
-    {
-      "email": "kieuvl@gmail.com",
-      "password": "aaa",
-      "name": "kieu",
+      "email": "anh@gmail.com",
+      "password": "123",
+      "name": "Hiền Cao",
+      "phone": "0355333173",
+      "address": "Nam Đông Huế",
       "id": 4
     },
     {
-      "email": "hienhien@gmail.com",
-      "password": "123654",
-      "name": "hien",
+      "email": "xuanhien@gmail.com",
+      "password": "123",
+      "name": "Xuân Hiền",
+      "phone": "0355333173",
+      "address": "Nam Đông - Huế",
       "id": 5
     },
     {
-      "email": "hienhien@gmail.com",
-      "password": "123652",
-      "name": "hien",
+      "email": "hien@gmail.com",
+      "password": "123",
+      "name": "kieu",
+      "phone": "0355333173",
+      "address": "da nang",
       "id": 6
     },
     {
       "email": "sa@gmail.com",
-      "password": "123456",
-      "name": "hienn",
+      "password": "123",
+      "name": "abel",
+      "phone": "0123555667",
+      "address": "da nang",
       "id": 7
+    },
+    {
+      "email": "hienxuan@gmail.com",
+      "password": "123",
+      "name": "cao hien",
+      "phone": "01687818348",
+      "address": "huế",
+      "id": 8
     }
   ],
   "products": [
@@ -51,7 +49,14 @@
       "category": "iphone",
       "price": 2990000,
       "shortDesc": "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iphone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
-      "description": "iphone 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iphone 14 Pro Max"
+      "description": "iphone 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iphone 14 Pro Max",
+      "reviews": [
+        {
+          "id": 1,
+          "user": "xuan hien",
+          "content": "aaaaaaa"
+        }
+      ]
     },
     {
       "id": 2,
@@ -60,7 +65,14 @@
       "category": "iphone",
       "price": 2990000,
       "shortDesc": "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iphone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
-      "description": "iphone 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iphone 14 Pro Max"
+      "description": "iphone 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iphone 14 Pro Max",
+      "reviews": [
+        {
+          "id": 1,
+          "user": "xuan hien",
+          "content": "aaaaaaa"
+        }
+      ]
     },
     {
       "id": 3,
@@ -456,136 +468,140 @@
       "img": "https://cdn.didongviet.vn/pub/media/mageplaza/bannerslider/banner/image/z/4/z4211636090670_6bd1525e42527e852018c3ceeec9be10.jpg"
     }
   ],
-  "productsCart": [
-    {
-      "id": 3,
-      "productName": "iPhone 11 Pro Max 64G trắng",
-      "price": 2990000,
-      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//i/p/iphone-14-128gb-didongviet_1.jpg",
-      "quantity": 1
-    },
-    {
-      "id": 2,
-      "productName": "iPhone 11 Pro Max 128GB xanh ",
-      "price": 2990000,
-      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//i/p/iphone-14-128gb-didongviet_1.jpg"
-    },
-    {
-      "id": 4,
-      "productName": "iPhone 14 Pro Max 128GB Tím ",
-      "price": 2990000,
-      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//i/p/iphone-11-128gb-chinh-hang_2.jpg"
-    },
+  "cartProducts": [
     {
       "id": 6,
       "productName": "iPhone 14 Pro Max 128GB Tím ",
+      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//i/p/iphone-13-pro-max-128gb-didongviet_2_1.jpg",
       "price": 2990000,
-      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//i/p/iphone-13-pro-max-128gb-didongviet_2_1.jpg"
+      "quantity": 5,
+      "totalPrice": 14950000
     },
     {
-      "id": 5,
-      "productName": "iPhone 13 Pro Max 128GB Hồng ",
-      "price": 2990000,
-      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//i/p/iphone-13-512gb-didongviet.jpg"
-    },
-    {
-      "id": 10,
-      "productName": "iPhone 14 Pro Max 128GB Xanh ",
-      "price": 2990000,
-      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//i/p/iphone-13-128gb-didongviet_1.jpg"
-    },
-    {
-      "id": 28,
-      "productName": "iPhone 14 Pro Max 128GB Trắng ",
-      "price": 2990000,
-      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//i/p/iphone-11-128gb-chinh-hang_2.jpg"
-    },
-    {
-      "id": 13,
-      "productName": " Samsung Galaxy Note 20 ",
-      "price": 28990000,
-      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//s/a/samsung-galaxy-a33-didongviet_1.jpg"
-    },
-    {
-      "id": 14,
-      "productName": " Samsung Galaxy A52 4G 8GB/128GB",
-      "price": 28990000,
-      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//s/a/samsung-galaxy-a23-5g-mau-cam-didongviet.jpg"
-    },
-    {
-      "id": 11,
-      "productName": "Samsung Galaxy S22 Ultra 5G 256GB ĐEN",
-      "price": 28990000,
-      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//s/a/samsung-galaxy-s22-ultra-256gb-didongviet.jpg"
-    },
-    {
-      "id": 12,
-      "productName": "Samsung Galaxy S22 Ultra 5G 256GB TRẮNG",
-      "price": 28990000,
-      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//s/a/samsung-galaxy-a73-didongviet_1.jpg"
+      "id": 21,
+      "productName": "Vivo Y02 2GB-32GB ",
+      "price": 2999000,
+      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//x/i/xiaomi-redmi-note-12-didongviet_1.png",
+      "totalPrice": 2999000
     },
     {
       "id": 1,
       "productName": "iPhone 14 Pro Max 128GB Vàng ",
+      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//i/p/iphone-13-pro-128gb-didongviet_1.jpg",
       "price": 2990000,
-      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//i/p/iphone-13-pro-128gb-didongviet_1.jpg"
+      "quantity": 3,
+      "totalPrice": 8970000
+    },
+    {
+      "id": 17,
+      "productName": "OPPO A17 64GB Chính Hãng",
+      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//o/p/oppo-a57-128gb-didongviet.jpg",
+      "price": 5999000,
+      "quantity": 1,
+      "totalPrice": 5999000
+    },
+    {
+      "id": 19,
+      "productName": "ĐIỆN THOẠI OPPO A16K 4GB 64GB",
+      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//o/p/oppo-reno8-z-256gb-5g-didongviet.jpg",
+      "price": 8999000,
+      "quantity": 2,
+      "totalPrice": 17998000
     }
   ],
-  "cart": {
-    "cartItems": [
-      {
-        "id": 1,
-        "productName": "Product 1",
-        "imgUrl": "https://example.com/product1.jpg",
-        "price": 10.99,
-        "quantity": 2,
-        "totalPrice": 21.98
-      },
-      {
-        "id": 2,
-        "productName": "Product 2",
-        "imgUrl": "https://example.com/product2.jpg",
-        "price": 19.99,
-        "quantity": 1,
-        "totalPrice": 19.99
-      }
-    ],
-    "totalAmount": 41.97,
-    "totalQuantity": 3,
-    "reviews": [
-      {
-        "id": 1,
-        "content": "This is a great product!"
-      },
-      {
-        "id": 2,
-        "content": "I love this product!"
-      }
-    ],
-    "checkout": [
-      {
-        "orderId": 1234,
-        "date": "2023-04-01T12:00:00Z",
-        "totalAmount": 41.97,
-        "items": [
-          {
-            "id": 1,
-            "productName": "Product 1",
-            "imgUrl": "https://example.com/product1.jpg",
-            "price": 10.99,
-            "quantity": 2,
-            "totalPrice": 21.98
-          },
-          {
-            "id": 2,
-            "productName": "Product 2",
-            "imgUrl": "https://example.com/product2.jpg",
-            "price": 19.99,
-            "quantity": 1,
-            "totalPrice": 19.99
-          }
-        ]
-      }
-    ]
-  }
+  "cartItems": [
+    {
+      "id": 2,
+      "productName": "iPhone 11 Pro Max 128GB xanh ",
+      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//i/p/iphone-14-128gb-didongviet_1.jpg",
+      "price": 2990000,
+      "quantity": 2,
+      "totalPrice": 5980000
+    },
+    {
+      "id": 4,
+      "productName": "iPhone 14 Pro Max 128GB Tím ",
+      "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//i/p/iphone-11-128gb-chinh-hang_2.jpg",
+      "price": 2990000,
+      "quantity": 1,
+      "totalPrice": 2990000
+    }
+  ],
+  "reviews": [
+    {
+      "id": 40,
+      "name": "Xuân Hiền",
+      "content": "xin chào",
+      "productId": 2
+    },
+    {
+      "id": 41,
+      "name": "Xuân Hiền",
+      "content": "xin chào",
+      "productId": 14
+    },
+    {
+      "id": 42,
+      "name": "Xuân Hiền",
+      "content": "đây là iphone",
+      "productId": 3
+    },
+    {
+      "id": 43,
+      "name": "Xuân Hiền",
+      "content": "đây là sámung",
+      "productId": 12
+    },
+    {
+      "id": 44,
+      "name": "Xuân Hiền",
+      "content": "đây là gif",
+      "productId": 1
+    },
+    {
+      "id": 45,
+      "name": "cao hien",
+      "content": "sản phẩm này tốt không",
+      "productId": 12
+    }
+  ],
+  "oders": [
+    {
+      "selectedUserName": "Xuân Hiền",
+      "selectedItems": [],
+      "selectedTotalAmount": 0,
+      "selectedQuantity": 0,
+      "id": 8
+    },
+    {
+      "selectedUserName": "Xuân Hiền",
+      "selectedItems": [
+        {
+          "id": 21,
+          "productName": "Vivo Y02 2GB-32GB ",
+          "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//x/i/xiaomi-redmi-note-12-didongviet_1.png",
+          "price": 2999000,
+          "quantity": 1,
+          "totalPrice": 2999000
+        }
+      ],
+      "selectedTotalAmount": 2999000,
+      "selectedQuantity": 1,
+      "id": 9
+    },
+    {
+      "selectedUserName": "",
+      "selectedItems": [],
+      "selectedTotalAmount": 0,
+      "selectedQuantity": 0,
+      "id": 10
+    },
+    {
+      "selectedUserName": "kieu",
+      "selectedItems": [],
+      "selectedTotalAmount": 0,
+      "selectedQuantity": 0,
+      "id": 11
+    }
+  ]
 }

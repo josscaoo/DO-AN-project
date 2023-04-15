@@ -37,10 +37,28 @@ const Main = styled.div`
       font-weight: 600;
     }
   }
-  form{
-    .error{
+  form {
+    .error {
       font-weight: 500;
       color: red;
+    }
+    button {
+      background-color: rgb(241, 158, 49);
+      color: black;
+      font-weight: 600;
+      border-radius: 10px;
+      width: 150px;
+      height: 30px;
+      border: 1px;
+      margin-top: 5px;
+      a:hover {
+        background-color: rgb(184, 21, 21);
+        color: white;
+      }
+    }
+    button:hover {
+      background-color: rgb(184, 21, 21);
+      color: white;
     }
   }
 `;
@@ -58,6 +76,8 @@ function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [name, setName] = useState("");
+    const [phone, setPhone] = useState("");
+    const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -69,7 +89,14 @@ function Register() {
     e.preventDefault();
 
     // Kiểm tra các ô input không được để trống
-    if (!email || !password || !confirmPassword || !name) {
+    if (
+      !email ||
+      !password ||
+      !confirmPassword ||
+      !name ||
+      !phone ||
+      !address
+    ) {
       setError("Bạn phải nhập đầy đủ thông tin");
       return;
     }
@@ -88,6 +115,8 @@ function Register() {
             email,
             password,
             name,
+            phone,
+            address,
           });
 
           if (response.status === 201) {
@@ -114,7 +143,7 @@ return (
           <Main>
             <form onSubmit={handleSubmit}>
               {error && <div className="error">{error}</div>}
-              <h2>Register</h2>
+              <h2>Đăng Kí</h2>
               <Input>
                 <input
                   type="email"
@@ -126,7 +155,7 @@ return (
               <Input>
                 <input
                   type="password"
-                  placeholder="Password"
+                  placeholder="Mật khẩu"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -134,7 +163,7 @@ return (
               <Input>
                 <input
                   type="password"
-                  placeholder="Confirm Password"
+                  placeholder="Nhập lại mật khẩu"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
@@ -142,9 +171,25 @@ return (
               <Input>
                 <input
                   type="text"
-                  placeholder="Name"
+                  placeholder="Tên "
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                />
+              </Input>
+              <Input>
+                <input
+                  type="number"
+                  placeholder="Số điện thoại "
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+              </Input>
+              <Input>
+                <input
+                  type="text"
+                  placeholder="Địa chỉ "
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
                 />
               </Input>
 

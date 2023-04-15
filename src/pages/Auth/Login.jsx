@@ -1,26 +1,25 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Helmet from "../../components/Helmet/Helmet";
 import { authenticate } from "../../redux/auth/authSlice";
-
 
 const Container = styled.div`
   margin: auto;
   text-align: center;
   margin-top: 150px;
+  flex: 1;
 `;
 const Main = styled.div`
   background-color: #c5c4c4b2;
   padding: 40px;
-  border-radius: 5px;
   margin-left: 200px;
   margin-right: 200px;
   button {
     margin-top: 10px;
     border-radius: 10px;
-    background-color: #103b64;
+    background-color: #8eb6db;
     text-align: center;
     font-weight: 500;
     font-size: 18px;
@@ -38,10 +37,28 @@ const Main = styled.div`
       font-weight: 600;
     }
   }
-  form{
-    .error{
+  form {
+    .error {
       font-weight: 600;
       color: red;
+    }
+    button {
+      background-color: rgb(241, 158, 49);
+      color: black;
+      font-weight: 600;
+      border-radius: 10px;
+      width: 150px;
+      height: 30px;
+      border: 1px;
+      margin-top: 5px;
+      a:hover {
+        background-color: rgb(184, 21, 21);
+        color: white;
+      }
+    }
+    button:hover {
+      background-color: rgb(184, 21, 21);
+      color: white;
     }
   }
 `;
@@ -58,16 +75,16 @@ const Input = styled.div`
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const error = useSelector((state) => state.auth.error);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(authenticate(email, password))
-    
+    dispatch(authenticate(email, password));
+    navigate("/");
   };
-    
 
   return (
     <Helmet title="Login">
@@ -96,7 +113,6 @@ function Login() {
               <button type="submit" className="buy__btn auth__btn">
                 Login
               </button>
-              <div><Link to="/">Home</Link></div>
               <p>
                 Tài khoảng không tồn tại?
                 <Link to="/register">Tạo một tài khoảng</Link>
@@ -109,4 +125,3 @@ function Login() {
   );
 }
 export default Login;
-

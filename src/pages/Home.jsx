@@ -1,18 +1,17 @@
 import React from 'react';
-
 import Helmet from '../components/Helmet/Helmet';
-import "../styles/home.css";
 
-
-import PromotionTop from './HeaderHome/Promotion/PromotionTop';
+import PromotionTop from './HeaderHome/PromotionTop';
 import sale from "../assets/images/anhsale-08.webp";
-import Navar from './HeaderHome/Navar/Navar';
-import SaleDays from './MainHome/SaleDays';
-import OtherPhone from './MainHome/OtherPhone';
-import Trademark from './MainHome/Trademark';
-import NewPhone from './MainHome/NewPhone';
-import GoodPhone from './MainHome/GoodPhone';
-import Service from './MainHome/Service';
+import Navar from './HeaderHome/Navar';
+import SaleDays from './ListProducts/SaleDays';
+import OtherPhone from './ListProducts/OtherPhone';
+import Trademark from './ListProducts/Trademark';
+import NewPhone from './ListProducts/NewPhone';
+import GoodPhone from './ListProducts/GoodPhone';
+import Service from './ListProducts/Service';
+
+
 
 const Home = () => {
 

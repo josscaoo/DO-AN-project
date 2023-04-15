@@ -1,6 +1,79 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import{Container, ListMenu, ListOther, ListPhone} from './Style'
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  margin: auto;
+  width: 50%;
+  height: 35px;
+`;
+
+const ListMenu = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  display: flex;
+  padding-bottom: 10px;
+  li {
+    display: flex;
+    padding: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    padding-bottom: 7px;
+  }
+  li:hover {
+    color: red;
+  }
+  li:last-child {
+    border-bottom: none;
+  }
+`;
+
+const ListOther = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 160px;
+  display: flex;
+  padding-bottom: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  li {
+    padding-bottom: 7px;
+  }
+  li:hover {
+    color: red;
+  }
+`;
+
+const ListPhone = styled.div`
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 50%;
+  text-align: center;
+  span {
+    font-weight: 600;
+  }
+`;
+
 
 const Navar = () => {
     const [showIphone, setShowIphone] = useState(false);
@@ -24,10 +97,10 @@ const Navar = () => {
     const navigate = useNavigate();
 
     const navigateToIphone14MV = () => {
-      navigate("/shop/6");
+      navigate("/shop/1");
     };
     const navigateToIphone14T = () => {
-      navigate("/shop/5");
+      navigate("/shop/6");
     };
     const navigateToIphone13T = () => {
       navigate("/shop/3");
@@ -42,49 +115,49 @@ const Navar = () => {
       navigate("/shop/7");
     };
     const navigateToIphone13H = () => {
-      navigate("/shop/18");
+      navigate("/shop/5");
     };
 
     const navigateToSamSung1 = () => {
-      navigate("/shop/27");
+      navigate("/shop/11");
     };
     const navigateToSamSung2 = () => {
-      navigate("/shop/8");
+      navigate("/shop/12");
     };
     const navigateToSamSung3 = () => {
-      navigate("/shop/9");
+      navigate("/shop/13");
     };
     const navigateToSamSung4 = () => {
-      navigate("/shop/1");
+      navigate("/shop/14");
     };
 
     const navigateToOppo1 = () => {
-      navigate("/shop/25");
+      navigate("/shop/15");
     };
     const navigateToOppo2 = () => {
-      navigate("/shop/11");
+      navigate("/shop/16");
     };
     const navigateToOppo4 = () => {
-      navigate("/shop/13");
+      navigate("/shop/17");
     };
     const navigateToOppo5 = () => {
-      navigate("/shop/14");
+      navigate("/shop/18");
     };
     const navigateToOppo6 = () => {
-      navigate("/shop/15");
+      navigate("/shop/19");
     };
 
      const navigateToOther1 = () => {
-       navigate("/shop/16");
+       navigate("/shop/21");
      };
      const navigateToOther2 = () => {
-       navigate("/shop/17");
+       navigate("/shop/22");
      };
      const navigateToOther4 = () => {
-       navigate("/shop/19");
+       navigate("/shop/23");
      };
      const navigateToOther5 = () => {
-       navigate("/shop/2");
+       navigate("/shop/24");
      };
 
     return (

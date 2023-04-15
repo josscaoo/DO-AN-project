@@ -7,7 +7,7 @@ export const Container = styled.div`
   overflow-x: hidden;
   @media (max-width: 1024px) {
     width: 100%;
-    height: 70px;
+    height: 100px;
     line-height: 60px;
   }
 `;
@@ -18,8 +18,12 @@ export const Main = styled.div`
   display: flex;
   padding-top: 5px;
   @media (max-width: 1024px) {
-    height: 100px;
+    display: flex;
+
+    border-top: none;
+    height: 80px;
     padding-right: 20px;
+    padding-bottom: 10px;
   }
 `;
 export const Logo = styled.div`
@@ -28,6 +32,11 @@ export const Logo = styled.div`
   column-gap: 10px;
   width: 435px;
   padding-left: 150px;
+  @media (max-width: 1024px) {
+    width: 300px;
+    padding-left: 15px;
+    padding-right: 30px;
+  }
   img {
     width: 3rem;
     height: 3rem;
@@ -38,13 +47,13 @@ export const Logo = styled.div`
       height: 1rem;
     }
   }
+
   h1 {
     font-size: 1.5rem;
     font-weight: 700;
     color: #fff;
     cursor: pointer;
   }
-
 `;
 export const Navigation = styled.div`
 display: flex;
@@ -60,8 +69,11 @@ export const Hyper = styled.ul`
   font-size: 17px;
   font-weight: 500;
   flex: 1;
+  @media (max-width: 1024px) {
+    font-size: 15px;
+  }
   cursor: pointer;
-  :hover{
+  :hover {
     color: #fff;
     font-weight: 600;
   }
@@ -86,6 +98,7 @@ export const Icons = styled.div`
     font-size: 5px;
     padding-left: 0;
     display: flex;
+    margin-right: 0;
   }
   i {
     font-size: 2.4rem;
@@ -116,6 +129,14 @@ export const Actions = styled.div`
   }
   .menu__user-list li:hover {
     font-weight: 500;
+  }
+`;
+export const Name = styled.div`
+  h4 {
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 13px;
+    color: white;
   }
 `;
 export const Auth = styled.div`

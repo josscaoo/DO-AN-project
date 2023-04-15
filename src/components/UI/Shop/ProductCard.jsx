@@ -1,22 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import "../../../styles/product-card.css";
 import { Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../redux/slices/cartSlice";
 import axios from "axios";
+import { Button, Container, Images, Info } from "./Style";
+import { Modal } from "antd";
+
 
 const ProductCard = ({ item }) => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+    const [open, setOpen] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+
+      const showModal = () => {
+        setOpen(true);
+  };
+    const handleCancel = () => {
+      console.log("xoá");
+      setOpen(false);
+    };
 
   // Gửi một HTTP POST request đến JSON server khi người dùng thêm sản phẩm vào giỏ hàng
   const addToCart = () => {
     // Lấy thông tin sản phẩm
     const newItem = {
       id: item.id,
+      // user_id: Number(localStorage.getItem("user_id")),
       productName: item.productName,
       price: item.price,
       imgUrl: item.imgUrl,
@@ -37,6 +50,11 @@ const ProductCard = ({ item }) => {
 
     // Hiển thị thông báo
     toast.success("Đã thêm sản phẩm");
+    setConfirmLoading(true);
+    setTimeout(() => {
+      setOpen(false);
+      setConfirmLoading(false);
+    }, 100);
   };
 
   const addLogin = () => {
@@ -45,25 +63,44 @@ const ProductCard = ({ item }) => {
 
   return (
     <Col lg="3" md="4" className=" mb-2">
-      <div className="product__item">
-        <div className="product__img">
+      <Container>
+        <Images>
           <Link to={`/shop/${item.id}`}>
             <motion.img whileHover={{ scale: 1.1 }} src={item.imgUrl} alt="" />
           </Link>
-        </div>
-        <div className="p-2 product__info">
+        </Images>
+
+        <Info>
           <h3 className="product__name">
             <Link to={`/shop/${item.id}`}>{item.productName}</Link>
           </h3>
           <span>{item.category}</span>
-        </div>
-        <div className="product__card-bottom d-flex align-items-center justify-content-between p-2">
-          <span className="price">{item.price.toLocaleString("vi-VN")}VND</span>
+        </Info>
+
+        <Button>
+          <h4>{item.price.toLocaleString("vi-VN")}VND</h4>
 
           {isLoggedIn ? (
-            <motion.span whileTap={{ scale: 1.2 }} onClick={addToCart}>
-              <i class="ri-shopping-cart-line"></i>
-            </motion.span>
+            <div>
+              <span
+                whileTap={{ scale: 1.2 }}
+                className="buy__btn"
+                type="primary"
+                onClick={showModal}
+              >
+                <i class="ri-shopping-cart-line"></i>
+              </span>
+              <Modal
+                open={open}
+                onOk={addToCart}
+                confirmLoading={confirmLoading}
+                onCancel={handleCancel}
+                okText="Đồng ý"
+                cancelText="Trở về"
+              >
+                <h5>Thêm vào giỏ hàng</h5>
+              </Modal>
+            </div>
           ) : (
             <div>
               <motion.span whileTap={{ scale: 1.2 }} onClick={addLogin}>
@@ -71,8 +108,8 @@ const ProductCard = ({ item }) => {
               </motion.span>
             </div>
           )}
-        </div>
-      </div>
+        </Button>
+      </Container>
     </Col>
   );
 };
