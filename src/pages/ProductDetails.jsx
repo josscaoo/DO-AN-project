@@ -324,7 +324,10 @@ const toggleMenu = (id) => {
                                           onOk={handleOkEdit}
                                           onCancel={handleCancelEdit}
                                           footer={null}
-                                          style={{ marginTop: "150px" }} // Đặt margin-bottom là 50px
+                                          style={{
+                                            marginTop: "150px",
+                                            height: "100px",
+                                          }} // Đặt margin-bottom là 50px
                                         >
                                           <form
                                             onSubmit={(event) => {
@@ -338,13 +341,20 @@ const toggleMenu = (id) => {
                                               setIsModalOpen(false);
                                             }}
                                           >
-                                            <input
-                                              type="text"
-                                              name="content"
-                                              defaultValue={review.content}
-                                            />
-                                            <br />
-                                            <button type="submit">Lưu</button>
+                                            <FormGroup>
+                                              <textarea
+                                                type="text"
+                                                name="content"
+                                                defaultValue={review.content}
+                                              />
+                                              <motion.button
+                                                className="buy__btn "
+                                                whileTap={{ scale: 1.2 }}
+                                                type="submit"
+                                              >
+                                                Lưu
+                                              </motion.button>
+                                            </FormGroup>
                                           </form>
                                         </Modal>
 
@@ -394,8 +404,8 @@ const toggleMenu = (id) => {
                                 whileTap={{ scale: 1.2 }}
                                 onClick={handleButtonClick}
                               >
-                                  {/* {editing ? "Lưu" : "Đánh giá"} */}
-                                  Đánh giá
+                                {/* {editing ? "Lưu" : "Đánh giá"} */}
+                                Đánh giá
                               </motion.button>
                             </form>
                           </ReviewForm>

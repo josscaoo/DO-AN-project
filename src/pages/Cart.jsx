@@ -82,6 +82,9 @@ const Cart = () => {
   const addLogin = () => {
     toast.error("Bạn Cần Đăng Nhập Để Mua Hàng");
   };
+    const addPurchase = () => {
+      toast.error("Bạn Cần Chọn Sản Phẩm");
+    };
 
   const [selectedItems, setSelectedItems] = useState([]);
   const [selectedTotalAmount, setSelectedTotalAmount] = useState(0);
@@ -109,7 +112,7 @@ const Cart = () => {
     };
 
     axios
-      .post("http://localhost:3001/oders", jsonData)
+      .post("http://localhost:3001/orders", jsonData)
       .then((response) => {
         console.log(response.data);
       })
@@ -135,6 +138,8 @@ const Cart = () => {
       );
     }
   };
+    const isAllSelected = selectedItems.length === cartItems.length;
+
 
   
 
@@ -154,8 +159,8 @@ const Cart = () => {
                     <tr>
                       <th>
                         <input
+                          checked={isAllSelected}
                           type="checkbox"
-                          checked={selectedItems.length === cartItems.length}
                           onChange={handleCheckboxChange}
                           style={{ cursor: "pointer" }}
                         />
@@ -196,9 +201,15 @@ const Cart = () => {
               <ButtonCart>
                 {isLoggedIn ? (
                   <div>
-                    <button className="buy__btn w-100 ">
-                      <Link to="/checkout">Thanh Toán</Link>
-                    </button>
+                    {selectedItems.length > 0 ? (
+                      <button className="buy__btn w-100 ">
+                        <Link to="/checkout">Thanh Toán</Link>
+                      </button>
+                    ) : (
+                      <button className="buy__btn w-100 " disabled>
+                        <Link onClick={addPurchase}>Thanh Toán</Link>
+                      </button>
+                    )}
                   </div>
                 ) : (
                   <div>

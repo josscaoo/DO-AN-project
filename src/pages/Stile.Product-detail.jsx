@@ -165,6 +165,24 @@ export const FormGroup = styled.div`
   input:focus {
     outline: none;
   }
+  button {
+    background-color: rgb(241, 158, 49);
+    color: black;
+    font-weight: 600;
+    border-radius: 10px;
+    width: 100px;
+    height: 25px;
+    border: 1px;
+
+    a:hover {
+      background-color: rgb(184, 21, 21);
+      color: white;
+    }
+  }
+  button:hover {
+    background-color: rgb(184, 21, 21);
+    color: white;
+  }
 `;
 
 export const Related = styled.section`

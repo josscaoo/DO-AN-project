@@ -28,7 +28,8 @@ import { cartActions } from "../../redux/slices/cartSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  // const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  
   useEffect(() => {
     axios
       .get(
@@ -39,6 +40,26 @@ const Header = () => {
         dispatch(cartActions.setItem(res.data));
       });
   }, []);
+
+   const [totalQuantity, setTotalQuantity] = useState(0);
+
+   useEffect(() => {
+     axios
+       .get("http://localhost:3001/cartItems")
+       .then((response) => {
+         let total = 0;
+         response.data.forEach((product) => {
+           if (product.quantity) {
+             total += product.quantity;
+           }
+         });
+         setTotalQuantity(total);
+       })
+       .catch((error) => {
+         console.log(error);
+       });
+   }, []);
+
 
 
   const navigate = useNavigate();

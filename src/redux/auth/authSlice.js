@@ -72,6 +72,7 @@ export const authSlice = createSlice({
     setAddress: (state, action) => {
       state.address = action.payload;
     },
+    
   },
 });
 

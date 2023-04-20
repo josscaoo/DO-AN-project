@@ -49,7 +49,9 @@ const ProductCard = ({ item }) => {
       });
 
     // Hiển thị thông báo
-    toast.success("Đã thêm sản phẩm");
+    toast.success("Đã thêm sản phẩm", {
+      position: "top-center",
+    });
     setConfirmLoading(true);
     setTimeout(() => {
       setOpen(false);

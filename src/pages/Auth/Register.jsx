@@ -5,208 +5,199 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 
-const Container = styled.div`
-  margin: auto;
-  text-align: center;
-  margin-top: 150px;
+const RegisterWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
 `;
-const Main = styled.div`
-  background-color: #c5c4c4b2;
-  padding: 40px;
-  border-radius: 5px;
-  margin-left: 200px;
-  margin-right: 200px;
-  button {
-    margin-top: 10px;
-    border-radius: 10px;
-    background-color: #103b64;
-    text-align: center;
-    font-weight: 500;
-    font-size: 18px;
-    :hover {
-      background-color: #b61515;
-      color: white;
-    }
+
+const Title = styled.h1`
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 50px;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const InputField = styled.input`
+  width: 300px;
+  height: 40px;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+
+  &:focus {
+    border-bottom: 2px solid #333;
   }
-  h5 {
-    font-size: 15px;
-  }
-  p {
-    .link__login:hover {
-      color: #e11c1c;
-      font-weight: 600;
-    }
-  }
-  form {
-    .error {
-      font-weight: 500;
-      color: red;
-    }
-    button {
-      background-color: rgb(241, 158, 49);
-      color: black;
-      font-weight: 600;
-      border-radius: 10px;
-      width: 150px;
-      height: 30px;
-      border: 1px;
-      margin-top: 5px;
-      a:hover {
-        background-color: rgb(184, 21, 21);
-        color: white;
-      }
-    }
-    button:hover {
-      background-color: rgb(184, 21, 21);
-      color: white;
-    }
+  &:invalid {
+    border-bottom: 3px solid #f44336;
   }
 `;
-const Input = styled.div`
-  input {
-    width: 400px;
-    border-radius: 10px;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 23px;
+
+const RegisterButton = styled.button`
+  width: 300px;
+  height: 40px;
+  margin-top: 20px;
+  background-color: #f44336;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #d32f2f;
   }
 `;
-function Register() {
+
+const ErrorMessage = styled.div`
+  color: red;
+  margin-bottom: 20px;
+  
+`;
+
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [name, setName] = useState("");
-    const [phone, setPhone] = useState("");
-    const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
-  // const dispatch = useDispatch();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-  const handleSubmit = async(e) => {
-    e.preventDefault();
+  if (
+    !email ||
+    !password ||
+    !confirmPassword ||
+    !name ||
+    !phone ||
+    !address
+  ) {
+    setError("Bạn phải nhập đầy đủ thông tin");
+    return;
+  }
 
-    // Kiểm tra các ô input không được để trống
-    if (
-      !email ||
-      !password ||
-      !confirmPassword ||
-      !name ||
-      !phone ||
-      !address
-    ) {
-      setError("Bạn phải nhập đầy đủ thông tin");
+  if (password !== confirmPassword) {
+    setError("Mật khẩu không khớp");
+    return;
+  }
+
+  if (password.length < 8) {
+    setError("Mật khẩu phải có ít nhất 8 kí tự");
+    return;
+  }
+    if (name.length < 3) {
+      setError("Tên phải có ít nhất 3  kí tự");
+      return;
+  }
+   if (phone.length < 9) {
+     setError("số điện thoại không đủ");
+     return;
+   }
+
+
+  setLoading(true);
+
+  try {
+    const users = await axios.get("http://localhost:3001/users");
+    const existingUser = users.data.find((user) => user.email === email);
+    if (existingUser) {
+      setError("Email này đã được sử dụng. Vui lòng sử dụng email khác");
       return;
     }
 
-    // Kiểm tra mật khẩu và mật khẩu xác nhận có khớp nhau hay không
-    if (password !== confirmPassword) {
-      setError("Mật khẩu không khớp");
-      return;
+    const response = await axios.post("http://localhost:3001/users", {
+      email,
+      password,
+      name,
+      phone,
+      address,
+    });
+
+    if (response.status === 201) {
+      toast.success("Tài khoản đã được tạo");
+      navigate("/login");
     }
+  } catch (err) {
+    console.error(err);
+    setError("Đăng ký không thành công. Vui lòng thử lại sau");
+  } finally {
+    setLoading(false);
+  }
+};
 
-    setLoading(true);
 
-        try {
-          // Gọi request để đăng ký tài khoản
-          const response = await axios.post("http://localhost:3001/users", {
-            email,
-            password,
-            name,
-            phone,
-            address,
-          });
-
-          if (response.status === 201) {
-            toast.success("Tài khoản đã được tạo");
-            navigate("/login");
-          }
-        } catch (err) {
-          console.error(err);
-          setError("Đăng ký không thành công. Vui lòng thử lại sau");
-        } finally {
-          setLoading(false);
-        }
-  };
-
-return (
+  return (
   <Helmet title="Register">
-    <Container>
-      <div>
-        {loading ? (
-          <div>
-            <h5 className="fw-bold">Loading.......</h5>
-          </div>
-        ) : (
-          <Main>
-            <form onSubmit={handleSubmit}>
-              {error && <div className="error">{error}</div>}
-              <h2>Đăng Kí</h2>
-              <Input>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </Input>
-              <Input>
-                <input
-                  type="password"
-                  placeholder="Mật khẩu"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </Input>
-              <Input>
-                <input
-                  type="password"
-                  placeholder="Nhập lại mật khẩu"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-              </Input>
-              <Input>
-                <input
-                  type="text"
-                  placeholder="Tên "
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </Input>
-              <Input>
-                <input
-                  type="number"
-                  placeholder="Số điện thoại "
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                />
-              </Input>
-              <Input>
-                <input
-                  type="text"
-                  placeholder="Địa chỉ "
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                />
-              </Input>
+    <RegisterWrapper>
+      <Title>Đăng kí tài khoản</Title>
 
-              <button type="submit" className="buy__btn auth__btn">
-                Register
-              </button>
-              <p>
-                bạn đã có tài khoản? <Link to="/login">Đăng nhập</Link>
-              </p>
-            </form>
-          </Main>
-        )}
-      </div>
-    </Container>
-  </Helmet>
-);
-
-}
+      {loading ? (
+        <h5 className="fw-bold">Loading.......</h5>
+      ) : (
+        <Form onSubmit={handleSubmit}>
+          {error && <ErrorMessage>{error}</ErrorMessage>}
+          <InputField
+            type="text"
+            placeholder="Họ và tên"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <InputField
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <InputField
+            type="password"
+            placeholder="Mật khẩu(ít nhất 8 kí tự)"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            
+          />
+          <InputField
+            type="password"
+            placeholder="Xác nhận mật khẩu"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          <InputField
+            type="number"
+            placeholder="Số điện thoại "
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+          <InputField
+            type="text"
+            placeholder="Địa chỉ "
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
+          <RegisterButton type="submit">Đăng kí</RegisterButton>
+          <p>
+            bạn đã có tài khoản? <Link to="/login">Đăng nhập</Link>
+          </p>
+        </Form>
+      )}
+      </RegisterWrapper>
+      </Helmet>
+  );
+};
 
 export default Register;
