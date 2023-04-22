@@ -351,166 +351,108 @@ const Oder = styled.div`
 `;
 
 const Checkout = () => {
-  const name = useSelector((state) => state.auth.name);
-  const address = useSelector((state) => state.auth.address);
-  const phone = useSelector((state) => state.auth.phone);
-  const navigate = useNavigate();
+      const { name, address, phone } = useSelector(state => state.auth);
+      const navigate = useNavigate();
+      const [latestSelectedQuantity, setLatestSelectedQuantity] = useState(0);
+      const [latestSelectedTotalAmount, setLatestSelectedTotalAmount] = useState(0);
+      const [price, setPrice] = useState(0);
+      const [selectedVoucher, setSelectedVoucher] = useState(null);
+      const [selectedTransport, setSelectedTransport] = useState(null);
+      const [selectedDelivery, setSelectedDelivery] = useState("thanh toán khi nhận hàng");
+      const [isQRScanned, setIsQRScanned] = useState(false);
+      const [isModalOpenB, setIsModalOpenB] = useState(false);
+      const [title, setTitle] = useState("");
+      const [content, setContent] = useState("");
 
-  const [latestSelectedQuantity, setLatestSelectedQuantity] = useState(0);
-  const [latestSelectedTotalAmount, setLatestSelectedTotalAmount] = useState(0);
+      const delivery = ["thanh toán khi nhận hàng", "Quét mã QR"];
+      const handleOptionSelectB = (option) => {
+            setSelectedDelivery(option);
+            setIsQRScanned(option === "Quét mã QR");
 
-  const [alo, setAlo] = useState(0);
+        if (option === "Quét mã QR") {
+            showModalB();
+          }
+        };
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3001/orders")
-      .then((response) => {
-        const orders = response.data;
+      const showModalB = () => {
+            setIsModalOpenB(true);
+      };
+
+      const handleOkB = () => {
+            setIsModalOpenB(false);
+      };
+
+      const handleCancelB = () => {
+            setIsModalOpenB(false);
+      };
+
+      const handleDiscountVoucher = (discount) => {
+        if (selectedVoucher === null) {
+          setPrice(price - discount);
+          setSelectedVoucher(discount);
+        }
+        else if (selectedVoucher === discount) {
+          setPrice(price + discount);
+          setSelectedVoucher(null);
+        }
+      };    
+
+    const handleDiscountTransport = (discount) => {
+        if (selectedTransport === null) {
+        setPrice(price + discount);
+        setSelectedTransport(discount);
+        } else if (selectedTransport === discount) {
+        setPrice(price - discount);
+        setSelectedTransport(null);
+        }
+        };
+      
+    let priceLabel = selectedTransport === 27000 ? "Giao Hàng Nhanh" :
+        selectedTransport === 28000 ? "Giao Hàng Tiết Kiệm" :
+        selectedTransport === 30000 ? "Viettel Post" : null;
+      
+    useEffect(() => {
+        axios.get("http://localhost:3001/orders")
+        .then(response => {
+      const orders = response.data;
         orders.sort((a, b) => b.id - a.id);
-        const alo = orders[0]?.selectedTotalAmount || 0;
-        setAlo(alo);
+        setLatestSelectedQuantity(orders[0]?.selectedQuantity || 0);
+        setLatestSelectedTotalAmount(orders[0]?.selectedTotalAmount || 0);
+        setPrice(orders[0]?.selectedTotalAmount || 0);
       })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+        .catch(error => console.error(error));
+    }, [    ]);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3001/orders")
-      .then((response) => {
-        const orders = response.data;
-        orders.sort((a, b) => b.id - a.id);
-        const latestQuantity = orders[0]?.selectedQuantity || 0;
-        setLatestSelectedQuantity(latestQuantity);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-  useEffect(() => {
-    axios
-      .get("http://localhost:3001/orders")
-      .then((response) => {
-        const orders = response.data;
-        orders.sort((a, b) => b.id - a.id);
-        const latestTotalAmount = orders[0]?.selectedTotalAmount || 0;
-        setLatestSelectedTotalAmount(latestTotalAmount);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+    const navigateToUser = () => {
+        navigate("/user");
+        };
+      
+    function handleContentChange(event) {
+              setContent(event.target.value);
+}
 
-  const options = [
-    { name: "Giao Hàng Nhanh", price: 30000 },
-    { name: "Giao Hàng Tiết Kiệm", price: 28000 },
-    { name: "Viettel Post", price: 25000 },
-  ];
-  const [selectedOption, setSelectedOption] = useState(options[0]); // giá trị mặc định là phần tử đầu tiên trong danh sách
+    function handleSubmit(event) {
+       event.preventDefault();
+       console.log(`Title: ${title}\nContent: ${content}`);
+           setTitle("");
+            setContent("");
+        }
 
-  const [price, setPrice] = useState(0);
-  useEffect(() => {
-    axios
-      .get("http://localhost:3001/orders")
-      .then((response) => {
-        const orders = response.data;
-        orders.sort((a, b) => b.id - a.id);
-        const price = orders[0]?.selectedTotalAmount || 0;
-        setPrice(price);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-  const [selectedVoucher, setSelectedVoucher] = useState(null);
-
-  const handleDiscountVoucher = (discount) => {
-    if (selectedVoucher === null) {
-      setPrice(price - discount);
-      setSelectedVoucher(discount);
-    } else if (selectedVoucher === discount) {
-      setPrice(price + discount);
-      setSelectedVoucher(null);
-    }
-  };
-
-  const [selectedTransport, setSelectedTransport] = useState(null);
-
-  const handleDiscountTransport = (discount) => {
-    if (selectedTransport === null) {
-      setPrice(price + discount);
-      setSelectedTransport(discount);
-    } else if (selectedTransport === discount) {
-      setPrice(price - discount);
-      setSelectedTransport(null);
-    }
-  };
-  let priceLabel;
-  if (selectedTransport === 27000) {
-    priceLabel = "Giao Hàng Nhanh";
-  } else if (selectedTransport === 28000) {
-    priceLabel = "Giao Hàng Tiết Kiệm";
-  } else if (selectedTransport === 30000) {
-    priceLabel = "Viettel Post";
+    const handleOrder = () => {
+       if     (selectedTransport === null) {
+         toast.error("Hãy chọn đơn vị giao hàng", {
+           position: "top-center",
+           autoClose: 2000,
+         });
+         return;
+     } else {
+          toast.success("Đã đặt hàng thành công", {
+          position: "top-center",
+         autoClose: 2000,
+  });
   }
-  // ***
-
-  const delivery = ["thanh toán khi nhận hàng", "Quét mã QR"];
-  const [selectedDelivery, setSelectedDelivery] = useState(delivery[0]);
-  const [isQRScanned, setIsQRScanned] = useState(false);
-
-  const [isModalOpenB, setIsModalOpenB] = useState(false);
-
-  const handleOptionSelectB = (option) => {
-    setSelectedDelivery(option);
-    setIsQRScanned(option === "Quét mã QR");
-
-    if (option === "Quét mã QR") {
-      showModalB();
-    }
-  };
-
-  const showModalB = () => {
-    setIsModalOpenB(true);
-  };
-
-  const handleOkB = () => {
-    setIsModalOpenB(false);
-  };
-
-  const handleCancelB = () => {
-    setIsModalOpenB(false);
-  };
-  const handleOrder = () => {
-    if (selectedTransport === null) {
-      toast.error("Hãy chọn đơn vị giao hàng", {
-        position: "top-center",
-        autoClose: 2000,
-      });
-      return;
-    } else {
-      toast.success("Đã đặt hàng thành công", {
-        position: "top-center",
-        autoClose: 2000,
-      });
-    }
     navigate("/");
   };
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-
-  function handleContentChange(event) {
-    setContent(event.target.value);
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log(`Title: ${title}\nContent: ${content}`);
-    setTitle("");
-    setContent("");
-  }
-
   return (
     <Helmet title="Checkout">
       <Information>
@@ -521,7 +463,7 @@ const Checkout = () => {
           <span>{name}</span>
           <span>{phone}</span>
           <p>{address}</p>
-          <h6>Thay Đổi</h6>
+          <h6 onClick={navigateToUser}>Thay Đổi</h6>
         </User>
       </Information>
       <Products>

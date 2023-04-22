@@ -28,6 +28,7 @@ select{
     border-radius: 5px ;
     background: rgb(185, 7, 7);
     color: #fff;
+
      @media (max-width: 768px) {
     padding: 7px 20px;
     font-size: 0.9rem;
@@ -78,28 +79,46 @@ const Shop = () => {
     fetchData();
   }, []);
 
-  const handleFilter = (e) => {
-    const filterValue = e.target.value;
-    if (filterValue === "all") {
-      setFilteredProducts(allProducts);
-    } else {
-      const filteredProducts = allProducts.filter(
-        (item) => item.category === filterValue
-      );
-      setFilteredProducts(filteredProducts);
-    }
-  };
-
-  const handleSearch = (e) => {
-    const searchTerm = e.target.value.toLowerCase();
-    const searchedProducts = allProducts.filter(
-      (item) =>
-        item.productName.toLowerCase().includes(searchTerm) &&
-        (filteredProducts.length === 0 ||
-          item.category === filteredProducts[0].category)
+const handleFilter = (e) => {
+  const filterValue = e.target.value.toLowerCase();
+  if (filterValue === "all") {
+    setFilteredProducts(allProducts);
+  } else {
+    const filteredProducts = allProducts.filter(
+      (item) => item.category.toLowerCase().includes(filterValue)
     );
-    setFilteredProducts(searchedProducts);
+    setFilteredProducts(filteredProducts);
+  }
+};
+const handleSearch = (e) => {
+  const searchTerm = e.target.value.toLowerCase();
+  const searchedProducts = allProducts.filter(
+    (item) =>
+      item.productName.toLowerCase().includes(searchTerm) ||
+      item.description.toLowerCase().includes(searchTerm) ||
+      item.category.toLowerCase().includes(searchTerm) ||
+      item.price.toString().toLowerCase().includes(searchTerm)
+  );
+  setFilteredProducts(searchedProducts);
   };
+  
+  const sortProductsByPrice = (sortOrder) => {
+  const sortedProducts = [...filteredProducts];
+  sortedProducts.sort((a, b) => {
+    if (sortOrder === "desc") {
+      return b.price - a.price;
+    } else {
+      return a.price - b.price;
+    }
+  });
+  setFilteredProducts(sortedProducts);
+  };
+  const [sortOrder, setSortOrder] = useState("asc");
+
+const handleSortChange = (e) => {
+  setSortOrder(e.target.value);
+  sortProductsByPrice(e.target.value);
+};
 
   return (
     <Helmet title="Shop">
@@ -107,7 +126,7 @@ const Shop = () => {
         <Body>
           <Container>
             <Row>
-              <Col lg="6" md="6">
+              <Col lg="3" md="6">
                 <Filter>
                   <select onChange={handleFilter}>
                     <option value="all">Tất cả sản phẩm</option>
@@ -119,6 +138,7 @@ const Shop = () => {
                   </select>
                 </Filter>
               </Col>
+
               <Col lg="6" md="12">
                 <Search>
                   <input
@@ -127,6 +147,14 @@ const Shop = () => {
                     onChange={handleSearch}
                   />
                 </Search>
+              </Col>
+              <Col lg="3" md="6">
+            <Filter>
+               <select value={sortOrder} onChange={handleSortChange}>
+                <option value="asc">Giá: Thấp đến cao</option>
+                <option value="desc">Giá: Cao đến thấp</option>
+               </select>
+            </Filter>
               </Col>
             </Row>
           </Container>

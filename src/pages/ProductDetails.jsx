@@ -27,10 +27,9 @@
     UserName,
     Wrapper,
   } from "./Stile.Product-detail";
-  import authSlice from "../redux/auth/authSlice";
   import axios from "axios";
 
-  const ProductDetails = () => {
+const ProductDetails = () => {
     const dispatch = useDispatch();
     const userName = useSelector((state) => state.auth.name);
     const [newReview, setNewReview] = useState({
@@ -38,9 +37,27 @@
       name: userName,
       content: "",
     });
-    // const [editing, setEditing] = useState(false);
     const [reviews, setReviews] = useState([]);
+    const [open, setOpen] = useState(false);
+    const [confirmLoading, setConfirmLoading] = useState(false);
+    const [tab, setTab] = useState("desc");
+    const [inputError, setInputError] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const { id } = useParams();
+    const [product, setProduct] = useState({});
+    const [relatedProducts, setRelatedProducts] = useState([]);
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
+    useEffect(() => {
+      window.scrollTo(0, 0);
+      fetch(`http://localhost:3001/products/${id}`)
+        .then((response) => response.json())
+        .then((data) => setProduct(data));
+      fetch(`http://localhost:3001/products?category=${product.category}`)
+        .then((response) => response.json())
+        .then((data) => setRelatedProducts(data));
+    }, [id, product.category]);
+  
     useEffect(() => {
       axios
         .get("http://localhost:3001/reviews")
@@ -55,6 +72,55 @@
           console.log(error);
         });
     }, []);
+  
+    const addToCart = () => {
+        console.log(product);
+        dispatch(
+          cartActions.addItem({
+            id: product.id,
+            user_id: Number(localStorage.getItem("user_id")),
+            imgUrl: product.imgUrl,
+            productName: product.productName,
+            price: product.price,
+            description: product.description,
+          })
+        );
+        toast.success("Đã thêm vào giỏ hàng");
+        setConfirmLoading(true);
+        setTimeout(() => {
+          setOpen(false);
+          setConfirmLoading(false);
+        }, 100);
+      };
+      const addLogin = () => {
+        toast.error("Bạn Cần Đăng Nhập Để Mua Hàng");
+      };
+
+  
+    const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const reviewData = {
+      ...newReview,
+      productId: Number(id),
+    };
+    if (!newReview.content) {
+      setInputError("Bạn chưa nhập nội dung bình luận!");
+    } else {
+      axios
+        .post("http://localhost:3001/reviews", reviewData)
+        .then((response) => {
+          const updatedReviews = [...reviews, response.data];
+
+          setReviews(updatedReviews);
+          setNewReview({ id: "", name: userName, content: "" });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      setInputError(null);
+    }
+    };
 
     const handleDeleteReview = (id) => {
       // Xóa review khỏi state
@@ -74,8 +140,7 @@
         });
     };
 
-    
-const handleEditReview = (idReview, newContent) => {
+    const handleEditReview = (idReview, newContent) => {
   // Cập nhật review khỏi state
   
   const newReviews = reviews.map((review) => {
@@ -106,31 +171,23 @@ const handleEditReview = (idReview, newContent) => {
       // Nếu có lỗi xảy ra, cập nhật lại state để đồng bộ với dữ liệu từ server
       setReviews(reviews);
     });
-};
-
-    const [open, setOpen] = useState(false);
-    const [confirmLoading, setConfirmLoading] = useState(false);
-    const showModal = () => {
-      setOpen(true);
     };
-
-    const handleCancel = () => {
-      console.log("xoá");
-      setOpen(false);
-    };
-    const [tab, setTab] = useState("desc");
-
-    const handleChange = (e) => {
-      setNewReview({ ...newReview, content: e.target.value });
-    };
-
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      dispatch(cartActions.addReview({ ...newReview, productId: Number(id) }));
-      setNewReview({ id: "", name: userName, content: "" });
+   
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedReviewId, setSelectedReviewId] = useState(null);
+    const toggleMenu = (id) => {
+      if (id === selectedReviewId) {
+        setIsOpen(!isOpen);
+      } else {
+        setIsOpen(true);
+        setSelectedReviewId(id);
+      }
     };
     
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const handleChange = (e) => {
+      setNewReview({ ...newReview, content: e.target.value });
+    };    
+
     const showModalEdit = () => {
       setIsModalOpen(true);
     };
@@ -140,51 +197,15 @@ const handleEditReview = (idReview, newContent) => {
     const handleCancelEdit = () => {
       setIsModalOpen(false);
     };
-
-    const { id } = useParams();
-    const [product, setProduct] = useState({});
-    const [relatedProducts, setRelatedProducts] = useState([]);
-
-    const addToCart = () => {
-      console.log(product);
-      dispatch(
-        cartActions.addItem({
-          id: product.id,
-          user_id: Number(localStorage.getItem("user_id")),
-          imgUrl: product.imgUrl,
-          productName: product.productName,
-          price: product.price,
-          description: product.description,
-        })
-      );
-      toast.success("Đã thêm vào giỏ hàng");
-      setConfirmLoading(true);
-      setTimeout(() => {
-        setOpen(false);
-        setConfirmLoading(false);
-      }, 100);
-    };
-    const addLogin = () => {
-      toast.error("Bạn Cần Đăng Nhập Để Mua Hàng");
-    };
-
-    useEffect(() => {
-      window.scrollTo(0, 0);
-      fetch(`http://localhost:3001/products/${id}`)
-        .then((response) => response.json())
-        .then((data) => setProduct(data));
-      fetch(`http://localhost:3001/products?category=${product.category}`)
-        .then((response) => response.json())
-        .then((data) => setRelatedProducts(data));
-    }, [id, product.category]);
     
-
-  
-
-    const handleButtonClick = () => {
-      dispatch(authSlice.setName("")); // set the name to "John Doe" when the button is clicked
+    const showModal = () => {
+      setOpen(true);
     };
-    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+    const handleCancel = () => {
+      console.log("xoá");
+      setOpen(false);
+    };
 
     const confirm = (e) => {
       console.log(e);
@@ -192,16 +213,7 @@ const handleEditReview = (idReview, newContent) => {
     };
     const cancel = (e) => { };
     
-  const [isOpen, setIsOpen] = useState(false);
-const [selectedReviewId, setSelectedReviewId] = useState(null);
-const toggleMenu = (id) => {
-  if (id === selectedReviewId) {
-    setIsOpen(!isOpen);
-  } else {
-    setIsOpen(true);
-    setSelectedReviewId(id);
-  }
-};
+
     return (
       <Helmet title={product.productName}>
         <Image>
@@ -396,15 +408,16 @@ const toggleMenu = (id) => {
                                   value={newReview.content}
                                   onChange={handleChange}
                                 />
+                                {inputError && (
+                                  <p style={{ color: "red" }}>{inputError}</p>
+                                )}
                               </FormGroup>
 
                               <motion.button
                                 type="submit"
                                 className="buy__btn "
                                 whileTap={{ scale: 1.2 }}
-                                onClick={handleButtonClick}
                               >
-                                {/* {editing ? "Lưu" : "Đánh giá"} */}
                                 Đánh giá
                               </motion.button>
                             </form>

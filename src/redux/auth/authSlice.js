@@ -42,6 +42,7 @@ export const authSlice = createSlice({
         })
       );
     },
+
     logout: (state) => {
       state.isLoggedIn = false;
       localStorage.removeItem("isLoggedIn");
@@ -54,25 +55,50 @@ export const authSlice = createSlice({
       state.address = "";
       state.error = "";
     },
+
     setEmail: (state, action) => {
       state.email = action.payload;
     },
+
     setPassword: (state, action) => {
       state.password = action.payload;
     },
+
     setName: (state, action) => {
       state.name = action.payload;
     },
+
     setError: (state, action) => {
       state.error = action.payload;
     },
+
     setPhone: (state, action) => {
       state.phone = action.payload;
     },
+
     setAddress: (state, action) => {
       state.address = action.payload;
     },
-    
+
+    updateUserInfo: (state, action) => {
+      const { email, password, name, phone, address } = action.payload;
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({
+          email,
+          password,
+          name,
+          phone,
+          address,
+          error: "",
+        })
+      );
+      state.email = email;
+      state.password = password;
+      state.name = name;
+      state.phone = phone;
+      state.address = address;
+    },
   },
 });
 

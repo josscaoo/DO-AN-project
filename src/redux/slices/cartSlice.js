@@ -111,13 +111,6 @@ const cartSlice = createSlice({
         state.totalQuantity -= existingItem.quantity;
         state.totalAmount -= existingItem.totalPrice;
 
-        // Cập nhật trạng thái sản phẩm thành "đang bị xóa"
-        existingItem.isDeleting = true;
-
-        // Gửi yêu cầu PUT để cập nhật trạng thái sản phẩm trên server
-        axios.put(`http://localhost:3001/cartItems/${existingItem.id}`, {
-          ...existingItem,
-        });
 
         // Xóa sản phẩm khỏi giỏ hàng trong store Redux
         state.cartItems = state.cartItems.filter((item) => item.id !== id);

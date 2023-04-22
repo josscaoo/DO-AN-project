@@ -68,92 +68,71 @@ const SaleMac = styled.div`
 
 
 const PromotionTop = () => {
-  const navigate = useNavigate();
+const navigate = useNavigate();
 
-  const navigateToSamSung = () => {
-    navigate("/shop/11");
-  };
-  const navigateToIphone14 = () => {
-    navigate("/shop/9");
-  };
-  const navigateToIphone13 = () => {
-    navigate("/shop/5");
-  };
-  const navigateToRealme = () => {
-    navigate("/shop/25");
-  };
-  const navigateToOppo = () => {
-    navigate("/shop/20");
-  };
-  const navigateToVivo = () => {
-    navigate("/shop/21");
-  };
-  const navigateToShop = () => {
-    navigate("/shop");
-  };
+const navigateTo = (path) => {
+navigate(`/shop/${path}`);
+};
   return (
     <Component>
       <Row mt="16">
         <Col>
-            <Title>Xu hướng mua sắm</Title>
-            <ListPhone>
-              <Trend>
-                #1 <strong onClick={navigateToSamSung}>Galaxy S23 Ultra</strong>{" "}
+          <Title>Xu hướng mua sắm</Title>
+          <ListPhone>
+            {[1, 2, 3, 4, 5, 6].map((item) => (
+              <Trend key={item}>
+                #{item}{" "}
+                <strong
+                  onClick={() => navigateTo([11, 9, 5, 25, 20, 21][item - 1])}
+                >
+                  {
+                    [
+                      "Galaxy S23 Ultra",
+                      "iPhone 14 Pro Max",
+                      "iPhone 13 128GB Hồng",
+                      "Realme C33 3GB-32GB",
+                      "OPPO A15 3GB 32GB",
+                      "Vivo T1x 4GB-64GB",
+                    ][item - 1]
+                  }
+                </strong>
                 <br />
-                <p>Mở bán . Ưu đãi tốt</p>
+                <p>
+                  {
+                    [
+                      "Mở bán . Ưu đãi tốt",
+                      "Thiết kế đẹp. Giá sốc",
+                      "Thiết kế đẹp. Siêu tiết kiệm",
+                      "Thiết kế đẹp. Giá sốc",
+                      "Êm tai. Giá siêu sốc",
+                      "Chính hãng. Giá tốt",
+                    ][item - 1]
+                  }
+                </p>
               </Trend>
-              <Trend>
-                #2
-                <strong onClick={navigateToIphone14}>iPhone 14 Pro Max</strong>
-                <br />
-                <p>Thiết kế đẹp. Giá sốc</p>
-              </Trend>
-              <Trend>
-                #3
-                <strong onClick={navigateToIphone13}>
-                  iPhone 13 128GB Hồng
-                </strong>{" "}
-                <br />
-                <p>Thiết kế đẹp. Siêu tiết kiệm</p>
-              </Trend>
-              <Trend>
-                #4{" "}
-                <strong onClick={navigateToRealme}>Realme C33 3GB-32GB</strong>{" "}
-                <br />
-                <p>Thiết kế đẹp. Giá sốc</p>
-              </Trend>
-              <Trend>
-                #5 <strong onClick={navigateToOppo}>OPPO A15 3GB 32GB</strong>{" "}
-                <br />
-                <p>Êm tai. Giá siêu sốc</p>
-              </Trend>
-              <Trend>
-                #6 <strong onClick={navigateToVivo}>Vivo T1x 4GB-64GB</strong>{" "}
-                <br />
-                <p>Chính hãng. Giá tốt</p>
-              </Trend>
-            </ListPhone>
+            ))}
+          </ListPhone>
         </Col>
 
         <Col md="7">
-            <CarouselMain />
+          <CarouselMain />
         </Col>
 
         <Col>
-            <SaleTitle>
-              <img src={saleLogo} alt="logo" />
-              <div className="sale__logo__text">
-                <h6 onClick={navigateToShop}>Siêu khuyến mãi</h6>
-              </div>
-            </SaleTitle>
+          <SaleTitle>
+            <img src={saleLogo} alt="logo" />
+            <div className="sale__logo__text">
+              <h6 onClick={() => navigateTo("")}>Siêu khuyến mãi</h6>
+            </div>
+          </SaleTitle>
 
-            <SalePhone>
-              <img src={salePhone} alt="img" />
-            </SalePhone>
+          <SalePhone>
+            <img src={salePhone} alt="img" />
+          </SalePhone>
 
-            <SaleMac>
-              <img src={saleMac} alt="img" />
-            </SaleMac>
+          <SaleMac>
+            <img src={saleMac} alt="img" />
+          </SaleMac>
         </Col>
       </Row>
     </Component>

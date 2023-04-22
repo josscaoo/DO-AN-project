@@ -1,127 +1,101 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import Helmet from "../components/Helmet/Helmet";
-import { authenticate } from "../redux/auth/authSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { authSlice } from "../redux/auth/authSlice";
+import axios from "axios";
+// import axios from "axios";
 
-const Container = styled.div`
-  margin: auto;
-  text-align: center;
-  margin-top: 150px;
-  flex: 1;
-`;
-const Main = styled.div`
-  background-color: #c5c4c4b2;
-  padding: 40px;
-  margin-left: 200px;
-  margin-right: 200px;
-  button {
-    margin-top: 10px;
-    border-radius: 10px;
-    background-color: #8eb6db;
-    text-align: center;
-    font-weight: 500;
-    font-size: 18px;
-    :hover {
-      background-color: #b61515;
-      color: white;
-    }
-  }
-  h5 {
-    font-size: 15px;
-  }
-  p {
-    .link__login:hover {
-      color: #e11c1c;
-      font-weight: 600;
-    }
-  }
-  form {
-    .error {
-      font-weight: 600;
-      color: red;
-    }
-    button {
-      background-color: rgb(241, 158, 49);
-      color: black;
-      font-weight: 600;
-      border-radius: 10px;
-      width: 150px;
-      height: 30px;
-      border: 1px;
-      margin-top: 5px;
-      a:hover {
-        background-color: rgb(184, 21, 21);
-        color: white;
-      }
-    }
-    button:hover {
-      background-color: rgb(184, 21, 21);
-      color: white;
-    }
-  }
-`;
-const Input = styled.div`
-  input {
-    width: 400px;
-    border-radius: 10px;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 23px;
-  }
-`;
-
-function ReviewForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+const ReviewForm = () => {
+  const { email, password, name, phone, address } = useSelector(
+    (state) => state.auth
+  );
+  const id = useSelector((state) => state.auth.id);
 
   const dispatch = useDispatch();
-  const error = useSelector((state) => state.auth.error);
+  const [formData, setFormData] = useState({
+    email,
+    password,
+    name,
+    phone,
+    address,
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(authenticate(email, password));
-    navigate("/");
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch(authSlice.actions.updateUserInfo(formData));
+    const userId = id; // Lấy ID của người dùng từ state hoặc props
+    const url = `http://localhost:3001/users/${userId}`; // Tạo địa chỉ URL
+
+    try {
+      const response = await axios.put(url, formData, {
+        headers: { "Content-Type": "application/json" },
+      });
+      console.log(response.data); // Log response từ JSON server (nếu muốn)
+    } catch (error) {
+      console.log(error); // Log lỗi (nếu có)
+    }
+  };
   return (
-    <Helmet title="Login">
-      <Container>
+    <div>
+      <h2>Edit Profile</h2>
+      <form onSubmit={handleSubmit}>
         <div>
-          <Main>
-            <form onSubmit={handleSubmit}>
-              {error && <div className="error">{error}</div>}
-              <h1>Login</h1>
-              <Input>
-                <input
-                  placeholder="Nhập địa chỉ email"
-                  type="text"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </Input>
-              <Input>
-                <input
-                  placeholder="Nhập mật khẩu"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </Input>
-              <button type="submit" className="buy__btn auth__btn">
-                Login
-              </button>
-              <p>
-                Tài khoảng không tồn tại?
-                <Link to="/register">Tạo một tài khoảng</Link>
-              </p>
-            </form>
-          </Main>
+          <label>Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
         </div>
-      </Container>
-    </Helmet>
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Name:</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Phone:</label>
+          <input
+            type="text"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Address:</label>
+          <input
+            type="text"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <button type="submit">Save</button>
+      </form>
+    </div>
   );
-}
+};
+
 export default ReviewForm;

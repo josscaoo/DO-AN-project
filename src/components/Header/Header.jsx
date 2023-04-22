@@ -28,69 +28,45 @@ import { cartActions } from "../../redux/slices/cartSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
-  // const totalQuantity = useSelector((state) => state.cart.totalQuantity);
-  
+
   useEffect(() => {
     axios
       .get(
         "http://localhost:3001/cartItems?user_id=" +
           localStorage.getItem("user_id")
       )
-      .then((res) => {
-        dispatch(cartActions.setItem(res.data));
-      });
+      .then((res) => dispatch(cartActions.setItem(res.data)));
   }, []);
 
-   const [totalQuantity, setTotalQuantity] = useState(0);
+  const [totalQuantity, setTotalQuantity] = useState(0);
 
-   useEffect(() => {
-     axios
-       .get("http://localhost:3001/cartItems")
-       .then((response) => {
-         let total = 0;
-         response.data.forEach((product) => {
-           if (product.quantity) {
-             total += product.quantity;
-           }
-         });
-         setTotalQuantity(total);
-       })
-       .catch((error) => {
-         console.log(error);
-       });
-   }, []);
-
-
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/cartItems")
+      .then((response) => {
+        const total = response.data.reduce(
+          (acc, product) => acc + (product.quantity || 0),
+          0
+        );
+        setTotalQuantity(total);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   const navigate = useNavigate();
 
-  const navigateToShop = () => {
-    navigate("/shop");
-  };
+  const navigateToShop = () => navigate("/shop");
+  const navigateToCart = () => navigate("/cart");
+  const navigateToHome = () => navigate("/");
+  const navigateToUser = () => navigate("/user");
 
-  const navigateToCart = () => {
-    navigate("/cart");
-  };
-  const navigateToHome = () => {
-    navigate("/");
-  };
-    const navigateToUser = () => {
-      navigate("/user");
-    };
-
-  function handleClick() {
-    dispatch(logout());
-  }
+  const handleClick = () => dispatch(logout());
 
   const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-    const name = useSelector((state) => state.auth.name);
-
+  const name = useSelector((state) => state.auth.name);
 
   return (
     <Container>

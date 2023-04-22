@@ -31,8 +31,9 @@ const InputField = styled.input`
   padding: 10px;
   font-size: 16px;
   border: none;
-  border-bottom: 2px solid #ccc;
+  border-bottom: 2px solid #ccc ;
   outline: none;
+  /* border: 1px solid ${(props) => (props.isError ? "red" : "grey")}; */
 
   &:focus {
     border-bottom: 2px solid #333;
@@ -40,6 +41,9 @@ const InputField = styled.input`
   &:invalid {
     border-bottom: 3px solid #f44336;
   }
+    &.error {
+    border-color: red;
+    }
 `;
 
 const RegisterButton = styled.button`
@@ -80,14 +84,7 @@ const Register = () => {
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  if (
-    !email ||
-    !password ||
-    !confirmPassword ||
-    !name ||
-    !phone ||
-    !address
-  ) {
+  if (!email || !password || !confirmPassword || !name || !phone || !address) {
     setError("Bạn phải nhập đầy đủ thông tin");
     return;
   }
@@ -101,15 +98,14 @@ const handleSubmit = async (e) => {
     setError("Mật khẩu phải có ít nhất 8 kí tự");
     return;
   }
-    if (name.length < 3) {
-      setError("Tên phải có ít nhất 3  kí tự");
-      return;
+  if (name.length < 3) {
+    setError("Tên phải có ít nhất 3 kí tự");
+    return;
   }
-   if (phone.length < 9) {
-     setError("số điện thoại không đủ");
-     return;
-   }
-
+  if (phone.length < 9) {
+    setError("Số điện thoại không đủ");
+    return;
+  }
 
   setLoading(true);
 
@@ -143,60 +139,66 @@ const handleSubmit = async (e) => {
 
 
   return (
-  <Helmet title="Register">
-    <RegisterWrapper>
-      <Title>Đăng kí tài khoản</Title>
+    <Helmet title="Register">
+      <RegisterWrapper>
+        <Title>Đăng kí tài khoản</Title>
 
-      {loading ? (
-        <h5 className="fw-bold">Loading.......</h5>
-      ) : (
-        <Form onSubmit={handleSubmit}>
-          {error && <ErrorMessage>{error}</ErrorMessage>}
-          <InputField
-            type="text"
-            placeholder="Họ và tên"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <InputField
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <InputField
-            type="password"
-            placeholder="Mật khẩu(ít nhất 8 kí tự)"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            
-          />
-          <InputField
-            type="password"
-            placeholder="Xác nhận mật khẩu"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-          <InputField
-            type="number"
-            placeholder="Số điện thoại "
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-          <InputField
-            type="text"
-            placeholder="Địa chỉ "
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-          <RegisterButton type="submit">Đăng kí</RegisterButton>
-          <p>
-            bạn đã có tài khoản? <Link to="/login">Đăng nhập</Link>
-          </p>
-        </Form>
-      )}
+        {loading ? (
+          <h5 className="fw-bold">Loading.......</h5>
+        ) : (
+          <Form onSubmit={handleSubmit}>
+            {error && <ErrorMessage>{error}</ErrorMessage>}
+            <InputField
+              type="text"
+              placeholder="Họ và tên"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className={error && !name ? "error" : ""}
+            />
+
+            <InputField
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className={error && !email ? "error" : ""}
+            />
+            <InputField
+              type="password"
+              placeholder="Mật khẩu(ít nhất 8 kí tự)"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className={error && !password ? "error" : ""}
+            />
+            <InputField
+              type="password"
+              placeholder="Xác nhận mật khẩu"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className={error && !password ? "error" : ""}
+            />
+            <InputField
+              type="number"
+              placeholder="Số điện thoại "
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className={error && !phone ? "error" : ""}
+            />
+            <InputField
+              type="text"
+              placeholder="Địa chỉ "
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              className={error && !address ? "error" : ""}
+            />
+            <RegisterButton type="submit">Đăng kí</RegisterButton>
+            <p>
+              bạn đã có tài khoản? <Link to="/login">Đăng nhập</Link>
+            </p>
+          </Form>
+        )}
       </RegisterWrapper>
-      </Helmet>
+    </Helmet>
   );
 };
 

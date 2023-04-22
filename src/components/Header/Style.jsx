@@ -116,7 +116,6 @@ export const Actions = styled.div`
     margin-top: 5px;
     padding-left: 30px;
     padding-right: 30px;
-    margin-left: -60px;
     box-shadow: 0 5px 4px rgba(0, 0, 0, 0.573);
     background-color: #d3d3d3;
     position: absolute;

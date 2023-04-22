@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Helmet from "../../components/Helmet/Helmet";
@@ -25,6 +25,11 @@ const Form = styled.form`
   padding: 30px;
   border-radius: 10px;
   width: 400px;
+  .error {
+    color: red;
+    margin-bottom: 20px;
+    text-align: center;
+  }
 `;
 
 const Heading = styled.h2`
@@ -41,6 +46,7 @@ const Input = styled.input`
   margin-bottom: 20px;
   font-size: 16px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid ${(props) => (props.isError ? "red" : "grey")};
 `;
 
 const Button = styled.button`
@@ -63,15 +69,19 @@ const Button = styled.button`
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  // const error = useSelector((state) => state.auth.error);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!email || !password) {
+      setError("Vui lòng nhập đầy đủ thông tin đăng nhập");
+      return;
+    }
 
     try {
       const response = await axios.get("http://localhost:3001/users");
@@ -102,12 +112,14 @@ const Login = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            isError={error && !email}
           />
           <Input
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            isError={error && !password}
           />
           <Button type="submit">Đăng nhập</Button>
           <p>

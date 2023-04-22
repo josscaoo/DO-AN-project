@@ -13,45 +13,22 @@ import { Modal } from "antd";
 const ProductCard = ({ item }) => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-    const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
 
-      const showModal = () => {
-        setOpen(true);
-  };
-    const handleCancel = () => {
-      console.log("xoá");
-      setOpen(false);
-    };
-
-  // Gửi một HTTP POST request đến JSON server khi người dùng thêm sản phẩm vào giỏ hàng
   const addToCart = () => {
-    // Lấy thông tin sản phẩm
     const newItem = {
       id: item.id,
-      // user_id: Number(localStorage.getItem("user_id")),
       productName: item.productName,
       price: item.price,
       imgUrl: item.imgUrl,
     };
-
-    // Thêm sản phẩm vào giỏ hàng trên Redux store
     dispatch(cartActions.addItem(newItem));
-
-    // Gửi thông tin sản phẩm lên server
     axios
       .post("http://localhost:3001/cartItems", newItem)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    // Hiển thị thông báo
-    toast.success("Đã thêm sản phẩm", {
-      position: "top-center",
-    });
+      .then((response) => console.log(response.data))
+      .catch((error) => console.log(error));
+    toast.success("Đã thêm sản phẩm", { position: "top-center" });
     setConfirmLoading(true);
     setTimeout(() => {
       setOpen(false);
@@ -59,9 +36,7 @@ const ProductCard = ({ item }) => {
     }, 100);
   };
 
-  const addLogin = () => {
-    toast.error("Bạn Cần Đăng Nhập Để Mua Hàng");
-  };
+  const addLogin = () => toast.error("Bạn Cần Đăng Nhập Để Mua Hàng");
 
   return (
     <Col lg="3" md="4" className=" mb-2">
@@ -88,7 +63,7 @@ const ProductCard = ({ item }) => {
                 whileTap={{ scale: 1.2 }}
                 className="buy__btn"
                 type="primary"
-                onClick={showModal}
+                onClick={() => setOpen(true)}
               >
                 <i class="ri-shopping-cart-line"></i>
               </span>
@@ -96,7 +71,7 @@ const ProductCard = ({ item }) => {
                 open={open}
                 onOk={addToCart}
                 confirmLoading={confirmLoading}
-                onCancel={handleCancel}
+                onCancel={() => setOpen(false)}
                 okText="Đồng ý"
                 cancelText="Trở về"
               >

@@ -77,72 +77,68 @@ const ButtonCart = styled.div`
 `;
 
 const Cart = () => {
-  const cartItems = useSelector((state) => state.cart.cartItems);
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const addLogin = () => {
-    toast.error("Bạn Cần Đăng Nhập Để Mua Hàng");
-  };
-    const addPurchase = () => {
-      toast.error("Bạn Cần Chọn Sản Phẩm");
-    };
+const { cartItems } = useSelector((state) => state.cart);
+const { isLoggedIn, name } = useSelector((state) => state.auth);
+const [selectedItems, setSelectedItems] = useState([]);
+const [selectedTotalAmount, setSelectedTotalAmount] = useState(0);
+const [selectedQuantity, setSelectedQuantity] = useState(0);
 
-  const [selectedItems, setSelectedItems] = useState([]);
-  const [selectedTotalAmount, setSelectedTotalAmount] = useState(0);
-  const [selectedQuantity, setSelectedQuantity] = useState(0);
-  const name = useSelector((state) => state.auth.name);
+const addLogin = () => {
+  toast.error("Bạn Cần Đăng Nhập Để Mua Hàng");
+};
 
-  const toggleCheck = (item) => {
-    if (selectedItems.includes(item)) {
-      setSelectedItems(selectedItems.filter((i) => i !== item));
-      setSelectedTotalAmount((prevAmount) => prevAmount - item.totalPrice);
-      setSelectedQuantity((prevAmount) => prevAmount - item.quantity);
-      
-    } else {
-      setSelectedItems([...selectedItems, item]);
-      setSelectedTotalAmount((prevAmount) => prevAmount + item.totalPrice);
-      setSelectedQuantity((prevAmount) => prevAmount + item.quantity);
-    }
+const addPurchase = () => {
+  toast.error("Bạn Cần Chọn Sản Phẩm");
+};
 
-    // Create a JSON object with the relevant data
-    const jsonData = {
-      selectedUserName: name,
-      selectedItems,
-      selectedTotalAmount,
-      selectedQuantity,
-    };
+const toggleCheck = (item) => {
+  const isSelected = selectedItems.includes(item);
+  const amount = isSelected
+    ? selectedTotalAmount - item.totalPrice
+    : selectedTotalAmount + item.totalPrice;
+  const quantity = isSelected
+    ? selectedQuantity - item.quantity
+    : selectedQuantity + item.quantity;
+  setSelectedItems(
+    isSelected
+      ? selectedItems.filter((i) => i !== item)
+      : [...selectedItems, item]
+  );
+  setSelectedTotalAmount(amount);
+  setSelectedQuantity(quantity);
 
-    axios
-      .post("http://localhost:3001/orders", jsonData)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  const jsonData = {
+    selectedUserName: name,
+    selectedItems: isSelected
+      ? selectedItems.filter((i) => i !== item)
+      : [...selectedItems, item],
+    selectedTotalAmount: amount,
+    selectedQuantity: quantity,
   };
 
-  const handleCheckboxChange = () => {
-    const isChecked = selectedItems.length === cartItems.length;
+  axios
+    .post("http://localhost:3001/orders", jsonData)
+    .then((response) => console.log(response.data))
+    .catch((error) => console.error(error));
+};
 
-    if (isChecked) {
-      setSelectedItems([]);
-      setSelectedTotalAmount(0);
-      setSelectedQuantity(0);
-    } else {
-      setSelectedItems(cartItems);
-      setSelectedTotalAmount(
-        cartItems.reduce((acc, item) => acc + item.totalPrice, 0)
-      );
-      setSelectedQuantity(
-        cartItems.reduce((acc, item) => acc + item.quantity, 0)
-      );
-    }
-  };
-    const isAllSelected = selectedItems.length === cartItems.length;
+const handleCheckboxChange = () => {
+  if (selectedItems.length === cartItems.length) {
+    setSelectedItems([]);
+    setSelectedTotalAmount(0);
+    setSelectedQuantity(0);
+  } else {
+    setSelectedItems(cartItems);
+    setSelectedTotalAmount(
+      cartItems.reduce((acc, item) => acc + item.totalPrice, 0)
+    );
+    setSelectedQuantity(
+      cartItems.reduce((acc, item) => acc + item.quantity, 0)
+    );
+  }
+};
 
-
-  
-
+const isAllSelected = selectedItems.length === cartItems.length;
   return (
     <Helmet title="Cart">
       <Main>

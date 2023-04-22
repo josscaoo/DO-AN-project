@@ -1,211 +1,252 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import Helmet from "../../components/Helmet/Helmet";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const Container = styled.div`
-  margin: auto;
-  text-align: center;
-  margin-top: 150px;
-`;
-const Main = styled.div`
-  background-color: #c5c4c4b2;
-  padding: 40px;
-  border-radius: 5px;
-  margin-left: 200px;
-  margin-right: 200px;
-  button {
-    margin-top: 10px;
-    border-radius: 10px;
-    background-color: #103b64;
-    text-align: center;
-    font-weight: 500;
-    font-size: 18px;
-    :hover {
-      background-color: #b61515;
-      color: white;
-    }
-  }
-  h5 {
-    font-size: 15px;
-  }
-  p {
-    .link__login:hover {
-      color: #e11c1c;
-      font-weight: 600;
-    }
-  }
-  form {
-    .error {
-      font-weight: 500;
-      color: red;
-    }
-    button {
-      background-color: rgb(241, 158, 49);
-      color: black;
-      font-weight: 600;
-      border-radius: 10px;
-      width: 150px;
-      height: 30px;
-      border: 1px;
-      margin-top: 5px;
-      a:hover {
-        background-color: rgb(184, 21, 21);
-        color: white;
+const initialState = {
+  cartItems: [],
+  totalAmount: 0,
+  totalQuantity: 0,
+  reviews: [],
+  checkout: [],
+  cartProducts: [],
+};
+
+const cartSlice = createSlice({
+  name: "cart",
+  initialState,
+  reducers: {
+    setItem: (state, action) => {
+      state.cartItems = action.payload;
+    },
+
+    addItem: (state, action) => {
+      const newItem = action.payload;
+
+      const existingItem = state.cartItems.find(
+        (item) => item.id === newItem.id
+      );
+
+      state.totalQuantity++;
+
+      if (!existingItem) {
+        state.cartItems.push({
+          id: newItem.id,
+          productName: newItem.productName,
+          imgUrl: newItem.imgUrl,
+          price: newItem.price,
+          quantity: 1,
+          totalPrice: newItem.price,
+        });
+
+        axios.post("http://localhost:3001/cartItems", {
+          id: newItem.id,
+          productName: newItem.productName,
+          imgUrl: newItem.imgUrl,
+          price: newItem.price,
+          quantity: 1,
+          totalPrice: newItem.price,
+        });
+      } else {
+        existingItem.quantity++;
+        existingItem.totalPrice =
+          Number(existingItem.totalPrice) + Number(newItem.price);
+
+        axios.put(`http://localhost:3001/cartItems/${existingItem.id}`, {
+          ...existingItem,
+        });
       }
-    }
-    button:hover {
-      background-color: rgb(184, 21, 21);
-      color: white;
-    }
-  }
-`;
-const Input = styled.div`
-  input {
-    width: 400px;
-    border-radius: 10px;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 23px;
-  }
-`;
-function Register() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
-  const navigate = useNavigate();
+      state.totalAmount = state.cartItems.reduce(
+        (total, item) => total + Number(item.price) * Number(item.quantity),
+        0
+      );
+    },
+    addProducts: (state, action) => {
+      const newItem = action.payload;
 
-  // const dispatch = useDispatch();
+      const existingItem = state.cartProducts.find(
+        (item) => item.id === newItem.id
+      );
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+      state.totalQuantity++;
 
-    // Kiểm tra các ô input không được để trống
-    if (
-      !email ||
-      !password ||
-      !confirmPassword ||
-      !name ||
-      !phone ||
-      !address
-    ) {
-      setError("Bạn phải nhập đầy đủ thông tin");
-      return;
-    }
+      if (!existingItem) {
+        state.cartProducts.push({
+          id: newItem.id,
+          productName: newItem.productName,
+          imgUrl: newItem.imgUrl,
+          price: newItem.price,
+          quantity: 1,
+          totalPrice: newItem.price,
+        });
 
-    // Kiểm tra mật khẩu và mật khẩu xác nhận có khớp nhau hay không
-    if (password !== confirmPassword) {
-      setError("Mật khẩu không khớp");
-      return;
-    }
+        axios.post("http://localhost:3001/cartProducts", {
+          id: newItem.id,
+          productName: newItem.productName,
+          imgUrl: newItem.imgUrl,
+          price: newItem.price,
+          quantity: 1,
+          totalPrice: newItem.price,
+        });
+      } else {
+        existingItem.quantity++;
+        existingItem.totalPrice =
+          Number(existingItem.totalPrice) + Number(newItem.price);
 
-    setLoading(true);
+        axios.put(`http://localhost:3001/cartProducts/${existingItem.id}`, {
+          ...existingItem,
+        });
+      }
 
-    try {
-      // Gọi request để đăng ký tài khoản
-      const response = await axios.post("http://localhost:3001/users", {
-        email,
-        password,
-        name,
-        phone,
-        address,
+      state.totalAmount = state.cartProducts.reduce(
+        (total, item) => total + Number(item.price) * Number(item.quantity),
+        0
+      );
+    },
+
+    deleteItem: (state, action) => {
+      const id = action.payload;
+      const existingItem = state.cartItems.find((item) => item.id === id);
+
+      if (existingItem) {
+        state.totalQuantity -= existingItem.quantity;
+        state.totalAmount -= existingItem.totalPrice;
+
+        // Cập nhật trạng thái sản phẩm thành "đang bị xóa"
+        existingItem.isDeleting = true;
+
+        // Gửi yêu cầu PUT để cập nhật trạng thái sản phẩm trên server
+        axios.put(`http://localhost:3001/cartItems/${existingItem.id}`, {
+          ...existingItem,
+        });
+
+        // Xóa sản phẩm khỏi giỏ hàng trong store Redux
+        state.cartItems = state.cartItems.filter((item) => item.id !== id);
+        axios.delete(`http://localhost:3001/cartItems/${existingItem.id}`);
+      }
+    },
+
+    updateTotalAmount: (state) => {
+      const newTotalAmount = state.cartItems.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
+      state.totalAmount = newTotalAmount;
+
+      // cập nhật tổng giá của từng mặt hàng trong giỏ hàng trên máy chủ
+      state.cartItems.forEach((item) => {
+        axios.put(`http://localhost:3001/cartItems/${item.id}`, {
+          ...item,
+        });
       });
+    },
 
-      if (response.status === 201) {
-        toast.success("Tài khoản đã được tạo");
-        navigate("/login");
+    decrementItem: (state, action) => {
+      const id = action.payload;
+      const existingItem = state.cartItems.find((item) => item.id === id);
+
+      if (existingItem) {
+        if (existingItem.quantity === 1) {
+          state.cartItems = state.cartItems.filter((item) => item.id !== id);
+          axios.delete(`http://localhost:3001/cartItems/${existingItem.id}`);
+        } else {
+          existingItem.quantity--;
+          existingItem.totalPrice =
+            Number(existingItem.totalPrice) - Number(existingItem.price);
+
+          axios.put(`http://localhost:3001/cartItems/${existingItem.id}`, {
+            ...existingItem,
+          });
+        }
+
+        state.totalQuantity--;
+        state.totalAmount = state.cartItems.reduce(
+          (total, item) => total + Number(item.price) * Number(item.quantity),
+          0
+        );
       }
-    } catch (err) {
-      console.error(err);
-      setError("Đăng ký không thành công. Vui lòng thử lại sau");
-    } finally {
-      setLoading(false);
-    }
-  };
+    },
 
-  return (
-    <Helmet title="Register">
-      <Container>
-        <div>
-          {loading ? (
-            <div>
-              <h5 className="fw-bold">Loading.......</h5>
-            </div>
-          ) : (
-            <Main>
-              <form onSubmit={handleSubmit}>
-                {error && <div className="error">{error}</div>}
-                <h2>Đăng Kí</h2>
-                <Input>
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </Input>
-                <Input>
-                  <input
-                    type="password"
-                    placeholder="Mật khẩu"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </Input>
-                <Input>
-                  <input
-                    type="password"
-                    placeholder="Nhập lại mật khẩu"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                  />
-                </Input>
-                <Input>
-                  <input
-                    type="text"
-                    placeholder="Tên "
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </Input>
-                <Input>
-                  <input
-                    type="number"
-                    placeholder="Số điện thoại "
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                  />
-                </Input>
-                <Input>
-                  <input
-                    type="text"
-                    placeholder="Địa chỉ "
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                  />
-                </Input>
+    incrementItem: (state, action) => {
+      const id = action.payload;
+      const existingItem = state.cartItems.find((item) => item.id === id);
 
-                <button type="submit" className="buy__btn auth__btn">
-                  Register
-                </button>
-                <p>
-                  bạn đã có tài khoản? <Link to="/login">Đăng nhập</Link>
-                </p>
-              </form>
-            </Main>
-          )}
-        </div>
-      </Container>
-    </Helmet>
-  );
-}
+      if (existingItem) {
+        existingItem.quantity++;
+        existingItem.totalPrice =
+          Number(existingItem.totalPrice) + Number(existingItem.price);
 
-export default Register;
+        axios.put(`http://localhost:3001/cartItems/${existingItem.id}`, {
+          ...existingItem,
+        });
+
+        state.totalQuantity++;
+        state.totalAmount = state.cartItems.reduce(
+          (total, item) => total + Number(item.price) * Number(item.quantity),
+          0
+        );
+      }
+    },
+
+    addReview: (state, action) => {
+      state.reviews.push(action.payload);
+
+      axios
+        .post(`http://localhost:3001/reviews`, action.payload)
+        .then((response) => {
+          state.reviews.push(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
+    deleteReview: (state, action) => {
+      const id = action.payload;
+      const reviewIndex = state.reviews.findIndex((review) => review.id === id);
+      const newReview = action.payload;
+      const productId = newReview.productId;
+
+      if (reviewIndex !== -1) {
+        const existingItem = state.reviews[reviewIndex];
+        state.reviews.splice(reviewIndex, 1);
+
+        axios
+          .delete(
+            `http://localhost:3001/products/${productId}/reviews/${existingItem.id}`
+          )
+          .then(() => {
+            console.log("Đã xóa");
+          })
+          .catch((error) => {
+            console.log(error);
+            state.reviews.splice(reviewIndex, 0, existingItem); // rollback if delete fails
+          });
+      }
+    },
+
+    editReview: (state, action) => {
+      const reviewIndex = state.reviews.findIndex(
+        (review) => review.id === action.payload.id
+      );
+      if (reviewIndex !== -1) {
+        state.reviews[reviewIndex] = action.payload;
+
+        axios
+          .put(
+            `http://localhost:3001/reviews/${action.payload.id}`,
+            action.payload
+          )
+          .then((response) => {
+            state.reviews[reviewIndex] = response.data;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    },
+  },
+});
+
+export const cartActions = cartSlice.actions;
+
+export default cartSlice.reducer;
