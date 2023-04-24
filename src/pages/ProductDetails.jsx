@@ -46,7 +46,9 @@ const ProductDetails = () => {
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [relatedProducts, setRelatedProducts] = useState([]);
-    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+    const [showDetails, setShowDetails] = useState(true);
+
 
     useEffect(() => {
       window.scrollTo(0, 0);
@@ -122,23 +124,28 @@ const ProductDetails = () => {
     }
     };
 
-    const handleDeleteReview = (id) => {
-      // Xóa review khỏi state
-      const newReviews = reviews.filter((review) => review.id !== id);
-      setReviews(newReviews);
+   const handleDeleteReview = (id) => {
+     // Gửi yêu cầu DELETE đến JSON server
+     axios
+       .delete(`http://localhost:3001/reviews/${id}`)
+       .then((response) => {
+         console.log(response);
+         // Xóa review khỏi state
+         const newReviews = reviews.filter((review) => review.id !== id);
+         setReviews(newReviews);
+        setShowDetails(false);
 
-      // Gửi yêu cầu DELETE đến JSON server
-      axios
-        .delete(`http://localhost:3001/reviews/${id}`)
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-          // Nếu có lỗi xảy ra, cập nhật lại state để đồng bộ với dữ liệu từ server
-          setReviews(reviews);
-        });
-    };
+         
+       })
+       .catch((error) => {
+         console.log(error);
+       });
+  };
+    useEffect(() => {
+      if (!showDetails) {
+        window.location.reload();
+      }
+    }, [showDetails]);
 
     const handleEditReview = (idReview, newContent) => {
   // Cập nhật review khỏi state
@@ -284,24 +291,20 @@ const ProductDetails = () => {
                     className={`${tab === "desc" ? "active__tab" : ""}`}
                     onClick={() => setTab("desc")}
                   >
-                    Mô tả
+                    Nhận xét({reviews.length})
                   </Select>
                   <Select
                     className={`${tab === "rev" ? "active__tab" : ""}`}
                     onClick={() => setTab("rev")}
                   >
-                    Nhận xét ({reviews.length})
+                    Mô tả
                   </Select>
                 </Wrapper>
 
                 {tab === "desc" ? (
-                  <Content>
-                    <p>{product.description}</p>
-                  </Content>
-                ) : (
                   <Review>
                     <ReviewWrapper>
-                      <h2>Reviews:</h2>
+                      <h2>Bình luận:</h2>
                       {isLoggedIn ? (
                         <div>
                           <ul>
@@ -387,7 +390,7 @@ const ProductDetails = () => {
                                           cancelText={<h6>Không</h6>}
                                         >
                                           <div type="link">
-                                            <i class="ri-delete-bin-5-line"></i>
+                                            <i className="ri-delete-bin-5-line"></i>
                                           </div>
                                         </Popconfirm>
                                       </>
@@ -431,6 +434,10 @@ const ProductDetails = () => {
                       )}
                     </ReviewWrapper>
                   </Review>
+                ) : (
+                  <Content>
+                    <p>{product.description}</p>
+                  </Content>
                 )}
               </Col>
 

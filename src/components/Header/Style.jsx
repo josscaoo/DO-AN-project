@@ -136,6 +136,14 @@ export const Name = styled.div`
     font-weight: 600;
     font-size: 13px;
     color: white;
+    @media (max-width: 425px) {
+      display: none;
+    }
+    i {
+      @media (max-width: 425px) {
+        display: none;
+      }
+    }
   }
 `;
 export const Auth = styled.div`

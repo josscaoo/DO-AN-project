@@ -60,12 +60,12 @@ const ProductCard = ({ item }) => {
           {isLoggedIn ? (
             <div>
               <span
-                whileTap={{ scale: 1.2 }}
+                whiletap ={{ scale: 1.2 }}
                 className="buy__btn"
                 type="primary"
                 onClick={() => setOpen(true)}
               >
-                <i class="ri-shopping-cart-line"></i>
+                <i className="ri-shopping-cart-line"></i>
               </span>
               <Modal
                 open={open}
@@ -80,8 +80,8 @@ const ProductCard = ({ item }) => {
             </div>
           ) : (
             <div>
-              <motion.span whileTap={{ scale: 1.2 }} onClick={addLogin}>
-                <i class="ri-shopping-cart-line"></i>
+              <motion.span whiletap ={{ scale: 1.2 }} onClick={addLogin}>
+                <i className="ri-shopping-cart-line"></i>
               </motion.span>
             </div>
           )}

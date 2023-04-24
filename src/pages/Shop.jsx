@@ -18,7 +18,7 @@ const Filter = styled.div`
     margin-bottom: 30px;
   }
    @media (max-width: 1024px) {
-        margin-bottom: 30px;
+        /* margin-bottom: 30px; */
 
   }
 select{
@@ -34,8 +34,8 @@ select{
     font-size: 0.9rem;
   }
    @media (max-width: 1024px) {
-        padding: 7px 20px;
-    font-size: 0.9rem;
+        /* padding: 7px 20px;
+    font-size: 0.9rem; */
   }
 }
 select:focus {
@@ -138,6 +138,15 @@ const handleSortChange = (e) => {
                   </select>
                 </Filter>
               </Col>
+              <Col lg="3" md="6">
+                <Filter>
+                  <select value={sortOrder} onChange={handleSortChange}>
+                    <option>Sắp xếp theo</option>
+                    <option value="asc">Tăng dần</option>
+                    <option value="desc">Giảm dần</option>
+                  </select>
+                </Filter>
+              </Col>
 
               <Col lg="6" md="12">
                 <Search>
@@ -147,14 +156,6 @@ const handleSortChange = (e) => {
                     onChange={handleSearch}
                   />
                 </Search>
-              </Col>
-              <Col lg="3" md="6">
-            <Filter>
-               <select value={sortOrder} onChange={handleSortChange}>
-                <option value="asc">Giá: Thấp đến cao</option>
-                <option value="desc">Giá: Cao đến thấp</option>
-               </select>
-            </Filter>
               </Col>
             </Row>
           </Container>

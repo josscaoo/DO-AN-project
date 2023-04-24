@@ -37,10 +37,9 @@ const Button = styled.button`
   height: 50px;
 `;
 const User = () => {
- const { email, password, name, phone, address } = useSelector(
+  const { email, password, name, phone, address } = useSelector(
     (state) => state.auth
   );
-  const id = useSelector((state) => state.auth.id);
 
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -55,62 +54,64 @@ const User = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    dispatch(authSlice.actions.updateUserInfo(formData));
-    const userId = id; // Lấy ID của người dùng từ state hoặc props
-    const url = `http://localhost:3001/users/${userId}`; // Tạo địa chỉ URL
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  dispatch(authSlice.actions.updateUserInfo(formData));
+  const userId = localStorage.getItem("user_id"); // Lấy ID của người dùng từ localStorage
+  const url = `http://localhost:3001/users/${userId}`; // Tạo địa chỉ URL
 
-    try {
-      const response = await axios.put(url, formData, {
-        headers: { "Content-Type": "application/json" },
-      });
-      console.log(response.data); // Log response từ JSON server (nếu muốn)
-    } catch (error) {
-      console.log(error); // Log lỗi (nếu có)
-    }
-  };
+  try {
+    const response = await axios.put(url, formData, {
+      headers: { "Content-Type": "application/json" },
+    });
+    console.log(response.data); // Log response từ JSON server (nếu muốn)
+  } catch (error) {
+    console.log(error); // Log lỗi (nếu có)
+  }
+};
 
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
-      <Label>
-        Name:
-               <Input
-          type="text"
+        <Label>
+          Name:
+          <Input
+            type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
-          required />
-      </Label>
-      <Label>
-        Địa chỉ:
-
-         <Input
-          type="text"
+            required
+          />
+        </Label>
+        <Label>
+          Địa chỉ:
+          <Input
+            type="text"
             name="address"
             value={formData.address}
             onChange={handleChange}
-          required
-        />
-      </Label>
-      <Label>
-        Phone:
-        <Input
+            required
+          />
+        </Label>
+        <Label>
+          Phone:
+          <Input
             type="text"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-          required />
-        
+            required
+          />
         </Label>
-        <Label><Link to={"/checkout"}>trở lại</Link></Label>
+        <Label>
+          <Link to={"/checkout"}>trở lại</Link>
+        </Label>
         <Button type="submit">Lưu</Button>
-        
-        </Form>
+      </Form>
     </Container>
   );
-}
+};
+
 
 
 export default User;

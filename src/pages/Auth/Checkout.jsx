@@ -3,10 +3,9 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import { Navigate } from "react-router";
 import { Link, useNavigate } from "react-router-dom";
 import { Modal } from "antd";
-import qr from "../../assets/images/QR.jpg";
+import qr from "../../assets/QR.jpg";
 import { toast } from "react-toastify";
 
 const Information = styled.form`
@@ -114,7 +113,7 @@ const Transport = styled.div`
   }
 `;
 
-const Table = styled.table`
+const Table = styled.div`
   margin-top: 20px;
   width: 100%;
   display: flex;
@@ -286,7 +285,6 @@ const Oder = styled.div`
       }
 
       &.selected {
-        background-color: #007bff;
 
         span {
           font-weight: bold;
@@ -349,6 +347,39 @@ const Oder = styled.div`
     }
   }
 `;
+const StyledModal = styled(Modal)`
+  .img__qr img {
+    width: 40%;
+  }
+  .ant-modal-close-x {
+    display: none;
+  }
+  .ant-modal-footer {
+    display: none;
+  }
+  .ant-modal-content {
+    height: 350px;
+    width: 400px;
+  }
+  .total__order {
+    display: flex;
+    margin-top: 20px;
+  }
+  .total__order__text {
+    flex: 1;
+    text-align: left;
+  }
+  .total__order__number {
+    color: red;
+  }
+  .total__order__all {
+    font-size: 18px;
+  }
+  .total__order__amount {
+    font-size: 18px;
+    font-weight: 500;
+  }
+`;
 
 const Checkout = () => {
       const { name, address, phone } = useSelector(state => state.auth);
@@ -360,30 +391,31 @@ const Checkout = () => {
       const [selectedTransport, setSelectedTransport] = useState(null);
       const [selectedDelivery, setSelectedDelivery] = useState("thanh toán khi nhận hàng");
       const [isQRScanned, setIsQRScanned] = useState(false);
-      const [isModalOpenB, setIsModalOpenB] = useState(false);
+      const [isModalOpen, setIsModalOpen] = useState(false);
       const [title, setTitle] = useState("");
       const [content, setContent] = useState("");
+      
 
       const delivery = ["thanh toán khi nhận hàng", "Quét mã QR"];
-      const handleOptionSelectB = (option) => {
+      const handleOptionSelect = (option) => {
             setSelectedDelivery(option);
             setIsQRScanned(option === "Quét mã QR");
 
         if (option === "Quét mã QR") {
-            showModalB();
+            showModal();
           }
         };
 
-      const showModalB = () => {
-            setIsModalOpenB(true);
+      const showModal = () => {
+            setIsModalOpen(true);
       };
 
-      const handleOkB = () => {
-            setIsModalOpenB(false);
+      const handleOk = () => {
+            setIsModalOpen(false);
       };
 
-      const handleCancelB = () => {
-            setIsModalOpenB(false);
+      const handleCancel = () => {
+            setIsModalOpen(false);
       };
 
       const handleDiscountVoucher = (discount) => {
@@ -412,16 +444,26 @@ const Checkout = () => {
         selectedTransport === 30000 ? "Viettel Post" : null;
       
     useEffect(() => {
-        axios.get("http://localhost:3001/orders")
-        .then(response => {
-      const orders = response.data;
-        orders.sort((a, b) => b.id - a.id);
-        setLatestSelectedQuantity(orders[0]?.selectedQuantity || 0);
-        setLatestSelectedTotalAmount(orders[0]?.selectedTotalAmount || 0);
-        setPrice(orders[0]?.selectedTotalAmount || 0);
-      })
-        .catch(error => console.error(error));
-    }, [    ]);
+      axios
+        .get("http://localhost:3001/orders")
+        .then((response) => {
+          const orders = response.data;
+          setLatestSelectedQuantity(
+            orders.length ? orders[0].selectedQuantity : 0
+          );
+          setLatestSelectedTotalAmount(
+            orders.length ? orders[0].selectedTotalAmount : 0
+          );
+          setPrice(orders.length ? orders[0].selectedTotalAmount : 0);
+        })
+        .catch((error) => console.error(error));
+    }, []);
+  const deleteOrders = () => {
+    axios
+      .delete("http://localhost:3001/orders/1") // Gọi tới API với ID của mảng cần xóa
+      .then((response) => console.log(response))
+      .catch((error) => console.error(error));
+  };
 
     const navigateToUser = () => {
         navigate("/user");
@@ -448,7 +490,7 @@ const Checkout = () => {
      } else {
           toast.success("Đã đặt hàng thành công", {
           position: "top-center",
-         autoClose: 2000,
+          autoClose: 2000,
   });
   }
     navigate("/");
@@ -481,7 +523,7 @@ const Checkout = () => {
               })}
             </h6>
           </div>
-          <div className="order__correction">
+          <div className="order__correction" onClick={deleteOrders}>
             <Link to={"/cart"}>xem lại đơn hàng</Link>
           </div>
         </Table>
@@ -593,10 +635,10 @@ const Checkout = () => {
             {delivery.map((option) => (
               <li
                 key={option}
-                lassName={selectedDelivery === option ? "selected" : ""}
-                onClick={() => handleOptionSelectB(option)}
+                className={selectedDelivery === option ? "selected" : ""}
+                onClick={() => handleOptionSelect(option)}
               >
-                <span onClick={() => handleOptionSelectB(option)}>
+                <span onClick={() => handleOptionSelect(option)}>
                   {selectedDelivery === option && (
                     <i className="ri-check-line"></i>
                   )}
@@ -605,16 +647,59 @@ const Checkout = () => {
               </li>
             ))}
           </ul>
-          <Modal
+
+          <StyledModal
             title="Quét mã QR để thanh toán"
-            visible={isModalOpenB}
-            onOk={handleOkB}
-            onCancel={handleCancelB}
+            open={isModalOpen}
+            onOk={handleOk}
+            onCancel={handleCancel}
           >
-            <div>
+            <div className="img__qr">
               <img src={qr} alt="qr" />
+              <div className="total__order">
+                <div className="total__order__text">
+                  <div>
+                    {selectedDelivery && <div>Phương thức thanh toán :</div>}
+                  </div>
+                  <div>Tổng tiền hàng:</div>
+                  <div>{selectedTransport && <div>Phí vận chuyển:</div>}</div>
+                  <div>
+                    {selectedTransport && <div>Đơn vị vận chuyển:</div>}
+                  </div>
+                  <div>{selectedVoucher && <div>Voucher giảm:</div>}</div>
+                  <div className="total__order__all">Tổng thanh toán:</div>
+                </div>
+                <div className="total__order__number">
+                  <div>{selectedDelivery}</div>
+                  <div>
+                    {latestSelectedTotalAmount.toLocaleString("vi-VN", {
+                      style: "currency",
+                      currency: "VND",
+                    })}
+                  </div>
+                  <div>{selectedTransport}</div>
+                  <div>{priceLabel}</div>
+                  <div>
+                    {selectedVoucher && (
+                      <div>
+                        {selectedVoucher.toLocaleString("vi-VN", {
+                          style: "currency",
+                          currency: "VND",
+                        })}
+                      </div>
+                    )}
+                  </div>
+                  <div className="total__order__amount">
+                    {price.toLocaleString("vi-VN", {
+                      style: "currency",
+                      currency: "VND",
+                    })}
+                  </div>
+                </div>
+              </div>
             </div>
-          </Modal>
+            <div></div>
+          </StyledModal>
         </div>
         <div className="total__order">
           <div className="order__content">

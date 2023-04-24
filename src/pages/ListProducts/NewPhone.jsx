@@ -6,29 +6,28 @@ import axios from "axios";
 
 const Container = styled.div`
   width: 100%;
-  height: 23rem;
+  height: 24rem;
   display: flex;
   overflow: hidden;
   padding-top: 10px;
   line-height: 10px;
   @media (max-width: 768px) {
-    margin-bottom: -10px;
+    margin-top: -8px;
   }
 `;
 const Main = styled.div`
   border-radius: 5px;
   background-color: #bd0a0a;
   overflow: hidden;
-  height: 21rem;
-  width: 100%;
+  height: 23rem;
   @media (max-width: 768px) {
     margin-left: 20px;
-    margin-right: 2px;
-    margin-top: -22px;
+    margin-right: 10px;
+    margin-top: -10px;
+    margin-bottom: -10px;
   }
   @media (max-width: 1024px) {
     margin: 5px;
-    
   }
 `;
 const Title = styled.h1`

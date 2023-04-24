@@ -8,22 +8,20 @@ import axios from "axios";
 
 const Container = styled.div`
   width: 100%;
-  height: 25rem;
+  height: 26rem;
   display: flex;
   overflow: hidden;
   padding-top: 10px;
   line-height: 10px;
-
   @media (max-width: 768px) {
     margin-top: -8px;
   }
-  
 `;
 const Main = styled.div`
   border-radius: 5px;
   background-color: #bd0a0a;
   overflow: hidden;
-  height: 24rem;
+  height: 24.5rem;
   @media (max-width: 768px) {
     margin-left: 20px;
     margin-right: 10px;
@@ -91,6 +89,7 @@ const Slide = styled.div`
   display: flex;
   align-items: center;
 `;
+
 
 const SaleDays = () => {
   const [iphoneProducts, setIphoneProducts] = useState([]);

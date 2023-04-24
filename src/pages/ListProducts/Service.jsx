@@ -8,9 +8,6 @@ const Container = styled.div`
   line-height: 50px;
   display: flex;
   @media (max-width: 1024px) {
-    margin: 1px;
-  }
-  @media (max-width: 992px) {
     display: none;
   }
 `;

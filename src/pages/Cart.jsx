@@ -9,9 +9,8 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import styled from "styled-components";
 import axios from "axios";
-import { QuestionCircleOutlined } from '@ant-design/icons';
+import { QuestionCircleOutlined } from "@ant-design/icons";
 import { Button, message, Popconfirm } from "antd";
-
 
 const Main = styled.div`
   margin-top: 30px;
@@ -44,9 +43,8 @@ const Table = styled.table`
         object-fit: cover;
       }
     }
-    th{
+    th {
       padding-right: 10px;
-      
     }
   }
 `;
@@ -106,20 +104,6 @@ const toggleCheck = (item) => {
   );
   setSelectedTotalAmount(amount);
   setSelectedQuantity(quantity);
-
-  const jsonData = {
-    selectedUserName: name,
-    selectedItems: isSelected
-      ? selectedItems.filter((i) => i !== item)
-      : [...selectedItems, item],
-    selectedTotalAmount: amount,
-    selectedQuantity: quantity,
-  };
-
-  axios
-    .post("http://localhost:3001/orders", jsonData)
-    .then((response) => console.log(response.data))
-    .catch((error) => console.error(error));
 };
 
 const handleCheckboxChange = () => {
@@ -136,6 +120,24 @@ const handleCheckboxChange = () => {
       cartItems.reduce((acc, item) => acc + item.quantity, 0)
     );
   }
+};
+
+const placeOrder = () => {
+  const jsonData = {
+    selectedUserName: name,
+    selectedItems: selectedItems,
+    selectedTotalAmount: selectedTotalAmount,
+    selectedQuantity: selectedQuantity,
+  };
+
+  axios
+    .post("http://localhost:3001/orders", jsonData)
+    .then((response) => console.log(response.data))
+    .catch((error) => console.error(error));
+
+  setSelectedItems([]);
+  setSelectedTotalAmount(0);
+  setSelectedQuantity(0);
 };
 
 const isAllSelected = selectedItems.length === cartItems.length;
@@ -198,19 +200,26 @@ const isAllSelected = selectedItems.length === cartItems.length;
                 {isLoggedIn ? (
                   <div>
                     {selectedItems.length > 0 ? (
-                      <button className="buy__btn w-100 ">
-                        <Link to="/checkout">Thanh Toán</Link>
+                      // <button className="buy__btn w-100 ">
+                      //   <Link to="/checkout">Thanh Toán</Link>
+                      // </button>
+                      <button
+                        className="buy__btn w-100 "
+                        onClick={placeOrder}
+                        disabled={selectedItems.length === 0}
+                      >
+                        <Link to="/checkout">Đặt Hàng</Link>
                       </button>
                     ) : (
                       <button className="buy__btn w-100 " disabled>
-                        <Link onClick={addPurchase}>Thanh Toán</Link>
+                        <Link onClick={addPurchase}>Đặt Hàng</Link>
                       </button>
                     )}
                   </div>
                 ) : (
                   <div>
                     <button className="buy__btn w-100 " onClick={addLogin}>
-                      Thanh Toán
+                      Đặt Hàng
                     </button>
                   </div>
                 )}
@@ -230,6 +239,7 @@ const Tr = ({ item, isChecked, toggleCheck }) => {
   const dispatch = useDispatch();
 
   const { imgUrl, productName, price } = item;
+  const [showDetails, setShowDetails] = useState(true);
 
   const [quantity, setQuantity] = useState(item.quantity);
   const [totalPrice, setTotalPrice] = useState(price * quantity);
@@ -240,8 +250,15 @@ const Tr = ({ item, isChecked, toggleCheck }) => {
     dispatch(cartActions.updateTotalAmount());
   }, [quantity, price, dispatch]);
 
+  useEffect(() => {
+    if (!showDetails) {
+      window.location.reload();
+    }
+  }, [showDetails]);
+
   const deleteProduct = () => {
     dispatch(cartActions.deleteItem(item.id));
+    setShowDetails(false);
   };
 
   const addProduct = () => {
@@ -262,7 +279,6 @@ const Tr = ({ item, isChecked, toggleCheck }) => {
   const cancel = (e) => {
     console.log(e);
   };
-  
 
   return (
     <tr>
@@ -277,7 +293,10 @@ const Tr = ({ item, isChecked, toggleCheck }) => {
       <td>
         <img src={imgUrl} alt="" />
       </td>
-      <td>{productName}</td>
+      <td>
+        {" "}
+        <Link to={`/shop/${item.id}`}>{productName}</Link>
+      </td>
       <td>{totalPrice.toLocaleString("vi-VN")}VND</td>
       <td>
         <div
@@ -300,13 +319,13 @@ const Tr = ({ item, isChecked, toggleCheck }) => {
               >
                 {quantity}
               </span>
-              <motion.i onClick={addProduct} class="ri-add-line"></motion.i>
+              <motion.i onClick={addProduct} className="ri-add-line"></motion.i>
             </>
           )}
           {isChecked && (
             <span>
               <i
-                class="ri-check-line"
+                className="ri-check-line"
                 style={{ color: "green", fontSize: "20px", fontWeight: "700" }}
               ></i>
             </span>
@@ -335,7 +354,7 @@ const Tr = ({ item, isChecked, toggleCheck }) => {
                 style={{
                   color: "red",
                 }}
-                class="ri-delete-bin-5-line"
+                className="ri-delete-bin-5-line"
               ></motion.i>
             </Button>
           </Popconfirm>
@@ -345,7 +364,5 @@ const Tr = ({ item, isChecked, toggleCheck }) => {
     </tr>
   );
 };
-
-
 
 export default Cart;

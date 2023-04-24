@@ -44,3 +44,6 @@
   color: black;
 
 }
+  .ant-modal-close-x {
+    display: none;
+  }

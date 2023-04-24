@@ -12,8 +12,7 @@ const Container = styled.div`
   overflow: hidden;
   @media (max-width: 768px) {
     margin-bottom: 0;
-
-    margin-top: -50px;
+    height: 12rem;
   }
 `;
 const Main = styled.div`
@@ -79,7 +78,7 @@ const Arrow = styled.div`
 const Wrapper = styled.div`
   height: 150%;
   display: flex;
-  transition: all 2s ease;
+  transition: all 1s ease;
   transform: translateX(${(props) => props.slideIndex * -21}vw);
   padding: 2px;
 `;
@@ -98,7 +97,6 @@ const Img = styled.img`
   height: 8rem;
 
   @media (max-width: 768px) {
-    width: 3px;
   }
 `;
 

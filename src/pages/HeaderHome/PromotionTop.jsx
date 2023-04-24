@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Row } from "reactstrap";
 import CarouselMain from "./CarouselMain";
-import salePhone from "../../assets/images/anhsale-06.webp";
-import saleMac from "../../assets/images/anhsale-07.webp";
-import saleLogo from "../../assets/images/hotsale-01.webp";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
+import axios from "axios";
 
 const Title = styled.div`
   background-color: #be1e2d;
@@ -42,10 +40,14 @@ const Component = styled.div`
 `;
 
 const SaleTitle = styled.div`
-  padding: 5px;
+display: flex;
+
   img {
-    width: 90px;
-    height: 35px;
+    width: 50px;
+    height: 40px;
+  }
+  h6{
+    padding-top: 7px;
   }
   h6:hover {
     color: #be1e2d;
@@ -68,11 +70,22 @@ const SaleMac = styled.div`
 
 
 const PromotionTop = () => {
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
-const navigateTo = (path) => {
-navigate(`/shop/${path}`);
-};
+  const navigateTo = (path) => {
+    navigate(`/shop/${path}`);
+  };
+
+  const [banners, setBanners] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await axios.get("http://localhost:3001/banner");
+      setBanners(result.data);
+    }
+    fetchData();
+  }, []);
+
   return (
     <Component>
       <Row mt="16">
@@ -119,24 +132,39 @@ navigate(`/shop/${path}`);
         </Col>
 
         <Col>
-          <SaleTitle>
-            <img src={saleLogo} alt="logo" />
-            <div className="sale__logo__text">
-              <h6 onClick={() => navigateTo("")}>Siêu khuyến mãi</h6>
-            </div>
-          </SaleTitle>
+          {banners.map((banner) => {
+            switch (banner.id) {
+              case 2:
+                return (
+                  <SaleTitle key={banner.id}>
+                    <img src={banner.img} alt="" />
+                    <div className="sale__logo__text">
+                      <h6 onClick={() => navigateTo("")}>Siêu khuyến mãi</h6>
+                    </div>
+                  </SaleTitle>
+                );
+              case 3:
+                return (
+                  <SalePhone key={banner.id}>
+                    <img src={banner.img} alt="" />
+                  </SalePhone>
+                );
+              case 4:
+                return (
+                  <SaleMac key={banner.id}>
+                    <img src={banner.img} alt="" />
+                  </SaleMac>
+                );
 
-          <SalePhone>
-            <img src={salePhone} alt="img" />
-          </SalePhone>
-
-          <SaleMac>
-            <img src={saleMac} alt="img" />
-          </SaleMac>
+              default:
+                return null;
+            }
+          })}
         </Col>
       </Row>
     </Component>
   );
 };
+
 
 export default PromotionTop;

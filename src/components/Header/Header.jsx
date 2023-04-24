@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 
-import logo from "../../assets/images/logo-01.png";
+import logo from "../../assets/logo-01.png";
 import { useDispatch, useSelector } from "react-redux";
 import Banner from "../Banner/Banner";
 import axios from "axios";
@@ -30,27 +30,36 @@ const Header = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios
-      .get(
-        "http://localhost:3001/cartItems?user_id=" +
-          localStorage.getItem("user_id")
-      )
-      .then((res) => dispatch(cartActions.setItem(res.data)));
-  }, []);
+    const fetchCartItems = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:3001/cartItems?user_id=" +
+            localStorage.getItem("user_id")
+        );
+        dispatch(cartActions.setItem(res.data));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchCartItems();
+  }, [dispatch]);
 
   const [totalQuantity, setTotalQuantity] = useState(0);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/cartItems")
-      .then((response) => {
+    const fetchTotalQuantity = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/cartItems");
         const total = response.data.reduce(
           (acc, product) => acc + (product.quantity || 0),
           0
         );
         setTotalQuantity(total);
-      })
-      .catch((error) => console.log(error));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchTotalQuantity();
   }, []);
 
   const navigate = useNavigate();
@@ -59,11 +68,15 @@ const Header = () => {
   const navigateToCart = () => navigate("/cart");
   const navigateToHome = () => navigate("/");
   const navigateToUser = () => navigate("/user");
+  const navigateToOrder = () => navigate("/order");
 
   const handleClick = () => dispatch(logout());
 
   const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => setIsOpen(!isOpen);
+
+  const handleToggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const name = useSelector((state) => state.auth.name);
@@ -92,14 +105,15 @@ const Header = () => {
               <div>
                 <Name className="d-flex">
                   <h4 onClick={navigateToUser}>{name}</h4>
-                  <i class="ri-user-3-fill" onClick={toggleMenu}></i>
+                  <i className="ri-user-3-fill" onClick={handleToggleMenu}></i>
                 </Name>
 
                 {isOpen && (
-                  <ul className="menu__user-list">
-                    <li onClick={handleClick}>Đăng Xuất</li>
-                    <li onClick={navigateToUser}>Trang cá nhân</li>
-                  </ul>
+                  <UserMenu
+                    handleLogout={handleClick}
+                    navigateToUser={navigateToUser}
+                    navigateToOrder={navigateToOrder}
+                  />
                 )}
               </div>
             ) : (
@@ -119,16 +133,30 @@ const Header = () => {
           </Actions>
 
           <Cart onClick={navigateToCart}>
-            <i class="ri-shopping-bag-line"></i>
+            <i className="ri-shopping-bag-line"></i>
             <Badge>{totalQuantity}</Badge>
           </Cart>
           <Mobile onClick={navigateToCart}>
-            <i class="ri-menu-line"></i>
+            <i className="ri-menu-line"></i>
           </Mobile>
         </Icons>
       </Main>
     </Container>
   );
 };
+const UserMenu = ({ handleLogout }) => {
+  const navigate = useNavigate();
+  const navigateToUser = () => navigate("/user");
+  const navigateToOrder = () => navigate("/order");
+
+  return (
+    <ul className="menu__user-list">
+      <li onClick={handleLogout}>Đăng Xuất</li>
+      <li onClick={navigateToUser}>Trang cá nhân</li>
+      <li onClick={navigateToOrder}>Tra cứu đơn hàng</li>
+    </ul>
+  );
+};
+
 
 export default Header;

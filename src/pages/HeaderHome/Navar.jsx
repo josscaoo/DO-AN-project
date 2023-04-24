@@ -37,8 +37,6 @@ const ListMenu = styled.div`
   }
 `;
 
-
-
 const ListPhone = styled.div`
   position: relative;
   display: inline-block;

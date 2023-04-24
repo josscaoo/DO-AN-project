@@ -20,8 +20,8 @@ export const Images = styled.div`
   }
 
   @media (max-width: 1024px) {
-    width: 200px;
-    height: 150px;
+    width: 180px;
+    height: 100%;
   }
 
   @media (max-width: 768px) {
@@ -43,11 +43,11 @@ export const Info = styled.div`
       }
 
       @media (max-width: 992px) {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
 
       @media (max-width: 1024px) {
-        font-size: 15px;
+        font-size: 14px;
       }
 
       @media (max-width: 768px) {
@@ -74,6 +74,13 @@ export const Button = styled.div`
     font-size: 1.3rem;
     font-weight: 500;
     color: var(--primary-color);
+    @media (max-width: 1024px) {
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 10px;
+    }
   }
 
   span {
@@ -90,11 +97,11 @@ export const Button = styled.div`
       background: var(--primary-color);
 
       @media (max-width: 1024px) {
-        font-size: 12px;
+        font-size: 10px;
       }
 
       @media (max-width: 768px) {
-        font-size: 12px;
+        font-size: 10px;
       }
     }
 

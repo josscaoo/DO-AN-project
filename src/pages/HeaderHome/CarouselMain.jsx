@@ -55,23 +55,18 @@ const Wrapper = styled.div`
   height: 100%;
   display: flex;
   transition: all 1s ease;
-  transform: translateX(${(props) => props.slideIndex * -100}vw);
+  transform: translateX(${(props) => props.slideIndex * -50}vw);
 `;
 
 const Slide = styled.div`
-  width: 100vw;
+  width: 50vw;
   display: flex;
   align-items: center;
-  background-color: #${(props) => props.bg};
 `;
 
-const ImgContainer = styled.div`
-  height: 100%;
-  flex: 0.5;
-`;
 
 const Img = styled.img`
-  height: 100%;
+  height: 90%;
   width: 88%;
 
   @media (max-width: 768px) {
@@ -100,6 +95,7 @@ const CarouselMain = () => {
     setSlideIndex(slideIndex < 3 ? slideIndex + 1 : 0);
   };
   const [sliderItems, setSliderItem] = useState([]);
+
   useEffect(() => {
     async function fetchData() {
       const result = await axios.get("http://localhost:3001/sliderSales");
@@ -125,9 +121,7 @@ const CarouselMain = () => {
       <Wrapper slideIndex={slideIndex}>
         {sliderItems.map((item) => (
           <Slide>
-            <ImgContainer>
               <Img src={item.img} />
-            </ImgContainer>
           </Slide>
         ))}
       </Wrapper>

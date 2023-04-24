@@ -8,31 +8,36 @@ const Container = styled.div`
   background-color: #fff;
   margin: 3px;
   border-radius: 10px;
-  height: 320px;
-  width: 230px;
+  width: 240px;
   padding: 10px;
+  cursor: pointer;
   @media (max-width: 768px) {
-    height: 320px;
+    height: 300px;
+  }
+  @media (max-width: 425px) {
+    height: 280px;
+    width: 100%;
+    padding: 10px;
   }
 `;
 const Images = styled.div`
-  width: 200px;
-  height: 220px;
-  @media (max-width: 768px) {
-    height: 170px;
-  }
+  width: 180px;
+  height: 200px;
   img {
     padding-top: 10px;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    @media (max-width: 768px) {
+    }
+    @media (max-width: 425px) {
+      width: 100%;
+      height: 220px;
+    }
   }
 `;
 const Info = styled.div`
   padding-top: 20px;
-  @media (max-width: 992px) {
-    font-size: 2px;
-  }
   span {
     font-size: 10px;
   }
@@ -41,17 +46,20 @@ const Info = styled.div`
     color: var(--primary-color);
     font-weight: 600;
     margin-top: 1px;
-    @media (max-width: 992px) {
-      font-size: 12px;
-      max-width: 60px;
-      max-height: 70px;
-    }
     a {
       @media (max-width: 992px) {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
       @media (max-width: 768px) {
-        font-size: 1rem;
+        font-size: 0.8rem;
+      }
+      @media (max-width: 425px) {
+        margin-top: 5px;
+        font-size: 0.8rem;
+        h5 {
+          font-size: 1rem;
+          margin-top: 10px;
+        }
       }
     }
   }
@@ -78,6 +86,12 @@ const Bottom = styled.div`
       @media (max-width: 768px) {
         font-size: 1rem;
       }
+      @media (max-width: 425px) {
+        font-size: 0.8rem;
+      }
+    }
+    @media (max-width: 425px) {
+      margin-top: 5px;
     }
   }
 `;

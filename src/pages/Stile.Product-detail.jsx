@@ -1,6 +1,14 @@
 import styled from "styled-components";
 
 export const Image = styled.section`
+  img {
+    background-color: #076ec8;
+    @media (max-width: 768px) {
+      margin: auto;
+      width: 60%;
+      height: 100%;
+    }
+  }
   @media (max-width: 988px) {
     padding-top: 0;
     padding-bottom: 0;
@@ -8,20 +16,18 @@ export const Image = styled.section`
 `;
 export const Detail = styled.section`
   padding-left: 50px;
-  @media (max-width: 988px) {
-    margin-top: 350px;
+  @media (max-width: 768px) {
   }
   h2 {
     font-size: 1.6rem;
     margin-top: 10px;
     font-weight: 700;
 
-    @media (max-width: 988px) {
+    @media (max-width: 768px) {
       font-size: 1.3rem;
     }
   }
   .Add__Cart {
-
   }
   button {
     background-color: rgb(241, 158, 49);

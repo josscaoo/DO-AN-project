@@ -7,12 +7,10 @@ import axios from "axios";
 const Container = styled.div`
   width: 100%;
   height: 38rem;
-  /* display: flex; */
   overflow: hidden;
   padding-top: 10px;
   line-height: 10px;
   @media (max-width: 768px) {
-    margin-top: -37px;
   }
 `;
 const Main = styled.div`
