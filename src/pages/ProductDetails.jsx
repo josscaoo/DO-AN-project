@@ -9,7 +9,6 @@
   import { cartActions } from "../redux/slices/cartSlice";
   import { toast } from "react-toastify";
   import { Modal, message, Popconfirm } from "antd";
-  import "./product.css";
   import {
     Content,
     Detail,
@@ -26,8 +25,49 @@
     TextReview,
     UserName,
     Wrapper,
-  } from "./Stile.Product-detail";
+    
+  } from "./Style.Product-detail";
   import axios from "axios";
+  import styled from "styled-components";
+  export const StyledModal = styled(Modal)`
+  .ant-btn-primary {
+    background-color: red;
+  }
+  .ant-modal-footer {
+    margin: auto;
+    width: 50%;
+    display: flex;
+  }
+  .ant-modal-content {
+    height: 150px;
+    width: 300px;
+  }
+  .ant-modal-close {
+    flex: none;
+  }
+  .ant-modal-body {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    margin-bottom: 30px;
+  }
+  .ant-btn-default {
+    background-color: red;
+    border-color: red;
+    color: white;
+    margin: auto;
+  }
+  .ant-btn-default:hover{
+    background-color: #da0206;
+  } .ant-btn-default:hover,
+  .ant-btn-default:focus {
+    background-color: white;
+    color: black;
+  }
+  .ant-modal-close-x {
+    display: none;
+  }
+`;
 
 const ProductDetails = () => {
     const dispatch = useDispatch();
@@ -46,8 +86,9 @@ const ProductDetails = () => {
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [relatedProducts, setRelatedProducts] = useState([]);
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-    const [showDetails, setShowDetails] = useState(true);
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const [showDetails, setShowDetails] = useState(true);
+
 
 
     useEffect(() => {
@@ -94,35 +135,41 @@ const ProductDetails = () => {
           setConfirmLoading(false);
         }, 100);
       };
-      const addLogin = () => {
+    const addLogin = () => {
         toast.error("Bạn Cần Đăng Nhập Để Mua Hàng");
       };
 
   
-    const handleSubmit = (event) => {
-    event.preventDefault();
+const handleSubmit = (event) => {
+  event.preventDefault();
 
-    const reviewData = {
-      ...newReview,
-      productId: Number(id),
-    };
-    if (!newReview.content) {
-      setInputError("Bạn chưa nhập nội dung bình luận!");
-    } else {
-      axios
-        .post("http://localhost:3001/reviews", reviewData)
-        .then((response) => {
-          const updatedReviews = [...reviews, response.data];
+  if (!isLoggedIn) {
+    // nếu chưa đăng nhập, hiển thị thông báo yêu cầu đăng nhập
+    setInputError("Vui lòng đăng nhập để bình luận.");
+    return;
+  }
 
-          setReviews(updatedReviews);
-          setNewReview({ id: "", name: userName, content: "" });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      setInputError(null);
-    }
-    };
+  const reviewData = {
+    ...newReview,
+    productId: Number(id),
+  };
+  if (!newReview.content) {
+    setInputError("Bạn chưa nhập nội dung bình luận!");
+  } else {
+    axios
+      .post("http://localhost:3001/reviews", reviewData)
+      .then((response) => {
+        const updatedReviews = [...reviews, response.data];
+
+        setReviews(updatedReviews);
+        setNewReview({ id: "", name: userName, content: "" });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setInputError(null);
+  }
+};
 
    const handleDeleteReview = (id) => {
      // Gửi yêu cầu DELETE đến JSON server
@@ -185,6 +232,7 @@ const ProductDetails = () => {
     const toggleMenu = (id) => {
       if (id === selectedReviewId) {
         setIsOpen(!isOpen);
+
       } else {
         setIsOpen(true);
         setSelectedReviewId(id);
@@ -220,6 +268,15 @@ const ProductDetails = () => {
     };
     const cancel = (e) => { };
     
+const [hoveredReviewId, setHoveredReviewId] = useState(null);
+
+const handleMouseMove = (reviewId) => {
+  setHoveredReviewId(reviewId);
+};
+
+const handleMouseLeave = () => {
+  setHoveredReviewId(null);
+};
 
     return (
       <Helmet title={product.productName}>
@@ -253,7 +310,7 @@ const ProductDetails = () => {
                         >
                           Thêm vào giỏ hàng
                         </button>
-                        <Modal
+                        <StyledModal
                           open={open}
                           onOk={addToCart}
                           confirmLoading={confirmLoading}
@@ -261,8 +318,8 @@ const ProductDetails = () => {
                           okText="Đồng ý"
                           cancelText="Trở về"
                         >
-                          <h3>Thêm vào giỏ hàng</h3>
-                        </Modal>
+                          <h5>Thêm vào giỏ hàng</h5>
+                        </StyledModal>
                       </div>
                     ) : (
                       <div className="Add__Cart">
@@ -304,134 +361,136 @@ const ProductDetails = () => {
                 {tab === "desc" ? (
                   <Review>
                     <ReviewWrapper>
-                      <h2>Bình luận:</h2>
-                      {isLoggedIn ? (
-                        <div>
-                          <ul>
-                            {reviews.map((review) => (
-                              <li key={review.id} className="d-flex">
-                                <UserName>{review.name} : </UserName>
-                                <TextReview>"{review.content}"</TextReview>
+                      <h4>Bình luận:</h4>
 
-                                <div className="d-flex">
-                                  <SelectReview>
-                                    <i
-                                      className="ri-more-2-fill"
-                                      onClick={
-                                        review.name === userName
-                                          ? () => toggleMenu(review.id)
-                                          : undefined
-                                      }
-                                    ></i>
-                                  </SelectReview>
-                                  {isOpen && selectedReviewId === review.id && (
-                                    <EditReview>
-                                      <>
-                                        <i
-                                          whileTap={{ scale: 1.2 }}
-                                          className="ri-edit-fill"
-                                          type="primary"
-                                          onClick={showModalEdit}
-                                        ></i>
-                                        <Modal
-                                          title="Bạn muốn sửa Bình luận"
-                                          open={isModalOpen}
-                                          onOk={handleOkEdit}
-                                          onCancel={handleCancelEdit}
-                                          footer={null}
-                                          style={{
-                                            marginTop: "150px",
-                                            height: "100px",
-                                          }} // Đặt margin-bottom là 50px
-                                        >
-                                          <form
-                                            onSubmit={(event) => {
-                                              event.preventDefault();
-                                              const newContent =
-                                                event.target.content.value;
-                                              handleEditReview(
-                                                review.id,
-                                                newContent
-                                              );
-                                              setIsModalOpen(false);
-                                            }}
-                                          >
-                                            <FormGroup>
-                                              <textarea
-                                                type="text"
-                                                name="content"
-                                                defaultValue={review.content}
-                                              />
-                                              <motion.button
-                                                className="buy__btn "
-                                                whileTap={{ scale: 1.2 }}
-                                                type="submit"
-                                              >
-                                                Lưu
-                                              </motion.button>
-                                            </FormGroup>
-                                          </form>
-                                        </Modal>
-
-                                        <Popconfirm
-                                          title="Bạn có muốn xóa bình luận?"
-                                          // description="Bạn có muốn xóa bình luận?"
-                                          onConfirm={confirm}
-                                          onCancel={cancel}
-                                          okText={
-                                            <h6
-                                              onClick={() =>
-                                                handleDeleteReview(review.id)
-                                              }
-                                            >
-                                              Có
-                                            </h6>
-                                          }
-                                          cancelText={<h6>Không</h6>}
-                                        >
-                                          <div type="link">
-                                            <i className="ri-delete-bin-5-line"></i>
-                                          </div>
-                                        </Popconfirm>
-                                      </>
-                                    </EditReview>
-                                  )}
-                                </div>
-                              </li>
-                            ))}
-                          </ul>
-                          <ReviewForm>
-                            <form onSubmit={handleSubmit}>
-                              <label htmlFor="review">
-                                Để lại ý kiến của bạn:
-                              </label>
-                              <FormGroup>
-                                <textarea
-                                  type="text"
-                                  value={newReview.content}
-                                  onChange={handleChange}
-                                />
-                                {inputError && (
-                                  <p style={{ color: "red" }}>{inputError}</p>
-                                )}
-                              </FormGroup>
-
-                              <motion.button
-                                type="submit"
-                                className="buy__btn "
-                                whileTap={{ scale: 1.2 }}
+                      <div>
+                        <ul>
+                          {reviews.map((review) => (
+                            <li key={review.id} onMouseLeave={handleMouseLeave}>
+                              <div
+                                className="review__form"
+                                onMouseMove={() => handleMouseMove(review.id)}
                               >
-                                Đánh giá
-                              </motion.button>
-                            </form>
-                          </ReviewForm>
-                        </div>
-                      ) : (
-                        <p>
-                          Bạn cần phải <Link to={"/login"}>Đăng nhập</Link> để
-                          bình luận
-                        </p>
-                      )}
+                                <UserName>{review.name} </UserName>
+                                <TextReview>"{review.content}"</TextReview>
+                              </div>
+                              <div className="review__icon">
+                                {hoveredReviewId === review.id && (
+                                  <i
+                                    className="ri-more-line"
+                                    onClick={
+                                      review.name === userName
+                                        ? () => toggleMenu(review.id)
+                                        : undefined
+                                    }
+                                    onMouseMove={() =>
+                                       handleMouseMove(review.id)
+                                     }
+                                     title="Xem thêm"
+                                  ></i>
+                                )}
+                                {isOpen && selectedReviewId === review.id && (
+
+                                  <EditReview>
+                                    <>
+                                      <i
+                                        whileTap={{ scale: 1.2 }}
+                                        className="ri-edit-fill"
+                                        type="primary"
+                                        onClick={showModalEdit}
+                                      ></i>
+                                      <StyledModal
+                                        title="Bạn muốn sửa Bình luận"
+                                        open={isModalOpen}
+                                        onOk={handleOkEdit}
+                                        onCancel={handleCancelEdit}
+                                        footer={null}
+                                        style={{
+                                          marginTop: "150px",
+                                          height: "100px",
+                                        }} // Đặt margin-bottom là 50px
+                                      >
+                                        <form
+                                          onSubmit={(event) => {
+                                            event.preventDefault();
+                                            const newContent =
+                                              event.target.content.value;
+                                            handleEditReview(
+                                              review.id,
+                                              newContent
+                                            );
+                                            setIsModalOpen(false);
+                                          }}
+                                        >
+                                          <FormGroup>
+                                            <textarea
+                                              type="text"
+                                              name="content"
+                                              defaultValue={review.content}
+                                            />
+                                            <motion.button
+                                              className="buy__btn "
+                                              whileTap={{ scale: 1.2 }}
+                                              type="submit"
+                                            >
+                                              Lưu
+                                            </motion.button>
+                                          </FormGroup>
+                                        </form>
+                                      </StyledModal>
+
+                                      <Popconfirm
+                                        title="Bạn có muốn xóa bình luận?"
+                                        // description="Bạn có muốn xóa bình luận?"
+                                        onConfirm={confirm}
+                                        onCancel={cancel}
+                                        okText={
+                                          <h6
+                                            onClick={() =>
+                                              handleDeleteReview(review.id)
+                                            }
+                                          >
+                                            Có
+                                          </h6>
+                                        }
+                                        cancelText={<h6>Không</h6>}
+                                      >
+                                        <div type="link">
+                                          <i className="ri-delete-bin-5-line"></i>
+                                        </div>
+                                      </Popconfirm>
+                                    </>
+                                  </EditReview>
+                                )}
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                        <ReviewForm>
+                          <form onSubmit={handleSubmit}>
+                            <label htmlFor="review">
+                              Để lại ý kiến của bạn:
+                            </label>
+                            <FormGroup>
+                              <textarea
+                                type="text"
+                                value={newReview.content}
+                                onChange={handleChange}
+                              />
+                              {inputError && (
+                                <p style={{ color: "red" }}>{inputError}</p>
+                              )}
+                            </FormGroup>
+                            <motion.button
+                              type="submit"
+                              className="buy__btn "
+                              whileTap={{ scale: 1.2 }}
+                            >
+                              Đánh giá
+                            </motion.button>
+                          </form>
+                        </ReviewForm>
+                      </div>
                     </ReviewWrapper>
                   </Review>
                 ) : (
@@ -450,6 +509,7 @@ const ProductDetails = () => {
         </DetailReview>
       </Helmet>
     );
+  
   };
 
   export default ProductDetails;

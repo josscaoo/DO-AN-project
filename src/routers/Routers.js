@@ -24,6 +24,7 @@ const Routers = () => {
       <Route path="register" element={<Register />} />
       <Route path="user" element={<User />} />
       <Route path="order" element={<OrderStatus />} />
+      
     </Routes>
   );
 };

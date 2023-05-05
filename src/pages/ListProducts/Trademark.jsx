@@ -16,7 +16,7 @@ const Container = styled.div`
   }
 `;
 const Main = styled.div`
-  background-color: #bd0a0a;
+  background-color: #940707;
   overflow: hidden;
   height: 12.5rem;
   width: 100%;
@@ -105,25 +105,25 @@ const Trademark = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const handleClick = (direction) => {
     if (direction === "left") {
-      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 7);
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 5);
     } else {
-      setSlideIndex(slideIndex < 6 ? slideIndex + 1 : 0);
+      setSlideIndex(slideIndex < 4 ? slideIndex + 1 : 0);
     }
-    };
+  };
+      const [sliderSales, setSliderSales] = useState([]);
+      useEffect(() => {
+        async function fetchData() {
+          const result = await axios.get("http://localhost:3001/sliderSales");
+          setSliderSales(result.data);
+        }
+        fetchData();
+      }, []);
     
     const [intervalId, setIntervalId] = useState(null);
     const handleAutoSlide = () => {
-      setSlideIndex(slideIndex < 6 ? slideIndex + 1 : 0);
+      setSlideIndex(slideIndex < 4 ? slideIndex + 1 : 0);
   };
-    const [sliderSales, setSliderSales] = useState([]);
-    useEffect(() => {
-      async function fetchData() {
-        const result = await axios.get("http://localhost:3001/sliderSales");
-        setSliderSales(result.data);
-      }
-      fetchData();
-    }, []);
-
+  
     useEffect(() => {
       const id = setInterval(() => {
         handleAutoSlide();

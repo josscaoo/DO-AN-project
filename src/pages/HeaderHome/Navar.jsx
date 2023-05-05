@@ -7,6 +7,9 @@ const Container = styled.div`
   margin: auto;
   width: 50%;
   height: 35px;
+  @media (max-width: 1024px) {
+    height: 15px;
+  }
 `;
 
 const ListMenu = styled.div`
@@ -34,6 +37,9 @@ const ListMenu = styled.div`
   }
   li:last-child {
     border-bottom: none;
+  }
+  @media (max-width: 1024px) {
+    margin-top: 15px;
   }
 `;
 

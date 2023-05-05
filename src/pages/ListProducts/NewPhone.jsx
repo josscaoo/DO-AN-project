@@ -17,7 +17,7 @@ const Container = styled.div`
 `;
 const Main = styled.div`
   border-radius: 5px;
-  background-color: #bd0a0a;
+  background-color: #940707;
   overflow: hidden;
   height: 23rem;
   @media (max-width: 768px) {

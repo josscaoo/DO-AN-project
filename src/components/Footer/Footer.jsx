@@ -1,7 +1,14 @@
 import React from 'react';
-import {Category, Copyright, FooterForm, Logo, Shortcuts} from './Style'
+import {
+  Category,
+  Copyright,
+  FooterForm,
+  Logo,
+  Shortcuts,
+  ListGroupItem,
+} from "./Style";
 
-import { Row, Col, ListGroup, ListGroupItem } from "reactstrap";
+import { Row, Col, ListGroup } from "reactstrap";
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -10,60 +17,60 @@ const Footer = () => {
   return (
     <FooterForm>
       <Row>
-        <Col lg="4" className="mb-4" md="6">
+        <Col lg="4" md="6">
           <Logo>
             <h4>HienMobi</h4>
           </Logo>
           <p className="footer__text mt-4">
             Là đại lý ủy quyền chính thức của Apple tại Việt Nam (Apple
             Authorized Reseller) từ tháng 11/2020, HienMobi đem đến cho quý
-            khách hàng những trải nghiệm tuyệt vời khi mua sắm các sản phẩm,
+            khách hàng những trải nghiệm thật tuyệt vời khi mua sắm các sản phẩm,
             dịch vụ của Apple với chất lượng tốt nhất cùng thái độ phục vụ đúng
-            chuẩn AAR
+            chuẩn AAR 
           </p>
         </Col>
 
-        <Col lg="3" className="mb-4" md="3">
+        <Col lg="3" md="3">
           <Category>
             <Shortcuts>Danh Mục Hàng Đầu</Shortcuts>
             <ListGroup>
-              <ListGroupItem className="ps-0 border-0">
-                <Link to="#">Iphone</Link>
+              <ListGroupItem >
+                <p>Iphone</p>
               </ListGroupItem>
 
-              <ListGroupItem className="ps-0 border-0">
-                <Link to="#">SamSung</Link>
+              <ListGroupItem >
+                <p>SamSung</p>
               </ListGroupItem>
 
-              <ListGroupItem className="ps-0 border-0">
-                <Link to="#">Oppo</Link>
+              <ListGroupItem >
+                <p>Oppo</p>
               </ListGroupItem>
 
-              <ListGroupItem className="ps-0 border-0">
-                <Link to="#">Xiaomi</Link>
+              <ListGroupItem >
+                <p>Xiaomi</p>
               </ListGroupItem>
             </ListGroup>
           </Category>
         </Col>
 
-        <Col lg="2" className="mb-4" md="3">
+        <Col lg="2" md="3">
           <Category>
             <Shortcuts> Liên kết</Shortcuts>
             <ListGroup>
-              <ListGroupItem className="ps-0 border-0">
-                <Link to="/shop">Cửa hàng</Link>
+              <ListGroupItem >
+                <p >Cửa hàng</p>
               </ListGroupItem>
 
-              <ListGroupItem className="ps-0 border-0">
-                <Link to="/cart">Giỏ hàng</Link>
+              <ListGroupItem >
+                <p >Giỏ hàng</p>
               </ListGroupItem>
 
-              <ListGroupItem className="ps-0 border-0">
-                <Link to="/login">Đăng nhập</Link>
+              <ListGroupItem >
+                <p >Đăng nhập</p>
               </ListGroupItem>
 
-              <ListGroupItem className="ps-0 border-0">
-                <Link to="#">Chính sách bảo mật</Link>
+              <ListGroupItem >
+                <p >Chính sách bảo mật</p>
               </ListGroupItem>
             </ListGroup>
           </Category>

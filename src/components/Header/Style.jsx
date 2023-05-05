@@ -2,26 +2,25 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: 12rem;
+  height: 10rem;
   line-height: 23px;
   overflow-x: hidden;
   @media (max-width: 1024px) {
     width: 100%;
-    height: 100px;
-    line-height: 60px;
+    height: 100%;
   }
 `;
 export const Main = styled.div`
   width: 100%;
   border-top: #fff 5px solid;
-  background-color: #bd0a0a;
+  background-color: #940707;
   display: flex;
   padding-top: 5px;
+  height: 6rem;
   @media (max-width: 1024px) {
     display: flex;
-
     border-top: none;
-    height: 80px;
+    height: 70px;
     padding-right: 20px;
     padding-bottom: 10px;
   }
@@ -33,13 +32,13 @@ export const Logo = styled.div`
   width: 435px;
   padding-left: 150px;
   @media (max-width: 1024px) {
-    width: 300px;
+    width: 250px;
     padding-left: 15px;
     padding-right: 30px;
   }
   img {
-    width: 3rem;
-    height: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
     cursor: pointer;
     @media (max-width: 1024px) {
       display: none;
@@ -56,30 +55,35 @@ export const Logo = styled.div`
   }
 `;
 export const Navigation = styled.div`
-display: flex;
-flex: 1;
-margin: auto;
-width: 50%;
+  flex: 1;
+  margin-top: 40px;
   @media (max-width: 1024px) {
-
   }
+
 `;
 export const Hyper = styled.ul`
   color: #fff;
   font-size: 17px;
-  font-weight: 500;
-  flex: 1;
-  @media (max-width: 1024px) {
-    font-size: 15px;
-  }
+  font-weight: 450;
   cursor: pointer;
+  display: flex;
+  margin-bottom: 0;
+  i {
+    font-size: 22px;
+  }
+  flex: 1;
+  span {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  @media (max-width: 1024px) {
+    font-size: 14px;
+  }
+
   :hover {
     color: #fff;
     font-weight: 600;
-  }
-  li {
-    display: inline;
-    padding-right: 60px;
   }
   a {
     @media (max-width: 1024px) {
@@ -88,6 +92,20 @@ export const Hyper = styled.ul`
     }
   }
 `;
+export const HeaderComponent = styled.div`
+display: flex;
+`;
+export const HeaderText = styled.div`
+  display: flex;
+  overflow-x: hidden;
+  @media (max-width: 1024px) {
+    display: none;
+  }
+`;
+export const Text = styled.div`
+  margin-right: 20px;
+  margin-left: 20px;
+`;
 
 export const Icons = styled.div`
   display: flex;
@@ -95,8 +113,7 @@ export const Icons = styled.div`
   column-gap: 1.2rem;
   margin-right: 100px;
   @media (max-width: 1024px) {
-    font-size: 5px;
-    padding-left: 0;
+    margin-left: 15px;
     display: flex;
     margin-right: 0;
   }
@@ -131,6 +148,8 @@ export const Actions = styled.div`
   }
 `;
 export const Name = styled.div`
+  @media (max-width: 1024px) {
+  }
   h4 {
     margin-top: 15px;
     font-weight: 600;
@@ -138,6 +157,9 @@ export const Name = styled.div`
     color: white;
     @media (max-width: 425px) {
       display: none;
+    }
+    @media (max-width: 1024px) {
+      margin-top: 15px;
     }
     i {
       @media (max-width: 425px) {
@@ -147,9 +169,10 @@ export const Name = styled.div`
   }
 `;
 export const Auth = styled.div`
-  display: flex;
   color: white;
-
+  @media (max-width: 1024px) {
+    display: flex;
+  }
 `;
 export const Register = styled.div`
   border-right: 2px solid #fff;
@@ -159,15 +182,25 @@ export const Register = styled.div`
   .register:hover {
     color: #000000;
   }
+  @media (max-width: 1024px) {
+    font-size: 13px;
+    border-right: 1px solid #fff;
+  }
 `;
 export const Login = styled.div`
   font-size: 15px;
   border-right: 2px solid #fff;
-  padding-left: 10px;
+  /* padding-left: 10px; */
   padding-right: 10px;
   box-shadow: #e0e41b;
   .login:hover {
     color: #060606;
+  }
+  @media (max-width: 1024px) {
+    font-size: 13px;
+    padding-right: 10px;
+    padding-left: 5px;
+    border-right: 1px solid #fff;
   }
 `;
 export const Cart = styled.span`

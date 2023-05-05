@@ -11,6 +11,9 @@ import styled from "styled-components";
 import axios from "axios";
 import { QuestionCircleOutlined } from "@ant-design/icons";
 import { Button, message, Popconfirm } from "antd";
+import Service from "./ListProducts/Service";
+import GoodPhone from "./ListProducts/GoodPhone";
+import OtherPhone from "./ListProducts/OtherPhone";
 
 const Main = styled.div`
   margin-top: 30px;
@@ -232,6 +235,9 @@ const isAllSelected = selectedItems.length === cartItems.length;
           </Row>
         </Container>
       </Main>
+      <GoodPhone/>
+      <Service />
+      <OtherPhone/>
     </Helmet>
   );
 };

@@ -7,7 +7,9 @@ export const FooterForm = styled.div`
   padding-left: 9rem;
   overflow-x: hidden;
   display: flex;
-  @media (max-width: 1024px) {
+  .footer__text{
+    font-size: 15px;
+  } @media (max-width: 1024px) {
     padding-left: 15px;
   }
   @media (max-width: 768px) {
@@ -18,13 +20,10 @@ export const Main = styled.div``;
 export const Container = styled.div``;
 export const Logo = styled.div`
 h4{
-  font-weight: 700;
-  font-size: 30px;
+  font-weight: 600;
+  font-size: 25px;
 }
-  p {
-    line-height: 30px;
-    color: black;
-  }
+
 `;
 export const Category = styled.div`
   ul li a {
@@ -45,5 +44,12 @@ export const Copyright = styled.div`
   color: rgba(170, 4, 4, 0.735);
   font-size: 0.9rem;
   margin-top: 50px;
+`;
+export const ListGroupItem = styled.div`
+padding-top: 8px;
+  p {
+    cursor: pointer;
+    font-size: 15px;
+  }
 `;
 

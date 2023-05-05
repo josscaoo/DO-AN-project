@@ -13,13 +13,14 @@ const Container = styled.div`
   overflow: hidden;
   padding-top: 10px;
   line-height: 10px;
+
   @media (max-width: 768px) {
     margin-top: -8px;
   }
 `;
 const Main = styled.div`
   border-radius: 5px;
-  background-color: #bd0a0a;
+  background-color: #940707;
   overflow: hidden;
   height: 24.5rem;
   @media (max-width: 768px) {

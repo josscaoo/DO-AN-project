@@ -13,9 +13,10 @@ const RegisterWrapper = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 36px;
+  font-size: 28px;
   font-weight: bold;
   margin-bottom: 50px;
+  color: #940707;
 `;
 
 const Form = styled.form`
@@ -33,10 +34,9 @@ const InputField = styled.input`
   border: none;
   border-bottom: 2px solid #ccc ;
   outline: none;
-  /* border: 1px solid ${(props) => (props.isError ? "red" : "grey")}; */
 
   &:focus {
-    border-bottom: 2px solid #333;
+    border-bottom: 2px solid #0020adc2;
   }
   &:invalid {
     border-bottom: 3px solid #f44336;
@@ -50,7 +50,7 @@ const RegisterButton = styled.button`
   width: 300px;
   height: 40px;
   margin-top: 20px;
-  background-color: #f44336;
+  background-color: #940707;
   color: #fff;
   font-size: 16px;
   font-weight: bold;
@@ -88,20 +88,20 @@ const handleSubmit = async (e) => {
     setError("Bạn phải nhập đầy đủ thông tin");
     return;
   }
+   if (name.length < 3) {
+     setError("Tên phải có ít nhất 3 kí tự");
+     return;
+  }
+    if (password.length < 8) {
+      setError("Mật khẩu phải có ít nhất 8 kí tự");
+      return;
+    }
 
   if (password !== confirmPassword) {
     setError("Mật khẩu không khớp");
     return;
   }
 
-  if (password.length < 8) {
-    setError("Mật khẩu phải có ít nhất 8 kí tự");
-    return;
-  }
-  if (name.length < 3) {
-    setError("Tên phải có ít nhất 3 kí tự");
-    return;
-  }
   if (phone.length < 9) {
     setError("Số điện thoại không đủ");
     return;

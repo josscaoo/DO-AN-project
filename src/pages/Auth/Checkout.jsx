@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Modal } from "antd";
-import qr from "../../assets/QR.jpg";
+import qr from "../../assets/images/QR.jpg";
 import { toast } from "react-toastify";
 
 const Information = styled.form`
@@ -469,11 +469,11 @@ const Checkout = () => {
         navigate("/user");
         };
       
-    function handleContentChange(event) {
+    const handleContentChange=(event) =>{
               setContent(event.target.value);
 }
 
-    function handleSubmit(event) {
+    const handleSubmit=(event)=> {
        event.preventDefault();
        console.log(`Title: ${title}\nContent: ${content}`);
            setTitle("");

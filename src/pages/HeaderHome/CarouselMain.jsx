@@ -6,13 +6,12 @@ import axios from "axios";
 // import { sliderItems } from "../../../assets/data/products";
 
 const Container = styled.div`
-  margin-top: 30px;
   width: 100%;
   height: 18rem;
   display: flex;
   position: relative;
   overflow: hidden;
-  padding-top: 10px;
+  /* padding-top: 10px; */
 
   @media (max-width: 768px) {
     width: 50rem;
@@ -66,7 +65,7 @@ const Slide = styled.div`
 
 
 const Img = styled.img`
-  height: 90%;
+  height: 100%;
   width: 88%;
 
   @media (max-width: 768px) {
@@ -83,16 +82,16 @@ const CarouselMain = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const handleClick = (direction) => {
     if (direction === "left") {
-      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 4);
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 6);
     } else {
-      setSlideIndex(slideIndex < 3 ? slideIndex + 1 : 0);
+      setSlideIndex(slideIndex < 5 ? slideIndex + 1 : 0);
     }
   };
 
   const [intervalId, setIntervalId] = useState(null);
 
   const handleAutoSlide = () => {
-    setSlideIndex(slideIndex < 3 ? slideIndex + 1 : 0);
+    setSlideIndex(slideIndex < 5 ? slideIndex + 1 : 0);
   };
   const [sliderItems, setSliderItem] = useState([]);
 

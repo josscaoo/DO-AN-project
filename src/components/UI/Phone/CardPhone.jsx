@@ -5,12 +5,18 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
+  border: 1px solid rgba(83, 78, 78, 0.667);
+
   background-color: #fff;
   margin: 3px;
   border-radius: 10px;
   width: 240px;
   padding: 10px;
   cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 10px 5px rgba(222, 209, 211, 0.718);
+    border-color: rgba(202, 182, 79, 0.2);
+  }
   @media (max-width: 768px) {
     height: 300px;
   }

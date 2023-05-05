@@ -33,7 +33,7 @@ const Title = styled.h1`
   height: 2.8rem;
   line-height: 30px;
   display: flex;
-  background-color: #bd0a0a;
+  background-color: #940707;
 
   .left__product {
     padding-left: 1rem;

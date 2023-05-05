@@ -1,9 +1,9 @@
 import { logout } from "../../redux/auth/authSlice";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 
-import logo from "../../assets/logo-01.png";
+import logo from "../../assets/images/logo-01.png";
 import { useDispatch, useSelector } from "react-redux";
 import Banner from "../Banner/Banner";
 import axios from "axios";
@@ -14,6 +14,8 @@ import {
   Badge,
   Cart,
   Container,
+  HeaderComponent,
+  HeaderText,
   Hyper,
   Icons,
   Login,
@@ -23,6 +25,7 @@ import {
   Name,
   Navigation,
   Register,
+  Text,
 } from "./Style";
 import { cartActions } from "../../redux/slices/cartSlice";
 
@@ -80,6 +83,34 @@ const Header = () => {
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const name = useSelector((state) => state.auth.name);
+  
+const [offset, setOffset] = useState(0);
+const [count, setCount] = useState(0);
+const intervalRef = useRef(null);
+
+useEffect(() => {
+  // Start the auto-scroll interval
+  intervalRef.current = setInterval(() => {
+    setOffset((offset) => offset - 1);
+  }, 30);
+
+  return () => clearInterval(intervalRef.current);
+}, []);
+
+const text =
+  "Luôn cập nhật những sản phẩm mới nhất, đem đến sự trải nghiệm thú vị. Với ưu đãi cho học sinh sinh viên";
+
+useEffect(() => {
+  // Reset the offset and count when count reaches 5
+  if (count === 5) {
+    setOffset(0);
+    setCount(0);
+  }
+  // Update the count when offset reaches the end of the text
+  if (offset === -text.length * 6) {
+    setCount((count) => count + 1);
+  }
+}, [offset, count, text.length]);
 
   return (
     <Container>
@@ -94,9 +125,31 @@ const Header = () => {
         </Logo>
 
         <Navigation>
-          <Hyper onClick={navigateToHome}>Trang Chủ</Hyper>
-          <Hyper onClick={navigateToShop}>Cửa Hàng</Hyper>
-          <Hyper onClick={navigateToCart}>Giỏ Hàng</Hyper>
+          <HeaderComponent>
+            <Hyper onClick={navigateToShop}>
+              <i className="ri-store-3-line"></i>
+              <span>Cửa Hàng</span>
+            </Hyper>
+            <Hyper onClick={navigateToCart}>
+              <i className="ri-shopping-bag-line"></i>
+              <span>Giỏ Hàng</span>
+            </Hyper>
+            <Hyper onClick={navigateToOrder}>
+              <i class="ri-survey-line"></i>
+              <span>Tra Cứu Đơn</span>
+            </Hyper>
+          </HeaderComponent>
+          <HeaderText>
+            <Text
+              style={{
+                transform: `translateX(${offset}px)`,
+                color: "white",
+                fontSize: "11px",
+              }}
+            >
+              {text}
+            </Text>
+          </HeaderText>
         </Navigation>
 
         <Icons>

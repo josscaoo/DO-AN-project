@@ -48,9 +48,9 @@ const ProductCard = ({ item }) => {
         </Images>
 
         <Info>
-          <h3 className="product__name">
+          <h6 className="product__name">
             <Link to={`/shop/${item.id}`}>{item.productName}</Link>
-          </h3>
+          </h6>
           <span>{item.category}</span>
         </Info>
 

@@ -4,13 +4,17 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-
 const Container = styled.div`
+  /* border: 1px solid rgba(83, 78, 78, 0.667); */
   background-color: #fff;
   height: 15rem;
   width: 174px;
   cursor: pointer;
   padding: 10px;
+  &:hover {
+    box-shadow: 0 0 10px 5px rgba(181, 117, 126, 0.821);
+    border-color: rgba(180, 158, 48, 0.2);
+  }
   @media (max-width: 768px) {
     height: 260px;
   }
@@ -61,7 +65,7 @@ const Bottom = styled.div`
     color: #bd0a0a;
     font-size: 10px;
     font-weight: 700;
-    
+
     i {
       font-size: 10px;
       padding: 5px;
@@ -76,35 +80,25 @@ const Bottom = styled.div`
 `;
 
 const TabletCard = ({ item }) => {
-
-
-
   return (
     <Container>
-          <Images>
-            <Link to={`/shop/${item.id}`}>
-              <motion.img
-                whileHover={{ scale: 0.9 }}
-                src={item.imgUrl}
-                alt=""
-              />
-            </Link>
-          </Images>
+      <Images>
+        <Link to={`/shop/${item.id}`}>
+          <motion.img whileHover={{ scale: 0.9 }} src={item.imgUrl} alt="" />
+        </Link>
+      </Images>
 
-          <Info>
-            <h5>
-              <Link to={`/shop/${item.id}`}>{item.productName}</Link>
-            </h5>
+      <Info>
+        <h5>
+          <Link to={`/shop/${item.id}`}>{item.productName}</Link>
+        </h5>
 
-            <span>{item.category}</span>
-          </Info>
+        <span>{item.category}</span>
+      </Info>
 
-          <Bottom>
-            <span>
-              {item.price.toLocaleString("vi-VN")}VND
-            </span>
+      <Bottom>
+        <span>{item.price.toLocaleString("vi-VN")}VND</span>
       </Bottom>
-      
     </Container>
   );
 };

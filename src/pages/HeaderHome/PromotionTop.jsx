@@ -6,7 +6,7 @@ import styled from "styled-components";
 import axios from "axios";
 
 const Title = styled.div`
-  background-color: #be1e2d;
+  background-color: #940707;
   text-align: center;
   border-radius: 5px;
   padding-bottom: 5px;
@@ -50,7 +50,7 @@ display: flex;
     padding-top: 7px;
   }
   h6:hover {
-    color: #be1e2d;
+    color: #940707;
     cursor: pointer;
   }
 `;

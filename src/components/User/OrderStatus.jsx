@@ -7,6 +7,15 @@ import { Button, message, Popconfirm } from "antd";
 
 
 const Container = styled.div``;
+const Main = styled.div`
+  h4 {
+    text-align: center;
+  }
+  p{
+    text-align: center;
+  }
+`;
+
 const Users = styled.div`
 `;
 const User = styled.div`
@@ -68,8 +77,14 @@ const Status = styled.div`
   color: red;
   border-bottom: 1px dotted #898989;
 `;
-const ButtonDelete = styled.button`
-flex: 1;
+const ButtonDelete = styled(Button)`
+  background-color: #afc7db;
+  border: 1px solid aliceblue;
+  color: #0073d7;
+  &:hover {
+    background-color: #b00000;
+    color: white;
+  }
 `;
 
 const OrderStatus = () => {
@@ -91,14 +106,14 @@ const OrderStatus = () => {
   
 
   return (
-    <div>
-      <h1>Orders List</h1>
+    <Main>
+      <h4>Đơn Hàng Của Bạn</h4>
       {latestOrder ? (
         <OrderDetails order={latestOrder} />
       ) : (
-        <p>Hiện tại Không có đơn hàng ...</p>
+        <p>Bạn không có đươn hàng nào  ...</p>
       )}
-    </div>
+    </Main>
   );
 };
 
@@ -155,6 +170,17 @@ const OrderDetails = ({ order }) => {
             </Amount>
             <Quantity>số lượng: {order.selectedQuantity}</Quantity>
             <p> Đơn hàng chưa tính phí vận chuyển</p>
+            <Popconfirm
+              title="Bạn có chắc sẽ hủy đơn hàng"
+              onConfirm={confirm}
+              onCancel={cancel}
+              okText={<h6 onClick={handleDelete}>Có</h6>}
+              cancelText={<h6>Không</h6>}
+            >
+              <ButtonDelete type="link">
+               Hủy đơn hàng
+              </ButtonDelete>
+            </Popconfirm>
           </Total>
         </Users>
         <Table>
@@ -197,16 +223,6 @@ const OrderDetails = ({ order }) => {
       {showDetails && (
         <div>
           <Status>Đơn hàng của bạn đang được vận chuyển</Status>
-          <Popconfirm
-            title="Delete the task"
-            description="Are you sure to delete this task?"
-            onConfirm={confirm}
-            onCancel={cancel}
-            okText={<h6 onClick={handleDelete}>Có</h6>}
-            cancelText={<h6>Không</h6>}
-          >
-            <Button type="link">Delete</Button>
-          </Popconfirm>
         </div>
       )}
     </Container>

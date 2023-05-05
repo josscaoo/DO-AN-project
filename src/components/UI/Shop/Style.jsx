@@ -2,16 +2,21 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   cursor: pointer;
-  margin: 10px;
-
-  img {
-    border-radius: 15px;
+  border: 1px solid rgba(103, 103, 110, 0.221);
+  border-radius: 5px;
+  height: 360px;
+  width: 250px;
+  &:hover {
+    box-shadow: 0 0 10px 5px rgba(103, 103, 110, 0.5);
+    border-color: rgba(0, 0, 24, 0.2);
   }
 `;
 
 export const Images = styled.div`
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  margin-top: 20px;
 
   img {
     width: 100%;
@@ -31,11 +36,13 @@ export const Images = styled.div`
 `;
 
 export const Info = styled.div`
-  h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
+margin: 0 5px ;
+  h6 {
+    font-size: 1rem;
+    font-weight: 500;
     margin-top: 15px;
     color: var(--primary-color);
+    height: 50px;
 
     a {
       &:hover {
@@ -65,15 +72,14 @@ export const Button = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2px;
-  font-size: 1.3rem;
   font-weight: 500;
   color: black;
+  margin: 0 5px;
 
   h4 {
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 550;
+    color: #940707;
     @media (max-width: 1024px) {
       font-size: 14px;
     }
@@ -90,11 +96,11 @@ export const Button = styled.div`
     font-weight: 500;
 
     i {
-      font-size: 1.2rem;
+      font-size: 1rem;
       padding: 5px;
       border-radius: 50px;
       color: #fff;
-      background: var(--primary-color);
+      background: #940707;
 
       @media (max-width: 1024px) {
         font-size: 10px;

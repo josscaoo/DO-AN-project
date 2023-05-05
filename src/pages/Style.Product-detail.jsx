@@ -53,7 +53,10 @@ export const Price = styled.span`
   font-weight: 600;
   color: red;
 `;
+
 export const DetailReview = styled.section``;
+
+
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
@@ -91,19 +94,33 @@ export const Review = styled.div`
   margin-top: 5px;
 `;
 export const ReviewWrapper = styled.div`
+  li {
+    display: flex;
+    .review__form {
+      padding: 10px;
+      background-color: rgba(130, 130, 135, 0.182);
+      margin: 5px;
+      border-radius: 0 20px 20px 20px;
+    }
+  }
+  .review__icon {
+    margin-top: 20px;
+  }
 `;
 export const UserName = styled.div`
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 600;
 `;
 export const TextReview = styled.div`
+font-size: 13px;
   margin-left: 10px;
 `;
-export const SelectReview = styled.div`
-  text-align: right;
-`;
+
 export const EditReview = styled.div`
   display: flex;
+  background-color: #d8d2e9a0;
+  border: 1px solid black;
+  border-radius: 0 5px 5px 5px;
   i {
     padding-left: 10px;
   }

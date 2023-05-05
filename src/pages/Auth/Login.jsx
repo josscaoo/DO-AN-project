@@ -11,8 +11,8 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(to bottom, #fceabb, #f8b500);
+  min-height: 60vh;
+  width: 100%;
 `;
 
 const Form = styled.form`
@@ -23,25 +23,32 @@ const Form = styled.form`
   background-color: #fff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 2px;
   width: 400px;
   .error {
     color: red;
     margin-bottom: 20px;
     text-align: center;
   }
+  p{
+    margin-top: 15px;
+    font-size: 15px;
+  }
 `;
 
 const Heading = styled.h2`
-  font-size: 32px;
+  font-size: 25px;
   font-weight: 500;
-  margin-bottom: 30px;
+  padding-bottom: 10px;
+  margin: auto;
+  width: 50%;
+  color: #940707;
 `;
 
 const Input = styled.input`
   width: 100%;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 3px;
   border: none;
   margin-bottom: 20px;
   font-size: 16px;
@@ -50,18 +57,19 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-  background-color: #f8b500;
-  color: #fff;
-  padding: 15px;
-  border-radius: 10px;
+  background-color: #940707;
+  width: 100%;
+  color: #ffebeb;
+  padding: 5px;
+  border-radius: 3px;
   border: none;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    background-color: #fceabb;
-    color: #f8b500;
+    background-color: #e85004;
+    color: #fff;
   }
 `;
 
@@ -105,7 +113,7 @@ const Login = () => {
     <Helmet title="Login">
       <Container>
         <Form onSubmit={handleSubmit}>
-          <Heading>Login</Heading>
+          <Heading>Đăng nhập</Heading>
           {error && <div className="error">{error}</div>}
           <Input
             type="text"
@@ -123,7 +131,7 @@ const Login = () => {
           />
           <Button type="submit">Đăng nhập</Button>
           <p>
-            Tài khoản không tồn tại?
+            Bạn chưa có tài khoản?
             <Link to="/register">Tạo một tài khoản</Link>
           </p>
         </Form>

@@ -18,7 +18,7 @@ margin-top: -20px;
   }
 `;
 const Main = styled.div`
-  background-color: #bd0a0a;
+  background-color: #940707;
   overflow: hidden;
   height: 17.8rem;
   width: 100%;
@@ -134,7 +134,7 @@ const OtherPhone = () => {
       <Main>
         <Title>
           <div className="main_sound">
-            <h3>Điện thoại khác</h3>
+            <h3>Phụ Kiện</h3>
           </div>
         </Title>
 

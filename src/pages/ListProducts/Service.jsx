@@ -32,9 +32,8 @@ const List = styled.div`
     padding-left: 20px;
   }
   li:hover {
-    background-color: rgb(181, 12, 12);
+    background-color: #940707;
     color: white;
-    font-size: 14px;
   }
 `;
 const Add = styled.div`
@@ -43,7 +42,7 @@ const Add = styled.div`
     font-size: 14px;
     cursor: pointer;
     :hover{
-    color: rgb(214, 137, 13);
+    color: rgb(218, 135, 2);
     }
     `;
 

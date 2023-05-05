@@ -5,46 +5,46 @@ import axios from "axios";
 import Helmet from "../components/Helmet/Helmet";
 import ProductLists from "../components/UI/Shop/ProductsList";
 import styled from "styled-components";
+import PromotionTop from "./HeaderHome/PromotionTop";
+import Trademark from "./ListProducts/Trademark";
+import OtherPhone from "./ListProducts/OtherPhone";
+import GoodPhone from "./ListProducts/GoodPhone";
 
 const Main = styled.div`
-    margin-top: 30px;
 `;
 const Body = styled.div`
-    padding: 5rem;
+    padding: 30px;
     display: flex;
 `;
 const Filter = styled.div`
- @media (max-width: 768px) {
+  @media (max-width: 768px) {
     margin-bottom: 30px;
   }
-   @media (max-width: 1024px) {
-        /* margin-bottom: 30px; */
-
+  @media (max-width: 1024px) {
+    /* margin-bottom: 30px; */
   }
-select{
+  select {
     padding: 10px 20px;
     border: 1px solid rgba(156, 156, 35, 0.875);
     cursor: pointer;
-    border-radius: 5px ;
-    background: rgb(185, 7, 7);
+    border-radius: 5px;
+    background: #940707;
     color: #fff;
 
-     @media (max-width: 768px) {
-    padding: 7px 20px;
-    font-size: 0.9rem;
+    @media (max-width: 768px) {
+      padding: 7px 20px;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 1024px) {
+    }
   }
-   @media (max-width: 1024px) {
-        /* padding: 7px 20px;
-    font-size: 0.9rem; */
-  }
-}
-select:focus {
+  select:focus {
     outline: none !important;
-}
-select option {
+  }
+  select option {
     font-size: 0.9rem;
     color: white;
-}
+  }
 `;
 const Search = styled.div`
     width: 90%;
@@ -122,6 +122,8 @@ const handleSortChange = (e) => {
 
   return (
     <Helmet title="Shop">
+      <PromotionTop />
+
       <Main>
         <Body>
           <Container>
@@ -141,8 +143,8 @@ const handleSortChange = (e) => {
               <Col lg="3" md="6">
                 <Filter>
                   <select value={sortOrder} onChange={handleSortChange}>
-                    <option>Sắp xếp theo</option>
-                    <option value="asc">Tăng dần</option>
+                    <option value="asc">Sắp xếp theo</option>
+                    <option value="all">Tăng dần</option>
                     <option value="desc">Giảm dần</option>
                   </select>
                 </Filter>
@@ -174,6 +176,9 @@ const handleSortChange = (e) => {
           </Container>
         </div>
       </Main>
+      <Trademark />
+      <GoodPhone/>
+      <OtherPhone/>
     </Helmet>
   );
 };
