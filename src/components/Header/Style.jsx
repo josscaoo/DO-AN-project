@@ -130,9 +130,10 @@ export const Actions = styled.div`
   cursor: pointer;
   display: flex;
   .menu__user-list {
-    margin-top: 5px;
+    /* margin-top: 5px; */
     padding-left: 30px;
     padding-right: 30px;
+    margin-right: 10px;
     box-shadow: 0 5px 4px rgba(0, 0, 0, 0.573);
     background-color: #d3d3d3;
     position: absolute;

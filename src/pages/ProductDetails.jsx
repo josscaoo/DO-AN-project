@@ -386,7 +386,7 @@ const handleMouseLeave = () => {
                                     onMouseMove={() =>
                                        handleMouseMove(review.id)
                                      }
-                                     title="Xem thêm"
+                                    //  title="Xem thêm"
                                   ></i>
                                 )}
                                 {isOpen && selectedReviewId === review.id && (

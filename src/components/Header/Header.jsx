@@ -75,11 +75,11 @@ const Header = () => {
 
   const handleClick = () => dispatch(logout());
 
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
-  const handleToggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  // const handleToggleMenu = () => {
+  //   setIsOpen(!isOpen);
+  // };
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const name = useSelector((state) => state.auth.name);
@@ -111,6 +111,15 @@ useEffect(() => {
     setCount((count) => count + 1);
   }
 }, [offset, count, text.length]);
+  const [isHovering, setIsHovering] = useState(false);
+
+  function handleMouseEnter() {
+    setIsHovering(true);
+  }
+
+  function handleMouseLeave() {
+    setIsHovering(false);
+  }
 
   return (
     <Container>
@@ -155,13 +164,16 @@ useEffect(() => {
         <Icons>
           <Actions>
             {isLoggedIn ? (
-              <div>
+              <div onMouseLeave={handleMouseLeave}>
                 <Name className="d-flex">
                   <h4 onClick={navigateToUser}>{name}</h4>
-                  <i className="ri-user-3-fill" onClick={handleToggleMenu}></i>
+                  <i
+                    className="ri-user-3-fill"
+                    onMouseEnter={handleMouseEnter}
+                  ></i>
                 </Name>
 
-                {isOpen && (
+                {isHovering && (
                   <UserMenu
                     handleLogout={handleClick}
                     navigateToUser={navigateToUser}

@@ -7,6 +7,14 @@
       "phone": "02135468975",
       "address": "j",
       "id": 1
+    },
+    {
+      "email": "hien@gmail.com",
+      "password": "0123456789",
+      "name": "cao xuân Hiền",
+      "phone": "9856321470",
+      "address": "lll",
+      "id": 2
     }
   ],
   "banner": [
