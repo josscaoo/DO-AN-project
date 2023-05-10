@@ -36,7 +36,7 @@ const InputField = styled.input`
   outline: none;
 
   &:focus {
-    border-bottom: 2px solid #0020adc2;
+    border-bottom: 2px solid #6ccd05c2;
   }
   &:invalid {
     border-bottom: 3px solid #f44336;

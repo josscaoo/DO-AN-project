@@ -4,7 +4,8 @@ import { authSlice } from "../../redux/auth/authSlice";
 import axios from "axios";
 // import axios from "axios";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Container = styled.div`
   display: flex;
@@ -40,6 +41,8 @@ const User = () => {
   const { email, password, name, phone, address } = useSelector(
     (state) => state.auth
   );
+    const navigate = useNavigate();
+
 
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -65,6 +68,11 @@ const handleSubmit = async (e) => {
       headers: { "Content-Type": "application/json" },
     });
     console.log(response.data); // Log response từ JSON server (nếu muốn)
+     toast.success("Lưu thành công", {
+       position: "top-center",
+       autoClose: 2000,
+     });
+    navigate("/");
   } catch (error) {
     console.log(error); // Log lỗi (nếu có)
   }

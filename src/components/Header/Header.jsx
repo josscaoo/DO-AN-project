@@ -75,11 +75,7 @@ const Header = () => {
 
   const handleClick = () => dispatch(logout());
 
-  // const [isOpen, setIsOpen] = useState(false);
 
-  // const handleToggleMenu = () => {
-  //   setIsOpen(!isOpen);
-  // };
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const name = useSelector((state) => state.auth.name);

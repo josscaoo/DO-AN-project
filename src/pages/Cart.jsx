@@ -5,7 +5,7 @@ import { Container, Row, Col } from "reactstrap";
 import { motion } from "framer-motion";
 import { cartActions } from "../redux/slices/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import styled from "styled-components";
 import axios from "axios";
@@ -28,27 +28,36 @@ const Main = styled.div`
   }
 `;
 const Table = styled.table`
+  border-collapse: collapse;
+  width: 100%;
+  thead {
+    background-color: #f2f2f2;
+  }
+  tr:hover {
+    background-color: #f5f5f5;
+  }
   tr {
     @media (max-width: 1024px) {
       padding-left: 10px;
     }
-    td {
-      padding-top: 10px;
-      padding-right: 40px;
-      padding-bottom: 15px;
-      cursor: pointer;
-      color: var(--primary-color);
-      border-bottom: 1px solid rgb(133, 129, 129);
+  }
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+  }
+  p {
+    font-size: 13px;
+  }
 
-      img {
-        width: 80px;
-        height: 80px;
-        object-fit: cover;
-      }
-    }
-    th {
-      padding-right: 10px;
-    }
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+
+  img {
+    max-width: 50px;
   }
 `;
 const ButtonCart = styled.div`
@@ -141,7 +150,12 @@ const placeOrder = () => {
   setSelectedItems([]);
   setSelectedTotalAmount(0);
   setSelectedQuantity(0);
+  navigate("/checkout");
 };
+  
+  const navigate = useNavigate();
+
+  const navigateToShop = () => navigate("/shop");
 
 const isAllSelected = selectedItems.length === cartItems.length;
   return (
@@ -203,19 +217,16 @@ const isAllSelected = selectedItems.length === cartItems.length;
                 {isLoggedIn ? (
                   <div>
                     {selectedItems.length > 0 ? (
-                      // <button className="buy__btn w-100 ">
-                      //   <Link to="/checkout">Thanh Toán</Link>
-                      // </button>
                       <button
                         className="buy__btn w-100 "
                         onClick={placeOrder}
                         disabled={selectedItems.length === 0}
                       >
-                        <Link to="/checkout">Đặt Hàng</Link>
+                        Đặt Hàng
                       </button>
                     ) : (
-                      <button className="buy__btn w-100 " disabled>
-                        <Link onClick={addPurchase}>Đặt Hàng</Link>
+                      <button className="buy__btn w-100 " onClick={addPurchase}>
+                        Đặt Hàng
                       </button>
                     )}
                   </div>
@@ -227,17 +238,20 @@ const isAllSelected = selectedItems.length === cartItems.length;
                   </div>
                 )}
 
-                <button className="buy__btn w-100 mt-3">
-                  <Link to="/shop">Tiếp Tục Mua Hàng</Link>
+                <button
+                  className="buy__btn w-100 mt-3"
+                  onClick={navigateToShop}
+                >
+                  Tiếp Tục Mua Hàng
                 </button>
               </ButtonCart>
             </Col>
           </Row>
         </Container>
       </Main>
-      <GoodPhone/>
+      <GoodPhone />
       <Service />
-      <OtherPhone/>
+      <OtherPhone />
     </Helmet>
   );
 };
@@ -303,7 +317,7 @@ const Tr = ({ item, isChecked, toggleCheck }) => {
         {" "}
         <Link to={`/shop/${item.id}`}>{productName}</Link>
       </td>
-      <td>{totalPrice.toLocaleString("vi-VN")}VND</td>
+      <td>{totalPrice.toLocaleString("vi-VN")}₫</td>
       <td>
         <div
           className="d-flex align-items-center"

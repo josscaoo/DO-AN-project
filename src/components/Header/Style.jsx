@@ -53,6 +53,9 @@ export const Logo = styled.div`
     color: #fff;
     cursor: pointer;
   }
+  h1:hover {
+    text-shadow: 4px 2px 4px rgba(7, 6, 6, 0.653);
+  }
 `;
 export const Navigation = styled.div`
   flex: 1;
@@ -82,8 +85,7 @@ export const Hyper = styled.ul`
   }
 
   :hover {
-    color: #fff;
-    font-weight: 600;
+    text-shadow: 2px 3px 4px rgba(255, 255, 255, 0.8);
   }
   a {
     @media (max-width: 1024px) {

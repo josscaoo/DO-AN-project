@@ -1,20 +1,20 @@
 {
   "users": [
     {
-      "email": "anh@gmail.com",
-      "password": "0123456789",
-      "name": "nữ",
-      "phone": "02135468975",
-      "address": "j",
-      "id": 1
-    },
-    {
       "email": "hien@gmail.com",
       "password": "0123456789",
-      "name": "cao xuân Hiền",
+      "name": "cao xuân Hiềnn",
       "phone": "9856321470",
-      "address": "lll",
+      "address": "đà nẵng",
       "id": 2
+    },
+    {
+      "email": "hiencao@gmail.com",
+      "password": "0123456789",
+      "name": "Cao Hiền",
+      "phone": "0123456789",
+      "address": "đà nẵng",
+      "id": 3
     }
   ],
   "banner": [
@@ -44,6 +44,15 @@
       "price": 26790000,
       "shortDesc": "Màn hình Dynamic Island - Sự biến mất của màn hình tai thỏ thay thế bằng thiết kế viên thuốc, OLED 6,7 inch, hỗ trợ always-on display Cấu hình iphone 14 Pro Max mạnh mẽ, hiệu năng cực khủng từ chipset A16 Bionic Làm chủ công nghệ nhiếp ảnh - Camera sau 48MP, cảm biến TOF sống động",
       "description": "iphone 14 Pro Max là mẫu flagship nổi bật nhất của Apple trong lần trở lại năm 2022 với nhiều cải tiến về công nghệ cũng như vẻ ngoài cao cấp, sang chảnh hợp với gu thẩm mỹ đại chúng. Những chiếc điện thoại đến từ nhà Táo Khuyết nhận được rất nhiều sự kỳ vọng của thị trường ngay từ khi chưa ra mắt. Vậy liệu những chiếc flagship đến từ công ty công nghệ hàng đầu thế giới này có làm bạn thất vọng? Cùng khám phá những điều thú vị về iphone 14 Pro Max"
+    },
+    {
+      "id": 12,
+      "productName": "Samsung Galaxy S20 FE 256GB",
+      "imgUrl": "http://localhost:3000/images/galaxy-s20-fe-256gb-xanh.webp",
+      "category": "samsung",
+      "price": 7890000,
+      "shortDesc": "Thương hiệu: SAMSUNG | samsung, Samsung Galaxy, Samsung Galaxy S22 Ultra 5G, ",
+      "description": "Cấu hình Điện thoại Samsung Galaxy S22 Ultra 5G 256GB. Màn hình: Dynamic AMOLED 2X 6.8' Quad HD+ (2K+). Hệ điều hành: Android 12 Camera sau: Chính 108 MP & Phụ 12 MP, 10 MP, 10 MP Camera trước: 40 MP. Chip: Snapdragon 8 Gen 1 RAM: 12 GB. Dung lượng lưu trữ: 256 GB SIM: 2 Nano SIM hoặc 1 Nano SIM + 1 eSIMHỗ trợ 5G Pin, Sạc: 5000 mAh 25 W"
     },
     {
       "id": 2,
@@ -150,15 +159,6 @@
       "imgUrl": "http://localhost:3000/images/samsung-galaxy-z-fold4-5g-256gb-xam.webp",
       "category": "samsung",
       "price": 32990000,
-      "shortDesc": "Thương hiệu: SAMSUNG | samsung, Samsung Galaxy, Samsung Galaxy S22 Ultra 5G, ",
-      "description": "Cấu hình Điện thoại Samsung Galaxy S22 Ultra 5G 256GB. Màn hình: Dynamic AMOLED 2X 6.8' Quad HD+ (2K+). Hệ điều hành: Android 12 Camera sau: Chính 108 MP & Phụ 12 MP, 10 MP, 10 MP Camera trước: 40 MP. Chip: Snapdragon 8 Gen 1 RAM: 12 GB. Dung lượng lưu trữ: 256 GB SIM: 2 Nano SIM hoặc 1 Nano SIM + 1 eSIMHỗ trợ 5G Pin, Sạc: 5000 mAh 25 W"
-    },
-    {
-      "id": 12,
-      "productName": "Samsung Galaxy S20 FE 256GB",
-      "imgUrl": "http://localhost:3000/images/galaxy-s20-fe-256gb-xanh.webp",
-      "category": "samsung",
-      "price": 7890000,
       "shortDesc": "Thương hiệu: SAMSUNG | samsung, Samsung Galaxy, Samsung Galaxy S22 Ultra 5G, ",
       "description": "Cấu hình Điện thoại Samsung Galaxy S22 Ultra 5G 256GB. Màn hình: Dynamic AMOLED 2X 6.8' Quad HD+ (2K+). Hệ điều hành: Android 12 Camera sau: Chính 108 MP & Phụ 12 MP, 10 MP, 10 MP Camera trước: 40 MP. Chip: Snapdragon 8 Gen 1 RAM: 12 GB. Dung lượng lưu trữ: 256 GB SIM: 2 Nano SIM hoặc 1 Nano SIM + 1 eSIMHỗ trợ 5G Pin, Sạc: 5000 mAh 25 W"
     },
@@ -497,12 +497,20 @@
   ],
   "cartItems": [
     {
-      "id": 4,
-      "productName": "iPhone 14 Pro Max 128GB Tím ",
-      "imgUrl": "http://localhost:3000/images/iphone-12-64gb-mau-tim.webp",
-      "price": 29490000,
-      "quantity": 2,
-      "totalPrice": 58980000
+      "id": 1,
+      "productName": "iPhone 14 Pro Max 128GB Vàng (VN/A)",
+      "imgUrl": "http://localhost:3000/images/iphone-13-pro-128gb-vang.webp",
+      "price": 26790000,
+      "quantity": 1,
+      "totalPrice": 26790000
+    },
+    {
+      "id": 12,
+      "productName": "Samsung Galaxy S20 FE 256GB",
+      "imgUrl": "http://localhost:3000/images/galaxy-s20-fe-256gb-xanh.webp",
+      "price": 7890000,
+      "quantity": 1,
+      "totalPrice": 7890000
     },
     {
       "id": 2,
@@ -511,9 +519,18 @@
       "price": 21590000,
       "quantity": 1,
       "totalPrice": 21590000
+    },
+    {
+      "id": 13,
+      "productName": " Samsung Galaxy S23 Ultra 5G 256GB  ",
+      "imgUrl": "http://localhost:3000/images/samsung-galaxy-s23-ultra-5g-mau-xanh.webp",
+      "price": 23990000,
+      "quantity": 1,
+      "totalPrice": 23990000
     }
   ],
   "orders": [],
+  "newOrders": [],
   "reviews": [
     {
       "id": 70,

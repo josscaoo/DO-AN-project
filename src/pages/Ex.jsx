@@ -49,17 +49,11 @@ const Map = styled.div`
 `;
 const TableOder = styled.div`
   display: flex;
-  margin-top: 10px;
-
   table {
     width: 80%;
+    border: 1px dotted #131111;
   }
-  thead {
-    background-color: #f2f2f2;
-  }
-  tr:hover {
-    background-color: #f5f5f5;
-  }
+
   tr {
     @media (max-width: 1024px) {
       padding-left: 10px;
@@ -426,12 +420,12 @@ const StyledModal = styled(Modal)`
   }
 `;
 
-const Checkout = () => {
+const Ex = () => {
   const { name, address, phone } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const [latestSelectedQuantity, setLatestSelectedQuantity] = useState(0);
   const [latestSelectedTotalAmount, setLatestSelectedTotalAmount] = useState(0);
-  const [price, setPrice] = useState(0);
+  const [newPrice, setNewPrice] = useState(0);
   const [selectedVoucher, setSelectedVoucher] = useState(null);
   const [selectedTransport, setSelectedTransport] = useState(null);
   const [selectedDelivery, setSelectedDelivery] = useState(
@@ -466,105 +460,23 @@ const Checkout = () => {
 
   const handleDiscountVoucher = (discount) => {
     if (selectedVoucher === null) {
-      setPrice(price - discount);
+      setNewPrice(newPrice - discount);
       setSelectedVoucher(discount);
     } else if (selectedVoucher === discount) {
-      setPrice(price + discount);
+      setNewPrice(newPrice + discount);
       setSelectedVoucher(null);
     }
   };
 
   const handleDiscountTransport = (discount) => {
     if (selectedTransport === null) {
-      setPrice(price + discount);
+      setNewPrice(newPrice + discount);
       setSelectedTransport(discount);
     } else if (selectedTransport === discount) {
-      setPrice(price - discount);
+      setNewPrice(newPrice - discount);
       setSelectedTransport(null);
     }
   };
-  // const handleUpdatePrice = () => {
-  // const newOrders = [...orders];
-  // const latestOrder = newOrders[newOrders.length - 1];
-  // latestOrder.price = price;
-
-  // axios
-  //   .put(
-  //     `http://localhost:3001/newOrders/${latestOrder.id}`,
-  //     latestOrder
-  //   )
-  //   .then(() => {
-  //     console.log("Price has been updated successfully");
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-  // };
-
-  const addNewOrder = (newOrder) => {
-    const newOrders = [...orders];
-    const latestOrder = newOrders[newOrders.length - 1];
-    latestOrder.price = price;
-    axios
-      .post(`http://localhost:3001/newOrders/${latestOrder.id}`, newOrder)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  const handleAddNewOrder = () => {
-    const newOrder = {
-      // Các thông tin khác của đơn hàng
-      price: price,
-    };
-    addNewOrder(newOrder);
-  };
-
-  // const addNewPrice = async (orderId, newPrice) => {
-  //   try {
-  //     const response = await axios.patch(
-  //       `http://localhost:3001/newOrders/${orderId}/seItems`,
-  //       {
-  //         newPrice: newPrice,
-  //       }
-  //     );
-  //     return response.data;
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-  // const addNewPrice = async (orderId, newPrice) => {
-  //   try {
-  //     const response = await axios.get(
-  //       `http://localhost:3001/newOrders/${orderId}`
-  //     );
-  //     const order = response.data;
-
-  //     // Thêm phần tử newPrice vào trong selectedItems
-  //     const newSelectedItems = order.seItems.selectedItems.map((item) => {
-  //       return {
-  //         ...item,
-  //         newPrice: newPrice,
-  //       };
-  //     });
-
-  //     // Cập nhật lại order trên server với selectedItems mới
-  //     const updatedOrder = {
-  //       ...order,
-  //       seItems: {
-  //         ...order.seItems,
-  //         selectedItems: newSelectedItems,
-  //       },
-  //     };
-  //     await axios.put(`http://localhost:3001/newOrders/${orderId}`, updatedOrder);
-
-  //     console.log("Thêm newPrice thành công!");
-  //   } catch (error) {
-  //     console.log("Lỗi:", error);
-  //   }
-  // };
 
   let priceLabel =
     selectedTransport === 27000
@@ -586,14 +498,13 @@ const Checkout = () => {
         setLatestSelectedTotalAmount(
           orders.length ? orders[0].selectedTotalAmount : 0
         );
-        setPrice(orders.length ? orders[0].selectedTotalAmount : 0);
+        setNewPrice(orders.length ? orders[0].selectedTotalAmount : 0);
       })
       .catch((error) => console.error(error));
   }, []);
-
   const deleteOrders = () => {
     axios
-      .delete(`http://localhost:3001/orders/1`)
+      .delete("http://localhost:3001/orders/1") // Gọi tới API với ID của mảng cần xóa
       .then((response) => console.log(response))
       .catch((error) => console.error(error));
   };
@@ -613,28 +524,32 @@ const Checkout = () => {
     setContent("");
   };
 
-  const handleOrder = async () => {
+  const handleOrder = () => {
+    const newOrders = [...orders];
+    const latestOrder = newOrders[newOrders.length - 1];
+
     if (selectedTransport === null) {
       toast.error("Hãy chọn đơn vị giao hàng", {
         position: "top-center",
         autoClose: 2000,
       });
       return;
-    }
+    } else {
+      latestOrder.price = newPrice;
 
-    try {
-      setIsButtonClicked(true);
-      await axios.post("http://localhost:3001/newOrders", {
-        seItems: orders[0],
-      });
-      console.log("Data has been transferred successfully");
-      toast.success("Đã đặt hàng thành công", {
-        position: "top-center",
-        autoClose: 2000,
-      });
-      navigate("/");
-    } catch (error) {
-      console.log(error);
+      axios
+        .post("http://localhost:3001/newOrders", latestOrder)
+        .then(() => {
+          console.log("Data has been transferred successfully");
+          toast.success("Đã đặt hàng thành công", {
+            position: "top-center",
+            autoClose: 2000,
+          });
+          navigate("/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   };
 
@@ -652,19 +567,17 @@ const Checkout = () => {
       });
   }, []);
 
-  //  const handleClick = () => {
-  //    setIsButtonClicked(true);
-  //    axios
-  //      .post("http://localhost:3001/newOrders", {
-  //        seItems: orders[0].selectedItems,
-  //      })
-  //      .then(() => {
-  //        console.log("Data has been transferred successfully");
-  //      })
-  //      .catch((error) => {
-  //        console.log(error);
-  //      });
-  //  };
+  const handleClick = () => {
+    setIsButtonClicked(true);
+    axios
+      .post("http://localhost:3001/newOrders", orders[0])
+      .then(() => {
+        console.log("Data has been transferred successfully");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <Helmet title="Checkout">
@@ -755,9 +668,11 @@ const Checkout = () => {
           </div>
           <div className="order__correction" onClick={deleteOrders}>
             <Link to={"/cart"}>xem lại đơn hàng</Link>
-            {/* <button onClick={handleClick} disabled={isButtonClicked}>
-              {isButtonClicked ? "Data has been transferred" : "Transfer data"}
-            </button> */}
+            <button onClick={handleClick} disabled={isButtonClicked}>
+              {isButtonClicked
+                ? "Dữ liệu đã được chuyển"
+                : "Truyền tải dữ liệu"}
+            </button>
           </div>
         </Table>
       </TableOder>
@@ -823,20 +738,20 @@ const Checkout = () => {
           <div className="select__voucher">
             <div className="voucher__button">
               <p>Voucher</p>
-              <button onClick={() => handleDiscountVoucher(555000)}>
-                {selectedVoucher === 555000 ? "Bỏ Chọn" : "10%"}
+              <button onClick={() => handleDiscountVoucher(30000)}>
+                {selectedVoucher === 30000 ? "Bỏ Chọn" : "30k"}
               </button>
             </div>
             <div className="voucher__button">
               <p>Voucher</p>
-              <button onClick={() => handleDiscountVoucher(350000)}>
-                {selectedVoucher === 350000 ? "Bỏ Chọn" : " 350k"}
+              <button onClick={() => handleDiscountVoucher(28000)}>
+                {selectedVoucher === 28000 ? "Bỏ Chọn" : " 28k"}
               </button>
             </div>
             <div className="voucher__button">
               <p>Voucher</p>
-              <button onClick={() => handleDiscountVoucher(500000)}>
-                {selectedVoucher === 500000 ? "Bỏ Chọn" : " 15%"}
+              <button onClick={() => handleDiscountVoucher(25000)}>
+                {selectedVoucher === 25000 ? "Bỏ Chọn" : " 25k"}
               </button>
             </div>
           </div>
@@ -844,7 +759,7 @@ const Checkout = () => {
             <div>
               <h6>
                 Giảm chỉ còn:{" "}
-                {price.toLocaleString("vi-VN", {
+                {newPrice.toLocaleString("vi-VN", {
                   style: "currency",
                   currency: "VND",
                 })}
@@ -924,7 +839,7 @@ const Checkout = () => {
                     )}
                   </div>
                   <div className="total__order__amount">
-                    {price.toLocaleString("vi-VN", {
+                    {newPrice.toLocaleString("vi-VN", {
                       style: "currency",
                       currency: "VND",
                     })}
@@ -981,7 +896,7 @@ const Checkout = () => {
           </div>
           <div className="total__order__text">
             <div className="total__order__amount">
-              {price.toLocaleString("vi-VN", {
+              {newPrice.toLocaleString("vi-VN", {
                 style: "currency",
                 currency: "VND",
               })}
@@ -994,19 +909,14 @@ const Checkout = () => {
             Nhấn "Đặt hàng" đồng nghĩa với việc bạn đồng ý tuân theo Điều khoản
             Hienmobi
           </div>
-
-          <div className="button__order" onClick={deleteOrders}>
+          <div className="button__order">
             <button
               type="summit"
-              onClick={handleOrder}
-              disabled={isButtonClicked}
               className="buy__btn w-100 "
+              onClick={handleOrder}
+              disabled={isQRScanned && isButtonClicked}
             >
-              {isButtonClicked ? (
-                "Đã đặt hàng"
-              ) : (
-                <span onClick={handleAddNewOrder}>Đặt hàng</span>
-              )}
+              {isButtonClicked ? "Dữ liệu đã được chuyển" : "Đặt hàng"}
             </button>
           </div>
         </Add>
@@ -1015,4 +925,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default Ex;
