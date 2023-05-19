@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 
-import logo from "../../assets/images/logo-01.png";
+import logo from "../../assets/logo-01.png";
 import { useDispatch, useSelector } from "react-redux";
 import Banner from "../Banner/Banner";
 import axios from "axios";
@@ -18,16 +18,20 @@ import {
   HeaderText,
   Hyper,
   Icons,
-  Login,
+  Logins,
   Logo,
   Main,
   Mobile,
   Name,
   Navigation,
-  Register,
+  Registers,
+  StyledModal,
   Text,
 } from "./Style";
 import { cartActions } from "../../redux/slices/cartSlice";
+import Register from "../../pages/Auth/Register";
+import Login from "../../pages/Auth/Login";
+
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -35,9 +39,9 @@ const Header = () => {
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
+        const userId = localStorage.getItem("user_id");
         const res = await axios.get(
-          "http://localhost:3001/cartItems?user_id=" +
-            localStorage.getItem("user_id")
+          `http://localhost:3001/cartItems?userId=${userId}`
         );
         dispatch(cartActions.setItem(res.data));
       } catch (error) {
@@ -50,9 +54,12 @@ const Header = () => {
   const [totalQuantity, setTotalQuantity] = useState(0);
 
   useEffect(() => {
+    const userId = localStorage.getItem("user_id");
     const fetchTotalQuantity = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/cartItems");
+        const response = await axios.get(
+          `http://localhost:3001/cartItems?userId=${userId}`
+        );
         const total = response.data.reduce(
           (acc, product) => acc + (product.quantity || 0),
           0
@@ -75,38 +82,36 @@ const Header = () => {
 
   const handleClick = () => dispatch(logout());
 
-
-
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const name = useSelector((state) => state.auth.name);
-  
-const [offset, setOffset] = useState(0);
-const [count, setCount] = useState(0);
-const intervalRef = useRef(null);
 
-useEffect(() => {
-  // Start the auto-scroll interval
-  intervalRef.current = setInterval(() => {
-    setOffset((offset) => offset - 1);
-  }, 30);
+  const [offset, setOffset] = useState(0);
+  const [count, setCount] = useState(0);
+  const intervalRef = useRef(null);
 
-  return () => clearInterval(intervalRef.current);
-}, []);
+  useEffect(() => {
+    // Start the auto-scroll interval
+    intervalRef.current = setInterval(() => {
+      setOffset((offset) => offset - 1);
+    }, 30);
 
-const text =
-  "Luôn cập nhật những sản phẩm mới nhất, đem đến sự trải nghiệm thú vị. Với ưu đãi cho học sinh sinh viên";
+    return () => clearInterval(intervalRef.current);
+  }, []);
 
-useEffect(() => {
-  // Reset the offset and count when count reaches 5
-  if (count === 5) {
-    setOffset(0);
-    setCount(0);
-  }
-  // Update the count when offset reaches the end of the text
-  if (offset === -text.length * 6) {
-    setCount((count) => count + 1);
-  }
-}, [offset, count, text.length]);
+  const text =
+    "Luôn cập nhật những sản phẩm mới nhất, đem đến sự trải nghiệm thú vị. Với ưu đãi cho học sinh sinh viên";
+
+  useEffect(() => {
+    // Reset the offset and count when count reaches 5
+    if (count === 5) {
+      setOffset(0);
+      setCount(0);
+    }
+    // Update the count when offset reaches the end of the text
+    if (offset === -text.length * 6) {
+      setCount((count) => count + 1);
+    }
+  }, [offset, count, text.length]);
   const [isHovering, setIsHovering] = useState(false);
 
   function handleMouseEnter() {
@@ -116,6 +121,28 @@ useEffect(() => {
   function handleMouseLeave() {
     setIsHovering(false);
   }
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const [isModalOpenLogin, setIsModalOpenLogin] = useState(false);
+  const showModalLogin = () => {
+    setIsModalOpenLogin(true);
+  };
+  const handleOkLogin = () => {
+    setIsModalOpenLogin(false);
+  };
+  const handleCancelLogin = () => {
+    setIsModalOpenLogin(false);
+  };
 
   return (
     <Container>
@@ -140,7 +167,7 @@ useEffect(() => {
               <span>Giỏ Hàng</span>
             </Hyper>
             <Hyper onClick={navigateToOrder}>
-              <i class="ri-survey-line"></i>
+              <i className="ri-survey-line"></i>
               <span>Tra Cứu Đơn</span>
             </Hyper>
           </HeaderComponent>
@@ -179,16 +206,41 @@ useEffect(() => {
               </div>
             ) : (
               <Auth>
-                <Register>
-                  <Link to="/register" className="register">
+                <Registers>
+                  <div onClick={showModal} className="register">
                     Đăng kí
-                  </Link>
-                </Register>
-                <Login>
-                  <Link to="/login" className="login">
+                  </div>
+                  <StyledModal
+                    open={isModalOpen}
+                    onOk={handleOk}
+                    onCancel={handleCancel}
+                  >
+                    <Register
+                      onShowLoginModal={() => {
+                        setIsModalOpen(false);
+                        setIsModalOpenLogin(true);
+                      }}
+                    />
+                  </StyledModal>
+                </Registers>
+
+                <Logins>
+                  <div onClick={showModalLogin} className="login">
                     Đăng nhập
-                  </Link>
-                </Login>
+                  </div>
+                  <StyledModal
+                    open={isModalOpenLogin}
+                    onOk={handleOkLogin}
+                    onCancel={handleCancelLogin}
+                  >
+                    <Login
+                      onShowRegisterModal={() => {
+                        setIsModalOpenLogin(false);
+                        setIsModalOpen(true);
+                      }}
+                    />
+                  </StyledModal>
+                </Logins>
               </Auth>
             )}
           </Actions>
@@ -205,19 +257,23 @@ useEffect(() => {
     </Container>
   );
 };
+
 const UserMenu = ({ handleLogout }) => {
   const navigate = useNavigate();
   const navigateToUser = () => navigate("/user");
   const navigateToOrder = () => navigate("/order");
 
+  const handleLogoutAndReload = () => {
+    handleLogout();
+    window.location.reload();
+  };
   return (
     <ul className="menu__user-list">
-      <li onClick={handleLogout}>Đăng Xuất</li>
+      <li onClick={handleLogoutAndReload}>Đăng Xuất</li>
       <li onClick={navigateToUser}>Trang cá nhân</li>
       <li onClick={navigateToOrder}>Tra cứu đơn hàng</li>
     </ul>
   );
 };
-
 
 export default Header;

@@ -3,7 +3,7 @@
     {
       "email": "hien@gmail.com",
       "password": "0123456789",
-      "name": "cao xuân Hiềnn",
+      "name": "nam",
       "phone": "9856321470",
       "address": "đà nẵng",
       "id": 2
@@ -11,10 +11,168 @@
     {
       "email": "hiencao@gmail.com",
       "password": "0123456789",
-      "name": "Cao Hiền",
+      "name": "Hiền xuân",
       "phone": "0123456789",
       "address": "đà nẵng",
       "id": 3
+    }
+  ],
+  "cartItems": [
+    {
+      "id": 12,
+      "productName": "Samsung Galaxy S20 FE 256GB",
+      "imgUrl": "http://localhost:3000/images/galaxy-s20-fe-256gb-xanh.webp",
+      "price": 7890000,
+      "quantity": 2,
+      "totalPrice": 15780000,
+      "userId": 2
+    },
+    {
+      "id": 2,
+      "productName": "iPhone 11 Pro Max 128GB Trắng (VN/A)",
+      "imgUrl": "http://localhost:3000/images/iphone-11-64gb-trang.webp",
+      "price": 21590000,
+      "quantity": 1,
+      "totalPrice": 21590000,
+      "userId": 2
+    },
+    {
+      "id": 7,
+      "productName": "iPhone 14 Pro Max 128GB Đen ",
+      "imgUrl": "http://localhost:3000/images/iphone-13-pro-max-128gb-tim.webp",
+      "price": 15590000,
+      "quantity": 1,
+      "totalPrice": 15590000,
+      "userId": 2
+    }
+  ],
+  "orders": [],
+  "newOrders": [
+    {
+      "seItems": {
+        "selectedUserName": "nam",
+        "selectedItems": [
+          {
+            "id": 2,
+            "productName": "iPhone 11 Pro Max 128GB Trắng (VN/A)",
+            "imgUrl": "http://localhost:3000/images/iphone-11-64gb-trang.webp",
+            "price": 21590000,
+            "quantity": 1,
+            "totalPrice": 21590000,
+            "userId": 2
+          }
+        ],
+        "selectedTotalAmount": 21590000,
+        "selectedQuantity": 1,
+        "id": 1,
+        "price": 21238000
+      },
+      "userId": 2,
+      "id": 1
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "name": "Cao Hiềnnn",
+      "content": "xin chào",
+      "productId": 2
+    },
+    {
+      "content": "quãng hiền\n",
+      "name": "Cao Hiềnnn",
+      "productId": 2,
+      "id": 2
+    },
+    {
+      "id": 3,
+      "name": "Hiền xuân",
+      "content": "sản phẩm tốt",
+      "productId": 5
+    },
+    {
+      "id": 4,
+      "name": "Hiền xuân",
+      "content": "rất đẹp",
+      "productId": 1
+    },
+    {
+      "id": 5,
+      "name": "cao xuân Hiềnn",
+      "content": "sản phẩm ok",
+      "productId": 12
+    },
+    {
+      "id": 6,
+      "name": "cao xuân Hiềnn",
+      "content": "x",
+      "productId": 2
+    },
+    {
+      "id": 7,
+      "name": "cao Hiềnn",
+      "content": "aaa",
+      "productId": 1
+    },
+    {
+      "id": 8,
+      "name": "cao Hiềnn",
+      "content": "Tuần Lễ Samsung | Duy nhất hôm nay: Với voucher ưu đãi lên",
+      "productId": 1
+    },
+    {
+      "content": " tiết\nLưu ý: Chương trình có thể kết thúc sớm vì số lượng có hạn\n\n2. Ưu đãi khác:\nTặng ngay gói Youtube Premium 4 tháng",
+      "name": "cao Hiềnn",
+      "productId": 1,
+      "id": 9
+    },
+    {
+      "id": 10,
+      "name": "cao Hiềnn",
+      "content": "sản phẩm tốt",
+      "productId": 12
+    },
+    {
+      "id": 11,
+      "name": "cao Hiềnn",
+      "content": "mua ngay",
+      "productId": 12
+    },
+    {
+      "id": 12,
+      "name": "cao Hiềnn",
+      "content": "1. Tuần Lễ samsung | Duy nhất hôm nay: Với voucher ưu đãi lên đến 700.000đ và nhiều ưu đãi sau đây:\nTặng thêm đến 500.000đ khi thu cũ đổi mớiXem chi tiết\nLưu ý: Chương trình có thể kết thúc sớm vì số lượng có hạn",
+      "productId": 12
+    },
+    {
+      "content": "sanr pham r\n",
+      "name": "cao Hiềnn",
+      "productId": 4,
+      "id": 13
+    },
+    {
+      "id": 14,
+      "name": "nam",
+      "content": "dddd",
+      "productId": 1
+    },
+    {
+      "id": 15,
+      "name": "nam",
+      "content": "dsfdsg",
+      "productId": 1
+    },
+    {
+      "id": 16,
+      "name": "nam",
+      "content": "dgdfg",
+      "productId": 1
+    },
+    {
+      "id": 17,
+      "name": "nam",
+      "content": "aaaa",
+      "productId": 1
     }
   ],
   "banner": [
@@ -24,7 +182,7 @@
     },
     {
       "id": 2,
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEhQ8ewEMCPxZ9QY-TVQjgikWWZqSSnq_3Rw&usqp=CAU"
+      "img": "http://localhost:3000/images/logosale.png"
     },
     {
       "id": 3,
@@ -33,6 +191,36 @@
     {
       "id": 4,
       "img": "http://localhost:3000/images/banner_2.webp"
+    }
+  ],
+  "sliderSales": [
+    {
+      "id": 1,
+      "img": "http://localhost:3000/images/Banner-TT_Bang-gia-iPhone.jpg"
+    },
+    {
+      "id": 2,
+      "img": "http://localhost:3000/images/12prom-min.png"
+    },
+    {
+      "id": 3,
+      "img": "http://localhost:3000/images/tt-sale-apple-25-5.jpg"
+    },
+    {
+      "id": 4,
+      "img": "http://localhost:3000/images/san-iphone-12.jpg"
+    },
+    {
+      "id": 5,
+      "img": "http://localhost:3000/images/thumb-cho-tin-mua-kem_1_1280x720-800-resize.jpg"
+    },
+    {
+      "id": 6,
+      "img": "http://localhost:3000/images/tt-sale-apple-25-5.jpg"
+    },
+    {
+      "id": 7,
+      "img": "http://localhost:3000/images/BaoHanhKimCuongiPhone14_Banner-App.webp"
     }
   ],
   "products": [
@@ -395,290 +583,6 @@
       "price": 389000,
       "shortDesc": "Ốp lưng MagSafe iPhone 14 Silicone đang bán tại Di Động Việt là 100% hàng chính hãng, được bảo hành 12 tháng chính hãng. Đồng thời khi chọn mua phụ kiện, sản phẩm khác tại Di Động Việt, người dùng còn nhận được nhiều ưu đãi.",
       "description": "Ốp lưng MagSafe iPhone 14 Silicone đang bán tại Di Động Việt là 100% hàng chính hãng, được bảo hành 12 tháng chính hãng. Đồng thời khi chọn mua phụ kiện, sản phẩm khác tại Di Động Việt, người dùng còn nhận được nhiều ưu đãi."
-    }
-  ],
-  "sliderSales": [
-    {
-      "id": 1,
-      "img": "http://localhost:3000/images/Banner-TT_Bang-gia-iPhone.jpg"
-    },
-    {
-      "id": 2,
-      "img": "http://localhost:3000/images/12prom-min.png"
-    },
-    {
-      "id": 3,
-      "img": "http://localhost:3000/images/tt-sale-apple-25-5.jpg"
-    },
-    {
-      "id": 4,
-      "img": "http://localhost:3000/images/san-iphone-12.jpg"
-    },
-    {
-      "id": 5,
-      "img": "http://localhost:3000/images/thumb-cho-tin-mua-kem_1_1280x720-800-resize.jpg"
-    },
-    {
-      "id": 6,
-      "img": "http://localhost:3000/images/tt-sale-apple-25-5.jpg"
-    },
-    {
-      "id": 7,
-      "img": "http://localhost:3000/images/BaoHanhKimCuongiPhone14_Banner-App.webp"
-    }
-  ],
-  "sliderItems": [
-    {
-      "id": 1,
-      "img": "https://cdn.didongviet.vn/pub/media/mageplaza/bannerslider/banner/image/7/6/768x371-didongviet_2.jpg"
-    },
-    {
-      "id": 2,
-      "img": "https://cdn.didongviet.vn/pub/media/mageplaza/bannerslider/banner/image/7/6/768x371_238.jpg"
-    },
-    {
-      "id": 3,
-      "img": "https://cdn.didongviet.vn/pub/media/mageplaza/bannerslider/banner/image/7/6/768x371-80_74.jpg"
-    },
-    {
-      "id": 4,
-      "img": "https://cdn.didongviet.vn/pub/media/mageplaza/bannerslider/banner/image/z/4/z4211636090670_6bd1525e42527e852018c3ceeec9be10.jpg"
-    }
-  ],
-  "cartProducts": [
-    {
-      "id": 1,
-      "idUser": "1",
-      "cartItems": [
-        {
-          "id": 4,
-          "productName": "iPhone 14 Pro Max 128GB Tím ",
-          "price": 2990000,
-          "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//i/p/iphone-11-128gb-chinh-hang_2.jpg"
-        }
-      ]
-    },
-    {
-      "idUser": "8",
-      "cartItems": [
-        {
-          "id": 7,
-          "productName": "iPhone 14 Pro Max 128GB Đen ",
-          "price": 2990000,
-          "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//i/p/iphone-13-pro-max-128gb-didongviet_1_1.jpg"
-        }
-      ],
-      "id": 2
-    },
-    {
-      "idUser": "8",
-      "cartItems": [
-        {
-          "id": 7,
-          "productName": "iPhone 14 Pro Max 128GB Đen ",
-          "price": 2990000,
-          "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//i/p/iphone-13-pro-max-128gb-didongviet_1_1.jpg"
-        }
-      ],
-      "id": 3
-    },
-    {
-      "idUser": "8",
-      "cartItems": [
-        {
-          "id": 8,
-          "productName": "iPhone 14 Pro Max 128GB Vàng ",
-          "price": 2990000,
-          "imgUrl": "https://cdn.didongviet.vn/pub/media/catalog/product//i/p/iphone-13-pro-128gb-didongviet_1.jpg"
-        }
-      ],
-      "id": 4
-    }
-  ],
-  "cartItems": [
-    {
-      "id": 1,
-      "productName": "iPhone 14 Pro Max 128GB Vàng (VN/A)",
-      "imgUrl": "http://localhost:3000/images/iphone-13-pro-128gb-vang.webp",
-      "price": 26790000,
-      "quantity": 1,
-      "totalPrice": 26790000
-    },
-    {
-      "id": 12,
-      "productName": "Samsung Galaxy S20 FE 256GB",
-      "imgUrl": "http://localhost:3000/images/galaxy-s20-fe-256gb-xanh.webp",
-      "price": 7890000,
-      "quantity": 1,
-      "totalPrice": 7890000
-    },
-    {
-      "id": 2,
-      "productName": "iPhone 11 Pro Max 128GB Trắng (VN/A)",
-      "imgUrl": "http://localhost:3000/images/iphone-11-64gb-trang.webp",
-      "price": 21590000,
-      "quantity": 1,
-      "totalPrice": 21590000
-    },
-    {
-      "id": 13,
-      "productName": " Samsung Galaxy S23 Ultra 5G 256GB  ",
-      "imgUrl": "http://localhost:3000/images/samsung-galaxy-s23-ultra-5g-mau-xanh.webp",
-      "price": 23990000,
-      "quantity": 1,
-      "totalPrice": 23990000
-    }
-  ],
-  "orders": [],
-  "newOrders": [],
-  "reviews": [
-    {
-      "id": 70,
-      "name": "cao hien",
-      "content": "tooi la ai",
-      "productId": 1
-    },
-    {
-      "id": 72,
-      "name": "cao hien",
-      "content": "aa"
-    },
-    {
-      "id": 73,
-      "name": "cao hien",
-      "content": "aaa"
-    },
-    {
-      "id": 74,
-      "name": "cao hien",
-      "content": "số 1",
-      "productId": 1
-    },
-    {
-      "id": 75,
-      "name": "cao hien",
-      "content": "số 2",
-      "productId": 1
-    },
-    {
-      "id": 76,
-      "name": "cao hien",
-      "content": "không",
-      "productId": 3
-    },
-    {
-      "id": 77,
-      "name": "cao hien",
-      "content": "test",
-      "productId": 3
-    },
-    {
-      "id": 78,
-      "name": "cao hien",
-      "content": "aa",
-      "productId": 3
-    },
-    {
-      "id": 79,
-      "name": "cao hien",
-      "content": "alo",
-      "productId": 2
-    },
-    {
-      "content": "xin choa nha\naaa",
-      "name": "cao hien",
-      "productId": 2,
-      "id": 80
-    },
-    {
-      "id": 81,
-      "name": "kiều",
-      "content": "tôi thử máyy",
-      "productId": 2
-    },
-    {
-      "id": 82,
-      "name": "kiều",
-      "content": "tôi kiểm tra",
-      "productId": 4
-    },
-    {
-      "id": 83,
-      "name": "cao hien",
-      "content": "đây là iphone\n",
-      "productId": 7
-    },
-    {
-      "id": 84,
-      "name": "cao hien",
-      "content": "test",
-      "productId": 7
-    },
-    {
-      "id": 85,
-      "name": "Cao Hiền",
-      "content": "xin chào",
-      "productId": 2
-    },
-    {
-      "id": 86,
-      "name": "Xuân Hiềnnnnnn",
-      "content": "không sao",
-      "productId": 3
-    },
-    {
-      "id": 87,
-      "name": "Xuân Hiềnnnnnnaa",
-      "content": "aaa",
-      "productId": 3
-    },
-    {
-      "content": "review moiuiws",
-      "name": "Xuân Hiền",
-      "productId": 5,
-      "id": 88
-    },
-    {
-      "id": 89,
-      "name": "Xuân Cao",
-      "content": "sản phẩm này tốt",
-      "productId": 6
-    },
-    {
-      "id": 90,
-      "name": "Xuân Cao",
-      "content": "aaa",
-      "productId": 2
-    },
-    {
-      "content": "bỏ vừa túi xách ko shop ",
-      "name": "bin",
-      "productId": 4,
-      "id": 91
-    },
-    {
-      "content": "điện thoại tốt lắm",
-      "name": "Nguyễn A",
-      "productId": 4,
-      "id": 92
-    },
-    {
-      "content": "yyyy",
-      "name": "Nguyễn A",
-      "productId": 2,
-      "id": 93
-    },
-    {
-      "id": 94,
-      "name": "Nguyễn A",
-      "content": "review san pham",
-      "productId": 6
-    },
-    {
-      "content": "tôi muốn mua",
-      "name": "nữ",
-      "productId": 2,
-      "id": 95
     }
   ]
 }

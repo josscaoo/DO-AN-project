@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import { Modal } from "antd";
+
 
 export const Container = styled.div`
   width: 100%;
-  height: 10rem;
+  height: 11rem;
   line-height: 23px;
   overflow-x: hidden;
   @media (max-width: 1024px) {
@@ -16,7 +18,7 @@ export const Main = styled.div`
   background-color: #940707;
   display: flex;
   padding-top: 5px;
-  height: 6rem;
+  height: 7rem;
   @media (max-width: 1024px) {
     display: flex;
     border-top: none;
@@ -114,6 +116,8 @@ export const Icons = styled.div`
   align-items: center;
   column-gap: 1.2rem;
   margin-right: 100px;
+  margin-bottom: 15px;
+
   @media (max-width: 1024px) {
     margin-left: 15px;
     display: flex;
@@ -177,7 +181,7 @@ export const Auth = styled.div`
     display: flex;
   }
 `;
-export const Register = styled.div`
+export const Registers = styled.div`
   border-right: 2px solid #fff;
   font-size: 15px;
 
@@ -190,7 +194,7 @@ export const Register = styled.div`
     border-right: 1px solid #fff;
   }
 `;
-export const Login = styled.div`
+export const Logins = styled.div`
   font-size: 15px;
   border-right: 2px solid #fff;
   /* padding-left: 10px; */
@@ -254,5 +258,24 @@ export const Mobile = styled.div`
     @media (max-width: 1024px) {
       font-size: 1.5rem;
     }
+  }
+`;
+export const StyledModal = styled(Modal)`
+  .custom-modal {
+    display: none;
+  }
+  .ant-modal-footer {
+    display: none;
+  }
+  .ant-modal-body {
+    height: 100%;
+    width: 42rem;
+  }
+  .ant-modal-content {
+    height: 100%;
+    width: 45rem;
+  }
+  .anticon {
+    display: none;
   }
 `;

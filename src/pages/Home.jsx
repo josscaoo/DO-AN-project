@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from '../components/Helmet/Helmet';
 
 import PromotionTop from './HeaderHome/PromotionTop';
-import sale from "../assets/images/anhsale-08.webp";
+import sale from "../assets/anhsale-08.webp";
 import Navar from './HeaderHome/Navar';
 import SaleDays from './ListProducts/SaleDays';
 import OtherPhone from './ListProducts/OtherPhone';

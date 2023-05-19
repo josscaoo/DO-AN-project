@@ -11,6 +11,7 @@ import OtherPhone from "./ListProducts/OtherPhone";
 import GoodPhone from "./ListProducts/GoodPhone";
 
 const Main = styled.div`
+margin-right: 15px;
 `;
 const Body = styled.div`
     padding: 30px;
@@ -21,7 +22,6 @@ const Filter = styled.div`
     margin-bottom: 30px;
   }
   @media (max-width: 1024px) {
-    /* margin-bottom: 30px; */
   }
   select {
     padding: 10px 20px;
@@ -162,7 +162,7 @@ const handleSortChange = (e) => {
             </Row>
           </Container>
         </Body>
-        <div className="pt-0">
+        <div className="">
           <Container>
             <Row>
               {filteredProducts.length === 0 ? (

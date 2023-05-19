@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Helmet from "../../components/Helmet/Helmet";
 import { authenticate } from "../../redux/auth/authSlice";
 import axios from "axios";
+import { Col, Row } from "reactstrap";
+import { Button } from "antd";
+import image from "../../assets/iphone-14-wallpaper-h.png";
+import logo from "../../assets/logo-01.png";
+import google from "../../assets/Google__G__Logo.svg.webp";
+import facebook from "../../assets/Facebook_f_logo_(2019).svg.webp";
+
 
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 60vh;
-  width: 100%;
+
 `;
 
 const Form = styled.form`
@@ -30,9 +33,16 @@ const Form = styled.form`
     margin-bottom: 20px;
     text-align: center;
   }
-  p{
-    margin-top: 15px;
-    font-size: 15px;
+  p {
+    margin-bottom: 10px;
+  }
+  .styled-logo {
+    img {
+      width: 3.5rem;
+      height: 3.5rem;
+      padding: 10px;
+      cursor: pointer;
+    }
   }
 `;
 
@@ -56,9 +66,10 @@ const Input = styled.input`
   border: 1px solid ${(props) => (props.isError ? "red" : "grey")};
 `;
 
-const Button = styled.button`
+const ButtonLogin = styled.button`
   background-color: #940707;
   width: 100%;
+  height: 45px;
   color: #ffebeb;
   padding: 5px;
   border-radius: 3px;
@@ -72,9 +83,25 @@ const Button = styled.button`
     color: #fff;
   }
 `;
+const Image = styled.div`
+  background-color: #940707;
+  span {
+    display: flex;
+    img {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+    h1 {
+      margin-top: 15px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+    }
+  }
+`;
 
 
-const Login = () => {
+const Login = ({ onShowRegisterModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -102,6 +129,7 @@ const Login = () => {
       } else {
         dispatch(authenticate(email, password));
         navigate("/");
+        window.location.reload();
       }
     } catch (err) {
       console.error(err);
@@ -112,29 +140,51 @@ const Login = () => {
   return (
     <Helmet title="Login">
       <Container>
-        <Form onSubmit={handleSubmit}>
-          <Heading>Đăng nhập</Heading>
-          {error && <div className="error">{error}</div>}
-          <Input
-            type="text"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            isError={error && !email}
-          />
-          <Input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            isError={error && !password}
-          />
-          <Button type="submit">Đăng nhập</Button>
-          <p>
-            Bạn chưa có tài khoản?
-            <Link to="/register">Tạo một tài khoản</Link>
-          </p>
-        </Form>
+        <Row>
+          <Col style={{ backgroundColor: "#940707" }}>
+            <Image>
+              <img src={image} alt="" />
+              <span>
+                <img src={logo} alt="logo" />
+                <h1 className="logo__text">HienMobi</h1>
+              </span>
+            </Image>
+          </Col>
+          <Col>
+            <Form onSubmit={handleSubmit}>
+              <Heading>Đăng nhập</Heading>
+              {error && <div className="error">{error}</div>}
+              <Input
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                isError={error && !email}
+              />
+              <Input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                isError={error && !password}
+              />
+              <ButtonLogin type="submit">Đăng nhập</ButtonLogin>
+              <h6>Bạn quên mật khẩu?</h6>
+              <p>Hoặc đăng nhập bằng</p>
+
+              <div className="styled-logo">
+                <img src={google} alt="" />
+                <img src={facebook} alt="" />
+              </div>
+              <p>
+                bạn chưa có tài khoản?{" "}
+                <Button type="link" onClick={onShowRegisterModal}>
+                  Đăng ký
+                </Button>
+              </p>
+            </Form>
+          </Col>
+        </Row>
       </Container>
     </Helmet>
   );

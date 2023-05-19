@@ -17,7 +17,7 @@ const Main = styled.div`
 `;
 const Body = styled.div`
   display: flex;
-  margin-left: 24rem;
+  margin-left: 30rem;
   padding-left: 50px;
 `;
 const List = styled.div`
@@ -29,7 +29,6 @@ const List = styled.div`
     border-radius: 10px;
     margin-right: 10px;
     font-size: 13px;
-    padding-left: 20px;
   }
   li:hover {
     background-color: #940707;
@@ -52,6 +51,7 @@ const Service = () => {
 
   const navigateToShop = () => {
     navigate("/shop");
+    window.scrollTo(0, 0);
   };
   return (
     <Container>

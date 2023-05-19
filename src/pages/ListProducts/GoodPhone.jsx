@@ -6,17 +6,14 @@ import axios from "axios";
 
 const Container = styled.div`
   width: 100%;
-  height: 38rem;
+  height: 39rem;
   overflow: hidden;
-  padding-top: 10px;
   line-height: 10px;
   @media (max-width: 768px) {
   }
 `;
 const Main = styled.div`
-  background-color: white;
   overflow: hidden;
-  height: 18rem;
   width: 100%;
   @media (max-width: 768px) {
     margin-left: 20px;
@@ -50,7 +47,8 @@ const Images = styled.div`
   width: 100%;
   position: relative;
   overflow: hidden;
-  background-color: #ffffff;
+  background-color: #fff;
+  height: 16rem;
 `;
 
 const Arrow = styled.div`
@@ -81,6 +79,7 @@ const Wrapper = styled.div`
   transform: translateX(${(props) => props.slideIndex * -11.4}vw);
 `;
 const Slide = styled.div`
+  padding-left: 10px;
   width: 125vw;
   display: flex;
   align-items: center;
@@ -131,11 +130,10 @@ const GoodPhone = () => {
   }, [slideIndex]);
   return (
     <Container>
+      <Title>
+        <div className="left__product">Điện thoại tốt</div>
+      </Title>
       <Main>
-        <Title>
-          <div className="left__product">Điện thoại tốt</div>
-        </Title>
-
         <Images>
           <Arrow direction="left" onClick={() => handleClick("left")}>
             <LeftOutlined />

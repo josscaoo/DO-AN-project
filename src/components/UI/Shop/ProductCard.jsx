@@ -5,10 +5,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../redux/slices/cartSlice";
-import axios from "axios";
-import { Button, Container, Images, Info } from "./Style";
-import { Modal } from "antd";
-
+import { Button, Container, Images, Info, StyledModal } from "./Style";
 
 const ProductCard = ({ item }) => {
   const dispatch = useDispatch();
@@ -24,10 +21,6 @@ const ProductCard = ({ item }) => {
       imgUrl: item.imgUrl,
     };
     dispatch(cartActions.addItem(newItem));
-    axios
-      .post("http://localhost:3001/cartItems", newItem)
-      .then((response) => console.log(response.data))
-      .catch((error) => console.log(error));
     toast.success("Đã thêm sản phẩm", { position: "top-center" });
     setConfirmLoading(true);
     setTimeout(() => {
@@ -67,7 +60,7 @@ const ProductCard = ({ item }) => {
               >
                 <i className="ri-shopping-cart-line"></i>
               </span>
-              <Modal
+              <StyledModal
                 open={open}
                 onOk={addToCart}
                 confirmLoading={confirmLoading}
@@ -76,7 +69,7 @@ const ProductCard = ({ item }) => {
                 cancelText="Trở về"
               >
                 <h5>Thêm vào giỏ hàng</h5>
-              </Modal>
+              </StyledModal>
             </div>
           ) : (
             <div>

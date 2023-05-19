@@ -7,7 +7,6 @@ const initialState = {
   totalQuantity: 0,
   reviews: [],
   checkout: [],
-  cartProducts:[],
 };
 
 const cartSlice = createSlice({
@@ -27,6 +26,8 @@ const cartSlice = createSlice({
 
       state.totalQuantity++;
 
+      const userId = parseInt(localStorage.getItem("user_id")); // Lấy giá trị userId từ localStorage và chuyển đổi sang kiểu number
+
       if (!existingItem) {
         state.cartItems.push({
           id: newItem.id,
@@ -35,6 +36,7 @@ const cartSlice = createSlice({
           price: newItem.price,
           quantity: 1,
           totalPrice: newItem.price,
+          userId: userId, // Thêm userId vào đối tượng sản phẩm mới
         });
 
         axios.post("http://localhost:3001/cartItems", {
@@ -44,6 +46,7 @@ const cartSlice = createSlice({
           price: newItem.price,
           quantity: 1,
           totalPrice: newItem.price,
+          userId: userId, // Gửi userId lên server trong yêu cầu POST
         });
       } else {
         existingItem.quantity++;
@@ -52,52 +55,11 @@ const cartSlice = createSlice({
 
         axios.put(`http://localhost:3001/cartItems/${existingItem.id}`, {
           ...existingItem,
+          userId: userId, // Gửi userId lên server trong yêu cầu PUT
         });
       }
 
       state.totalAmount = state.cartItems.reduce(
-        (total, item) => total + Number(item.price) * Number(item.quantity),
-        0
-      );
-    },
-    addProducts: (state, action) => {
-     const newItem = action.payload;
-
-      const existingItem = state.cartProducts.find(
-        (item) => item.id === newItem.id
-      );
-
-      state.totalQuantity++;
-
-      if (!existingItem) {
-        state.cartProducts.push({
-          id: newItem.id,
-          productName: newItem.productName,
-          imgUrl: newItem.imgUrl,
-          price: newItem.price,
-          quantity: 1,
-          totalPrice: newItem.price,
-        });
-
-        axios.post("http://localhost:3001/cartProducts", {
-          id: newItem.id,
-          productName: newItem.productName,
-          imgUrl: newItem.imgUrl,
-          price: newItem.price,
-          quantity: 1,
-          totalPrice: newItem.price,
-        });
-      } else {
-        existingItem.quantity++;
-        existingItem.totalPrice =
-          Number(existingItem.totalPrice) + Number(newItem.price);
-
-        axios.put(`http://localhost:3001/cartProducts/${existingItem.id}`, {
-          ...existingItem,
-        });
-      }
-
-      state.totalAmount = state.cartProducts.reduce(
         (total, item) => total + Number(item.price) * Number(item.quantity),
         0
       );
@@ -110,7 +72,6 @@ const cartSlice = createSlice({
       if (existingItem) {
         state.totalQuantity -= existingItem.quantity;
         state.totalAmount -= existingItem.totalPrice;
-
 
         // Xóa sản phẩm khỏi giỏ hàng trong store Redux
         state.cartItems = state.cartItems.filter((item) => item.id !== id);
@@ -133,6 +94,7 @@ const cartSlice = createSlice({
       });
     },
 
+    //giảm số lượng của một sản phẩm trong giỏ hàng và cập nhật trạng thái của slice "cart" tương ứng
     decrementItem: (state, action) => {
       const id = action.payload;
       const existingItem = state.cartItems.find((item) => item.id === id);
@@ -159,6 +121,7 @@ const cartSlice = createSlice({
       }
     },
 
+    // tăng số lượng của một sản phẩm trong giỏ hàng và cập nhật trạng thái của slice "cart" tương ứng
     incrementItem: (state, action) => {
       const id = action.payload;
       const existingItem = state.cartItems.find((item) => item.id === id);
@@ -237,13 +200,9 @@ const cartSlice = createSlice({
           });
       }
     },
-
-
-    
   },
 });
 
 export const cartActions = cartSlice.actions;
 
 export default cartSlice.reducer;
-     

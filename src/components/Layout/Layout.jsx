@@ -24,12 +24,7 @@ const Layout = () => {
           <Routers />
         </Container>
       </div>
-      {/* {location.pathname.startsWith("/register") ||
-      location.pathname.startsWith("/login") ? (
-        ""
-      ) : ( */}
         <Footer />
-      {/* )} */}
     </>
   );
 };

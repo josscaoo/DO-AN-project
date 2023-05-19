@@ -4,16 +4,15 @@ import styled from "styled-components";
 import { Button, message, Popconfirm } from "antd";
 import { useSelector } from "react-redux";
 
-
 const Container = styled.div`
-.phone:hover{
-  color: #b61010;
-  cursor: pointer;
-}
+  .phone:hover {
+    color: #b61010;
+    cursor: pointer;
+  }
 `;
 
 const Users = styled.div`
-display: flex;
+  display: flex;
 `;
 const User = styled.div`
   flex: 1;
@@ -56,14 +55,31 @@ const Table = styled.table`
   }
   p {
     font-size: 13px;
+    @media (max-width: 1024px) {
+      font-size: 10px;
+    }
   }
 
+  tr {
+    .seItems__price {
+      font-size: 17px;
+      font-weight: 600;
+      color: red;
+    }
+    @media (max-width: 1024px) {
+      font-size: 12px;
+    }
+  }
   tr:hover {
     background-color: #f5f5f5;
   }
 
   img {
     max-width: 50px;
+  }
+  @media (max-width: 1024px) {
+  }
+  @media (max-width: 425px) {
   }
 `;
 
@@ -75,28 +91,34 @@ const ButtonDelete = styled(Button)`
   }
 `;
 
-function OrdersTable() {
+function OrdersTable({ setLatestOrder }) {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
+    const userId = localStorage.getItem("user_id");
     axios
-      .get("http://localhost:3001/newOrders")
+      .get(`http://localhost:3001/newOrders?userId=${userId}`)
       .then((response) => setOrders(response.data))
       .catch((error) => console.log(error));
   }, []);
 
   const { address, phone, name } = useSelector((state) => state.auth);
 
-const handleDeleteOrder = (id) => {
-  axios
-    .delete(`http://localhost:3001/newOrders/${id}`)
-    .then(() => {
-      const filteredOrders = orders.filter((order) => order.id !== id);
-      setOrders(filteredOrders);
-      window.location.reload();
-    })
-    .catch((error) => console.log(error));
-};
+  const handleDeleteOrder = (id) => {
+    axios
+      .delete(`http://localhost:3001/newOrders/${id}`)
+      .then(() => {
+        const filteredOrders = orders.filter((order) => order.id !== id);
+        console.log(
+          "🚀 ~ file: OrdersTable.jsx:112 ~ .then ~ filteredOrders:",
+          filteredOrders
+        );
+        if (!filteredOrders.length) setLatestOrder(null);
+        setOrders(filteredOrders);
+        // window.location.reload();
+      })
+      .catch((error) => console.log(error));
+  };
   const confirm = (e) => {
     console.log(e);
     message.success("Click on Yes");
@@ -125,15 +147,12 @@ const handleDeleteOrder = (id) => {
           <table>
             <thead>
               <tr>
-                <th>Tổng đơn hàng đã đặt</th>
-                <th>Tổng tiền đơn hàng</th>
-                <th>Tổng số lượng đơn hàng</th>
+                <th>Tổng đơn hàng</th>
+                <th>Tổng tiền</th>
+                <th>Tổng số lượng</th>
                 <th>
-                  Tổng tiền
-                  <p>
-                    (Thanh toán khi nhận hàng bao gồm phí ship và đã trừ đi
-                    voucher)
-                  </p>
+                  Tổng thanh toán
+                  <p>(Bao gồm phí ship và đã trừ đi voucher)</p>
                 </th>
                 <th></th>
               </tr>
@@ -159,17 +178,22 @@ const handleDeleteOrder = (id) => {
                             <td>
                               <img src={item.imgUrl} alt="" />
                             </td>
-                            <td>{item.price.toLocaleString()}₫</td>
+                            <td>{item.price.toLocaleString("vi-VN")}₫</td>
                             <td>{item.quantity}</td>
-                            <td>{item.totalPrice.toLocaleString()}₫</td>
+                            <td>{item.totalPrice.toLocaleString("vi-VN")}₫</td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   </td>
-                  <td>{order.seItems.selectedTotalAmount.toLocaleString()}₫</td>
+                  <td>
+                    {order.seItems.selectedTotalAmount.toLocaleString("vi-VN")}₫
+                  </td>
                   <td>{order.seItems.selectedQuantity}</td>
-                  <td>{order.seItems.price}₫</td>
+                  <td className="seItems__price">
+                    {order.seItems.price.toLocaleString("vi-VN")}₫{" "}
+                    <p>(Thanh toán khi nhận hàng)</p>
+                  </td>
                   <td>
                     <Popconfirm
                       title="Bạn có chắc sẽ hủy đơn hàng"
@@ -194,7 +218,7 @@ const handleDeleteOrder = (id) => {
           <Status>Đơn hàng của bạn đang được vận chuyển</Status>
           <span className="complain">
             mọi thắc mắt xin liên hệ <i className="ri-phone-line"></i>{" "}
-            <span className="phone">0313555248</span>
+            <span className="phone">031.355.52.48</span>
           </span>
         </div>
       )}

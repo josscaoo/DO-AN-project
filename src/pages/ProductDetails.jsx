@@ -1,14 +1,14 @@
 
   import React, { useState, useEffect } from "react";
   import { Container, Row, Col } from "reactstrap";
-  import { Link, useParams } from "react-router-dom";
+  import { useParams } from "react-router-dom";
   import Helmet from "../components/Helmet/Helmet";
   import { motion } from "framer-motion";
   import ProductsList from "../components/UI/Shop/ProductsList";
   import { useDispatch, useSelector } from "react-redux";
   import { cartActions } from "../redux/slices/cartSlice";
   import { toast } from "react-toastify";
-  import { Modal, message, Popconfirm } from "antd";
+  import { message, Popconfirm } from "antd";
   import {
     Content,
     Detail,
@@ -17,57 +17,24 @@
     FormGroup,
     Image,
     Price,
+    Promotion,
     Review,
     ReviewForm,
+    ReviewImage,
     ReviewWrapper,
     Select,
-    SelectReview,
+    Service,
+    StyledModal,
     TextReview,
     UserName,
     Wrapper,
     
-  } from "./Style.Product-detail";
+} from "./Style.Product-detail";
+  
   import axios from "axios";
-  import styled from "styled-components";
-  export const StyledModal = styled(Modal)`
-  .ant-btn-primary {
-    background-color: red;
-  }
-  .ant-modal-footer {
-    margin: auto;
-    width: 50%;
-    display: flex;
-  }
-  .ant-modal-content {
-    height: 150px;
-    width: 300px;
-  }
-  .ant-modal-close {
-    flex: none;
-  }
-  .ant-modal-body {
-    display: flex;
-    justify-content: center;
-    margin: 10px;
-    margin-bottom: 30px;
-  }
-  .ant-btn-default {
-    background-color: red;
-    border-color: red;
-    color: white;
-    margin: auto;
-  }
-  .ant-btn-default:hover{
-    background-color: #da0206;
-  } .ant-btn-default:hover,
-  .ant-btn-default:focus {
-    background-color: white;
-    color: black;
-  }
-  .ant-modal-close-x {
-    display: none;
-  }
-`;
+  import GoodPhone from "./ListProducts/GoodPhone";
+  import OtherPhone from "./ListProducts/OtherPhone";
+  
 
 const ProductDetails = () => {
     const dispatch = useDispatch();
@@ -134,7 +101,9 @@ const ProductDetails = () => {
           setOpen(false);
           setConfirmLoading(false);
         }, 100);
-      };
+  };
+  console.log(addToCart);
+  
     const addLogin = () => {
         toast.error("Bạn Cần Đăng Nhập Để Mua Hàng");
       };
@@ -171,6 +140,7 @@ const handleSubmit = (event) => {
   }
 };
 
+  
    const handleDeleteReview = (id) => {
      // Gửi yêu cầu DELETE đến JSON server
      axios
@@ -194,9 +164,9 @@ const handleSubmit = (event) => {
       }
     }, [showDetails]);
 
-    const handleEditReview = (idReview, newContent) => {
-  // Cập nhật review khỏi state
   
+  const handleEditReview = (idReview, newContent) => {
+  // Cập nhật review khỏi state
   const newReviews = reviews.map((review) => {
     if (review.id === idReview) {
       return {
@@ -276,7 +246,22 @@ const handleMouseMove = (reviewId) => {
 
 const handleMouseLeave = () => {
   setHoveredReviewId(null);
-};
+  };
+
+  function toggleContent() {
+    var content = document.getElementById("content");
+    var toggleBtn = document.getElementById("toggleBtn");
+
+    if (content.classList.contains("collapsed")) {
+      content.classList.remove("collapsed");
+      toggleBtn.textContent = "Xem thêm";
+    } else {
+      content.classList.add("collapsed");
+      toggleBtn.textContent = "Ẩn bớt";
+    }
+  }
+
+  
 
     return (
       <Helmet title={product.productName}>
@@ -289,7 +274,7 @@ const handleMouseLeave = () => {
               <Col lg="">
                 <Detail>
                   <h2>{product.productName}</h2>
-                  <div d-flex align-items-center gap-5>
+                  <div className="d-flex align-items-center gap-5">
                     <Price>
                       {product.price && product.price.toLocaleString("vi-VN")}
                       VND
@@ -303,7 +288,7 @@ const handleMouseLeave = () => {
                     {isLoggedIn ? (
                       <div className="Add__Cart">
                         <button
-                          whileTap={{ scale: 1.2 }}
+                          whiletap={{ scale: 1.2 }}
                           className="buy__btn"
                           type="primary"
                           onClick={showModal}
@@ -361,9 +346,30 @@ const handleMouseLeave = () => {
                 {tab === "desc" ? (
                   <Review>
                     <ReviewWrapper>
-                      <h4>Bình luận:</h4>
-
-                      <div>
+                      <div className="content" id="content">
+                        <ReviewForm>
+                          <form onSubmit={handleSubmit}>
+                            <label htmlFor="review">
+                              Để lại ý kiến của bạn:
+                            </label>
+                            <FormGroup>
+                              <textarea
+                                type="text"
+                                value={newReview.content}
+                                onChange={handleChange}
+                              />
+                              {inputError && (
+                                <p style={{ color: "red" }}>{inputError}</p>
+                              )}
+                            </FormGroup>
+                            <motion.button
+                              type="submit"
+                              whileTap={{ scale: 1.2 }}
+                            >
+                              Đánh giá
+                            </motion.button>
+                          </form>
+                        </ReviewForm>
                         <ul>
                           {reviews.map((review) => (
                             <li key={review.id} onMouseLeave={handleMouseLeave}>
@@ -384,13 +390,11 @@ const handleMouseLeave = () => {
                                         : undefined
                                     }
                                     onMouseMove={() =>
-                                       handleMouseMove(review.id)
-                                     }
-                                    //  title="Xem thêm"
+                                      handleMouseMove(review.id)
+                                    }
                                   ></i>
                                 )}
                                 {isOpen && selectedReviewId === review.id && (
-
                                   <EditReview>
                                     <>
                                       <i
@@ -441,7 +445,6 @@ const handleMouseLeave = () => {
 
                                       <Popconfirm
                                         title="Bạn có muốn xóa bình luận?"
-                                        // description="Bạn có muốn xóa bình luận?"
                                         onConfirm={confirm}
                                         onCancel={cancel}
                                         okText={
@@ -466,32 +469,90 @@ const handleMouseLeave = () => {
                             </li>
                           ))}
                         </ul>
-                        <ReviewForm>
-                          <form onSubmit={handleSubmit}>
-                            <label htmlFor="review">
-                              Để lại ý kiến của bạn:
-                            </label>
-                            <FormGroup>
-                              <textarea
-                                type="text"
-                                value={newReview.content}
-                                onChange={handleChange}
-                              />
-                              {inputError && (
-                                <p style={{ color: "red" }}>{inputError}</p>
-                              )}
-                            </FormGroup>
-                            <motion.button
-                              type="submit"
-                              className="buy__btn "
-                              whileTap={{ scale: 1.2 }}
-                            >
-                              Đánh giá
-                            </motion.button>
-                          </form>
-                        </ReviewForm>
+                      </div>
+                      <div onClick={toggleContent} id="toggleBtn">
+                        xem thêm
                       </div>
                     </ReviewWrapper>
+                    <div>
+                      <ReviewImage>
+                        <h5>Khuyến mãi</h5>
+                        <Promotion>
+                          <h6>
+                            1. Tuần Lễ {product.category} | Duy nhất hôm nay:
+                            Với voucher ưu đãi lên đến <span>700.000đ</span> và
+                            nhiều ưu đãi sau đây:
+                            <li>
+                              Tặng thêm đến <span> 500.000đ</span> khi thu cũ
+                              đổi mới Xem chi tiết
+                            </li>
+                            <p>
+                              Lưu ý: Chương trình có thể kết thúc sớm vì số
+                              lượng có hạn
+                            </p>
+                          </h6>
+                          <h6>
+                            2. Ưu đãi khác:
+                            <li>
+                              Tặng ngay gói Youtube Premium <span>4 tháng</span>{" "}
+                            </li>
+                            <li>
+                              Tặng bảo hành Samsung Care Plus{" "}
+                              <span>6 tháng</span>{" "}
+                            </li>
+                            <li>
+                              Tặng gói phòng chờ hạng Thương Gia Xem chi tiết
+                            </li>
+                            <li>
+                              Trả góp <span>0%</span> đến 24 tháng Xem chi tiết
+                            </li>
+                            <li>
+                              Không giấy tờ phức tạp chỉ cần <span>CCCD</span>
+                            </li>
+                          </h6>
+                        </Promotion>
+                      </ReviewImage>
+                      <div className="hottelephone__sale">
+                        Gọi đặt mua 1800.6018 (7:30 - 22:00)
+                      </div>
+                      <Service>
+                        <h5> Ưu đãi dịch vụ</h5>
+                        <Promotion>
+                          <p>
+                            <i className="ri-coupon-2-line"></i> Giảm thêm tới{" "}
+                            <span>1.5%</span>
+                            cho thành viên của Di Động Việt
+                          </p>
+                          <p>
+                            <i className="ri-secure-payment-line"></i> Chỉ từ{" "}
+                            <span>2K/ngày</span>
+                            có ngay Gói Bảo Hành Hư Lỗi - Đổi Mới trong 1 năm
+                          </p>
+                          <p>
+                            <i className="ri-takeaway-line"></i> Miễn phí Giao
+                            hàng siêu tốc trong <span> 1 giờ</span>{" "}
+                          </p>
+                          <p>
+                            <i className="ri-bank-card-line"></i> Giảm thêm{" "}
+                            <span> 5% </span>tối đa 500.000đ thanh toán qua
+                            Kredivo{" "}
+                          </p>
+                          <p>
+                            <i className="ri-refund-2-fill"></i> Giảm thêm{" "}
+                            <span>30%</span> tối đa 600.000đ mở thẻ qua TPBank
+                            EVO
+                          </p>
+                          <p>
+                            <i className="ri-visa-fill"></i> Giảm thêm{" "}
+                            <span>200.000đ</span> mở thẻ qua VIB
+                          </p>
+                          <p>
+                            <i className="ri-mastercard-line"></i> Giảm thêm{" "}
+                            <span>500.000đ</span> mở thẻ qua VPBANK
+                          </p>
+                        </Promotion>
+                      </Service>
+                    </div>
                   </Review>
                 ) : (
                   <Content>
@@ -507,6 +568,8 @@ const handleMouseLeave = () => {
             </Row>
           </Container>
         </DetailReview>
+        <GoodPhone />
+        <OtherPhone />
       </Helmet>
     );
   

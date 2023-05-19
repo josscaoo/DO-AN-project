@@ -6,7 +6,7 @@ import axios from "axios";
 
 const Container = styled.div`
   width: 100%;
-  height: 24rem;
+  height: 26rem;
   display: flex;
   overflow: hidden;
   padding-top: 10px;
@@ -19,7 +19,7 @@ const Main = styled.div`
   border-radius: 5px;
   background-color: #940707;
   overflow: hidden;
-  height: 23rem;
+  height: 25rem;
   @media (max-width: 768px) {
     margin-left: 20px;
     margin-right: 10px;

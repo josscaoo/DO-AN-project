@@ -7,10 +7,11 @@ import styled from "styled-components";
 const Container = styled.div`
   /* border: 1px solid rgba(83, 78, 78, 0.667); */
   background-color: #fff;
-  height: 15rem;
+  height: 15.5rem;
   width: 174px;
   cursor: pointer;
   padding: 10px;
+  margin-right: 10px;
   &:hover {
     box-shadow: 0 0 10px 5px rgba(181, 117, 126, 0.821);
     border-color: rgba(180, 158, 48, 0.2);

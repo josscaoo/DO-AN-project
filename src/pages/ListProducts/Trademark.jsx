@@ -110,19 +110,20 @@ const Trademark = () => {
       setSlideIndex(slideIndex < 4 ? slideIndex + 1 : 0);
     }
   };
-      const [sliderSales, setSliderSales] = useState([]);
-      useEffect(() => {
+  const [sliderSales, setSliderSales] = useState([]);
+  
+   useEffect(() => {
         async function fetchData() {
           const result = await axios.get("http://localhost:3001/sliderSales");
           setSliderSales(result.data);
         }
         fetchData();
-      }, []);
+   }, []);
     
     const [intervalId, setIntervalId] = useState(null);
     const handleAutoSlide = () => {
       setSlideIndex(slideIndex < 4 ? slideIndex + 1 : 0);
-  };
+    };  
   
     useEffect(() => {
       const id = setInterval(() => {
@@ -145,7 +146,7 @@ const Trademark = () => {
           </Arrow>
           <Wrapper slideIndex={slideIndex}>
             {sliderSales.map((item) => (
-              <Slide>
+              <Slide key={item.id}>
                 <ImgContainer>
                   <Img src={item.img} />
                 </ImgContainer>

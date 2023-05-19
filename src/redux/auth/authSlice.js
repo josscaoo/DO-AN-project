@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+//trả về trạng thái ban đầu của người dùng.
 const getInitialUserState = () => {
   if (localStorage.getItem("isLoggedIn") === "1") {
     const userData = localStorage.getItem("userData");

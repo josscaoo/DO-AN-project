@@ -8,7 +8,7 @@ import axios from "axios";
 const Container = styled.div`
 margin-top: -20px;
   width: 100%;
-  height: 19rem;
+  height: 20rem;
   display: flex;
   overflow: hidden;
   padding-top: 10px;
@@ -18,9 +18,8 @@ margin-top: -20px;
   }
 `;
 const Main = styled.div`
-  background-color: #940707;
   overflow: hidden;
-  height: 17.8rem;
+  height: 21rem;
   width: 100%;
   @media (max-width: 768px) {
     margin-left: 20px;
@@ -34,6 +33,7 @@ const Main = styled.div`
 const Title = styled.h1`
   padding-top: 15px;
   font-size: 30px;
+  background-color: #940707;
   .main_sound {
     width: 100%;
     height: 2rem;
@@ -57,6 +57,7 @@ const Images = styled.div`
   position: relative;
   overflow: hidden;
   background-color: #ffffff;
+  /* height: 18.5rem; */
 `;
 
 const Arrow = styled.div`
@@ -84,6 +85,8 @@ const Wrapper = styled.div`
   display: flex;
   transition: all 0.5s ease;
   transform: translateX(${(props) => props.slideIndex * -11.7}vw);
+  margin-bottom: 10px;
+  padding: 10px;
 `;
 const Slide = styled.div`
   width: 125vw;

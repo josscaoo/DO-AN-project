@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { useState, useEffect } from "react";
 import axios from "axios";
-// import { sliderItems } from "../../../assets/data/products";
 
 const Container = styled.div`
   width: 100%;
@@ -11,7 +10,6 @@ const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
-  /* padding-top: 10px; */
 
   @media (max-width: 768px) {
     width: 50rem;
@@ -118,12 +116,13 @@ const CarouselMain = () => {
         <LeftOutlined />
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
-        {sliderItems.map((item) => (
-          <Slide>
-              <Img src={item.img} />
+        {sliderItems.map((item, index) => (
+          <Slide key={index}>
+            <Img src={item.img} />
           </Slide>
         ))}
       </Wrapper>
+
       <Arrow direction="right" onClick={() => handleClick("right")}>
         <RightOutlined />
       </Arrow>
