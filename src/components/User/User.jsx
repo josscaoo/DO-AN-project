@@ -50,7 +50,6 @@ const ErrorMessage = styled.div`
 const User = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const {
     password: storedPassword,
     name,
@@ -67,7 +66,10 @@ const User = () => {
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -79,11 +81,11 @@ const User = () => {
     }
 
     if (formData.newPassword) {
-      // Thực hiện thay đổi mật khẩu nếu có nhập mật khẩu mới
       dispatch(authSlice.actions.updatePassword(formData.newPassword));
     }
 
     dispatch(authSlice.actions.updateUserInfo(formData));
+
     const userId = localStorage.getItem("user_id");
     const url = `http://localhost:3001/users/${userId}`;
 
@@ -106,11 +108,10 @@ const User = () => {
     <Container>
       <Form onSubmit={handleSubmit}>
         <Label>
-          <div>Tên:</div>
-
+          <div>Tên</div>
           <Input
             type="text"
-            placeholder="name"
+            name="name"
             value={formData.name}
             onChange={handleChange}
             required
@@ -118,7 +119,6 @@ const User = () => {
         </Label>
         <Label>
           <div> Địa chỉ:</div>
-
           <Input
             type="text"
             name="address"
@@ -129,7 +129,6 @@ const User = () => {
         </Label>
         <Label>
           <div>Số điện thoại:</div>
-
           <Input
             type="text"
             name="phone"
@@ -138,10 +137,8 @@ const User = () => {
             required
           />
         </Label>
-
         <Label>
           <div>Mật khẩu mới:</div>
-
           <Input
             type="password"
             name="newPassword"
@@ -151,7 +148,6 @@ const User = () => {
         </Label>
         <Label>
           <div> Nhập mật khẩu:</div>
-
           <Input
             type="password"
             name="password"
@@ -160,15 +156,14 @@ const User = () => {
             required
           />
         </Label>
-
         {error && <ErrorMessage>{error}</ErrorMessage>}
-
         <Button type="submit">Lưu</Button>
         <Link to={"/checkout"}>trở lại</Link>
       </Form>
     </Container>
   );
 };
+
 
 export default User;
 

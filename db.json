@@ -8,10 +8,9 @@
       "id": 2
     },
     {
-      "email": "hiencao@gmail.com",
       "password": "0123456789",
-      "name": "Hiền xuân",
-      "phone": "0123456789",
+      "name": "Cao Xuân Hiền",
+      "phone": "012345678955",
       "address": "đà nẵng",
       "id": 3
     },
@@ -199,6 +198,12 @@
       "name": "cao cao ",
       "content": "a",
       "productId": 37
+    },
+    {
+      "id": 19,
+      "name": "Cao Xuân Hiền",
+      "content": "tôi có thể trả góp được không",
+      "productId": 1
     }
   ],
   "banner": [

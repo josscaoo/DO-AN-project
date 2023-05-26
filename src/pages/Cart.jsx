@@ -156,6 +156,7 @@ const Cart = () => {
   const navigateToShop = () => navigate("/shop");
 
   const isAllSelected = selectedItems.length === cartItems.length;
+  
   return (
     <Helmet title="Cart">
       <Main>
