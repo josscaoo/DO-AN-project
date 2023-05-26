@@ -248,19 +248,6 @@ const handleMouseLeave = () => {
   setHoveredReviewId(null);
   };
 
-  function toggleContent() {
-    var content = document.getElementById("content");
-    var toggleBtn = document.getElementById("toggleBtn");
-
-    if (content.classList.contains("collapsed")) {
-      content.classList.remove("collapsed");
-      toggleBtn.textContent = "Xem thêm";
-    } else {
-      content.classList.add("collapsed");
-      toggleBtn.textContent = "Ẩn bớt";
-    }
-  }
-
   
 
     return (
@@ -346,7 +333,6 @@ const handleMouseLeave = () => {
                 {tab === "desc" ? (
                   <Review>
                     <ReviewWrapper>
-                      <div className="content" id="content">
                         <ReviewForm>
                           <form onSubmit={handleSubmit}>
                             <label htmlFor="review">
@@ -469,10 +455,6 @@ const handleMouseLeave = () => {
                             </li>
                           ))}
                         </ul>
-                      </div>
-                      <div onClick={toggleContent} id="toggleBtn">
-                        xem thêm
-                      </div>
                     </ReviewWrapper>
                     <div>
                       <ReviewImage>

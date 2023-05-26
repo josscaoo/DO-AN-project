@@ -396,7 +396,7 @@ export const StyledModal = styled(Modal)`
     display: none;
   }
   .ant-modal-content {
-    height: 350px;
+    height: 360px;
     width: 400px;
   }
   .total__order {

@@ -61,7 +61,7 @@ const Table = styled.table`
   }
 
   tr {
-    .seItems__price {
+    .items__price {
       font-size: 17px;
       font-weight: 600;
       color: red;
@@ -115,7 +115,6 @@ function OrdersTable({ setLatestOrder }) {
         );
         if (!filteredOrders.length) setLatestOrder(null);
         setOrders(filteredOrders);
-        // window.location.reload();
       })
       .catch((error) => console.log(error));
   };
@@ -144,73 +143,71 @@ function OrdersTable({ setLatestOrder }) {
         </Users>
 
         <Table>
-          <table>
-            <thead>
-              <tr>
-                <th>Tổng đơn hàng</th>
-                <th>Tổng tiền</th>
-                <th>Tổng số lượng</th>
-                <th>
-                  Tổng thanh toán
-                  <p>(Bao gồm phí ship và đã trừ đi voucher)</p>
-                </th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders.map((order) => (
-                <tr key={order.id}>
-                  <td>
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Tên</th>
-                          <th>Sản phẩm</th>
-                          <th>Giá gốc</th>
-                          <th>Số lượng</th>
-                          <th>Tổng tiền</th>
+          <thead>
+            <tr>
+              <th>Tổng đơn hàng</th>
+              <th>Tổng tiền</th>
+              <th>Tổng số lượng</th>
+              <th>
+                Tổng thanh toán
+                <p>(Bao gồm phí ship và đã trừ đi voucher)</p>
+              </th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {orders.map((order) => (
+              <tr key={order.id}>
+                <td>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Tên</th>
+                        <th>Sản phẩm</th>
+                        <th>Giá gốc</th>
+                        <th>Số lượng</th>
+                        <th>Tổng tiền</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {order.Items.selectedItems.map((item) => (
+                        <tr key={item.id}>
+                          <td>{item.productName}</td>
+                          <td>
+                            <img src={item.imgUrl} alt="" />
+                          </td>
+                          <td>{item.price.toLocaleString("vi-VN")}₫</td>
+                          <td>{item.quantity}</td>
+                          <td>{item.totalPrice.toLocaleString("vi-VN")}₫</td>
                         </tr>
-                      </thead>
-                      <tbody>
-                        {order.seItems.selectedItems.map((item) => (
-                          <tr key={item.id}>
-                            <td>{item.productName}</td>
-                            <td>
-                              <img src={item.imgUrl} alt="" />
-                            </td>
-                            <td>{item.price.toLocaleString("vi-VN")}₫</td>
-                            <td>{item.quantity}</td>
-                            <td>{item.totalPrice.toLocaleString("vi-VN")}₫</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </td>
-                  <td>
-                    {order.seItems.selectedTotalAmount.toLocaleString("vi-VN")}₫
-                  </td>
-                  <td>{order.seItems.selectedQuantity}</td>
-                  <td className="seItems__price">
-                    {order.seItems.price.toLocaleString("vi-VN")}₫{" "}
-                    <p>(Thanh toán khi nhận hàng)</p>
-                  </td>
-                  <td>
-                    <Popconfirm
-                      title="Bạn có chắc sẽ hủy đơn hàng"
-                      onConfirm={confirm}
-                      onCancel={cancel}
-                      okText={
-                        <h6 onClick={() => handleDeleteOrder(order.id)}>Có</h6>
-                      }
-                      cancelText={<h6>Không</h6>}
-                    >
-                      <ButtonDelete type="link">Hủy đơn hàng</ButtonDelete>
-                    </Popconfirm>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                      ))}
+                    </tbody>
+                  </table>
+                </td>
+                <td>
+                  {order.Items.selectedTotalAmount.toLocaleString("vi-VN")}₫
+                </td>
+                <td>{order.Items.selectedQuantity}</td>
+                <td className="tems__price">
+                  {order.price.toLocaleString("vi-VN")}₫{" "}
+                  <p>(Thanh toán khi nhận hàng)</p>
+                </td>
+                <td>
+                  <Popconfirm
+                    title="Bạn có chắc sẽ hủy đơn hàng"
+                    onConfirm={confirm}
+                    onCancel={cancel}
+                    okText={
+                      <h6 onClick={() => handleDeleteOrder(order.id)}>Có</h6>
+                    }
+                    cancelText={<h6>Không</h6>}
+                  >
+                    <ButtonDelete type="link">Hủy đơn hàng</ButtonDelete>
+                  </Popconfirm>
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </Table>
       </Product>
       {orders && (

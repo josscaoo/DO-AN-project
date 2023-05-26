@@ -1,10 +1,9 @@
 {
   "users": [
     {
-      "email": "hien@gmail.com",
-      "password": "0123456789",
-      "name": "nam",
-      "phone": "9856321470",
+      "password": "111111111",
+      "name": "cao cao ",
+      "phone": "03589654785",
       "address": "đà nẵng",
       "id": 2
     },
@@ -15,17 +14,25 @@
       "phone": "0123456789",
       "address": "đà nẵng",
       "id": 3
+    },
+    {
+      "email": "nguyen@gmail.com",
+      "password": "0123456789",
+      "name": "nguyen",
+      "phone": "0123456789",
+      "address": "da nang",
+      "id": 4
     }
   ],
   "cartItems": [
     {
-      "id": 12,
-      "productName": "Samsung Galaxy S20 FE 256GB",
-      "imgUrl": "http://localhost:3000/images/galaxy-s20-fe-256gb-xanh.webp",
-      "price": 7890000,
+      "id": 1,
+      "productName": "iPhone 14 Pro Max 128GB Vàng (VN/A)",
+      "imgUrl": "http://localhost:3000/images/iphone-13-pro-128gb-vang.webp",
+      "price": 26790000,
       "quantity": 2,
-      "totalPrice": 15780000,
-      "userId": 2
+      "totalPrice": 53580000,
+      "userId": 4
     },
     {
       "id": 2,
@@ -34,23 +41,25 @@
       "price": 21590000,
       "quantity": 1,
       "totalPrice": 21590000,
-      "userId": 2
+      "userId": 4
     },
     {
-      "id": 7,
-      "productName": "iPhone 14 Pro Max 128GB Đen ",
-      "imgUrl": "http://localhost:3000/images/iphone-13-pro-max-128gb-tim.webp",
-      "price": 15590000,
-      "quantity": 1,
-      "totalPrice": 15590000,
-      "userId": 2
+      "id": 20,
+      "productName": "OPPO A77S 5G 128GB Chính Hãng",
+      "imgUrl": "http://localhost:3000/images/1681838533035_oppo_a77s_den.webp",
+      "price": 6599000,
+      "quantity": 3,
+      "totalPrice": 19797000,
+      "userId": 4
     }
   ],
   "orders": [],
   "newOrders": [
     {
-      "seItems": {
-        "selectedUserName": "nam",
+      "price": 21238000,
+      "userId": 4,
+      "Items": {
+        "selectedUserName": "nguyen",
         "selectedItems": [
           {
             "id": 2,
@@ -59,16 +68,45 @@
             "price": 21590000,
             "quantity": 1,
             "totalPrice": 21590000,
-            "userId": 2
+            "userId": 4
           }
         ],
         "selectedTotalAmount": 21590000,
         "selectedQuantity": 1,
-        "id": 1,
-        "price": 21238000
+        "id": 1
       },
-      "userId": 2,
-      "id": 1
+      "id": 2
+    },
+    {
+      "price": 74818000,
+      "userId": 4,
+      "Items": {
+        "selectedUserName": "nguyen",
+        "selectedItems": [
+          {
+            "id": 1,
+            "productName": "iPhone 14 Pro Max 128GB Vàng (VN/A)",
+            "imgUrl": "http://localhost:3000/images/iphone-13-pro-128gb-vang.webp",
+            "price": 26790000,
+            "quantity": 2,
+            "totalPrice": 53580000,
+            "userId": 4
+          },
+          {
+            "id": 2,
+            "productName": "iPhone 11 Pro Max 128GB Trắng (VN/A)",
+            "imgUrl": "http://localhost:3000/images/iphone-11-64gb-trang.webp",
+            "price": 21590000,
+            "quantity": 1,
+            "totalPrice": 21590000,
+            "userId": 4
+          }
+        ],
+        "selectedTotalAmount": 75170000,
+        "selectedQuantity": 3,
+        "id": 1
+      },
+      "id": 3
     }
   ],
   "reviews": [
@@ -79,7 +117,7 @@
       "productId": 2
     },
     {
-      "content": "quãng hiền\n",
+      "content": "quãng hiền",
       "name": "Cao Hiềnnn",
       "productId": 2,
       "id": 2
@@ -103,28 +141,10 @@
       "productId": 12
     },
     {
-      "id": 6,
-      "name": "cao xuân Hiềnn",
-      "content": "x",
-      "productId": 2
-    },
-    {
-      "id": 7,
-      "name": "cao Hiềnn",
-      "content": "aaa",
-      "productId": 1
-    },
-    {
-      "id": 8,
-      "name": "cao Hiềnn",
-      "content": "Tuần Lễ Samsung | Duy nhất hôm nay: Với voucher ưu đãi lên",
-      "productId": 1
-    },
-    {
-      "content": " tiết\nLưu ý: Chương trình có thể kết thúc sớm vì số lượng có hạn\n\n2. Ưu đãi khác:\nTặng ngay gói Youtube Premium 4 tháng",
+      "content": "chỉnh sửa",
       "name": "cao Hiềnn",
       "productId": 1,
-      "id": 9
+      "id": 8
     },
     {
       "id": 10,
@@ -151,28 +171,34 @@
       "id": 13
     },
     {
-      "id": 14,
-      "name": "nam",
-      "content": "dddd",
-      "productId": 1
+      "content": "sản phẩm này rất tuyệt",
+      "name": "nguyen",
+      "productId": 1,
+      "id": 14
     },
     {
       "id": 15,
-      "name": "nam",
-      "content": "dsfdsg",
-      "productId": 1
+      "name": "cao cao ",
+      "content": "â",
+      "productId": 37
     },
     {
       "id": 16,
-      "name": "nam",
-      "content": "dgdfg",
-      "productId": 1
+      "name": "cao cao ",
+      "content": "a",
+      "productId": 37
     },
     {
       "id": 17,
-      "name": "nam",
-      "content": "aaaa",
-      "productId": 1
+      "name": "cao cao ",
+      "content": "a",
+      "productId": 37
+    },
+    {
+      "id": 18,
+      "name": "cao cao ",
+      "content": "a",
+      "productId": 37
     }
   ],
   "banner": [

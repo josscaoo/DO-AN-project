@@ -102,22 +102,9 @@ export const Review = styled.div`
 `;
 export const ReviewWrapper = styled.div`
   width: 90%;
-  #content {
-    height: 21.5rem; 
-    overflow: hidden;
-  }
-
   .collapsed {
     height: auto !important;
   }
-  #toggleBtn {
-    margin: auto;
-    width: 20%;
-    cursor: pointer;
-  }
-  #toggleBtn:hover{
-    color: #1900ff;
-  } 
   li {
     display: flex;
     .review__form {

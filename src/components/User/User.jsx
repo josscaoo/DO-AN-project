@@ -8,15 +8,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+margin: auto;
+width: 50%;
 `;
 
-const Label = styled.label`
-  margin: 10px;
+const Label = styled.div`
+
+
 `;
 const Form = styled.form`
+margin: auto;
+width: 30%;
+
 `;
 
 const Input = styled.input`
@@ -28,71 +31,94 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-  padding: 10px;
+  margin-right: 40px;
+  margin-left: 10px;
   border-radius: 5px;
   border: none;
   background-color: #dba802;
   color: white;
   font-size: 16px;
-  width: 100px;
-  height: 50px;
+  width: 80px;
+  height: 35px;
 `;
+const ErrorMessage = styled.div`
+  color: red;
+  margin-bottom: 20px;
+  font-size: 13px;
+`;
+
 const User = () => {
-  const { email, password, name, phone, address } = useSelector(
-    (state) => state.auth
-  );
-    const navigate = useNavigate();
-
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const {
+    password: storedPassword,
+    name,
+    phone,
+    address,
+  } = useSelector((state) => state.auth);
+
   const [formData, setFormData] = useState({
-    email,
-    password,
+    password: "",
     name,
     phone,
     address,
   });
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  dispatch(authSlice.actions.updateUserInfo(formData));
-  const userId = localStorage.getItem("user_id"); // Lấy ID của người dùng từ localStorage
-  const url = `http://localhost:3001/users/${userId}`; // Tạo địa chỉ URL
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  try {
-    const response = await axios.put(url, formData, {
-      headers: { "Content-Type": "application/json" },
-    });
-    console.log(response.data); // Log response từ JSON server (nếu muốn)
-     toast.success("Lưu thành công", {
-       position: "top-center",
-       autoClose: 2000,
-     });
-    navigate("/");
-  } catch (error) {
-    console.log(error); // Log lỗi (nếu có)
-  }
-};
+    if (formData.password !== storedPassword) {
+      setError("Mật khẩu không đúng");
+      return;
+    }
+
+    if (formData.newPassword) {
+      // Thực hiện thay đổi mật khẩu nếu có nhập mật khẩu mới
+      dispatch(authSlice.actions.updatePassword(formData.newPassword));
+    }
+
+    dispatch(authSlice.actions.updateUserInfo(formData));
+    const userId = localStorage.getItem("user_id");
+    const url = `http://localhost:3001/users/${userId}`;
+
+    try {
+      const response = await axios.put(url, formData, {
+        headers: { "Content-Type": "application/json" },
+      });
+      console.log(response.data);
+      toast.success("Lưu thành công", {
+        position: "top-center",
+        autoClose: 2000,
+      });
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
         <Label>
-          Name:
+          <div>Tên:</div>
+
           <Input
             type="text"
-            name="name"
+            placeholder="name"
             value={formData.name}
             onChange={handleChange}
             required
           />
         </Label>
         <Label>
-          Địa chỉ:
+          <div> Địa chỉ:</div>
+
           <Input
             type="text"
             name="address"
@@ -102,7 +128,8 @@ const handleSubmit = async (e) => {
           />
         </Label>
         <Label>
-          Phone:
+          <div>Số điện thoại:</div>
+
           <Input
             type="text"
             name="phone"
@@ -111,16 +138,37 @@ const handleSubmit = async (e) => {
             required
           />
         </Label>
+
         <Label>
-          <Link to={"/checkout"}>trở lại</Link>
+          <div>Mật khẩu mới:</div>
+
+          <Input
+            type="password"
+            name="newPassword"
+            value={formData.newPassword || ""}
+            onChange={handleChange}
+          />
         </Label>
+        <Label>
+          <div> Nhập mật khẩu:</div>
+
+          <Input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </Label>
+
+        {error && <ErrorMessage>{error}</ErrorMessage>}
+
         <Button type="submit">Lưu</Button>
+        <Link to={"/checkout"}>trở lại</Link>
       </Form>
     </Container>
   );
 };
-
-
 
 export default User;
 

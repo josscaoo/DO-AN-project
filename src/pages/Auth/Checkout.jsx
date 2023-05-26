@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { Modal } from "antd";
 import qr from "../../assets/QR.jpg";
 import { toast } from "react-toastify";
 import { Add, Information, Map, Note, NoteText, Oder, StyledModal, Table, TableOder, Total, Transport, User, Voucher } from "./Style";
@@ -68,25 +67,68 @@ const Checkout = () => {
     }
   };
 
-  const addNewOrder = (newOrder) => {
-    const newOrders = [...orders];
-    const latestOrder = newOrders[newOrders.length - 1];
-    latestOrder.price = price;
-    axios
-      .post(`http://localhost:3001/newOrders/${latestOrder.id}`, newOrder)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
+    const [orders, setOrders] = useState([]);
+    const [isButtonClicked, setIsButtonClicked] = useState(false);
+
+    useEffect(() => {
+      axios
+        .get("http://localhost:3001/orders")
+        .then((response) => {
+          setOrders(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, []);
+
+
+  const handleOrder = async () => {
+    try {
+      const userId = parseInt(localStorage.getItem("user_id"));
+
+      if (selectedTransport === null) {
+        toast.error("Hãy chọn đơn vị giao hàng", {
+          position: "top-center",
+          autoClose: 2000,
+        });
+        return;
+      }
+
+      setIsButtonClicked(true);
+
+      // Thêm userId vào đối tượng sản phẩm mới
+      const newOrder = {
+        price: price,
+        userId: userId,
+        Items: orders[0],
+      };
+
+      // Gửi yêu cầu POST để tạo đơn hàng mới
+      await axios.post("http://localhost:3001/newOrders", newOrder);
+
+      console.log("Dữ liệu đã được chuyển thành công");
+      toast.success("Đã đặt hàng thành công", {
+        position: "top-center",
+        autoClose: 2000,
       });
+
+      navigate("/");
+      // Xóa đơn hàng
+      await axios.delete(`http://localhost:3001/orders/1`);
+
+      console.log("Đã xóa đơn hàng thành công");
+    } catch (error) {
+      console.log(error);
+    }
+
   };
-  const handleAddNewOrder = () => {
-    const newOrder = {
-      // Các thông tin khác của đơn hàng
-      price: price,
-    };
-    addNewOrder(newOrder);
+
+
+  const deleteOrders = () => {
+    axios
+      .delete(`http://localhost:3001/orders/1`)
+      .then((response) => console.log(response))
+      .catch((error) => console.error(error));
   };
 
 
@@ -115,12 +157,7 @@ const Checkout = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  const deleteOrders = () => {
-    axios
-      .delete(`http://localhost:3001/orders/1`)
-      .then((response) => console.log(response))
-      .catch((error) => console.error(error));
-  };
+
 
   const navigateToUser = () => {
     navigate("/user");
@@ -137,47 +174,9 @@ const Checkout = () => {
     setContent("");
   };
 
-  const handleOrder = async () => {
-    const userId = parseInt(localStorage.getItem("user_id")); // Lấy giá trị userId từ localStorage và chuyển đổi sang kiểu number
 
-    if (selectedTransport === null) {
-      toast.error("Hãy chọn đơn vị giao hàng", {
-        position: "top-center",
-        autoClose: 2000,
-      });
-      return;
-    }
 
-    try {
-      setIsButtonClicked(true);
-      await axios.post("http://localhost:3001/newOrders", {
-        seItems: orders[0],
-        userId: userId, // Thêm userId vào đối tượng sản phẩm mới
-      });
-      console.log("Data has been transferred successfully");
-      toast.success("Đã đặt hàng thành công", {
-        position: "top-center",
-        autoClose: 2000,
-      });
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
-  const [orders, setOrders] = useState([]);
-  const [isButtonClicked, setIsButtonClicked] = useState(false);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3001/orders")
-      .then((response) => {
-        setOrders(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
 
 
   return (
@@ -506,7 +505,9 @@ const Checkout = () => {
             Hienmobi
           </div>
 
-          <div className="button__order" onClick={deleteOrders}>
+          <div className="button__order"
+            // onClick={deleteOrders}
+          >
             <button
               type="summit"
               onClick={handleOrder}
@@ -516,7 +517,7 @@ const Checkout = () => {
               {isButtonClicked ? (
                 "Đã đặt hàng"
               ) : (
-                <span onClick={handleAddNewOrder}>Đặt hàng</span>
+                <span >Đặt hàng</span>
               )}
             </button>
           </div>
